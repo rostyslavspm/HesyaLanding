@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <main className="mx-auto max-w-2xl px-6 py-20">
         <Link
           href="/"
-          className="mb-12 inline-block text-sm text-foreground-secondary transition-colors hover:text-foreground"
+          className="mb-12 inline-block text-sm text-foreground-secondary transition-opacity hover:opacity-70"
         >
           &larr; Back to Hesya
         </Link>

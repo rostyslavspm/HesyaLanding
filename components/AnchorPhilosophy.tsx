@@ -30,19 +30,18 @@ export default function AnchorPhilosophy() {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.3}>
-          <div className="flex items-center justify-center gap-6">
-            {examples.map((word) => (
+        <div className="flex items-center justify-center gap-6">
+          {examples.map((word, i) => (
+            <FadeIn key={word} delay={0.3 + i * 0.15}>
               <span
-                key={word}
                 className="font-serif text-xl tracking-[0.06em] uppercase"
                 style={{ color: "var(--wave)" }}
               >
                 {word}
               </span>
-            ))}
-          </div>
-        </FadeIn>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

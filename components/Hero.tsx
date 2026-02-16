@@ -11,7 +11,7 @@ export default function Hero() {
         <OrbGraphic size={180} />
       </FadeIn>
 
-      <FadeIn delay={0.15}>
+      <FadeIn delay={0.3}>
         <p
           className="font-serif text-2xl tracking-[0.06em] uppercase"
           style={{ color: "var(--wave)" }}
@@ -20,7 +20,7 @@ export default function Hero() {
         </p>
       </FadeIn>
 
-      <FadeIn delay={0.3}>
+      <FadeIn delay={0.5}>
         <h1 className="text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
           A gentle pause
           <br />
@@ -28,13 +28,13 @@ export default function Hero() {
         </h1>
       </FadeIn>
 
-      <FadeIn delay={0.45}>
+      <FadeIn delay={0.65}>
         <p className="text-lg text-foreground-secondary">
           Your word. Your rhythm.
         </p>
       </FadeIn>
 
-      <FadeIn delay={0.6}>
+      <FadeIn delay={0.8}>
         <div className="flex flex-col items-center gap-3">
           <AppStoreBadge />
           <p className="text-xs text-foreground-muted">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 interface FaqItem {
   question: string;
@@ -15,6 +15,7 @@ interface FaqSectionProps {
 
 function FaqItem({ question, answer }: FaqItem) {
   const [open, setOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="border-b border-border">
@@ -29,7 +30,8 @@ function FaqItem({ question, answer }: FaqItem) {
           height="16"
           viewBox="0 0 16 16"
           fill="none"
-          className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
           aria-hidden="true"
         >
           <path
@@ -45,9 +47,20 @@ function FaqItem({ question, answer }: FaqItem) {
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+              transition: prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 0.2, ease: [0.32, 0.72, 0, 1] },
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+              transition: prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 0.15, ease: [0.32, 0.72, 0, 1] },
+            }}
             className="overflow-hidden"
           >
             <p className="pb-4 text-sm leading-relaxed text-foreground-secondary">
