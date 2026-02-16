@@ -20,7 +20,7 @@ function FaqItem({ question, answer }: FaqItem) {
     <div className="border-b border-border">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left text-sm font-medium transition-colors hover:text-accent"
+        className="flex w-full items-center justify-between gap-4 py-4 text-left text-sm font-normal transition-opacity hover:opacity-70"
         aria-expanded={open}
       >
         {question}
@@ -63,7 +63,7 @@ function FaqItem({ question, answer }: FaqItem) {
 export default function FaqSection({ title, items }: FaqSectionProps) {
   return (
     <div className="mb-10">
-      <h2 className="mb-4 text-lg font-semibold">{title}</h2>
+      <h2 className="mb-4 text-lg font-normal">{title}</h2>
       <div>
         {items.map((item) => (
           <FaqItem key={item.question} {...item} />

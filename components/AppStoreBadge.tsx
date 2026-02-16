@@ -14,10 +14,10 @@ export default function AppStoreBadge() {
         aria-label="Download on the App Store"
       >
         <rect width="150" height="50" rx="10" fill="currentColor" className="text-foreground" />
-        <text x="75" y="20" textAnchor="middle" fill="var(--background)" fontSize="9" fontFamily="var(--font-dm-sans), system-ui">
+        <text x="75" y="20" textAnchor="middle" fill="var(--background)" fontSize="9" fontFamily="var(--font-lato), system-ui">
           Download on the
         </text>
-        <text x="75" y="36" textAnchor="middle" fill="var(--background)" fontSize="16" fontWeight="600" fontFamily="var(--font-dm-sans), system-ui">
+        <text x="75" y="36" textAnchor="middle" fill="var(--background)" fontSize="16" fontWeight="500" fontFamily="var(--font-lato), system-ui">
           App Store
         </text>
       </svg>

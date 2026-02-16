@@ -1,8 +1,8 @@
 import Hero from "../components/Hero";
-import HowItWorks from "../components/HowItWorks";
-import Features from "../components/Features";
-import PrivacyHighlight from "../components/PrivacyHighlight";
-import PhoneFrame from "../components/PhoneFrame";
+import AnchorPhilosophy from "../components/AnchorPhilosophy";
+import PatternSection from "../components/PatternSection";
+import RitualSection from "../components/RitualSection";
+import AutonomyPromise from "../components/AutonomyPromise";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -10,16 +10,10 @@ export default function Home() {
     <>
       <main>
         <Hero />
-        <HowItWorks />
-
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-sm">
-            <PhoneFrame />
-          </div>
-        </section>
-
-        <Features />
-        <PrivacyHighlight />
+        <AnchorPhilosophy />
+        <PatternSection />
+        <RitualSection />
+        <AutonomyPromise />
       </main>
       <Footer />
     </>

@@ -1,10 +1,7 @@
 "use client";
 
 export default function OrbGraphic({ size = 200 }: { size?: number }) {
-  const r = size / 2;
-  const coreR = r * 0.5;
-  const ringR = r * 0.7;
-  const outerR = r * 0.9;
+  const half = size / 2;
 
   return (
     <div
@@ -12,52 +9,27 @@ export default function OrbGraphic({ size = 200 }: { size?: number }) {
       style={{ width: size, height: size }}
       aria-hidden="true"
     >
-      {/* Outer glow ring */}
-      <svg
-        className="animate-breathe-ring absolute inset-0"
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-      >
-        <circle
-          cx={r}
-          cy={r}
-          r={outerR}
-          fill="none"
-          stroke="var(--accent)"
-          strokeWidth="1"
-          opacity="0.25"
-        />
-      </svg>
-
-      {/* Middle ring */}
-      <svg
-        className="animate-breathe-ring absolute inset-0"
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        style={{ animationDelay: "0.5s" }}
-      >
-        <circle
-          cx={r}
-          cy={r}
-          r={ringR}
-          fill="none"
-          stroke="var(--accent)"
-          strokeWidth="1.5"
-          opacity="0.35"
-        />
-      </svg>
-
-      {/* Core orb */}
+      {/* Ambient glow — matches orbAmbient blur: 28pt */}
       <div
-        className="animate-breathe rounded-full"
+        className="animate-breathe-glow absolute rounded-full"
         style={{
-          width: coreR * 2,
-          height: coreR * 2,
+          width: size * 1.4,
+          height: size * 1.4,
           background:
-            "radial-gradient(circle at 40% 40%, var(--accent-light), var(--accent-dark))",
-          boxShadow: "0 0 40px var(--accent-light)",
+            "radial-gradient(circle, var(--wave) 0%, var(--accent) 40%, transparent 70%)",
+          filter: "blur(28px)",
+        }}
+      />
+
+      {/* Core orb — radial gradient matching GradientOrbView.swift */}
+      <div
+        className="animate-breathe relative rounded-full"
+        style={{
+          width: size * 0.7,
+          height: size * 0.7,
+          background:
+            "radial-gradient(circle at 40% 40%, var(--mid), var(--wave))",
+          boxShadow: `0 0 ${half * 0.4}px var(--accent)`,
         }}
       />
     </div>

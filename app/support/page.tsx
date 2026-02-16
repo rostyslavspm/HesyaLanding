@@ -115,7 +115,7 @@ export default function SupportPage() {
           &larr; Back to Hesya
         </Link>
 
-        <h1 className="mb-2 text-3xl font-semibold tracking-tight">
+        <h1 className="mb-2 text-3xl font-light tracking-tight">
           Support & FAQ
         </h1>
         <p className="mb-12 text-foreground-secondary">
@@ -128,14 +128,14 @@ export default function SupportPage() {
         <FaqSection title="Troubleshooting" items={troubleshooting} />
         <FaqSection title="General" items={general} />
 
-        <div className="mt-16 rounded-2xl bg-surface-elevated p-8 text-center">
-          <h2 className="mb-2 text-lg font-semibold">Still need help?</h2>
+        <div className="glass-elevated mt-16 rounded-2xl p-8 text-center">
+          <h2 className="mb-2 text-lg font-normal">Still need help?</h2>
           <p className="mb-4 text-sm text-foreground-secondary">
             We aim to respond within 24–48 hours.
           </p>
           <a
             href="mailto:support@hesya.app"
-            className="inline-block rounded-full bg-accent px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="glass inline-block rounded-full px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-80"
           >
             Email support@hesya.app
           </a>

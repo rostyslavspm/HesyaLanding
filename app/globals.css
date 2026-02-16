@@ -1,28 +1,42 @@
 @import "tailwindcss";
 
+/* ─── Hesya Day Palette (from Palette.swift, 11:00–17:00) ─── */
 :root {
-  --background: #FAF9F7;
-  --foreground: #2C2C2E;
-  --foreground-secondary: #6B6B6F;
-  --accent: #7BA697;
-  --accent-light: #A3C4B5;
-  --accent-dark: #5A8A78;
-  --surface: #FFFFFF;
-  --surface-elevated: #F2F1EF;
-  --border: #E5E3DF;
+  --base: #E7EEF3;
+  --mid: #D4E0E9;
+  --accent: #C1D2DF;
+  --wave: #AFC4D6;
+
+  --background: #E7EEF3;
+  --foreground: rgba(44, 44, 46, 0.80);
+  --foreground-secondary: rgba(44, 44, 46, 0.58);
+  --foreground-muted: rgba(44, 44, 46, 0.42);
+
+  --surface: rgba(255, 255, 255, 0.45);
+  --surface-elevated: rgba(255, 255, 255, 0.60);
+  --border: rgba(175, 196, 214, 0.30);
+
+  --warm-beige: #D1C7BC;
 }
 
+/* ─── Hesya Night Palette (from Palette.swift, 21:00–05:00) ─── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1A1A1E;
-    --foreground: #E8E6E3;
-    --foreground-secondary: #9A9A9E;
-    --accent: #7BA697;
-    --accent-light: #A3C4B5;
-    --accent-dark: #5A8A78;
-    --surface: #242428;
-    --surface-elevated: #2E2E33;
-    --border: #3A3A3F;
+    --base: #141822;
+    --mid: #1D2531;
+    --accent: #27303E;
+    --wave: #323C4C;
+
+    --background: #141822;
+    --foreground: rgba(209, 199, 188, 0.80);
+    --foreground-secondary: rgba(209, 199, 188, 0.58);
+    --foreground-muted: rgba(209, 199, 188, 0.42);
+
+    --surface: rgba(50, 60, 76, 0.35);
+    --surface-elevated: rgba(50, 60, 76, 0.50);
+    --border: rgba(50, 60, 76, 0.40);
+
+    --warm-beige: #D1C7BC;
   }
 }
 
@@ -30,13 +44,17 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-base: var(--base);
+  --color-mid: var(--mid);
   --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-dark: var(--accent-dark);
+  --color-wave: var(--wave);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-border: var(--border);
-  --font-sans: var(--font-dm-sans);
+  --color-warm-beige: var(--warm-beige);
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-dm-serif);
 }
 
 body {
@@ -44,33 +62,48 @@ body {
   color: var(--foreground);
 }
 
-/* Breathing orb animation */
+/* ─── Breathing orb (6s cycle matching GradientOrbView.swift) ─── */
 @keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.06); opacity: 1; }
+  0%, 100% { transform: scale(0.92); }
+  50% { transform: scale(1.08); }
 }
 
-@keyframes breathe-ring {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.08); opacity: 0.7; }
+@keyframes breathe-glow {
+  0%, 100% { opacity: 0.3; transform: scale(0.94); }
+  50% { opacity: 0.6; transform: scale(1.06); }
 }
 
 .animate-breathe {
-  animation: breathe 4s ease-in-out infinite;
+  animation: breathe 6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 
-.animate-breathe-ring {
-  animation: breathe-ring 4s ease-in-out infinite;
+.animate-breathe-glow {
+  animation: breathe-glow 6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-breathe,
-  .animate-breathe-ring {
+  .animate-breathe-glow {
     animation: none;
   }
 }
 
-/* Smooth scrolling */
+/* ─── Glass surfaces ─── */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.glass-elevated {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+}
+
+/* ─── Smooth scrolling ─── */
 html {
   scroll-behavior: smooth;
 }
@@ -81,30 +114,31 @@ html {
   }
 }
 
-/* Prose styling for legal pages */
+/* ─── Prose styling for legal pages ─── */
 .prose h1 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
+  color: var(--foreground);
 }
 
 .prose h2 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
+  color: var(--foreground);
 }
 
 .prose p {
   line-height: 1.75;
   margin-bottom: 1rem;
-  color: var(--foreground-secondary);
 }
 
 .prose strong {
   color: var(--foreground);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .prose ul {
@@ -116,15 +150,14 @@ html {
 .prose li {
   line-height: 1.75;
   margin-bottom: 0.5rem;
-  color: var(--foreground-secondary);
 }
 
 .prose a {
-  color: var(--accent);
+  color: var(--wave);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .prose a:hover {
-  color: var(--accent-dark);
+  opacity: 0.7;
 }
