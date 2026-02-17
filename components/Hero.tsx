@@ -1,47 +1,59 @@
 "use client";
 
 import OrbGraphic from "./OrbGraphic";
+import PhoneFrame from "./PhoneFrame";
 import AppStoreBadge from "./AppStoreBadge";
 import FadeIn from "./FadeIn";
 
+function StyledHomeScreen() {
+  return (
+    <div
+      className="flex h-full flex-col items-center justify-center gap-6"
+      style={{ background: "linear-gradient(180deg, var(--base) 0%, var(--mid) 100%)" }}
+    >
+      <OrbGraphic size={90} />
+      <p
+        className="font-serif text-lg tracking-[0.06em] uppercase"
+        style={{ color: "var(--wave)" }}
+      >
+        Presence
+      </p>
+      <div
+        className="glass rounded-2xl px-6 py-2.5 text-sm"
+        style={{ color: "var(--foreground-secondary)" }}
+      >
+        A breath
+      </div>
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] flex-col items-center justify-center gap-10 px-6 py-32 text-center">
-      <FadeIn>
-        <OrbGraphic size={180} />
-      </FadeIn>
+    <section className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 py-24">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-16 md:flex-row md:gap-20">
+        {/* Phone mockup */}
+        <FadeIn className="shrink-0">
+          <PhoneFrame>
+            <StyledHomeScreen />
+          </PhoneFrame>
+        </FadeIn>
 
-      <FadeIn delay={0.3}>
-        <p
-          className="font-serif text-2xl tracking-[0.06em] uppercase"
-          style={{ color: "var(--wave)" }}
-        >
-          Presence
-        </p>
-      </FadeIn>
+        {/* Copy */}
+        <div className="flex flex-col items-center gap-8 text-center md:items-start md:text-left">
+          <FadeIn delay={0.3}>
+            <h1 className="text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
+              Notice when you drift.
+              <br />
+              Return when you choose.
+            </h1>
+          </FadeIn>
 
-      <FadeIn delay={0.5}>
-        <h1 className="text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
-          A gentle pause
-          <br />
-          when you need it.
-        </h1>
-      </FadeIn>
-
-      <FadeIn delay={0.65}>
-        <p className="text-lg text-foreground-secondary">
-          Your word. Your rhythm.
-        </p>
-      </FadeIn>
-
-      <FadeIn delay={0.8}>
-        <div className="flex flex-col items-center gap-3">
-          <AppStoreBadge />
-          <p className="text-xs text-foreground-muted">
-            Free &middot; No tracking &middot; On your device
-          </p>
+          <FadeIn delay={0.5}>
+            <AppStoreBadge />
+          </FadeIn>
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }

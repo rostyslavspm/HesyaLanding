@@ -5,21 +5,22 @@ import FadeIn from "./FadeIn";
 
 export default function AutonomyPromise() {
   return (
-    <section className="px-6 py-28">
+    <section className="px-6 py-28" style={{ background: "var(--mid)" }}>
       <FadeIn>
         <div className="glass-elevated mx-auto max-w-2xl rounded-3xl px-8 py-14 text-center sm:px-14">
-          <p className="mb-8 text-xl font-light leading-relaxed sm:text-2xl">
-            This app exists to support your autonomy,
-            <br className="hidden sm:block" />
-            not to manage your behavior.
-          </p>
+          <h2 className="mb-8 text-xl font-light leading-relaxed sm:text-2xl">
+            Everything stays on your device.
+          </h2>
 
-          <div className="mb-8 space-y-1 text-sm text-foreground-secondary">
-            <p>Everything happens on your device.</p>
-            <p>No data collection. No accounts. No ads.</p>
+          <div className="mb-6 text-base leading-loose text-foreground-secondary">
+            <p>No accounts. No data collection.</p>
+            <p>No ads. No algorithms. No tracking. Ever.</p>
+          </div>
+
+          <div className="mb-8 text-sm leading-relaxed text-foreground-muted">
             <p>Screen Time permission is optional.</p>
-            <p>Reminders respect quiet hours.</p>
-            <p>You can disable detection anytime.</p>
+            <p>Detection can be disabled anytime.</p>
+            <p>Quiet hours are always respected.</p>
           </div>
 
           <Link

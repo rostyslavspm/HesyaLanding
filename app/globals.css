@@ -81,9 +81,22 @@ body {
   animation: breathe-glow 6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 
+/* ─── Breathing circle (4s inhale, 2s hold, 6s exhale = 12s cycle) ─── */
+@keyframes breath-cycle {
+  0% { transform: scale(0.6); opacity: 0.4; }
+  33.3% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(0.6); opacity: 0.4; }
+}
+
+.animate-breath-cycle {
+  animation: breath-cycle 12s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-breathe,
-  .animate-breathe-glow {
+  .animate-breathe-glow,
+  .animate-breath-cycle {
     animation: none;
   }
 }
@@ -94,6 +107,9 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .glass-elevated {
@@ -101,6 +117,22 @@ body {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  .glass-elevated {
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.15);
+  }
 }
 
 /* ─── Smooth scrolling ─── */

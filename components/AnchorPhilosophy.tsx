@@ -2,46 +2,41 @@
 
 import FadeIn from "./FadeIn";
 
-const examples = ["Peace", "Balance", "Presence"];
-
 export default function AnchorPhilosophy() {
   return (
     <section className="px-6 py-28">
       <div className="mx-auto max-w-xl text-center">
         <FadeIn>
+          <span className="mb-6 block text-xs uppercase tracking-[0.15em] text-foreground-muted">
+            Your anchor
+          </span>
           <h2 className="mb-8 text-2xl font-light tracking-tight sm:text-3xl">
-            What word anchors you?
+            Choose one word.
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <p className="mb-6 text-base leading-relaxed text-foreground-secondary">
-            An anchor word is a value or intention that matters to you.
-            It stays visible on your Lock Screen, your Home Screen,
-            and at the center of every pause.
+            A value. A reminder of what you&apos;re for.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <p className="mb-12 text-base leading-relaxed text-foreground-secondary">
-            Not an affirmation. Not a goal.
-            <br />
-            A quiet reminder of what you already know.
+          <p className="mb-8 font-serif text-xl tracking-[0.06em]" style={{ color: "var(--wave)" }}>
+            Peace. Clarity. Presence. Family. Focus.
+          </p>
+          <p className="mb-10 text-base leading-relaxed text-foreground-secondary">
+            Or anything that matters to you.
           </p>
         </FadeIn>
 
-        <div className="flex items-center justify-center gap-6">
-          {examples.map((word, i) => (
-            <FadeIn key={word} delay={0.3 + i * 0.15}>
-              <span
-                className="font-serif text-xl tracking-[0.06em] uppercase"
-                style={{ color: "var(--wave)" }}
-              >
-                {word}
-              </span>
-            </FadeIn>
-          ))}
-        </div>
+        <FadeIn delay={0.3} duration={1.0}>
+          <p className="text-base leading-relaxed text-foreground-secondary">
+            It lives on your Lock Screen.
+            <br />
+            Always visible. Never urgent.
+          </p>
+        </FadeIn>
       </div>
     </section>
   );

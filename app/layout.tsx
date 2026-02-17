@@ -17,27 +17,29 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Hesya — A gentle pause when you need it",
+  title: "Hesya — Notice when you drift. Return when you choose.",
   description:
-    "A quiet pause app with a Lock Screen widget and a short ritual to reset your attention. Your word. Your rhythm. Free, private, on-device only.",
+    "Hesya notices when you drift — long focus sessions, rapid switching, restless seeking — and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
   authors: [{ name: "Rostyslav Slobodianiuk" }],
   creator: "Rostyslav Slobodianiuk",
   metadataBase: new URL("https://hesya.app"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hesya — A gentle pause when you need it",
+    title: "Hesya — Notice when you drift. Return when you choose.",
     description:
-      "Your word. Your rhythm. A Lock Screen widget and a short ritual to reset your attention. Free, private, on-device only.",
+      "Hesya notices when you drift and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
     url: "https://hesya.app",
     siteName: "Hesya",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Hesya — Notice when you drift. Return when you choose." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hesya — A gentle pause when you need it",
+    title: "Hesya — Notice when you drift. Return when you choose.",
     description:
-      "Your word. Your rhythm. A Lock Screen widget and a short ritual to reset your attention. Free, private, on-device only.",
+      "Hesya notices when you drift and offers a gentle ritual to return to presence. Free, private, on-device only.",
+    images: ["/og.svg"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

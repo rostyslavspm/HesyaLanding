@@ -10,23 +10,28 @@ export default function PatternSection() {
     <section className="px-6 py-28">
       <div className="mx-auto max-w-xl text-center">
         <FadeIn duration={1.0}>
-          <h2 className="mb-8 text-2xl font-light tracking-tight sm:text-3xl">
-            Hesya notices. It doesn&apos;t judge.
+          <span className="mb-6 block text-xs uppercase tracking-[0.15em] text-foreground-muted">
+            It notices
+          </span>
+          <h2 className="mb-10 text-2xl font-light tracking-tight sm:text-3xl">
+            Long focus sessions.
+            <br />
+            Rapid switching between apps.
+            <br />
+            Restless seeking, nothing settling.
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1} duration={1.0}>
           <p className="mb-6 text-base leading-relaxed text-foreground-secondary">
-            Your device use has patterns — long focus sessions,
-            scattered switching, restless seeking. These aren&apos;t problems.
-            They&apos;re natural rhythms.
+            Not problems. Patterns.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2} duration={1.0}>
           <p className="mb-12 text-base leading-relaxed text-foreground-secondary">
-            Hesya observes them quietly, on your device,
-            and offers a gentle invitation when one surfaces.
+            Hesya watches quietly &mdash; on your device,
+            never shared &mdash; and offers a gentle invitation.
           </p>
         </FadeIn>
 
