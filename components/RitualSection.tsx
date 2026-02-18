@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 import OrbGraphic from "./OrbGraphic";
 import SectionEyebrow from "./ui/SectionEyebrow";
@@ -12,12 +13,13 @@ import Image from "next/image";
  * Phone: Breathing screen (glowing orb + "inhale slowly").
  */
 export default function RitualSection() {
+  const [imageError, setImageError] = useState(false);
   return (
     <section
-      className="section-full noise-overlay relative overflow-hidden"
+      className="section-full noise-overlay relative overflow-hidden bg-fixed-fallback"
+      aria-label="Three breaths - A pause between drift and choice"
       style={{
-        background: "linear-gradient(160deg, #EDD5B8 0%, #F0D8BC 45%, #E8CDAE 100%)",
-        backgroundAttachment: "fixed",
+        background: "linear-gradient(160deg, var(--base) 0%, var(--mid) 45%, var(--accent) 100%)",
       }}
     >
       {/* Ambient radial behind the orb */}
@@ -64,18 +66,22 @@ export default function RitualSection() {
         <FadeIn delay={0.5} duration={1.5}>
           <div
             className="phone-placeholder glass"
-            style={{ width: 220, height: 448, borderRadius: 34 }}
-            title="breathing screen — image pending"
+            style={{ width: 220, height: 478, borderRadius: 34 }}
+            title="breathing screen"
           >
-            <Image
-              src="/screenshots/screen-breathing.png"
-              alt="Hesya breathing ritual screen"
-              fill
-              className="object-cover"
-              style={{ borderRadius: 34 }}
-              onError={(e) => { (e.target as HTMLElement).style.display = "none"; }}
-            />
-            <span className="absolute" style={{ opacity: 0.4 }}>breathing screen</span>
+            {!imageError && (
+              <Image
+                src="/screenshots/screen-breathing.png"
+                alt="Hesya breathing ritual screen"
+                fill
+                className="object-cover"
+                style={{ borderRadius: 34 }}
+                onError={() => setImageError(true)}
+              />
+            )}
+            {imageError && (
+              <span className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.4 }} aria-hidden="true">breathing screen</span>
+            )}
           </div>
         </FadeIn>
       </div>

@@ -12,11 +12,11 @@ import FadeIn from "./FadeIn";
 export default function ClosingCTA() {
   return (
     <section
-      className="section-full noise-overlay relative overflow-hidden"
+      className="section-full noise-overlay relative overflow-hidden bg-fixed-fallback"
       style={{
-        background: "linear-gradient(160deg, #F5E6D3 0%, #EDD9C4 50%, #F0DCC8 100%)",
-        backgroundAttachment: "fixed",
+        background: "linear-gradient(160deg, var(--base) 0%, var(--mid) 50%, var(--accent) 100%)",
       }}
+      aria-label="Get Hesya - Coming soon to App Store"
     >
       <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center gap-10 text-center">
 

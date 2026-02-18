@@ -315,10 +315,23 @@ body {
   padding: 7rem 1.5rem;
 }
 
+/* ─── background-attachment: fixed fallback for iOS Safari ───
+   iOS Safari ignores background-attachment: fixed on non-body elements.
+   Use .bg-fixed-fallback to apply fixed only when supported.
+   ──────────────────────────────────────────────────────── */
+.bg-fixed-fallback {
+  background-attachment: scroll;
+}
+@supports (background-attachment: fixed) {
+  .bg-fixed-fallback {
+    background-attachment: fixed;
+  }
+}
+
 /* ─── Phone Mockup Placeholder ──────────────────────── */
 .phone-placeholder {
   width: 260px;
-  height: 530px;
+  height: 565px;
   border-radius: 40px;
   display: flex;
   align-items: center;

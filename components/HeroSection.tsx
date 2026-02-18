@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import AppStoreBadge from "./AppStoreBadge";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
@@ -10,11 +11,11 @@ import Image from "next/image";
  * Two-column on desktop: headline + badge left, phone mockup right.
  * Background: the warm mesh gradient from body (no local override needed).
  * Typography: Instrument Serif display + Lato light body.
- * Phone slot: shows Home screen — placeholder until image is provided.
+ * Phone slot: shows Home screen.
  */
 export default function HeroSection() {
   return (
-    <section className="section-full noise-overlay relative">
+    <section className="section-full noise-overlay relative" aria-label="Hero - Notice when you drift">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-12 md:flex-row md:items-center md:gap-16 lg:gap-24">
 
         {/* ── Copy ── */}
@@ -43,8 +44,7 @@ export default function HeroSection() {
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              hesya watches for patterns in how you use your phone —
-              long focus, rapid switching, restless seeking —
+              hesya notices when you drift — long focus, rapid switching, restless seeking —
               and offers a quiet ritual to come back to yourself.
             </p>
           </FadeIn>
@@ -68,27 +68,27 @@ export default function HeroSection() {
 }
 
 /**
- * PhoneMockup — phone frame with screen image or placeholder.
- * Once images are provided, replace the placeholder div with Next.js Image.
+ * PhoneMockup — phone frame with screen image or placeholder on error.
  */
 function PhoneMockup({ screen }: { screen: string }) {
-  // Check if screenshot exists at the expected path
-  const hasImage = false; // flip to true once image is placed at /screenshots/screen-{screen}.png
+  const [imageError, setImageError] = useState(false);
 
   return (
     <div
       className="phone-placeholder glass"
-      title={`${screen} screen — image pending`}
+      title={`${screen} screen`}
     >
-      {hasImage ? (
+      {!imageError && (
         <Image
           src={`/screenshots/screen-${screen}.png`}
           alt={`Hesya app ${screen} screen`}
           fill
           className="object-cover rounded-[40px]"
+          onError={() => setImageError(true)}
         />
-      ) : (
-        <span style={{ opacity: 0.5 }}>{screen} screen</span>
+      )}
+      {imageError && (
+        <span style={{ opacity: 0.5 }} aria-hidden="true">{screen} screen</span>
       )}
     </div>
   );

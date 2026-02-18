@@ -5,7 +5,7 @@ import SectionEyebrow from "./ui/SectionEyebrow";
 
 export default function HesychiaSection() {
   return (
-    <section className="section-standard px-6">
+    <section className="section-standard px-6" aria-label="The name - Hesychia">
       <div className="mx-auto max-w-2xl text-center">
 
         <FadeIn delay={0.05}>
@@ -26,7 +26,7 @@ export default function HesychiaSection() {
             className="text-body mb-12"
             style={{ fontStyle: "italic", color: "var(--foreground-secondary)" }}
           >
-            From the Greek &#x1F74;&#x03C3;&#x03C5;&#x03C7;&#x03AF;&#x03B1; &mdash; inner stillness.
+            From the Greek ησυχία &mdash; inner stillness.
           </p>
         </FadeIn>
 

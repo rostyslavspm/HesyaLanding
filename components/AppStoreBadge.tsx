@@ -9,7 +9,7 @@ export default function AppStoreBadge() {
         className="glass inline-block rounded-full px-7 py-3 text-body-sm"
         style={{ color: "var(--foreground)" }}
       >
-        Coming Soon to App Store
+        coming soon to app store
       </span>
       <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
         Free &middot; No tracking &middot; iOS

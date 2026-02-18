@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     siteName: "Hesya",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Hesya — Notice when you drift. Return when you choose." }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Hesya — Notice when you drift. Return when you choose." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hesya — Notice when you drift. Return when you choose.",
     description:
       "Hesya notices when you drift and offers a gentle ritual to return to presence. Free, private, on-device only.",
-    images: ["/og.svg"],
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

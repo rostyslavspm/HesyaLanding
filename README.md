@@ -30,4 +30,11 @@ npm run build
 
 ## Screenshots
 
-Drop app screenshots into `public/screenshots/` — the phone frame component will display them automatically once added.
+Place app screenshots in `public/screenshots/` with these exact filenames:
+
+- `screen-home.png` — Home screen
+- `screen-lockscreen.png` — Lock screen widget
+- `screen-breathing.png` — Ritual/breathing screen
+- `screen-affect.png` — Affect label selection screen
+
+If your files use different names (e.g. `Hesya Homescreen.png`), rename them to match.

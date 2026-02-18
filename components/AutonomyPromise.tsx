@@ -11,7 +11,7 @@ import GlassPanel from "./ui/GlassPanel";
  */
 export default function AutonomyPromise() {
   return (
-    <section className="section-standard noise-overlay px-6">
+    <section className="section-standard noise-overlay px-6" aria-label="Privacy - Everything stays on your device">
       <FadeIn>
         <GlassPanel variant="elevated" rounded="3xl" className="mx-auto max-w-lg px-8 py-14 text-center sm:px-12">
 

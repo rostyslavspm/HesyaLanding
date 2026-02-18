@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import Image from "next/image";
@@ -11,24 +12,26 @@ import Image from "next/image";
  * Phone: Affect label screen showing the 4 emotional state chips.
  */
 export default function AnchorPhilosophy() {
+  const [imageError, setImageError] = useState(false);
   return (
-    <section className="section-standard noise-overlay px-6">
+    <section className="section-standard noise-overlay px-6" aria-label="Your anchor - Choose one word">
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-14 md:flex-row md:items-center md:gap-16">
 
         {/* ── Phone Mockup — Affect label screen ── */}
         <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
-          <div
-            className="phone-placeholder glass"
-            title="affect label screen — image pending"
-          >
-            <Image
-              src="/screenshots/screen-affect.png"
-              alt="Hesya affect label selection screen"
-              fill
-              className="object-cover rounded-[40px]"
-              onError={(e) => { (e.target as HTMLElement).style.display = "none"; }}
-            />
-            <span className="absolute" style={{ opacity: 0.4 }}>affect label</span>
+          <div className="phone-placeholder glass" title="affect label">
+            {!imageError && (
+              <Image
+                src="/screenshots/screen-affect.png"
+                alt="Hesya affect label selection screen"
+                fill
+                className="object-cover rounded-[40px]"
+                onError={() => setImageError(true)}
+              />
+            )}
+            {imageError && (
+              <span className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.4 }} aria-hidden="true">affect label</span>
+            )}
           </div>
         </FadeIn>
 
@@ -44,7 +47,7 @@ export default function AnchorPhilosophy() {
               className="text-anchor"
               style={{ color: "var(--wave)" }}
             >
-              serenity.
+              SERENITY
             </p>
           </FadeIn>
 

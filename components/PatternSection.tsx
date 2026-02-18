@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import PatternDot from "./ui/PatternDot";
@@ -12,7 +13,7 @@ import Image from "next/image";
  */
 export default function PatternSection() {
   return (
-    <section className="section-standard noise-overlay px-6">
+    <section className="section-standard noise-overlay px-6" aria-label="What Hesya notices - Drift has a shape">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-14 md:flex-row md:items-center md:gap-16">
 
         {/* ── Copy ── */}
@@ -67,21 +68,25 @@ export default function PatternSection() {
 
         {/* ── Phone Mockup — Lock screen widget ── */}
         <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-end">
-          <div
-            className="phone-placeholder glass"
-            title="lock screen widget — image pending"
-          >
-            <Image
-              src="/screenshots/screen-lockscreen.png"
-              alt="Hesya lock screen widget"
-              fill
-              className="object-cover rounded-[40px]"
-              onError={(e) => { (e.target as HTMLElement).style.display = "none"; }}
-            />
-            <span className="absolute" style={{ opacity: 0.4 }}>lock screen</span>
-          </div>
+          <PhoneMockupWithFallback
+            src="/screenshots/screen-lockscreen.png"
+            alt="Hesya lock screen widget"
+            fallback="lock screen"
+          />
         </FadeIn>
       </div>
     </section>
+  );
+}
+
+function PhoneMockupWithFallback({ src, alt, fallback }: { src: string; alt: string; fallback: string }) {
+  const [imageError, setImageError] = useState(false);
+  return (
+    <div className="phone-placeholder glass" title={fallback}>
+      {!imageError && (
+        <Image src={src} alt={alt} fill className="object-cover rounded-[40px]" onError={() => setImageError(true)} />
+      )}
+      {imageError && <span className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.4 }} aria-hidden="true">{fallback}</span>}
+    </div>
   );
 }
