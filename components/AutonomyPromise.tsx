@@ -15,7 +15,7 @@ export default function AutonomyPromise() {
       <FadeIn>
         <GlassPanel variant="elevated" rounded="3xl" className="mx-auto max-w-lg px-8 py-14 text-center sm:px-12">
 
-          <p className="text-eyebrow mb-6">private by design</p>
+          <p className="text-eyebrow mb-6">Private by design</p>
 
           <h2 className="text-heading mb-8">
             Everything stays<br />on your device.
@@ -23,10 +23,10 @@ export default function AutonomyPromise() {
 
           <ul className="mb-8 space-y-3 text-left">
             {[
-              "no accounts. no data collection.",
-              "no ads, algorithms, or tracking. ever.",
-              "screen time permission is optional.",
-              "detection can be disabled anytime.",
+              "No accounts. No data collection.",
+              "No ads, algorithms, or tracking. Ever.",
+              "Screen time permission is optional.",
+              "Detection can be disabled anytime.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span
@@ -46,7 +46,7 @@ export default function AutonomyPromise() {
             className="text-micro"
             style={{ color: "var(--foreground-muted)" }}
           >
-            read our privacy policy &rarr;
+            Read our privacy policy &rarr;
           </Link>
         </GlassPanel>
       </FadeIn>

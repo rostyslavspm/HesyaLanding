@@ -19,18 +19,19 @@ export default function AnchorPhilosophy() {
 
         {/* ── Phone Mockup — Affect label screen ── */}
         <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
-          <div className="phone-placeholder glass" title="affect label">
+          <div className="relative max-w-[260px] w-full aspect-[450/920]" title="affect label">
             {!imageError && (
               <Image
                 src="/screenshots/screen-affect.png"
                 alt="Hesya affect label selection screen"
-                fill
-                className="object-cover rounded-[40px]"
+                width={450}
+                height={920}
+                className="w-full h-auto block"
                 onError={() => setImageError(true)}
               />
             )}
             {imageError && (
-              <span className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.4 }} aria-hidden="true">affect label</span>
+              <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">affect label</span>
             )}
           </div>
         </FadeIn>
@@ -38,7 +39,7 @@ export default function AnchorPhilosophy() {
         {/* ── Copy ── */}
         <div className="flex flex-col gap-8 md:flex-1">
           <FadeIn delay={0.05}>
-            <SectionEyebrow>your anchor</SectionEyebrow>
+            <SectionEyebrow>Your anchor</SectionEyebrow>
           </FadeIn>
 
           {/* Anchor word — ceremonial serif, large, tracked */}
@@ -56,8 +57,8 @@ export default function AnchorPhilosophy() {
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              choose one word that matters to you.
-              a value. a reminder of what you&apos;re for.
+              Choose one word that matters to you.
+              A value. A reminder of what you&apos;re for.
             </p>
           </FadeIn>
 
@@ -66,9 +67,9 @@ export default function AnchorPhilosophy() {
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              it lives on your lock screen and widget.
-              always visible. never urgent.
-              at the end of every ritual, it&apos;s the last thing you see.
+              It lives on your lock screen and widget.
+              Always visible. Never urgent.
+              At the end of every ritual, it&apos;s the last thing you see.
             </p>
           </FadeIn>
         </div>

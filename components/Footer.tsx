@@ -8,11 +8,11 @@ export default function Footer() {
   return (
     <footer className="px-6 py-14">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-        <nav className="flex gap-8">
+        <nav className="flex gap-8" aria-label="Footer navigation">
           {[
-            { href: "/privacy", label: "privacy" },
-            { href: "/support", label: "support" },
-            { href: "mailto:support@hesya.app", label: "contact", external: true },
+            { href: "/privacy", label: "Privacy" },
+            { href: "/support", label: "Support" },
+            { href: "mailto:support@hesya.app", label: "Contact", external: true },
           ].map(({ href, label, external }) =>
             external ? (
               <a

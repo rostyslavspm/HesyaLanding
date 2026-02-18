@@ -9,7 +9,7 @@ export default function HesychiaSection() {
       <div className="mx-auto max-w-2xl text-center">
 
         <FadeIn delay={0.05}>
-          <SectionEyebrow className="mb-8">the name</SectionEyebrow>
+          <SectionEyebrow className="mb-8">The name</SectionEyebrow>
         </FadeIn>
 
         <FadeIn delay={0.15}>
@@ -35,7 +35,7 @@ export default function HesychiaSection() {
             className="text-body mb-6"
             style={{ color: "var(--foreground-secondary)" }}
           >
-            for over a thousand years, contemplatives
+            For over a thousand years, contemplatives
             practiced hesychia: watching where the mind
             goes, breathing to return, anchoring to
             what matters.
@@ -44,8 +44,8 @@ export default function HesychiaSection() {
 
         <FadeIn delay={0.45} duration={1.0}>
           <p className="text-body" style={{ color: "var(--foreground-muted)" }}>
-            three techniques. timeless problem.<br />
-            no belief required.
+            Three techniques. Timeless problem.<br />
+            No belief required.
           </p>
         </FadeIn>
       </div>

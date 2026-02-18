@@ -29,13 +29,13 @@ export default function ClosingCTA() {
             className="text-display-sm"
             style={{ fontStyle: "italic" }}
           >
-            your mind has always<br />known how to return.
+            Your mind has always<br />known how to return.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.32}>
           <p className="text-body" style={{ color: "var(--foreground-secondary)" }}>
-            hesya helps you notice when to start.
+            Hesya helps you notice when to start.
           </p>
         </FadeIn>
 

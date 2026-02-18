@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <main className="mx-auto max-w-2xl px-6 py-20">
+      <main className="mx-auto max-w-2xl px-6 py-20" aria-label="Privacy policy">
         <Link
           href="/"
           className="mb-12 inline-block text-sm text-foreground-secondary transition-opacity hover:opacity-70"

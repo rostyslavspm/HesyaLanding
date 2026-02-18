@@ -19,12 +19,12 @@ export default function PatternSection() {
         {/* ── Copy ── */}
         <div className="flex flex-col gap-8 md:flex-1">
           <FadeIn delay={0.05}>
-            <SectionEyebrow>what hesya notices</SectionEyebrow>
+            <SectionEyebrow>What Hesya notices</SectionEyebrow>
           </FadeIn>
 
           <FadeIn delay={0.12}>
             <h2 className="text-display-sm">
-              drift has<br />a shape.
+              Drift has<br />a shape.
             </h2>
           </FadeIn>
 
@@ -33,9 +33,9 @@ export default function PatternSection() {
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              hesya watches patterns in how you use your phone —
+              Hesya watches patterns in how you use your phone —
               not what you&apos;re doing, just how it flows.
-              everything happens on your device. nothing leaves it.
+              Everything happens on your device. Nothing leaves it.
             </p>
           </FadeIn>
 
@@ -44,22 +44,22 @@ export default function PatternSection() {
             <div className="flex flex-col gap-4">
               <PatternDot
                 state="calm"
-                label="steady pace"
+                label="Steady pace"
                 description="moderate activity, recent ritual"
               />
               <PatternDot
                 state="pushing"
-                label="long focus session"
+                label="Long focus session"
                 description="60+ minutes in one place"
               />
               <PatternDot
                 state="overwhelmed"
-                label="switching between things"
+                label="Switching between things"
                 description="3–4 app switches, seeking relief"
               />
               <PatternDot
                 state="restless"
-                label="many quick switches"
+                label="Many quick switches"
                 description="5+ rapid switches, seeking stimulation"
               />
             </div>
@@ -82,11 +82,20 @@ export default function PatternSection() {
 function PhoneMockupWithFallback({ src, alt, fallback }: { src: string; alt: string; fallback: string }) {
   const [imageError, setImageError] = useState(false);
   return (
-    <div className="phone-placeholder glass" title={fallback}>
+    <div className="relative max-w-[260px] w-full aspect-[450/920]" title={fallback}>
       {!imageError && (
-        <Image src={src} alt={alt} fill className="object-cover rounded-[40px]" onError={() => setImageError(true)} />
+        <Image
+          src={src}
+          alt={alt}
+          width={450}
+          height={920}
+          className="w-full h-auto block"
+          onError={() => setImageError(true)}
+        />
       )}
-      {imageError && <span className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.4 }} aria-hidden="true">{fallback}</span>}
+      {imageError && (
+        <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">{fallback}</span>
+      )}
     </div>
   );
 }

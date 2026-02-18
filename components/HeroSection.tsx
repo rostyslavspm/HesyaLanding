@@ -21,7 +21,7 @@ export default function HeroSection() {
         {/* ── Copy ── */}
         <div className="flex flex-col items-center gap-7 text-center md:items-start md:flex-1 md:text-left">
           <FadeIn delay={0.05}>
-            <SectionEyebrow>for ios</SectionEyebrow>
+            <SectionEyebrow>For iOS</SectionEyebrow>
           </FadeIn>
 
           <FadeIn delay={0.15}>
@@ -44,7 +44,7 @@ export default function HeroSection() {
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              hesya notices when you drift — long focus, rapid switching, restless seeking —
+              Hesya notices when you drift — long focus, rapid switching, restless seeking —
               and offers a quiet ritual to come back to yourself.
             </p>
           </FadeIn>
@@ -74,21 +74,19 @@ function PhoneMockup({ screen }: { screen: string }) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div
-      className="phone-placeholder glass"
-      title={`${screen} screen`}
-    >
+    <div className="relative max-w-[260px] w-full aspect-[450/920]" title={`${screen} screen`}>
       {!imageError && (
         <Image
           src={`/screenshots/screen-${screen}.png`}
           alt={`Hesya app ${screen} screen`}
-          fill
-          className="object-cover rounded-[40px]"
+          width={450}
+          height={920}
+          className="w-full h-auto block"
           onError={() => setImageError(true)}
         />
       )}
       {imageError && (
-        <span style={{ opacity: 0.5 }} aria-hidden="true">{screen} screen</span>
+        <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.5 }} aria-hidden="true">{screen} screen</span>
       )}
     </div>
   );

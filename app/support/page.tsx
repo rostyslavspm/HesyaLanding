@@ -95,7 +95,7 @@ const general = [
   {
     question: "What devices are supported?",
     answer:
-      "Hesya works on all iPhones and iPads running iOS/iPadOS 26.2+. Live Activities (Dynamic Island) require iPhone 14 Pro or later.",
+      "Hesya works on all iPhones and iPads running iOS/iPadOS 18.0+. Live Activities (Dynamic Island) require iPhone 14 Pro or later.",
   },
   {
     question: "Can I use Hesya on multiple devices?",
@@ -107,7 +107,7 @@ const general = [
 export default function SupportPage() {
   return (
     <>
-      <main className="mx-auto max-w-2xl px-6 py-20">
+      <main className="mx-auto max-w-2xl px-6 py-20" aria-label="Support and FAQ">
         <Link
           href="/"
           className="mb-12 inline-block text-sm text-foreground-secondary transition-opacity hover:opacity-70"
