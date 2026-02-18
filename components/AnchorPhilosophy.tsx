@@ -1,42 +1,74 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import SectionEyebrow from "./ui/SectionEyebrow";
+import Image from "next/image";
 
+/**
+ * AnchorSection (AnchorPhilosophy) — the anchor word concept.
+ * Two-column reverse: phone (affect label screen) left, copy right.
+ * The anchor word displayed in large tracked serif — the app's ceremonial font.
+ * Phone: Affect label screen showing the 4 emotional state chips.
+ */
 export default function AnchorPhilosophy() {
   return (
-    <section className="px-6 py-28">
-      <div className="mx-auto max-w-xl text-center">
-        <FadeIn>
-          <span className="mb-6 block text-xs uppercase tracking-[0.15em] text-foreground-muted">
-            Your anchor
-          </span>
-          <h2 className="mb-8 text-2xl font-light tracking-tight sm:text-3xl">
-            Choose one word.
-          </h2>
+    <section className="section-standard noise-overlay px-6">
+      <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-14 md:flex-row md:items-center md:gap-16">
+
+        {/* ── Phone Mockup — Affect label screen ── */}
+        <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
+          <div
+            className="phone-placeholder glass"
+            title="affect label screen — image pending"
+          >
+            <Image
+              src="/screenshots/screen-affect.png"
+              alt="Hesya affect label selection screen"
+              fill
+              className="object-cover rounded-[40px]"
+              onError={(e) => { (e.target as HTMLElement).style.display = "none"; }}
+            />
+            <span className="absolute" style={{ opacity: 0.4 }}>affect label</span>
+          </div>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
-          <p className="mb-6 text-base leading-relaxed text-foreground-secondary">
-            A value. A reminder of what you&apos;re for.
-          </p>
-        </FadeIn>
+        {/* ── Copy ── */}
+        <div className="flex flex-col gap-8 md:flex-1">
+          <FadeIn delay={0.05}>
+            <SectionEyebrow>your anchor</SectionEyebrow>
+          </FadeIn>
 
-        <FadeIn delay={0.2}>
-          <p className="mb-8 font-serif text-xl tracking-[0.06em]" style={{ color: "var(--wave)" }}>
-            Peace. Clarity. Presence. Family. Focus.
-          </p>
-          <p className="mb-10 text-base leading-relaxed text-foreground-secondary">
-            Or anything that matters to you.
-          </p>
-        </FadeIn>
+          {/* Anchor word — ceremonial serif, large, tracked */}
+          <FadeIn delay={0.15}>
+            <p
+              className="text-anchor"
+              style={{ color: "var(--wave)" }}
+            >
+              serenity.
+            </p>
+          </FadeIn>
 
-        <FadeIn delay={0.3} duration={1.0}>
-          <p className="text-base leading-relaxed text-foreground-secondary">
-            It lives on your Lock Screen.
-            <br />
-            Always visible. Never urgent.
-          </p>
-        </FadeIn>
+          <FadeIn delay={0.25}>
+            <p
+              className="text-body max-w-sm"
+              style={{ color: "var(--foreground-secondary)" }}
+            >
+              choose one word that matters to you.
+              a value. a reminder of what you&apos;re for.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.35}>
+            <p
+              className="text-body max-w-sm"
+              style={{ color: "var(--foreground-secondary)" }}
+            >
+              it lives on your lock screen and widget.
+              always visible. never urgent.
+              at the end of every ritual, it&apos;s the last thing you see.
+            </p>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato, DM_Serif_Display } from "next/font/google";
+import { Lato, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const lato = Lato({
@@ -9,10 +9,11 @@ const lato = Lato({
   display: "swap",
 });
 
-const dmSerif = DM_Serif_Display({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-dm-serif",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -56,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.variable} ${dmSerif.variable} font-sans antialiased`}
+        className={`${lato.variable} ${instrumentSerif.variable} font-sans antialiased`}
       >
         {children}
       </body>

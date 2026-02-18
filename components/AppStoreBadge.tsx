@@ -1,16 +1,17 @@
+/**
+ * AppStoreBadge — "Coming Soon to App Store" glass pill.
+ * Matches FrostedPillButton.primary: white glass fill, subtle border.
+ */
 export default function AppStoreBadge() {
   return (
-    <div className="inline-flex flex-col items-center gap-2">
+    <div className="inline-flex flex-col items-center gap-3">
       <span
-        className="inline-block rounded-full px-6 py-2.5 text-sm font-medium"
-        style={{
-          background: "var(--foreground)",
-          color: "var(--background)",
-        }}
+        className="glass inline-block rounded-full px-7 py-3 text-body-sm"
+        style={{ color: "var(--foreground)" }}
       >
         Coming Soon to App Store
       </span>
-      <p className="text-xs text-foreground-muted">
+      <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
         Free &middot; No tracking &middot; iOS
       </p>
     </div>

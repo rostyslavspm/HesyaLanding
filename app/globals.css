@@ -1,195 +1,373 @@
 @import "tailwindcss";
 
-/* ─── Hesya Day Palette (from Palette.swift, 11:00–17:00) ─── */
+/* ═══════════════════════════════════════════════════════
+   HESYA DESIGN SYSTEM — Web UI Kit
+   Extracted from Hesya iOS (HesyaTypography.swift,
+   Palette.swift, RitualGradientPalette.swift,
+   StainedGlassUI.swift, AnchorStyle.swift)
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Light Mode — Ritual Warm Palette ─────────────────
+   Matches RitualGradientPalette.calm (#F5E6D3 peach/cream)
+   The emotional heart of the app: quiet, warm, present.
+   ──────────────────────────────────────────────────────── */
 :root {
-  --base: #E7EEF3;
-  --mid: #D4E0E9;
-  --accent: #C1D2DF;
-  --wave: #AFC4D6;
+  /* Background gradient stops */
+  --base:   #F5E6D3;
+  --mid:    #EDD9C4;
+  --accent: #F0DCC8;
+  --wave:   #C9A882;
 
-  --background: #E7EEF3;
-  --foreground: rgba(44, 44, 46, 0.80);
-  --foreground-secondary: rgba(44, 44, 46, 0.58);
-  --foreground-muted: rgba(44, 44, 46, 0.42);
+  --background: #F5E6D3;
 
-  --surface: rgba(255, 255, 255, 0.45);
-  --surface-elevated: rgba(255, 255, 255, 0.60);
-  --border: rgba(175, 196, 214, 0.30);
+  /* Text — warm dark brown (not cold charcoal) */
+  /* Mapped from AnchorPalette textPrimaryOpacity (morning ~0.82) */
+  --foreground:           rgba(48, 28, 12, 0.82);
+  --foreground-secondary: rgba(48, 28, 12, 0.56);
+  --foreground-muted:     rgba(48, 28, 12, 0.36);
 
-  --warm-beige: #D1C7BC;
+  /* Glass surfaces — matches RaycastGlassCard / ultraThinMaterial */
+  --surface:          rgba(255, 255, 255, 0.52);
+  --surface-elevated: rgba(255, 255, 255, 0.70);
+  --surface-tinted:   rgba(245, 230, 211, 0.58);
+  --border:           rgba(180, 150, 110, 0.22);
+
+  /* State indicator colors — from WidgetOrbColors.forState() */
+  --state-calm:        rgba(150, 145, 138, 0.85);
+  --state-pushing:     rgba(232, 166, 0,   0.90);
+  --state-overwhelmed: rgba(255, 100, 72,  0.90);
+  --state-restless:    rgba(20,  178, 171, 0.90);
+
+  /* Orb — calm state (warm daytime) */
+  --orb-center: rgba(255, 252, 245, 0.94);
+  --orb-edge:   rgba(210, 185, 155, 0.58);
+  --orb-glow:   rgba(245, 224, 195, 0.55);
+
+  /* Motion — from AnchorStyle.Motion */
+  --ease-hesya:     cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-micro:      0.35s;
+  --dur-transition: 1.2s;
+  --dur-ritual:     1.5s;
 }
 
-/* ─── Hesya Night Palette (from Palette.swift, 21:00–05:00) ─── */
+/* ─── Dark Mode — Deep Night Palette ───────────────────
+   From Palette.swift night: base #141822, warm beige text
+   ──────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --base: #141822;
-    --mid: #1D2531;
+    --base:   #141822;
+    --mid:    #1D2531;
     --accent: #27303E;
-    --wave: #323C4C;
+    --wave:   #8A9EB8;
 
     --background: #141822;
-    --foreground: rgba(209, 199, 188, 0.80);
-    --foreground-secondary: rgba(209, 199, 188, 0.58);
-    --foreground-muted: rgba(209, 199, 188, 0.42);
 
-    --surface: rgba(50, 60, 76, 0.35);
-    --surface-elevated: rgba(50, 60, 76, 0.50);
-    --border: rgba(50, 60, 76, 0.40);
+    --foreground:           rgba(209, 199, 188, 0.82);
+    --foreground-secondary: rgba(209, 199, 188, 0.56);
+    --foreground-muted:     rgba(209, 199, 188, 0.36);
 
-    --warm-beige: #D1C7BC;
+    --surface:          rgba(50, 60, 76, 0.42);
+    --surface-elevated: rgba(60, 72, 90, 0.60);
+    --surface-tinted:   rgba(30, 38, 52, 0.58);
+    --border:           rgba(100, 120, 150, 0.24);
+
+    --orb-center: rgba(118, 128, 152, 0.88);
+    --orb-edge:   rgba(55, 68, 88, 0.58);
+    --orb-glow:   rgba(45, 60, 85, 0.48);
   }
 }
 
+/* ─── Tailwind v4 Theme Bridge ──────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
   --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-base: var(--base);
-  --color-mid: var(--mid);
-  --color-accent: var(--accent);
-  --color-wave: var(--wave);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-border: var(--border);
-  --color-warm-beige: var(--warm-beige);
-  --font-sans: var(--font-lato);
-  --font-serif: var(--font-dm-serif);
+  --color-foreground-muted:     var(--foreground-muted);
+  --color-base:                 var(--base);
+  --color-mid:                  var(--mid);
+  --color-accent:               var(--accent);
+  --color-wave:                 var(--wave);
+  --color-surface:              var(--surface);
+  --color-surface-elevated:     var(--surface-elevated);
+  --color-surface-tinted:       var(--surface-tinted);
+  --color-border:               var(--border);
+
+  --font-sans:  var(--font-lato);
+  --font-serif: var(--font-serif);
+}
+
+/* ─── Base ──────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(160deg, var(--base) 0%, var(--mid) 50%, var(--accent) 100%);
+  background-attachment: fixed;
   color: var(--foreground);
+  min-height: 100svh;
 }
 
-/* ─── Breathing orb (6s cycle matching GradientOrbView.swift) ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ─── Typography Scale ──────────────────────────────────
+   Mapped from HesyaTypography.swift
+   ──────────────────────────────────────────────────────── */
+
+/* Display — serif, ceremonial (anchor word, hero headline) */
+.text-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.text-display-sm {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+/* Anchor word — large tracked serif */
+.text-anchor {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.0;
+}
+
+/* Section headings — light sans */
+.text-heading {
+  font-size: clamp(1.125rem, 2.5vw, 1.625rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+/* Eyebrow — small, tracked, muted (matches ritual "your body noticed") */
+.text-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--foreground-muted);
+}
+
+/* Body — light, generous line-height */
+.text-body {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.78;
+}
+
+.text-body-sm {
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.72;
+}
+
+.text-micro {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* ─── Breathing Orb Animations ──────────────────────────
+   6s cycle: matches GradientOrbView.swift (0.92 → 1.08 scale)
+   Physiological sigh: 4s inhale + 1.5s top-up + 8s exhale
+   ──────────────────────────────────────────────────────── */
 @keyframes breathe {
   0%, 100% { transform: scale(0.92); }
-  50% { transform: scale(1.08); }
+  50%       { transform: scale(1.08); }
 }
 
 @keyframes breathe-glow {
-  0%, 100% { opacity: 0.3; transform: scale(0.94); }
-  50% { opacity: 0.6; transform: scale(1.06); }
+  0%, 100% { opacity: 0.28; transform: scale(0.90); }
+  50%       { opacity: 0.55; transform: scale(1.10); }
 }
 
-.animate-breathe {
-  animation: breathe 6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+@keyframes sigh-cycle {
+  0%    { transform: scale(0.72); opacity: 0.38; }
+  29.6% { transform: scale(1.12); opacity: 0.80; }
+  40.7% { transform: scale(1.18); opacity: 0.88; }
+  100%  { transform: scale(0.72); opacity: 0.38; }
 }
 
-.animate-breathe-glow {
-  animation: breathe-glow 6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
-}
-
-/* ─── Breathing circle (4s inhale, 2s hold, 6s exhale = 12s cycle) ─── */
-@keyframes breath-cycle {
-  0% { transform: scale(0.6); opacity: 0.4; }
-  33.3% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(0.6); opacity: 0.4; }
-}
-
-.animate-breath-cycle {
-  animation: breath-cycle 12s cubic-bezier(0.32, 0.72, 0, 1) infinite;
-}
+.animate-breathe      { animation: breathe      6s    var(--ease-hesya) infinite; }
+.animate-breathe-glow { animation: breathe-glow 6s    var(--ease-hesya) infinite; }
+.animate-sigh         { animation: sigh-cycle   13.5s var(--ease-hesya) infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-breathe,
   .animate-breathe-glow,
-  .animate-breath-cycle {
-    animation: none;
-  }
+  .animate-sigh { animation: none; }
 }
 
-/* ─── Glass surfaces ─── */
+/* ─── Glass Surfaces ────────────────────────────────────
+   Mapped from RaycastGlassCard: ultraThinMaterial + noise
+   + white stroke @ 0.18–0.22 + highlight gradient
+   ──────────────────────────────────────────────────────── */
 .glass {
   background: var(--surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 8px  rgba(0, 0, 0, 0.04),
     0 4px 16px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .glass-elevated {
   background: var(--surface-elevated);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 8px 28px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-elevated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 55%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.glass-tinted {
+  background: var(--surface-tinted);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border);
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    0 2px 8px  rgba(0, 0, 0, 0.04),
+    0 6px 20px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
   .glass {
     box-shadow:
-      0 2px 8px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.1);
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      0 2px 8px  rgba(0, 0, 0, 0.22),
+      0 4px 16px rgba(0, 0, 0, 0.14);
   }
   .glass-elevated {
     box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.2),
-      0 8px 24px rgba(0, 0, 0, 0.15);
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.30),
+      0 8px 28px rgba(0, 0, 0, 0.18);
   }
 }
 
-/* ─── Smooth scrolling ─── */
-html {
-  scroll-behavior: smooth;
+/* ─── Noise Grain ───────────────────────────────────────
+   Simulates GlassNoiseOverlay (grainNoise Metal shader)
+   via SVG turbulence. Soft-light blend, ~3.5% opacity.
+   ──────────────────────────────────────────────────────── */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.038;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+/* ─── Section Layout Helpers ────────────────────────── */
+.section-full {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
 }
 
-/* ─── Prose styling for legal pages ─── */
+.section-standard {
+  padding: 7rem 1.5rem;
+}
+
+/* ─── Phone Mockup Placeholder ──────────────────────── */
+.phone-placeholder {
+  width: 260px;
+  height: 530px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  color: var(--foreground-muted);
+  letter-spacing: 0.10em;
+  text-transform: lowercase;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow:
+    0 4px 12px  rgba(0, 0, 0, 0.06),
+    0 20px 48px rgba(0, 0, 0, 0.10),
+    0 40px 80px rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Pattern State Dots ────────────────────────────── */
+.dot-calm        { background: var(--state-calm); }
+.dot-pushing     { background: var(--state-pushing); }
+.dot-overwhelmed { background: var(--state-overwhelmed); }
+.dot-restless    { background: var(--state-restless); }
+
+/* ─── Link transitions ──────────────────────────────── */
+a { transition: opacity 0.2s var(--ease-hesya); }
+a:hover { opacity: 0.68; }
+
+/* ─── Prose (legal/support pages) ──────────────────── */
 .prose h1 {
+  font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
   color: var(--foreground);
 }
-
 .prose h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.125rem;
+  font-weight: 400;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   color: var(--foreground);
 }
-
-.prose p {
-  line-height: 1.75;
+.prose p, .prose li {
+  font-weight: 300;
+  line-height: 1.78;
   margin-bottom: 1rem;
+  color: var(--foreground-secondary);
 }
-
-.prose strong {
-  color: var(--foreground);
-  font-weight: 500;
-}
-
-.prose ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.prose li {
-  line-height: 1.75;
-  margin-bottom: 0.5rem;
-}
-
-.prose a {
-  color: var(--wave);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.prose a:hover {
-  opacity: 0.7;
-}
+.prose strong { color: var(--foreground); font-weight: 400; }
+.prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose a { color: var(--wave); text-decoration: underline; text-underline-offset: 2px; }

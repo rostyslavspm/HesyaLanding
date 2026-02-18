@@ -2,34 +2,53 @@
 
 import Link from "next/link";
 import FadeIn from "./FadeIn";
+import GlassPanel from "./ui/GlassPanel";
 
+/**
+ * PrivacySection (AutonomyPromise) — single elevated glass card.
+ * Quiet, concise. Four bullet points. Privacy link at bottom.
+ * Matches the app's glass card aesthetic (RaycastGlassCard elevated).
+ */
 export default function AutonomyPromise() {
   return (
-    <section className="px-6 py-28" style={{ background: "var(--mid)" }}>
+    <section className="section-standard noise-overlay px-6">
       <FadeIn>
-        <div className="glass-elevated mx-auto max-w-2xl rounded-3xl px-8 py-14 text-center sm:px-14">
-          <h2 className="mb-8 text-xl font-light leading-relaxed sm:text-2xl">
-            Everything stays on your device.
+        <GlassPanel variant="elevated" rounded="3xl" className="mx-auto max-w-lg px-8 py-14 text-center sm:px-12">
+
+          <p className="text-eyebrow mb-6">private by design</p>
+
+          <h2 className="text-heading mb-8">
+            Everything stays<br />on your device.
           </h2>
 
-          <div className="mb-6 text-base leading-loose text-foreground-secondary">
-            <p>No accounts. No data collection.</p>
-            <p>No ads. No algorithms. No tracking. Ever.</p>
-          </div>
-
-          <div className="mb-8 text-sm leading-relaxed text-foreground-muted">
-            <p>Screen Time permission is optional.</p>
-            <p>Detection can be disabled anytime.</p>
-            <p>Quiet hours are always respected.</p>
-          </div>
+          <ul className="mb-8 space-y-3 text-left">
+            {[
+              "no accounts. no data collection.",
+              "no ads, algorithms, or tracking. ever.",
+              "screen time permission is optional.",
+              "detection can be disabled anytime.",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span
+                  className="mt-[6px] h-[6px] w-[6px] shrink-0 rounded-full"
+                  style={{ background: "var(--wave)" }}
+                  aria-hidden="true"
+                />
+                <span className="text-body-sm" style={{ color: "var(--foreground-secondary)" }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
 
           <Link
             href="/privacy"
-            className="text-sm text-foreground-muted transition-opacity hover:opacity-70"
+            className="text-micro"
+            style={{ color: "var(--foreground-muted)" }}
           >
-            Read our privacy policy &rarr;
+            read our privacy policy &rarr;
           </Link>
-        </div>
+        </GlassPanel>
       </FadeIn>
     </section>
   );
