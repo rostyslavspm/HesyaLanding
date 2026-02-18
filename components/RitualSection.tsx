@@ -16,6 +16,7 @@ export default function RitualSection() {
   const [imageError, setImageError] = useState(false);
   return (
     <section
+      id="ritual"
       className="section-full noise-overlay relative overflow-hidden bg-fixed-fallback"
       aria-label="Three breaths - A pause between drift and choice"
       style={{

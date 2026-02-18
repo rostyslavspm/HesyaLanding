@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="px-6 py-14">
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
         <nav className="flex gap-8" aria-label="Footer navigation">
           {[
             { href: "/privacy", label: "Privacy" },

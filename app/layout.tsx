@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import Header from "../components/Header";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -59,6 +60,10 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${instrumentSerif.variable} font-sans antialiased`}
       >
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
+        <Header />
         {children}
       </body>
     </html>

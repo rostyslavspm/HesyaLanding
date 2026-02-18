@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import PatternDot from "./ui/PatternDot";
@@ -35,7 +36,8 @@ export default function PatternSection() {
             >
               Hesya watches patterns in how you use your phone —
               not what you&apos;re doing, just how it flows.
-              Everything happens on your device. Nothing leaves it.
+              Everything happens on your device. Nothing leaves it.{" "}
+              <Link href="/privacy" className="underline underline-offset-2 transition-opacity hover:opacity-70" style={{ color: "var(--wave)" }}>Read our privacy policy →</Link>
             </p>
           </FadeIn>
 

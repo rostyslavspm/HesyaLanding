@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import AppStoreBadge from "./AppStoreBadge";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
@@ -16,7 +17,7 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="section-full noise-overlay relative" aria-label="Hero - Notice when you drift">
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-12 md:flex-row md:items-center md:gap-16 lg:gap-24">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 md:flex-row md:items-center md:gap-16 lg:gap-24">
 
         {/* ── Copy ── */}
         <div className="flex flex-col items-center gap-7 text-center md:items-start md:flex-1 md:text-left">
@@ -45,7 +46,7 @@ export default function HeroSection() {
               style={{ color: "var(--foreground-secondary)" }}
             >
               Hesya notices when you drift — long focus, rapid switching, restless seeking —
-              and offers a quiet ritual to come back to yourself.
+              and offers a <Link href="#ritual" className="underline underline-offset-2 transition-opacity hover:opacity-70" style={{ color: "var(--wave)" }}>quiet ritual</Link> to come back to yourself.
             </p>
           </FadeIn>
 

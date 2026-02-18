@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import FadeIn from "./FadeIn";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import Image from "next/image";
@@ -58,7 +59,8 @@ export default function AnchorPhilosophy() {
               style={{ color: "var(--foreground-secondary)" }}
             >
               Choose one word that matters to you.
-              A value. A reminder of what you&apos;re for.
+              A value. A reminder of what you&apos;re for.{" "}
+              <Link href="/support" className="underline underline-offset-2 transition-opacity hover:opacity-70" style={{ color: "var(--wave)" }}>Learn more →</Link>
             </p>
           </FadeIn>
 

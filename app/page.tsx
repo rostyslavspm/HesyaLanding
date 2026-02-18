@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <>
-      <main aria-label="Hesya landing page">
+      <main id="main" aria-label="Hesya landing page">
         {/* 1. Hero — full-viewport, orb + headline + home screen mockup */}
         <HeroSection />
 

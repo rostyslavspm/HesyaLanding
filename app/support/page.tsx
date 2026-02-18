@@ -107,7 +107,7 @@ const general = [
 export default function SupportPage() {
   return (
     <>
-      <main className="mx-auto max-w-2xl px-6 py-20" aria-label="Support and FAQ">
+      <main id="main" className="mx-auto max-w-2xl px-6 py-20" aria-label="Support and FAQ">
         <Link
           href="/"
           className="mb-12 inline-block text-sm text-foreground-secondary transition-opacity hover:opacity-70"
