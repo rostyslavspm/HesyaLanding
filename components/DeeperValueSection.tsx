@@ -1,28 +1,28 @@
 /**
- * Deeper Value — contemplative, centered, max 640px.
+ * Deeper Value — contemplative, editorial, designed.
  */
-export default function DeeperValueSection() {
+export default function DeeperValueSection({ id = "deeper" }: { id?: string }) {
   return (
-    <section
-      className="px-6 pt-[140px] pb-24"
-      aria-label="Deeper value"
-    >
-      <div className="mx-auto max-w-[640px] text-center">
-        <p
-          className="text-[clamp(1.125rem,2vw,1.375rem)] leading-[1.65]"
-          style={{ color: "var(--foreground)", maxWidth: "60ch", margin: "0 auto" }}
-        >
-          Presence is learned slowly.
-          <br />
-          <br />
-          Hesya helps you cultivate the ability
-          <br />
-          to notice yourself —
-          <br />
-          and to direct your attention,
-          <br />
-          intentionally.
-        </p>
+    <section id={id} className="section-standard" aria-label="Deeper value">
+      <div className="container-hesya">
+        <div className="mx-auto max-w-[42rem] text-center">
+          <p className="text-eyebrow">DEEPER VALUE</p>
+
+          <div className="glass mt-6 rounded-[var(--radius-lg)] px-8 py-10">
+            <p className="text-body text-reading" style={{ color: "var(--foreground)" }}>
+              Presence is learned slowly.
+            </p>
+
+            <p className="mt-6 text-body text-reading">
+              Hesya helps you cultivate the ability to notice yourself —
+              and to direct your attention, intentionally.
+            </p>
+
+            <p className="mt-6 text-micro" style={{ color: "var(--foreground-muted)" }}>
+              Designed for iPhone. Built to feel calm.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -22,6 +22,7 @@
   --foreground:           rgba(28, 28, 28, 0.9);
   --foreground-secondary: rgba(28, 28, 28, 0.6);
   --foreground-muted:     rgba(28, 28, 28, 0.4);
+  --foreground-reading:   color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
 
   --surface:          rgba(255, 255, 255, 0.52);
   --surface-elevated: rgba(255, 255, 255, 0.70);
@@ -44,6 +45,32 @@
   --dur-micro:      0.35s;
   --dur-transition: 1.2s;
   --dur-ritual:     1.5s;
+
+  /* Layout */
+  --container: 1100px;
+  --gutter: clamp(20px, 4vw, 44px);
+
+  /* Section rhythm */
+  --section-py: clamp(72px, 10vw, 128px);
+  --section-py-lg: clamp(92px, 12vw, 168px);
+
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  /* Hairlines + focus */
+  --hairline: rgba(0, 0, 0, 0.06);
+  --focus: color-mix(in srgb, var(--wave) 55%, transparent);
+
+  /* Shadows */
+  --shadow-soft: 0 18px 60px rgba(0,0,0,0.22);
+  --shadow-hero: 0 28px 120px rgba(0,0,0,0.28);
+
+  /* Z layers */
+  --z-header: 50;
+  --z-overlay: 40;
+  --z-content: 10;
 }
 
 /* ─── Dark Mode — Deep Night Palette ───────────────────
@@ -120,6 +147,11 @@ body {
   line-height: 1.08;
 }
 
+/* Hero headline — slightly tighter tracking for ceremonial feel */
+.text-hero {
+  letter-spacing: -0.02em;
+}
+
 .text-display-sm {
   font-family: var(--font-serif);
   font-size: clamp(1.75rem, 4vw, 3rem);
@@ -171,6 +203,10 @@ body {
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 1.5;
+}
+
+.text-reading {
+  color: var(--foreground-reading);
 }
 
 /* ─── Breathing Orb Animations ──────────────────────────
@@ -302,12 +338,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 1.5rem;
+  padding: var(--section-py-lg) var(--gutter);
 }
 
 .section-standard {
-  padding: 7rem 1.5rem;
+  padding: var(--section-py) var(--gutter);
 }
+
+.container-hesya {
+  width: 100%;
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
 /* ─── background-attachment: fixed fallback for iOS Safari ───
    iOS Safari ignores background-attachment: fixed on non-body elements.
@@ -329,8 +374,46 @@ body {
 .dot-restless    { background: var(--state-restless); }
 
 /* ─── Link transitions ──────────────────────────────── */
-a { transition: opacity 0.2s var(--ease-hesya); }
-a:hover { opacity: 0.68; }
+a {
+  transition: opacity var(--dur-micro) var(--ease-hesya),
+              text-decoration-color var(--dur-micro) var(--ease-hesya);
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+}
+a:hover {
+  opacity: 0.92;
+  text-decoration-color: currentColor;
+}
+
+/* ─── Sticky header ──────────────────────────────────── */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--background) 72%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Modal ───────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: var(--z-overlay);
+}
+
+.modal-panel {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  z-index: var(--z-overlay);
+}
 
 /* ─── Prose (legal/support pages) ──────────────────── */
 .prose h1 {

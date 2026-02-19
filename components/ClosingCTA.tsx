@@ -18,7 +18,7 @@ export default function ClosingCTA() {
       }}
       aria-label="Get Hesya - Coming soon to App Store"
     >
-      <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center gap-10 text-center">
+      <div className="container-hesya relative z-10 flex max-w-[42rem] flex-col items-center gap-10 text-center">
 
         <FadeIn duration={1.5}>
           <OrbGraphic size={160} />
@@ -40,7 +40,12 @@ export default function ClosingCTA() {
         </FadeIn>
 
         <FadeIn delay={0.45}>
-          <AppStoreBadge />
+          <div className="flex flex-col items-center gap-3">
+            <AppStoreBadge />
+            <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+              Get notified on launch.
+            </p>
+          </div>
         </FadeIn>
       </div>
     </section>

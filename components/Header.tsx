@@ -1,16 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import AppStoreBadge from "./AppStoreBadge";
+import { useNotifyModal } from "./NotifyModalProvider";
+
+type HeaderProps = {
+  onOpenNotify?: () => void;
+};
 
 /**
- * Header — sticky nav with logo and links.
- * Matches Skylight/Mirror pattern. Glass background.
+ * Header — sticky nav with logo, links, and CTA.
  */
-export default function Header() {
+export default function Header({ onOpenNotify }: HeaderProps) {
+  const openFromContext = useNotifyModal();
+  const openNotify = onOpenNotify ?? openFromContext;
+
   return (
-    <header
-      className="sticky top-0 z-50 border-b border-[var(--border)] px-6 py-4"
-      style={{ background: "var(--background)" }}
-    >
-      <div className="mx-auto flex max-w-5xl items-center justify-between">
+    <header className="header-sticky px-[var(--gutter)] py-4">
+      <div className="container-hesya flex items-center justify-between">
         <Link
           href="/"
           className="text-heading"
@@ -18,28 +25,33 @@ export default function Header() {
         >
           Hesya
         </Link>
-        <nav className="flex gap-8" aria-label="Main navigation">
+
+        <nav className="flex items-center gap-8" aria-label="Main navigation">
           <Link
             href="/privacy"
-            className="text-micro transition-opacity hover:opacity-70"
+            className="text-micro"
             style={{ color: "var(--foreground-muted)" }}
           >
             Privacy
           </Link>
           <Link
             href="/support"
-            className="text-micro transition-opacity hover:opacity-70"
+            className="text-micro"
             style={{ color: "var(--foreground-muted)" }}
           >
             Support
           </Link>
           <a
             href="mailto:support@hesya.app"
-            className="text-micro transition-opacity hover:opacity-70"
+            className="text-micro"
             style={{ color: "var(--foreground-muted)" }}
           >
             Contact
           </a>
+
+          <div className="hidden sm:block">
+            <AppStoreBadge onClick={openNotify} label="Get notified on launch" />
+          </div>
         </nav>
       </div>
     </header>

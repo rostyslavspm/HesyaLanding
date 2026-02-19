@@ -1,34 +1,39 @@
+type WhatHesyaDoesSectionProps = {
+  id?: string;
+};
+
+const BENEFITS = [
+  { title: "Notice", text: "See when your rhythm changes — switching, stretching, drifting." },
+  { title: "Pause", text: "A gentle cue creates a moment of space before reacting." },
+  { title: "Return", text: "Choose where to place your attention — with calm, not guilt." },
+];
+
 /**
- * What Hesya Does — centered text block, max 640px.
+ * What Hesya Does — 3 benefit cards (scan-first, still poetic).
  */
-export default function WhatHesyaDoesSection() {
+export default function WhatHesyaDoesSection({ id = "what" }: WhatHesyaDoesSectionProps) {
   return (
-    <section
-      className="px-6 pt-[120px] pb-16"
-      aria-label="What Hesya does"
-    >
-      <div className="mx-auto max-w-[640px] text-center">
-        <h2
-          className="mb-10 text-sm font-normal"
-          style={{ color: "var(--foreground-muted)", letterSpacing: "0.08em" }}
-        >
-          What Hesya Does
-        </h2>
-        <p
-          className="text-[clamp(1.125rem,2vw,1.375rem)] leading-[1.65]"
-          style={{ color: "var(--foreground)", maxWidth: "60ch", margin: "0 auto" }}
-        >
-          We create a moment of space
-          <br />
-          between distraction and response.
-          <br />
-          <br />
-          In that moment,
-          <br />
-          you breathe —
-          <br />
-          and decide where to place your attention.
-        </p>
+    <section id={id} className="section-standard" aria-label="What Hesya does">
+      <div className="container-hesya">
+        <div className="mx-auto max-w-[42rem] text-center">
+          <p className="text-eyebrow">WHAT HESYA DOES</p>
+
+          <p className="mt-6 text-body text-reading">
+            We create a moment of space between distraction and response —
+            so you can breathe, and decide where to place your attention.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {BENEFITS.map((b) => (
+            <div key={b.title} className="glass rounded-[var(--radius-md)] p-6">
+              <h3 className="text-heading" style={{ color: "var(--foreground)" }}>
+                {b.title}
+              </h3>
+              <p className="mt-3 text-body-sm text-reading">{b.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

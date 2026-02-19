@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Header from "../../components/Header";
 import FaqSection from "../../components/FaqAccordion";
 import Footer from "../../components/Footer";
 
@@ -107,6 +108,7 @@ const general = [
 export default function SupportPage() {
   return (
     <>
+      <Header />
       <main id="main" className="mx-auto max-w-2xl px-6 py-20" aria-label="Support and FAQ">
         <Link
           href="/"

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lato, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
+import NotifyModalProvider from "../components/NotifyModalProvider";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -60,11 +60,12 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${instrumentSerif.variable} font-sans antialiased`}
       >
-        <a href="#main" className="skip-link">
-          Skip to main content
-        </a>
-        <Header />
-        {children}
+        <NotifyModalProvider>
+          <a href="#main" className="skip-link">
+            Skip to main content
+          </a>
+          {children}
+        </NotifyModalProvider>
       </body>
     </html>
   );
