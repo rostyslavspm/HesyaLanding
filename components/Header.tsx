@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header
-      className="sticky top-0 z-50 px-6 py-4 backdrop-blur-xl"
-      style={{ background: "color-mix(in srgb, var(--base) 88%, transparent)" }}
+      className="sticky top-0 z-50 border-b border-[var(--border)] px-6 py-4"
+      style={{ background: "var(--background)" }}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <Link

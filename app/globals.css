@@ -7,30 +7,26 @@
    StainedGlassUI.swift, AnchorStyle.swift)
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Light Mode — Ritual Warm Palette ─────────────────
-   Matches RitualGradientPalette.calm (#F5E6D3 peach/cream)
-   The emotional heart of the app: quiet, warm, present.
+/* ─── Light Mode — Clean Neutral
+   Calm, minimal, spacious. Spec: clean light neutral.
    ──────────────────────────────────────────────────────── */
 :root {
-  /* Background gradient stops */
-  --base:   #F5E6D3;
-  --mid:    #EDD9C4;
-  --accent: #F0DCC8;
-  --wave:   #C9A882;
+  --base:   #FAF9F7;
+  --mid:    #F5F4F0;
+  --accent: #F7F6F2;
+  --wave:   #6B6B6B;
 
-  --background: #F5E6D3;
+  --background: #FAF9F7;
 
-  /* Text — warm dark brown (not cold charcoal) */
-  /* Mapped from AnchorPalette textPrimaryOpacity (morning ~0.82) */
-  --foreground:           rgba(48, 28, 12, 0.82);
-  --foreground-secondary: rgba(48, 28, 12, 0.56);
-  --foreground-muted:     rgba(48, 28, 12, 0.36);
+  /* Text — neutral, accessible */
+  --foreground:           rgba(28, 28, 28, 0.9);
+  --foreground-secondary: rgba(28, 28, 28, 0.6);
+  --foreground-muted:     rgba(28, 28, 28, 0.4);
 
-  /* Glass surfaces — matches RaycastGlassCard / ultraThinMaterial */
   --surface:          rgba(255, 255, 255, 0.52);
   --surface-elevated: rgba(255, 255, 255, 0.70);
-  --surface-tinted:   rgba(245, 230, 211, 0.58);
-  --border:           rgba(180, 150, 110, 0.22);
+  --surface-tinted:   rgba(248, 248, 246, 0.58);
+  --border:           rgba(0, 0, 0, 0.06);
 
   /* State indicator colors — from WidgetOrbColors.forState() */
   --state-calm:        rgba(150, 145, 138, 0.85);
@@ -102,8 +98,7 @@ html {
 }
 
 body {
-  background: linear-gradient(160deg, var(--base) 0%, var(--mid) 50%, var(--accent) 100%);
-  background-attachment: fixed;
+  background: var(--background);
   color: var(--foreground);
   min-height: 100svh;
 }
