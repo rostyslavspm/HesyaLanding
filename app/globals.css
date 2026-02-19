@@ -66,6 +66,7 @@
   /* Shadows */
   --shadow-soft: 0 18px 60px rgba(0,0,0,0.22);
   --shadow-hero: 0 28px 120px rgba(0,0,0,0.28);
+  --shadow-device: 0 40px 120px rgba(0,0,0,0.28);
 
   /* Z layers */
   --z-header: 50;
@@ -394,6 +395,27 @@ a:hover {
   -webkit-backdrop-filter: blur(18px);
   background: color-mix(in srgb, var(--background) 72%, transparent);
   border-bottom: 1px solid var(--border);
+  transition:
+    background var(--dur-transition) var(--ease-hesya),
+    backdrop-filter var(--dur-transition) var(--ease-hesya),
+    border-color var(--dur-transition) var(--ease-hesya);
+}
+.header-sticky[data-scrolled="true"] {
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom-color: var(--border);
+}
+.header-sticky::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* ─── Modal ───────────────────────────────────────────── */

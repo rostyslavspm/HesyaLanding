@@ -6,6 +6,9 @@ type AppStoreBadgeProps = {
   href?: string;
   onClick?: () => void;
   label?: string;
+  size?: "sm" | "md";
+  /** When false: hide meta line (for header). Default true. */
+  showMeta?: boolean;
   /** When undefined: default "Free · No tracking · iOS". When null: hide. When string: use it. */
   footer?: string | null;
 };
@@ -17,14 +20,19 @@ export default function AppStoreBadge({
   href,
   onClick,
   label = "Get notified on launch",
+  size = "md",
+  showMeta = true,
   footer,
 }: AppStoreBadgeProps) {
+  const isSm = size === "sm";
   const pill = (
     <span
-      className="glass inline-flex items-center justify-center rounded-full px-7 py-3 text-body-sm outline-none transition-transform"
+      className={`glass inline-flex items-center justify-center rounded-full outline-none transition-transform ${
+        isSm ? "px-5 py-2 text-micro" : "px-7 py-3 text-body-sm"
+      }`}
       style={{
         color: "var(--foreground)",
-        boxShadow: "var(--shadow-soft)",
+        boxShadow: isSm ? "none" : "var(--shadow-soft)",
       }}
     >
       {label}
@@ -32,7 +40,7 @@ export default function AppStoreBadge({
   );
 
   return (
-    <div className="inline-flex flex-col items-center gap-3">
+    <div className={`inline-flex flex-col items-center ${isSm ? "" : "gap-3"}`}>
       {href ? (
         <a href={href} className={pillClass} aria-label={label}>
           {pill}
@@ -47,7 +55,7 @@ export default function AppStoreBadge({
           {pill}
         </button>
       )}
-      {footer !== null && (
+      {showMeta !== false && footer !== null && (
         <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
           {footer ?? "Free &middot; No tracking &middot; iOS"}
         </p>

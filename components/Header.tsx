@@ -1,23 +1,28 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
-import AppStoreBadge from "./AppStoreBadge";
 import { useNotifyModal } from "./NotifyModalProvider";
+import HeaderCTA from "./HeaderCTA";
+import { useHeaderScroll } from "../hooks/useHeaderScroll";
 
 type HeaderProps = {
   onOpenNotify?: () => void;
 };
 
-/**
- * Header — sticky nav with logo, links, and CTA.
- */
 export default function Header({ onOpenNotify }: HeaderProps) {
   const openFromContext = useNotifyModal();
   const openNotify = onOpenNotify ?? openFromContext;
+  const headerRef = useRef<HTMLElement>(null);
+  useHeaderScroll(headerRef);
 
   return (
-    <header className="header-sticky px-[var(--gutter)] py-4">
-      <div className="container-hesya flex items-center justify-between">
+    <header
+      ref={headerRef}
+      className="header-sticky relative px-[var(--gutter)] py-4 md:py-5"
+    >
+      <div className="container-hesya flex items-center justify-between gap-6">
+        {/* Brand */}
         <Link
           href="/"
           className="text-heading"
@@ -26,33 +31,54 @@ export default function Header({ onOpenNotify }: HeaderProps) {
           Hesya
         </Link>
 
-        <nav className="flex items-center gap-8" aria-label="Main navigation">
-          <Link
-            href="/privacy"
-            className="text-micro"
-            style={{ color: "var(--foreground-muted)" }}
+        {/* Right cluster */}
+        <div className="flex items-center gap-4">
+          {/* Nav pill (desktop/tablet) */}
+          <nav
+            className="hidden sm:flex items-center rounded-full px-4 py-2"
+            aria-label="Main navigation"
+            style={{
+              background: "var(--surface-tinted)",
+              border: "1px solid var(--border)",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
+            }}
           >
-            Privacy
-          </Link>
-          <Link
-            href="/support"
-            className="text-micro"
-            style={{ color: "var(--foreground-muted)" }}
-          >
-            Support
-          </Link>
-          <a
-            href="mailto:support@hesya.app"
-            className="text-micro"
-            style={{ color: "var(--foreground-muted)" }}
-          >
-            Contact
-          </a>
+            <div className="flex items-center gap-8 px-2">
+              <Link
+                href="/privacy"
+                className="text-micro"
+                style={{ color: "var(--foreground-muted)" }}
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/support"
+                className="text-micro"
+                style={{ color: "var(--foreground-muted)" }}
+              >
+                Support
+              </Link>
+              <a
+                href="mailto:support@hesya.app"
+                className="text-micro"
+                style={{ color: "var(--foreground-muted)" }}
+              >
+                Contact
+              </a>
+            </div>
+          </nav>
 
+          {/* CTA */}
           <div className="hidden sm:block">
-            <AppStoreBadge onClick={openNotify} label="Get notified on launch" />
+            <HeaderCTA onClick={openNotify} label="Get notified" />
           </div>
-        </nav>
+
+          {/* Mobile CTA only (nav hidden) */}
+          <div className="sm:hidden">
+            <HeaderCTA onClick={openNotify} label="Notify me" />
+          </div>
+        </div>
       </div>
     </header>
   );

@@ -74,18 +74,11 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
         {/* Right: sticky phone */}
         <div className="relative flex justify-center md:justify-end">
           <div className="md:sticky md:top-28">
-            <div
-              className="relative aspect-[9/19] w-[260px] overflow-hidden sm:w-[300px] md:w-[340px]"
-              style={{
-                borderRadius: "var(--radius-lg)",
-                boxShadow: "var(--shadow-hero)",
-                border: "1px solid var(--border)",
-              }}
-            >
+            <div className="relative max-w-[260px] w-full sm:max-w-[300px] md:max-w-[340px]">
               {STEPS.map(({ src, alt }, i) => (
                 <div
                   key={src}
-                  className="absolute inset-0"
+                  className={i === 0 ? "relative" : "absolute inset-0"}
                   style={{
                     opacity: activeIndex === i ? 1 : 0,
                     transition: `opacity var(--dur-ritual) var(--ease-hesya)`,
@@ -97,7 +90,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                     alt={alt}
                     width={450}
                     height={920}
-                    className="h-full w-full object-cover"
+                    className="block w-full h-auto"
                     priority={i === 0}
                   />
                 </div>
