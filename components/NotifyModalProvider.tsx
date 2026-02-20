@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import NotifyModal from "./NotifyModal";
 
 type NotifyModalContextValue = {
@@ -25,7 +26,9 @@ export default function NotifyModalProvider({
   return (
     <NotifyModalContext.Provider value={{ openNotify }}>
       {children}
-      <NotifyModal open={open} onClose={() => setOpen(false)} />
+      <AnimatePresence>
+        {open && <NotifyModal onClose={() => setOpen(false)} />}
+      </AnimatePresence>
     </NotifyModalContext.Provider>
   );
 }

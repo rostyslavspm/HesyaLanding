@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 type Props = {
-  open: boolean;
   onClose: () => void;
 };
 
@@ -11,10 +11,13 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
-export default function NotifyModal({ open, onClose }: Props) {
+const easeHesya = [0.32, 0.72, 0, 1] as const;
+
+export default function NotifyModal({ onClose }: Props) {
   const titleId = useId();
   const descId = useId();
   const emailId = useId();
+  const prefersReducedMotion = useReducedMotion();
 
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -25,9 +28,11 @@ export default function NotifyModal({ open, onClose }: Props) {
 
   const canSubmit = useMemo(() => isValidEmail(email) && status !== "loading", [email, status]);
 
-  useEffect(() => {
-    if (!open) return;
+  const transition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.3, ease: easeHesya };
 
+  useEffect(() => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -62,15 +67,7 @@ export default function NotifyModal({ open, onClose }: Props) {
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = prevOverflow;
     };
-  }, [open, onClose]);
-
-  useEffect(() => {
-    if (!open) return;
-    setStatus("idle");
-    setError(null);
-  }, [open]);
-
-  if (!open) return null;
+  }, [onClose]);
 
   async function submit() {
     setError(null);
@@ -104,7 +101,13 @@ export default function NotifyModal({ open, onClose }: Props) {
   }
 
   return (
-    <div className="modal-panel">
+    <motion.div
+      className="modal-panel"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={transition}
+    >
       <button
         type="button"
         className="modal-backdrop"
@@ -112,16 +115,18 @@ export default function NotifyModal({ open, onClose }: Props) {
         onClick={onClose}
       />
 
-      <div
+      <motion.div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descId}
         className="glass-elevated relative w-full max-w-[520px] rounded-[var(--radius-lg)] p-8"
-        style={{
-          boxShadow: "var(--shadow-hero)",
-        }}
+        style={{ boxShadow: "var(--shadow-hero)" }}
+        initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+        transition={transition}
       >
         <button
           type="button"
@@ -143,65 +148,89 @@ export default function NotifyModal({ open, onClose }: Props) {
             </p>
           </div>
 
-          {status === "success" ? (
-            <div className="flex flex-col items-center gap-3">
-              <p className="text-body" style={{ color: "var(--foreground)" }}>
-                You&apos;re on the list.
-              </p>
-              <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-                We&apos;ll reach out when Hesya is available.
-              </p>
-              <button
-                type="button"
-                onClick={onClose}
-                className="glass rounded-full px-6 py-3 text-body-sm focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
-                style={{ color: "var(--foreground)" }}
+          <AnimatePresence mode="wait">
+            {status === "success" ? (
+              <motion.div
+                key="success"
+                className="flex flex-col items-center gap-3"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={
+                  prefersReducedMotion
+                    ? { duration: 0 }
+                    : { duration: 0.2, ease: easeHesya }
+                }
               >
-                Done
-              </button>
-            </div>
-          ) : (
-            <>
-              <div className="flex flex-col gap-3 text-left">
-                <label htmlFor={emailId} className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-                  Email
-                </label>
-                <input
-                  ref={inputRef}
-                  id={emailId}
-                  type="email"
-                  inputMode="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@domain.com"
-                  className="glass w-full rounded-[var(--radius-md)] px-4 py-3 text-body-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                <p className="text-body" style={{ color: "var(--foreground)" }}>
+                  You&apos;re on the list.
+                </p>
+                <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+                  We&apos;ll reach out when Hesya is available.
+                </p>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="glass rounded-full px-6 py-3 text-body-sm focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
                   style={{ color: "var(--foreground)" }}
-                />
-                {error ? (
-                  <p className="text-micro" style={{ color: "var(--state-overwhelmed)" }}>
-                    {error}
-                  </p>
-                ) : null}
-              </div>
-
-              <button
-                type="button"
-                onClick={submit}
-                disabled={!canSubmit}
-                className="glass rounded-full px-6 py-3 text-body-sm transition-transform disabled:opacity-60 disabled:hover:translate-y-0 hover:-translate-y-[1px] active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
-                style={{ color: "var(--foreground)" }}
+                >
+                  Done
+                </button>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="form"
+                className="flex flex-col gap-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={
+                  prefersReducedMotion
+                    ? { duration: 0 }
+                    : { duration: 0.15, ease: easeHesya }
+                }
               >
-                {status === "loading" ? "Adding…" : "Notify me"}
-              </button>
+                <div className="flex flex-col gap-3 text-left">
+                  <label htmlFor={emailId} className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+                    Email
+                  </label>
+                  <input
+                    ref={inputRef}
+                    id={emailId}
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@domain.com"
+                    className="glass w-full rounded-[var(--radius-md)] px-4 py-3 text-body-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                    style={{ color: "var(--foreground)" }}
+                  />
+                  {error ? (
+                    <p className="text-micro" style={{ color: "var(--state-overwhelmed)" }}>
+                      {error}
+                    </p>
+                  ) : null}
+                </div>
 
-              <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-                iOS only &middot; Free &middot; No tracking
-              </p>
-            </>
-          )}
+                <button
+                  type="button"
+                  onClick={submit}
+                  disabled={!canSubmit}
+                  className="glass rounded-full px-6 py-3 text-body-sm transition-transform disabled:opacity-60 disabled:hover:translate-y-0 hover:-translate-y-[1px] active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {status === "loading" ? "Adding…" : "Notify me"}
+                </button>
+
+                <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+                  iOS only &middot; Free &middot; No tracking
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -20,8 +20,8 @@
 
   /* Text — neutral, accessible */
   --foreground:           rgba(28, 28, 28, 0.9);
-  --foreground-secondary: rgba(28, 28, 28, 0.6);
-  --foreground-muted:     rgba(28, 28, 28, 0.4);
+  --foreground-secondary: rgba(28, 28, 28, 0.65);
+  --foreground-muted:     rgba(28, 28, 28, 0.61);
   --foreground-reading:   color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
 
   --surface:          rgba(255, 255, 255, 0.52);
@@ -87,8 +87,8 @@
     --background: #141822;
 
     --foreground:           rgba(209, 199, 188, 0.82);
-    --foreground-secondary: rgba(209, 199, 188, 0.56);
-    --foreground-muted:     rgba(209, 199, 188, 0.36);
+    --foreground-secondary: rgba(209, 199, 188, 0.68);
+    --foreground-muted:     rgba(209, 199, 188, 0.52);
 
     --surface:          rgba(50, 60, 76, 0.42);
     --surface-elevated: rgba(60, 72, 90, 0.60);
@@ -235,10 +235,41 @@ body {
 .animate-breathe-glow { animation: breathe-glow 6s    var(--ease-hesya) infinite; }
 .animate-sigh         { animation: sigh-cycle   13.5s var(--ease-hesya) infinite; }
 
+/* ─── Hero atmosphere (barely perceptible) ─────────────── */
+@keyframes hero-drift {
+  0%   { transform: translate3d(0px, 0px, 0px) scale(1); }
+  50%  { transform: translate3d(0px, -12px, 0px) scale(1.02); }
+  100% { transform: translate3d(0px, 0px, 0px) scale(1); }
+}
+
+@keyframes shadow-breathe {
+  0%, 100% { filter: drop-shadow(0 40px 120px rgba(0,0,0,0.28)); }
+  50%      { filter: drop-shadow(0 48px 140px rgba(0,0,0,0.32)); }
+}
+
+.animate-hero-drift {
+  animation: hero-drift 18s ease-in-out infinite;
+}
+
+.animate-shadow-breathe {
+  animation: shadow-breathe 18s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-breathe,
   .animate-breathe-glow,
-  .animate-sigh { animation: none; }
+  .animate-sigh,
+  .animate-hero-drift,
+  .animate-shadow-breathe {
+    animation: none;
+  }
+  a {
+    transition: none;
+  }
+  .header-sticky,
+  .header-sticky[data-scrolled="true"] {
+    transition: none;
+  }
 }
 
 /* ─── Glass Surfaces ────────────────────────────────────
@@ -353,7 +384,46 @@ body {
   margin-right: auto;
 }
 
+/* ─── Closing CTA vignette ───────────────────────────────── */
+.cta-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    80% 60% at 50% 30%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+  opacity: 0.25;
+}
+@media (prefers-color-scheme: light) {
+  .cta-vignette {
+    background: radial-gradient(
+      80% 60% at 50% 30%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+    opacity: 0.4;
+  }
+}
 
+/* ─── Tonal chapters ─────────────────────────────────────── */
+.bg-chapter-soft {
+  background: radial-gradient(
+    70% 60% at 50% 20%,
+    color-mix(in srgb, var(--orb-glow) 22%, transparent) 0%,
+    transparent 60%
+  );
+}
+
+.bg-chapter-warm {
+  background: radial-gradient(
+    60% 50% at 45% 15%,
+    color-mix(in srgb, var(--orb-edge) 18%, transparent) 0%,
+    transparent 62%
+  );
+}
 
 /* ─── background-attachment: fixed fallback for iOS Safari ───
    iOS Safari ignores background-attachment: fixed on non-body elements.
@@ -393,18 +463,20 @@ a:hover {
   z-index: var(--z-header);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  background: color-mix(in srgb, var(--background) 72%, transparent);
-  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 84%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
   transition:
     background var(--dur-transition) var(--ease-hesya),
+    border-color var(--dur-transition) var(--ease-hesya),
     backdrop-filter var(--dur-transition) var(--ease-hesya),
-    border-color var(--dur-transition) var(--ease-hesya);
+    box-shadow var(--dur-transition) var(--ease-hesya);
 }
 .header-sticky[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--background) 88%, transparent);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border-bottom-color: var(--border);
+  background: color-mix(in srgb, var(--background) 94%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 .header-sticky::before {
   content: "";
@@ -414,7 +486,7 @@ a:hover {
   top: 0;
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
-  opacity: 0.5;
+  opacity: 0.35;
   pointer-events: none;
 }
 

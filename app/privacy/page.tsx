@@ -12,15 +12,17 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main id="main" className="mx-auto max-w-2xl px-6 py-20" aria-label="Privacy policy">
+      <main id="main" className="container-hesya px-6 py-12" aria-label="Privacy policy">
         <Link
           href="/"
-          className="mb-12 inline-block text-sm text-foreground-secondary transition-opacity hover:opacity-70"
+          className="mb-8 inline-block text-micro"
+          style={{ color: "var(--foreground-muted)" }}
         >
           &larr; Back to Hesya
         </Link>
 
-        <article className="prose">
+        <div className="glass rounded-[var(--radius-lg)] px-8 py-10">
+          <article className="prose">
           <h1>Privacy Policy</h1>
           <p className="text-foreground-secondary">
             Last updated: February 16, 2026
@@ -118,6 +120,7 @@ export default function PrivacyPage() {
             <a href="mailto:support@hesya.app">support@hesya.app</a>
           </p>
         </article>
+        </div>
       </main>
       <Footer />
     </>

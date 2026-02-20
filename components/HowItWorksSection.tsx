@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 const BLOCKS = [
   {
     title: "Observe",
@@ -21,13 +23,19 @@ export default function HowItWorksSection({ id = "how-it-works" }: { id?: string
     <section id={id} className="section-standard" aria-label="How it works">
       <div className="container-hesya">
         <div className="mx-auto max-w-[42rem] text-center">
-          <p className="text-eyebrow">HOW IT WORKS</p>
-          <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
-            A gentle loop back.
-          </h2>
-          <p className="mt-4 text-body text-reading">
-            Not to control your attention — just to help you notice when it drifts.
-          </p>
+          <FadeIn delay={0}>
+            <p className="text-eyebrow">HOW IT WORKS</p>
+          </FadeIn>
+          <FadeIn delay={0.08}>
+            <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
+              A simple loop.
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.16}>
+            <p className="mt-4 text-body text-reading">
+              Not to control your attention — just to help you notice when it drifts.
+            </p>
+          </FadeIn>
         </div>
 
         <div className="mx-auto mt-14 grid max-w-[56rem] gap-6 md:grid-cols-3">

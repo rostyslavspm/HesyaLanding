@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import FadeIn from "./FadeIn";
 
 const STEPS = [
@@ -11,93 +12,209 @@ const STEPS = [
   { src: "/screenshots/screen-affect.png", alt: "Affect", caption: "Return to presence" },
 ];
 
+const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
+
 export default function ScreenshotsSection({ id = "screens" }: { id?: string }) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const stepTransition = prefersReducedMotion ? "none" : "background 500ms var(--ease-hesya), box-shadow 500ms var(--ease-hesya)";
+  const captionTransition = prefersReducedMotion ? "none" : "color 500ms var(--ease-hesya)";
+  const underlineTransition = prefersReducedMotion ? "none" : "opacity 500ms var(--ease-hesya), background 500ms var(--ease-hesya)";
+  const driftTransition = prefersReducedMotion ? "none" : "transform 120ms linear";
+  const imageTransition = prefersReducedMotion ? "none" : "opacity 650ms var(--ease-hesya)";
+  const lastIndexRef = useRef(0);
+
+  // TUNE THIS: pacing per step (higher = slower, more luxurious)
+  const perStepVH = 90;
+  const totalHeight = useMemo(() => `${STEPS.length * perStepVH}vh`, []);
+
+  // Optional: parallax drift amount for phone/glow (subtle)
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const els = stepRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (!els.length) return;
+    let raf = 0;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+    const update = () => {
+      const el = sectionRef.current;
+      if (!el) return;
 
-        if (!visible) return;
-        const idx = Number((visible.target as HTMLElement).dataset.index);
-        if (!Number.isNaN(idx)) setActiveIndex(idx);
-      },
-      { rootMargin: "-35% 0px -35% 0px", threshold: [0, 0.15, 0.35, 0.55, 0.75, 1] }
-    );
+      const rect = el.getBoundingClientRect();
+      const viewportH = window.innerHeight;
 
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      const scrollInto = -rect.top; // px into section
+      const scrollRange = rect.height - viewportH; // px total while section is in view
+
+      const p = clamp(scrollRange > 0 ? scrollInto / scrollRange : 0);
+      setProgress(p);
+
+      const raw = p * (STEPS.length - 1);
+      const next = Math.round(raw);
+
+      const last = lastIndexRef.current;
+      if (next !== last) {
+        lastIndexRef.current = next;
+        setActiveIndex(next);
+      }
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
+  // Parallax: very subtle drift (px)
+  const phoneDrift = (progress - 0.5) * -18; // range approx -9..+9
+  const glowDrift = (progress - 0.5) * 28; // range approx -14..+14
+
   return (
-    <section id={id} className="section-standard" aria-label="App walkthrough">
-      <div className="container-hesya grid items-start gap-12 md:grid-cols-2 md:gap-16">
-        {/* Left: step captions */}
-        <div className="flex flex-col gap-16 md:gap-24">
+    <section
+      id={id}
+      ref={sectionRef}
+      aria-label="App walkthrough"
+      className="relative px-[var(--gutter)]"
+      style={{ height: totalHeight }}
+    >
+      <div className="container-hesya sticky top-24 grid items-start gap-12 md:grid-cols-2 md:gap-16">
+        {/* LEFT: editorial + guided steps */}
+        <div className="relative">
           <div className="max-w-[28rem]">
-            <p className="text-eyebrow">A WALKTHROUGH</p>
-            <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
-              A quiet sequence.
-            </h2>
+            <FadeIn delay={0}>
+              <p className="text-eyebrow">A WALKTHROUGH</p>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
+                A quiet sequence.
+              </h2>
+            </FadeIn>
           </div>
 
-          {STEPS.map(({ caption }, i) => (
-            <div
-              key={i}
-              data-index={i}
-              ref={(el) => { stepRefs.current[i] = el; }}
-              className="min-h-[5rem]"
-            >
-              <FadeIn delay={i * 0.08}>
-                <p
-                  className="text-heading"
-                  style={{
-                    color: activeIndex === i ? "var(--foreground)" : "var(--foreground-muted)",
-                    fontFamily: activeIndex === i ? "var(--font-serif)" : undefined,
-                    transition: `color var(--dur-transition) var(--ease-hesya)`,
-                  }}
-                >
-                  {caption}
-                </p>
-              </FadeIn>
-            </div>
-          ))}
-        </div>
+          {/* guide rail */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-[7.75rem] hidden h-[calc(100%-7.75rem)] w-px md:block"
+            style={{ background: "color-mix(in srgb, var(--border) 60%, transparent)" }}
+          />
 
-        {/* Right: sticky phone */}
-        <div className="relative flex justify-center md:justify-end">
-          <div className="md:sticky md:top-28">
-            <div className="relative max-w-[260px] w-full sm:max-w-[300px] md:max-w-[340px]">
-              {STEPS.map(({ src, alt }, i) => (
-                <div
-                  key={src}
-                  className={i === 0 ? "relative" : "absolute inset-0"}
-                  style={{
-                    opacity: activeIndex === i ? 1 : 0,
-                    transition: `opacity var(--dur-ritual) var(--ease-hesya)`,
-                    pointerEvents: "none",
-                  }}
-                >
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={450}
-                    height={920}
-                    className="block w-full h-auto"
-                    priority={i === 0}
+          <div className="mt-10 flex flex-col gap-10 md:mt-12 md:gap-12">
+            {STEPS.map(({ caption }, i) => {
+              const isActive = i === activeIndex;
+
+              return (
+                <div key={i} className="relative pl-0 md:pl-8">
+                  {/* dot */}
+                  <div
+                    aria-hidden
+                    className="absolute left-0 top-[0.35rem] hidden md:block"
+                    style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: 999,
+                      background: isActive
+                        ? "color-mix(in srgb, var(--foreground) 72%, transparent)"
+                        : "color-mix(in srgb, var(--foreground-muted) 40%, transparent)",
+                      boxShadow: isActive ? "0 0 0 6px rgba(255,255,255,0.03)" : "none",
+                      transform: "translateX(-50%)",
+                      transition: stepTransition,
+                    }}
+                  />
+
+                  <p
+                    className="text-heading"
+                    style={{
+                      color: isActive ? "var(--foreground)" : "var(--foreground-muted)",
+                      fontFamily: isActive ? "var(--font-serif)" : undefined,
+                      transition: captionTransition,
+                    }}
+                  >
+                    {caption}
+                  </p>
+
+                  {/* subtle underline / emphasis */}
+                  <div
+                    aria-hidden
+                    className="mt-4 h-px w-24"
+                    style={{
+                      background: isActive
+                        ? "color-mix(in srgb, var(--foreground) 35%, transparent)"
+                        : "color-mix(in srgb, var(--border) 60%, transparent)",
+                      opacity: isActive ? 0.85 : 0.35,
+                      transition: underlineTransition,
+                    }}
                   />
                 </div>
-              ))}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* RIGHT: sticky phone + parallax glow */}
+        <div className="relative flex justify-center pt-[7.75rem] md:pt-[7.75rem] md:justify-end">
+          <div className="md:sticky md:top-28">
+            <div className="relative w-[260px] sm:w-[300px] md:w-[340px]">
+              {/* glow behind device (parallax) */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-14 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, var(--orb-glow) 0%, transparent 60%)",
+                  opacity: 0.16,
+                  filter: "blur(14px)",
+                  transform: `translate3d(0, ${glowDrift}px, 0)`,
+                  transition: driftTransition,
+                }}
+              />
+
+              {/* device stack */}
+              <div
+                className="relative"
+                style={{
+                  filter: "drop-shadow(var(--shadow-hero))",
+                  transform: `translate3d(0, ${phoneDrift}px, 0)`,
+                  transition: driftTransition,
+                }}
+              >
+                {STEPS.map(({ src, alt }, i) => (
+                  <div
+                    key={src}
+                    className={i === 0 ? "relative" : "absolute inset-0"}
+                    style={{
+                      opacity: activeIndex === i ? 1 : 0,
+                      transition: imageTransition,
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={450}
+                      height={920}
+                      className="block h-auto w-full select-none"
+                      priority={i === 0}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <p className="mt-4 text-center text-micro" style={{ color: "var(--foreground-muted)" }}>
+            <p
+              className="mt-4 text-center text-micro"
+              style={{ color: "var(--foreground-muted)" }}
+            >
               iPhone-only · designed to feel native
             </p>
           </div>

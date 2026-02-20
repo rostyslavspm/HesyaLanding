@@ -21,6 +21,7 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
       }}
       aria-label="Get notified when Hesya launches"
     >
+      <div aria-hidden className="cta-vignette" />
       <div className="container-hesya relative z-10">
         <div className="mx-auto flex max-w-[42rem] flex-col items-center gap-10 text-center">
           <FadeIn duration={1.5}>

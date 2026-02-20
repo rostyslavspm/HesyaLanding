@@ -6,7 +6,7 @@ export default function FadeIn({
   children,
   className,
   delay = 0,
-  duration = 1.2,
+  duration = 0.55,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -17,7 +17,7 @@ export default function FadeIn({
 
   return (
     <motion.div
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 16, filter: "blur(4px)" }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 8, filter: "blur(4px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-60px" }}
       transition={

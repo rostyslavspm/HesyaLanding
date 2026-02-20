@@ -27,7 +27,7 @@ export default function AppStoreBadge({
   const isSm = size === "sm";
   const pill = (
     <span
-      className={`glass inline-flex items-center justify-center rounded-full outline-none transition-transform ${
+      className={`glass inline-flex items-center justify-center rounded-full whitespace-nowrap outline-none transition-transform ${
         isSm ? "px-5 py-2 text-micro" : "px-7 py-3 text-body-sm"
       }`}
       style={{
@@ -56,8 +56,15 @@ export default function AppStoreBadge({
         </button>
       )}
       {showMeta !== false && footer !== null && (
-        <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-          {footer ?? "Free &middot; No tracking &middot; iOS"}
+        <p
+          className="text-micro whitespace-nowrap"
+          style={{ color: "var(--foreground-muted)" }}
+        >
+          {footer ?? (
+            <>
+              Free&nbsp;&middot;&nbsp;No tracking&nbsp;&middot;&nbsp;iOS
+            </>
+          )}
         </p>
       )}
     </div>

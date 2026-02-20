@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 type WhatHesyaDoesSectionProps = {
   id?: string;
 };
@@ -13,15 +15,19 @@ const BENEFITS = [
  */
 export default function WhatHesyaDoesSection({ id = "what" }: WhatHesyaDoesSectionProps) {
   return (
-    <section id={id} className="section-standard" aria-label="What Hesya does">
+    <section id={id} className="section-standard bg-chapter-soft" aria-label="What Hesya does">
       <div className="container-hesya">
         <div className="mx-auto max-w-[42rem] text-center">
-          <p className="text-eyebrow">WHAT HESYA DOES</p>
+          <FadeIn delay={0}>
+            <p className="text-eyebrow">WHAT HESYA DOES</p>
+          </FadeIn>
 
-          <p className="mt-6 text-body text-reading">
-            We create a moment of space between distraction and response —
-            so you can breathe, and decide where to place your attention.
-          </p>
+          <FadeIn delay={0.08}>
+            <p className="mt-6 text-body text-reading">
+              We create a moment of space between distraction and response —
+              so you can breathe, and decide where to place your attention.
+            </p>
+          </FadeIn>
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
