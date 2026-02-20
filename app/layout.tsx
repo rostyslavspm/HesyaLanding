@@ -56,10 +56,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${lato.variable} ${instrumentSerif.variable} font-sans antialiased`}
-      >
+    <html lang="en" className={`${lato.variable} ${instrumentSerif.variable}`}>
+      <body suppressHydrationWarning className="font-sans antialiased">
         <NotifyModalProvider>
           <a href="#main" className="skip-link">
             Skip to main content
