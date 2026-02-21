@@ -1,4 +1,9 @@
-import FadeIn from "./FadeIn";
+"use client";
+
+import Reveal from "./motion/Reveal";
+import TextReveal from "./motion/TextReveal";
+import StaggerChildren, { staggerItem } from "./motion/StaggerChildren";
+import GlassCard from "./motion/GlassCard";
 
 const BLOCKS = [
   {
@@ -23,24 +28,33 @@ export default function HowItWorksSection({ id = "how-it-works" }: { id?: string
     <section id={id} className="section-standard" aria-label="How it works">
       <div className="container-hesya">
         <div className="mx-auto max-w-[42rem] text-center">
-          <FadeIn delay={0}>
+          <Reveal>
             <p className="text-eyebrow">HOW IT WORKS</p>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
-              A simple loop.
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.16}>
+          </Reveal>
+
+          <TextReveal
+            text="A simple loop."
+            tag="h2"
+            className="mt-4 text-display-sm"
+            style={{ fontStyle: "italic" }}
+            stagger={0.06}
+            delay={0.08}
+          />
+
+          <Reveal delay={0.16}>
             <p className="mt-4 text-body text-reading">
               Not to control your attention — just to help you notice when it drifts.
             </p>
-          </FadeIn>
+          </Reveal>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-[56rem] gap-6 md:grid-cols-3">
+        <StaggerChildren
+          className="mx-auto mt-14 grid max-w-[56rem] gap-6 md:grid-cols-3"
+          stagger={0.1}
+          delay={0.1}
+        >
           {BLOCKS.map((b, i) => (
-            <div key={b.title} className="glass rounded-[var(--radius-md)] p-6">
+            <GlassCard key={b.title} variants={staggerItem} className="p-6">
               <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
                 {String(i + 1).padStart(2, "0")}
               </p>
@@ -48,9 +62,9 @@ export default function HowItWorksSection({ id = "how-it-works" }: { id?: string
                 {b.title}
               </h3>
               <p className="mt-3 text-body-sm text-reading">{b.text}</p>
-            </div>
+            </GlassCard>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   );

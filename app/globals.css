@@ -121,18 +121,12 @@
 }
 
 /* ─── Base ──────────────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
+/* scroll-behavior removed — Lenis handles smooth scroll (with reduced-motion fallback) */
 
 body {
   background: var(--background);
   color: var(--foreground);
   min-height: 100svh;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
 }
 
 /* ─── Typography Scale ──────────────────────────────────
@@ -454,6 +448,32 @@ a {
 a:hover {
   opacity: 0.92;
   text-decoration-color: currentColor;
+}
+
+/* ─── Animated link underline ─────────────────────────
+   Directional scaleX sweep: right→left on hover-in,
+   left→right on hover-out. Apply to nav/text links only.
+   ──────────────────────────────────────────────────────── */
+.link-animated {
+  position: relative;
+  text-decoration: none !important;
+  text-decoration-color: transparent !important;
+}
+.link-animated::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-micro) var(--ease-hesya);
+}
+.link-animated:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* ─── Sticky header ──────────────────────────────────── */

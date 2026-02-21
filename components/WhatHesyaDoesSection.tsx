@@ -1,4 +1,8 @@
-import FadeIn from "./FadeIn";
+"use client";
+
+import Reveal from "./motion/Reveal";
+import StaggerChildren, { staggerItem } from "./motion/StaggerChildren";
+import GlassCard from "./motion/GlassCard";
 
 type WhatHesyaDoesSectionProps = {
   id?: string;
@@ -18,28 +22,31 @@ export default function WhatHesyaDoesSection({ id = "what" }: WhatHesyaDoesSecti
     <section id={id} className="section-standard bg-chapter-soft" aria-label="What Hesya does">
       <div className="container-hesya">
         <div className="mx-auto max-w-[42rem] text-center">
-          <FadeIn delay={0}>
+          <Reveal>
             <p className="text-eyebrow">WHAT HESYA DOES</p>
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.08}>
+          <Reveal delay={0.08}>
             <p className="mt-6 text-body text-reading">
               We create a moment of space between distraction and response —
               so you can breathe, and decide where to place your attention.
             </p>
-          </FadeIn>
+          </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <StaggerChildren
+          className="mt-14 grid gap-6 md:grid-cols-3"
+          stagger={0.1}
+        >
           {BENEFITS.map((b) => (
-            <div key={b.title} className="glass rounded-[var(--radius-md)] p-6">
+            <GlassCard key={b.title} variants={staggerItem} className="p-6">
               <h3 className="text-heading" style={{ color: "var(--foreground)" }}>
                 {b.title}
               </h3>
               <p className="mt-3 text-body-sm text-reading">{b.text}</p>
-            </div>
+            </GlassCard>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   );

@@ -2,9 +2,12 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { useNotifyModal } from "./NotifyModalProvider";
 import HeaderCTA from "./HeaderCTA";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
+
+const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 type HeaderProps = {
   onOpenNotify?: () => void;
@@ -14,12 +17,20 @@ export default function Header({ onOpenNotify }: HeaderProps) {
   const openFromContext = useNotifyModal();
   const openNotify = onOpenNotify ?? openFromContext;
   const headerRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   useHeaderScroll(headerRef);
 
   return (
-    <header
+    <motion.header
       ref={headerRef}
       className="header-sticky relative px-[var(--gutter)] py-4 md:py-5"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.5, delay: 0.05, ease: easeHesya }
+      }
     >
       <div className="container-hesya flex items-center justify-between gap-6">
         {/* Brand */}
@@ -47,21 +58,21 @@ export default function Header({ onOpenNotify }: HeaderProps) {
             <div className="flex items-center gap-8 px-2">
               <Link
                 href="/privacy"
-                className="text-micro"
+                className="text-micro link-animated"
                 style={{ color: "var(--foreground-muted)" }}
               >
                 Privacy
               </Link>
               <Link
                 href="/support"
-                className="text-micro"
+                className="text-micro link-animated"
                 style={{ color: "var(--foreground-muted)" }}
               >
                 Support
               </Link>
               <a
                 href="mailto:support@hesya.app"
-                className="text-micro"
+                className="text-micro link-animated"
                 style={{ color: "var(--foreground-muted)" }}
               >
                 Contact
@@ -80,6 +91,6 @@ export default function Header({ onOpenNotify }: HeaderProps) {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

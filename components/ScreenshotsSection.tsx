@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 
 const STEPS = [
   { src: "/screenshots/screen-home.png", alt: "Home screen", caption: "Notice your patterns" },
@@ -21,7 +21,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const stepTransition = prefersReducedMotion ? "none" : "background 500ms var(--ease-hesya), box-shadow 500ms var(--ease-hesya)";
-  const captionTransition = prefersReducedMotion ? "none" : "color 500ms var(--ease-hesya)";
+  const captionTransition = prefersReducedMotion ? "none" : "color 500ms var(--ease-hesya), transform 500ms var(--ease-hesya)";
   const underlineTransition = prefersReducedMotion ? "none" : "opacity 500ms var(--ease-hesya), background 500ms var(--ease-hesya)";
   const driftTransition = prefersReducedMotion ? "none" : "transform 120ms linear";
   const imageTransition = prefersReducedMotion ? "none" : "opacity 650ms var(--ease-hesya)";
@@ -92,14 +92,14 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
         {/* LEFT: editorial + guided steps */}
         <div className="relative">
           <div className="max-w-[28rem]">
-            <FadeIn delay={0}>
+            <Reveal variant="slide-left">
               <p className="text-eyebrow">A WALKTHROUGH</p>
-            </FadeIn>
-            <FadeIn delay={0.08}>
+            </Reveal>
+            <Reveal variant="slide-left" delay={0.08}>
               <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
                 A quiet sequence.
               </h2>
-            </FadeIn>
+            </Reveal>
           </div>
 
           {/* guide rail */}
@@ -137,6 +137,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                     style={{
                       color: isActive ? "var(--foreground)" : "var(--foreground-muted)",
                       fontFamily: isActive ? "var(--font-serif)" : undefined,
+                      transform: isActive ? "translateX(8px)" : "translateX(0px)",
                       transition: captionTransition,
                     }}
                   >
