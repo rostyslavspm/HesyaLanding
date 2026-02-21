@@ -2,7 +2,8 @@
 
 import AppStoreBadge from "./AppStoreBadge";
 import OrbGraphic from "./OrbGraphic";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
+import TextReveal from "./motion/TextReveal";
 
 type FinalCTASectionProps = {
   onOpenNotify?: () => void;
@@ -24,17 +25,20 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
       <div aria-hidden className="cta-vignette" />
       <div className="container-hesya relative z-10">
         <div className="mx-auto flex max-w-[42rem] flex-col items-center gap-10 text-center">
-          <FadeIn duration={1.5}>
+          <Reveal variant="scale" duration={1.5}>
             <OrbGraphic size={200} />
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.15}>
-            <p className="text-display-sm" style={{ fontStyle: "italic" }}>
-              Get notified on launch.
-            </p>
-          </FadeIn>
+          <TextReveal
+            text="Get notified on launch."
+            tag="p"
+            className="text-display-sm"
+            style={{ fontStyle: "italic" }}
+            stagger={0.05}
+            delay={0.15}
+          />
 
-          <FadeIn delay={0.25}>
+          <Reveal variant="blur" delay={0.25}>
             <p
               className="text-body text-reading"
               style={{ color: "var(--foreground-secondary)" }}
@@ -42,24 +46,24 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
               Hesya will be available on iPhone soon. We'll email you once when
               it's ready.
             </p>
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.35}>
+          <Reveal variant="slide-up" delay={0.35}>
             <AppStoreBadge
               onClick={onOpenNotify}
               label="Join the launch list"
               footer={null}
             />
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.45}>
+          <Reveal delay={0.45}>
             <p
               className="text-micro"
               style={{ color: "var(--foreground-muted)" }}
             >
               No spam · Unsubscribe anytime · iOS only
             </p>
-          </FadeIn>
+          </Reveal>
         </div>
       </div>
     </section>

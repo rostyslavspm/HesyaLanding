@@ -16,21 +16,21 @@ export default function Footer() {
         >
           <Link
             href="/support"
-            className="underline text-micro"
+            className="text-micro link-animated"
             style={{ color: "var(--foreground-muted)" }}
           >
             Support
           </Link>
           <Link
             href="/privacy"
-            className="underline text-micro"
+            className="text-micro link-animated"
             style={{ color: "var(--foreground-muted)" }}
           >
             Privacy
           </Link>
           <a
             href="mailto:support@hesya.app"
-            className="underline text-micro"
+            className="text-micro link-animated"
             style={{ color: "var(--foreground-muted)" }}
           >
             Contact

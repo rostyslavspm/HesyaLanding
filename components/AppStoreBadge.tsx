@@ -1,3 +1,5 @@
+import MagneticButton from "./motion/MagneticButton";
+
 /**
  * AppStoreBadge — CTA pill. "Get notified on launch" (no App Store implication).
  * When href: link. When no href: button (opens modal via onClick).
@@ -41,20 +43,22 @@ export default function AppStoreBadge({
 
   return (
     <div className={`inline-flex flex-col items-center ${isSm ? "" : "gap-3"}`}>
-      {href ? (
-        <a href={href} className={pillClass} aria-label={label}>
-          {pill}
-        </a>
-      ) : (
-        <button
-          type="button"
-          onClick={onClick}
-          className={pillClass}
-          aria-label={label}
-        >
-          {pill}
-        </button>
-      )}
+      <MagneticButton>
+        {href ? (
+          <a href={href} className={pillClass} aria-label={label}>
+            {pill}
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={onClick}
+            className={pillClass}
+            aria-label={label}
+          >
+            {pill}
+          </button>
+        )}
+      </MagneticButton>
       {showMeta !== false && footer !== null && (
         <p
           className="text-micro whitespace-nowrap"
