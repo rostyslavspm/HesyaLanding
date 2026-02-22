@@ -6,10 +6,30 @@ import { useReducedMotion } from "framer-motion";
 import Reveal from "./motion/Reveal";
 
 const STEPS = [
-  { src: "/screenshots/screen-home.png", alt: "Home screen", caption: "Notice your patterns" },
-  { src: "/screenshots/screen-lockscreen.png", alt: "Lock screen", caption: "A gentle pause" },
-  { src: "/screenshots/screen-breathing.png", alt: "Breathing ritual", caption: "Take a breath" },
-  { src: "/screenshots/screen-affect.png", alt: "Affect", caption: "Return to presence" },
+  {
+    src: "/screenshots/screen-home.png",
+    alt: "Home screen",
+    caption: "Notice your patterns",
+    description: "Hesya quietly observes your rhythm — switching, stretching, drifting — and shows it on your lock screen.",
+  },
+  {
+    src: "/screenshots/screen-lockscreen.png",
+    alt: "Lock screen",
+    caption: "A gentle pause",
+    description: "When it senses drift, Hesya offers a brief moment. Not a block — an invitation to check in with yourself.",
+  },
+  {
+    src: "/screenshots/screen-breathing.png",
+    alt: "Breathing ritual",
+    caption: "Take a breath",
+    description: "Three cycles of the physiological sigh. A simple act that shifts your nervous system from reactive to present.",
+  },
+  {
+    src: "/screenshots/screen-affect.png",
+    alt: "Affect",
+    caption: "Return to presence",
+    description: "Name what you feel, set a small intention, and see your anchor word — the last thing before you continue.",
+  },
 ];
 
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
@@ -110,7 +130,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
           />
 
           <div className="mt-10 flex flex-col gap-10 md:mt-12 md:gap-12">
-            {STEPS.map(({ caption }, i) => {
+            {STEPS.map(({ caption, description }, i) => {
               const isActive = i === activeIndex;
 
               return (
@@ -142,6 +162,17 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                     }}
                   >
                     {caption}
+                  </p>
+
+                  <p
+                    className="mt-2 text-body-sm max-w-[22rem]"
+                    style={{
+                      color: "var(--foreground-secondary)",
+                      opacity: isActive ? 0.85 : 0,
+                      transition: captionTransition,
+                    }}
+                  >
+                    {description}
                   </p>
 
                   {/* subtle underline / emphasis */}

@@ -28,8 +28,9 @@ export default function WhatHesyaDoesSection({ id = "what" }: WhatHesyaDoesSecti
 
           <Reveal delay={0.08}>
             <p className="mt-6 text-body text-reading">
-              We create a moment of space between distraction and response —
-              so you can breathe, and decide where to place your attention.
+              Hesya watches how you move through your phone — not what you do,
+              just the rhythm. When it senses drift, it offers a gentle moment
+              to return.
             </p>
           </Reveal>
         </div>

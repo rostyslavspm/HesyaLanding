@@ -44,6 +44,13 @@ export default function Footer() {
           </p>
         </Reveal>
 
+        {/* Tagline */}
+        <Reveal delay={0.08}>
+          <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+            A mindful attention companion for iPhone.
+          </p>
+        </Reveal>
+
         {/* Navigation — staggered entrance */}
         <StaggerChildren as="nav" aria-label="Footer navigation">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
@@ -73,6 +80,15 @@ export default function Footer() {
               >
                 Contact
               </a>
+            </motion.div>
+            <motion.div variants={staggerItem}>
+              <Link
+                href="/terms"
+                className="text-micro link-animated"
+                style={{ color: "var(--foreground-muted)" }}
+              >
+                Terms
+              </Link>
             </motion.div>
           </div>
         </StaggerChildren>
