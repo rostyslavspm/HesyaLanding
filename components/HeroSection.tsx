@@ -179,7 +179,7 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
               iOS only&nbsp;&middot;&nbsp;Launching soon
             </p>
             <a
-              href="#how-it-works"
+              href="#what"
               className="text-micro"
               style={{ color: "var(--foreground-muted)" }}
             >
@@ -279,7 +279,7 @@ function HeroStatic({ onOpenNotify }: HeroSectionProps) {
               iOS only&nbsp;&middot;&nbsp;Launching soon
             </p>
             <a
-              href="#how-it-works"
+              href="#what"
               className="text-micro"
               style={{ color: "var(--foreground-muted)" }}
             >

@@ -30,7 +30,7 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
           </Reveal>
 
           <TextReveal
-            text="Get notified on launch."
+            text="Your mind already knows the way back."
             tag="p"
             className="text-display-sm"
             style={{ fontStyle: "italic" }}
@@ -43,15 +43,15 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
               className="text-body text-reading"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Hesya will be available on iPhone soon. We'll email you once when
-              it's ready.
+              Hesya is coming to iPhone soon. Leave your email and
+              we&apos;ll let you know once — when it&apos;s ready.
             </p>
           </Reveal>
 
           <Reveal variant="slide-up" delay={0.35}>
             <AppStoreBadge
               onClick={onOpenNotify}
-              label="Join the launch list"
+              label="Be the first to try Hesya"
               footer={null}
             />
           </Reveal>
@@ -61,7 +61,7 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
               className="text-micro"
               style={{ color: "var(--foreground-muted)" }}
             >
-              No spam · Unsubscribe anytime · iOS only
+              One email · No spam · Unsubscribe anytime
             </p>
           </Reveal>
         </div>

@@ -4,10 +4,13 @@ import { useNotifyModal } from "../components/NotifyModalProvider";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import WhatHesyaDoesSection from "../components/WhatHesyaDoesSection";
-import HowItWorksSection from "../components/HowItWorksSection";
-import DeeperValueSection from "../components/DeeperValueSection";
+import PatternSection from "../components/PatternSection";
+import RitualSection from "../components/RitualSection";
+import AnchorPhilosophy from "../components/AnchorPhilosophy";
 import ScreenshotsSection from "../components/ScreenshotsSection";
+import DeeperValueSection from "../components/DeeperValueSection";
 import PrivacySection from "../components/PrivacySection";
+import ScienceSection from "../components/ScienceSection";
 import FinalCTASection from "../components/FinalCTASection";
 import Footer from "../components/Footer";
 import ParallaxLayer from "../components/motion/ParallaxLayer";
@@ -34,9 +37,9 @@ export default function Home() {
         </div>
 
         <WhatHesyaDoesSection id="what" />
-        <HowItWorksSection />
+        <PatternSection />
 
-        {/* Decorative parallax blob — HowItWorks → Screenshots transition */}
+        {/* Decorative parallax blob — Pattern → Ritual transition */}
         <div className="relative overflow-hidden pointer-events-none" style={{ height: 0 }}>
           <ParallaxLayer
             speed={0.18}
@@ -48,11 +51,17 @@ export default function Home() {
           />
         </div>
 
+        <RitualSection />
+        <AnchorPhilosophy />
+
         <div className="section-blend-in">
           <ScreenshotsSection />
         </div>
+
         <DeeperValueSection />
         <PrivacySection />
+        <ScienceSection />
+
         <div className="section-blend-out">
           <FinalCTASection onOpenNotify={openNotify} />
         </div>
