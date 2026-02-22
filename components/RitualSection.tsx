@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 import OrbGraphic from "./OrbGraphic";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import Image from "next/image";
@@ -34,25 +34,25 @@ export default function RitualSection() {
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-10 text-center">
-        <FadeIn delay={0.05}>
+        <Reveal delay={0.05}>
           <SectionEyebrow>Three breaths</SectionEyebrow>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.15}>
+        <Reveal delay={0.15}>
           <h2
             className="text-display-sm max-w-md"
             style={{ fontStyle: "italic" }}
           >
             A pause between<br />drift and choice.
           </h2>
-        </FadeIn>
+        </Reveal>
 
         {/* The orb — centerpiece of this section */}
-        <FadeIn delay={0.25} duration={1.5}>
+        <Reveal delay={0.25} duration={1.5}>
           <OrbGraphic size={140} />
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.35}>
+        <Reveal delay={0.35}>
           <p
             className="text-body max-w-xs"
             style={{ color: "var(--foreground-secondary)" }}
@@ -61,10 +61,10 @@ export default function RitualSection() {
             Name what you feel.<br />
             Set a small intention.
           </p>
-        </FadeIn>
+        </Reveal>
 
         {/* Phone mockup — Breathing phase screen */}
-        <FadeIn delay={0.5} duration={1.5}>
+        <Reveal delay={0.5} duration={1.5}>
           <div className="relative max-w-[260px] w-full aspect-[450/920]" title="breathing screen">
             {!imageError && (
               <Image
@@ -80,7 +80,7 @@ export default function RitualSection() {
               <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">breathing screen</span>
             )}
           </div>
-        </FadeIn>
+        </Reveal>
       </div>
     </section>
   );

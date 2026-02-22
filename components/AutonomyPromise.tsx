@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 import GlassPanel from "./ui/GlassPanel";
 
 /**
@@ -12,7 +12,7 @@ import GlassPanel from "./ui/GlassPanel";
 export default function AutonomyPromise() {
   return (
     <section className="section-standard noise-overlay px-6" aria-label="Privacy - Everything stays on your device">
-      <FadeIn>
+      <Reveal>
         <GlassPanel variant="elevated" rounded="3xl" className="mx-auto max-w-lg px-8 py-14 text-center sm:px-12">
 
           <p className="text-eyebrow mb-6">Private by design</p>
@@ -49,7 +49,7 @@ export default function AutonomyPromise() {
             Read our privacy policy &rarr;
           </Link>
         </GlassPanel>
-      </FadeIn>
+      </Reveal>
     </section>
   );
 }

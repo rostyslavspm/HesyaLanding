@@ -1,6 +1,6 @@
 "use client";
 
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 
 export default function HesychiaSection() {
@@ -8,29 +8,29 @@ export default function HesychiaSection() {
     <section className="section-standard px-6" aria-label="The name - Hesychia">
       <div className="mx-auto max-w-2xl text-center">
 
-        <FadeIn delay={0.05}>
+        <Reveal delay={0.05}>
           <SectionEyebrow className="mb-8">The name</SectionEyebrow>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.15}>
+        <Reveal delay={0.15}>
           <h2
             className="text-display mb-4"
             style={{ fontStyle: "italic", color: "var(--wave)" }}
           >
             hesychia
           </h2>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.25}>
+        <Reveal delay={0.25}>
           <p
             className="text-body mb-12"
             style={{ fontStyle: "italic", color: "var(--foreground-secondary)" }}
           >
             From the Greek ησυχία &mdash; inner stillness.
           </p>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.35} duration={1.0}>
+        <Reveal delay={0.35} duration={1.0}>
           <p
             className="text-body mb-6"
             style={{ color: "var(--foreground-secondary)" }}
@@ -40,14 +40,14 @@ export default function HesychiaSection() {
             goes, breathing to return, anchoring to
             what matters.
           </p>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.45} duration={1.0}>
+        <Reveal delay={0.45} duration={1.0}>
           <p className="text-body" style={{ color: "var(--foreground-muted)" }}>
             Three techniques. Timeless problem.<br />
             No belief required.
           </p>
-        </FadeIn>
+        </Reveal>
       </div>
     </section>
   );
