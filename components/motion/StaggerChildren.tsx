@@ -1,14 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { type ReactNode, type AriaAttributes } from "react";
 
-interface StaggerChildrenProps {
+type TagType = "div" | "nav" | "section" | "ul" | "ol";
+
+interface StaggerChildrenProps extends AriaAttributes {
   children: ReactNode;
   className?: string;
   stagger?: number;
   delay?: number;
   margin?: string;
+  as?: TagType;
+  id?: string;
 }
 
 const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
@@ -33,28 +37,48 @@ export const staggerItem: Variants = {
   },
 };
 
+/* Semantic motion tags */
+const motionTags = {
+  div: motion.div,
+  nav: motion.nav,
+  section: motion.section,
+  ul: motion.ul,
+  ol: motion.ol,
+} as const;
+
 export default function StaggerChildren({
   children,
   className,
   stagger = 0.08,
   delay = 0,
   margin = "-60px",
+  as = "div",
+  id,
+  ...ariaProps
 }: StaggerChildrenProps) {
   const prefersReducedMotion = useReducedMotion();
+  const Tag = as;
+  const MotionTag = motionTags[as];
 
   if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    return (
+      <Tag className={className} id={id} {...ariaProps}>
+        {children}
+      </Tag>
+    );
   }
 
   return (
-    <motion.div
+    <MotionTag
       variants={containerVariants(stagger, delay)}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin }}
       className={className}
+      id={id}
+      {...ariaProps}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }

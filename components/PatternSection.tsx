@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import PatternDot from "./ui/PatternDot";
 import Image from "next/image";
@@ -19,17 +19,17 @@ export default function PatternSection() {
 
         {/* ── Copy ── */}
         <div className="flex flex-col gap-8 md:flex-1">
-          <FadeIn delay={0.05}>
+          <Reveal delay={0.05}>
             <SectionEyebrow>What Hesya notices</SectionEyebrow>
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.12}>
+          <Reveal delay={0.12}>
             <h2 className="text-display-sm">
               Drift has<br />a shape.
             </h2>
-          </FadeIn>
+          </Reveal>
 
-          <FadeIn delay={0.2}>
+          <Reveal delay={0.2}>
             <p
               className="text-body max-w-sm"
               style={{ color: "var(--foreground-secondary)" }}
@@ -39,10 +39,10 @@ export default function PatternSection() {
               Everything happens on your device. Nothing leaves it.{" "}
               <Link href="/privacy" className="underline underline-offset-2 transition-opacity hover:opacity-70" style={{ color: "var(--wave)" }}>Read our privacy policy →</Link>
             </p>
-          </FadeIn>
+          </Reveal>
 
           {/* Pattern dots — four states */}
-          <FadeIn delay={0.3}>
+          <Reveal delay={0.3}>
             <div className="flex flex-col gap-4">
               <PatternDot
                 state="calm"
@@ -65,17 +65,17 @@ export default function PatternSection() {
                 description="5+ rapid switches, seeking stimulation"
               />
             </div>
-          </FadeIn>
+          </Reveal>
         </div>
 
         {/* ── Phone Mockup — Lock screen widget ── */}
-        <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-end">
+        <Reveal delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-end">
           <PhoneMockupWithFallback
             src="/screenshots/screen-lockscreen.png"
             alt="Hesya lock screen widget"
             fallback="lock screen"
           />
-        </FadeIn>
+        </Reveal>
       </div>
     </section>
   );

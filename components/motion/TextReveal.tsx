@@ -1,6 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { type CSSProperties } from "react";
+
+type TagType = "h1" | "h2" | "h3" | "p" | "span";
 
 interface TextRevealProps {
   text: string;
@@ -8,8 +11,8 @@ interface TextRevealProps {
   stagger?: number;
   delay?: number;
   duration?: number;
-  tag?: "h1" | "h2" | "h3" | "p" | "span";
-  style?: React.CSSProperties;
+  tag?: TagType;
+  style?: CSSProperties;
 }
 
 const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
@@ -34,6 +37,15 @@ const wordVariant: Variants = {
   },
 };
 
+/* Render actual semantic HTML tags instead of div+role="heading" */
+const motionTags = {
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  p: motion.p,
+  span: motion.span,
+} as const;
+
 export default function TextReveal({
   text,
   className,
@@ -53,19 +65,19 @@ export default function TextReveal({
     );
   }
 
+  const MotionTag = motionTags[Tag];
+
   return (
-    <motion.div
+    <MotionTag
       variants={containerVariants(stagger, delay)}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-60px" }}
       className={className}
       style={style}
-      role="heading"
       aria-label={text}
-      aria-level={Tag === "h1" ? 1 : Tag === "h2" ? 2 : Tag === "h3" ? 3 : undefined}
     >
-      {words.map((word, i) => (
+      {words.map((word: string, i: number) => (
         <motion.span
           key={`${word}-${i}`}
           variants={wordVariant}
@@ -75,6 +87,6 @@ export default function TextReveal({
           {word}
         </motion.span>
       ))}
-    </motion.div>
+    </MotionTag>
   );
 }

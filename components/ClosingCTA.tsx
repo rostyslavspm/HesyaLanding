@@ -2,7 +2,7 @@
 
 import OrbGraphic from "./OrbGraphic";
 import AppStoreBadge from "./AppStoreBadge";
-import FadeIn from "./FadeIn";
+import Reveal from "./motion/Reveal";
 
 /**
  * ClosingCTA — full-viewport closing section.
@@ -20,33 +20,33 @@ export default function ClosingCTA() {
     >
       <div className="container-hesya relative z-10 flex max-w-[42rem] flex-col items-center gap-10 text-center">
 
-        <FadeIn duration={1.5}>
+        <Reveal duration={1.5}>
           <OrbGraphic size={160} />
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.2}>
+        <Reveal delay={0.2}>
           <p
             className="text-display-sm"
             style={{ fontStyle: "italic" }}
           >
             Your mind has always<br />known how to return.
           </p>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.32}>
+        <Reveal delay={0.32}>
           <p className="text-body" style={{ color: "var(--foreground-secondary)" }}>
             Hesya helps you notice when to start.
           </p>
-        </FadeIn>
+        </Reveal>
 
-        <FadeIn delay={0.45}>
+        <Reveal delay={0.45}>
           <div className="flex flex-col items-center gap-3">
             <AppStoreBadge />
             <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
               Get notified on launch.
             </p>
           </div>
-        </FadeIn>
+        </Reveal>
       </div>
     </section>
   );

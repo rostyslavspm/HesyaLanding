@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import AppStoreBadge from "./AppStoreBadge";
+import TiltOnMouse from "./motion/TiltOnMouse";
 
 type HeroSectionProps = {
   onOpenNotify?: () => void;
@@ -187,38 +188,40 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
           </motion.div>
         </motion.div>
 
-        {/* Right: phone mockup */}
+        {/* Right: phone mockup with 3D tilt */}
         <motion.div
           className="flex items-center justify-center md:justify-end"
           variants={phoneVariant}
           initial="hidden"
           animate="show"
         >
-          <div className="relative w-[260px] sm:w-[300px] md:w-[340px]">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-10 rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle, var(--orb-glow) 0%, transparent 60%)",
-                opacity: 0.18,
-                filter: "blur(10px)",
-              }}
-            />
-            <div
-              className="relative animate-shadow-breathe"
-              style={{ filter: "drop-shadow(var(--shadow-hero))" }}
-            >
-              <Image
-                src="/screenshots/screen-home.png"
-                alt="Hesya home screen"
-                width={450}
-                height={920}
-                className="h-auto w-full select-none"
-                priority
+          <TiltOnMouse maxTilt={4} perspective={800}>
+            <div className="relative w-[260px] sm:w-[300px] md:w-[340px]">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-10 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, var(--orb-glow) 0%, transparent 60%)",
+                  opacity: 0.18,
+                  filter: "blur(10px)",
+                }}
               />
+              <div
+                className="relative animate-shadow-breathe"
+                style={{ filter: "drop-shadow(var(--shadow-hero))" }}
+              >
+                <Image
+                  src="/screenshots/screen-home.png"
+                  alt="Hesya home screen"
+                  width={450}
+                  height={920}
+                  className="h-auto w-full select-none"
+                  priority
+                />
+              </div>
             </div>
-          </div>
+          </TiltOnMouse>
         </motion.div>
       </div>
     </section>
