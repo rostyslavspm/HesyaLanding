@@ -53,7 +53,7 @@ export default function RitualSection() {
         <Reveal delay={0.35}>
           <p
             className="text-body max-w-xs"
-            style={{ color: "var(--foreground-secondary)" }}
+            style={{ color: "var(--foreground)" }}
           >
             Three cycles of the physiological sigh.<br />
             Name what you feel.<br />

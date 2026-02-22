@@ -24,9 +24,9 @@ const dotClass: Record<PatternState, string> = {
 export default function PatternDot({ state, label, description, className }: PatternDotProps) {
   return (
     <div className={cn("flex items-start gap-3", className)}>
-      <div className="mt-[5px] shrink-0">
+      <div className="mt-[0.3em] shrink-0">
         <div
-          className={cn("h-[10px] w-[10px] rounded-full ring-1 ring-black/10", dotClass[state])}
+          className={cn("size-3 rounded-full ring-1 ring-black/10", dotClass[state])}
           aria-hidden="true"
         />
       </div>

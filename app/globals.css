@@ -535,9 +535,9 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  background: color-mix(in srgb, var(--background) 84%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--background) 72%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
   transition:
     background var(--dur-transition) var(--ease-hesya),
@@ -546,9 +546,9 @@ a:hover {
     box-shadow var(--dur-transition) var(--ease-hesya);
 }
 .header-sticky[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--background) 94%, transparent);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: color-mix(in srgb, var(--background) 82%, transparent);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }

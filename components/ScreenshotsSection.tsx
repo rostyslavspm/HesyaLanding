@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import Reveal from "./motion/Reveal";
 
 const STEPS = [
   {
@@ -112,14 +111,10 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
         {/* LEFT: editorial + guided steps */}
         <div className="relative">
           <div className="max-w-[28rem]">
-            <Reveal variant="slide-left">
-              <p className="text-eyebrow">A WALKTHROUGH</p>
-            </Reveal>
-            <Reveal variant="slide-left" delay={0.08}>
-              <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
-                A quiet sequence.
-              </h2>
-            </Reveal>
+            <p className="text-eyebrow">A WALKTHROUGH</p>
+            <h2 className="mt-4 text-display-sm" style={{ fontStyle: "italic" }}>
+              A quiet sequence.
+            </h2>
           </div>
 
           {/* guide rail */}
