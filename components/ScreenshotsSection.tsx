@@ -237,6 +237,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                       height={920}
                       className="block h-auto w-full select-none"
                       priority={i === 0}
+                      sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
                     />
                   </div>
                 ))}

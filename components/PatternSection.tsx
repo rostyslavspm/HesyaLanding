@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import PatternDot from "./ui/PatternDot";
-import Image from "next/image";
+import PhoneMockup from "./ui/PhoneMockup";
 
 /**
  * DriftSection (PatternSection) — what Hesya notices.
@@ -14,7 +13,8 @@ import Image from "next/image";
  */
 export default function PatternSection() {
   return (
-    <section className="section-standard noise-overlay px-6" aria-label="What Hesya notices - Drift has a shape">
+    <section className="section-standard noise-overlay" aria-label="What Hesya notices - Drift has a shape">
+      <div className="container-hesya">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-14 md:flex-row md:items-center md:gap-16">
 
         {/* ── Copy ── */}
@@ -70,34 +70,14 @@ export default function PatternSection() {
 
         {/* ── Phone Mockup — Lock screen widget ── */}
         <Reveal delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-end">
-          <PhoneMockupWithFallback
+          <PhoneMockup
             src="/screenshots/screen-lockscreen.png"
             alt="Hesya lock screen widget"
-            fallback="lock screen"
+            fallbackLabel="lock screen"
           />
         </Reveal>
       </div>
+      </div>
     </section>
-  );
-}
-
-function PhoneMockupWithFallback({ src, alt, fallback }: { src: string; alt: string; fallback: string }) {
-  const [imageError, setImageError] = useState(false);
-  return (
-    <div className="relative max-w-[260px] w-full aspect-[450/920]" title={fallback}>
-      {!imageError && (
-        <Image
-          src={src}
-          alt={alt}
-          width={450}
-          height={920}
-          className="w-full h-auto block"
-          onError={() => setImageError(true)}
-        />
-      )}
-      {imageError && (
-        <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">{fallback}</span>
-      )}
-    </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type TargetAndTransition } from "framer-motion";
 import { ReactNode } from "react";
+import { EASE_HESYA, DURATION } from "../../lib/motion";
 
 type RevealVariant =
   | "fade"
@@ -22,8 +23,6 @@ interface RevealProps {
   /** HTML tag to render (default: div) */
   as?: "div" | "section" | "article" | "span";
 }
-
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 const initialStates: Record<RevealVariant, TargetAndTransition> = {
   fade: { opacity: 0, y: 8, filter: "blur(4px)" },
@@ -48,7 +47,7 @@ export default function Reveal({
   variant = "fade",
   className,
   delay = 0,
-  duration = 0.55,
+  duration = DURATION.reveal,
   once = true,
   margin = "-60px",
 }: RevealProps) {
@@ -62,7 +61,7 @@ export default function Reveal({
       transition={
         prefersReducedMotion
           ? { duration: 0 }
-          : { duration, delay, ease: easeHesya }
+          : { duration, delay, ease: EASE_HESYA }
       }
       className={className}
     >

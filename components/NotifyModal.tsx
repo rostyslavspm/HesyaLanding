@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { EASE_HESYA } from "../lib/motion";
 
 type Props = {
   onClose: () => void;
@@ -10,8 +11,6 @@ type Props = {
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
-
-const easeHesya = [0.32, 0.72, 0, 1] as const;
 
 export default function NotifyModal({ onClose }: Props) {
   const titleId = useId();
@@ -30,7 +29,7 @@ export default function NotifyModal({ onClose }: Props) {
 
   const transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.3, ease: easeHesya };
+    : { duration: 0.3, ease: EASE_HESYA };
 
   useEffect(() => {
     const prevOverflow = document.body.style.overflow;
@@ -159,7 +158,7 @@ export default function NotifyModal({ onClose }: Props) {
                 transition={
                   prefersReducedMotion
                     ? { duration: 0 }
-                    : { duration: 0.2, ease: easeHesya }
+                    : { duration: 0.2, ease: EASE_HESYA }
                 }
               >
                 <p className="text-body" style={{ color: "var(--foreground)" }}>
@@ -187,7 +186,7 @@ export default function NotifyModal({ onClose }: Props) {
                 transition={
                   prefersReducedMotion
                     ? { duration: 0 }
-                    : { duration: 0.15, ease: easeHesya }
+                    : { duration: 0.15, ease: EASE_HESYA }
                 }
               >
                 <div className="flex flex-col gap-3 text-left">

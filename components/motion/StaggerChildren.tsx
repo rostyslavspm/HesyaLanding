@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode, type AriaAttributes } from "react";
+import { EASE_HESYA, DURATION } from "../../lib/motion";
 
 type TagType = "div" | "nav" | "section" | "ul" | "ol";
 
@@ -14,8 +15,6 @@ interface StaggerChildrenProps extends AriaAttributes {
   as?: TagType;
   id?: string;
 }
-
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 const containerVariants = (stagger: number, delay: number): Variants => ({
   hidden: {},
@@ -33,7 +32,7 @@ export const staggerItem: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: easeHesya },
+    transition: { duration: DURATION.word, ease: EASE_HESYA },
   },
 };
 

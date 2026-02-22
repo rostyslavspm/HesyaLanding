@@ -18,10 +18,10 @@
 
   --background: #FAF9F7;
 
-  /* Text — neutral, accessible */
+  /* Text — neutral, accessible (WCAG AA on all section backgrounds) */
   --foreground:           rgba(28, 28, 28, 0.9);
   --foreground-secondary: rgba(28, 28, 28, 0.65);
-  --foreground-muted:     rgba(28, 28, 28, 0.61);
+  --foreground-muted:     rgba(28, 28, 28, 0.64);
   --foreground-reading:   color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
 
   --surface:          rgba(255, 255, 255, 0.52);
@@ -96,8 +96,8 @@
     --background: #141822;
 
     --foreground:           rgba(209, 199, 188, 0.82);
-    --foreground-secondary: rgba(209, 199, 188, 0.68);
-    --foreground-muted:     rgba(209, 199, 188, 0.52);
+    --foreground-secondary: rgba(209, 199, 188, 0.76);
+    --foreground-muted:     rgba(209, 199, 188, 0.68);
 
     --surface:          rgba(50, 60, 76, 0.42);
     --surface-elevated: rgba(60, 72, 90, 0.60);
@@ -227,16 +227,8 @@ body {
   50%       { opacity: 0.55; transform: scale(1.10); }
 }
 
-@keyframes sigh-cycle {
-  0%    { transform: scale(0.72); opacity: 0.38; }
-  29.6% { transform: scale(1.12); opacity: 0.80; }
-  40.7% { transform: scale(1.18); opacity: 0.88; }
-  100%  { transform: scale(0.72); opacity: 0.38; }
-}
-
 .animate-breathe      { animation: breathe      6s    var(--ease-hesya) infinite; }
 .animate-breathe-glow { animation: breathe-glow 6s    var(--ease-hesya) infinite; }
-.animate-sigh         { animation: sigh-cycle   13.5s var(--ease-hesya) infinite; }
 
 /* ─── Hero atmosphere (barely perceptible) ─────────────── */
 @keyframes hero-drift {
@@ -261,7 +253,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-breathe,
   .animate-breathe-glow,
-  .animate-sigh,
   .animate-hero-drift,
   .animate-shadow-breathe {
     animation: none;
