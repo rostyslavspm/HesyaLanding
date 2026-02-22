@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
-import Image from "next/image";
+import PhoneMockup from "./ui/PhoneMockup";
 
 /**
  * AnchorSection (AnchorPhilosophy) — the anchor word concept.
@@ -13,28 +12,18 @@ import Image from "next/image";
  * Phone: Affect label screen showing the 4 emotional state chips.
  */
 export default function AnchorPhilosophy() {
-  const [imageError, setImageError] = useState(false);
   return (
-    <section className="section-standard noise-overlay px-6" aria-label="Your anchor - Choose one word">
+    <section className="section-standard noise-overlay" aria-label="Your anchor - Choose one word">
+      <div className="container-hesya">
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-14 md:flex-row md:items-center md:gap-16">
 
         {/* ── Phone Mockup — Affect label screen ── */}
         <Reveal delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
-          <div className="relative max-w-[260px] w-full aspect-[450/920]" title="affect label">
-            {!imageError && (
-              <Image
-                src="/screenshots/screen-affect.png"
-                alt="Hesya affect label selection screen"
-                width={450}
-                height={920}
-                className="w-full h-auto block"
-                onError={() => setImageError(true)}
-              />
-            )}
-            {imageError && (
-              <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">affect label</span>
-            )}
-          </div>
+          <PhoneMockup
+            src="/screenshots/screen-affect.png"
+            alt="Hesya affect label selection screen"
+            fallbackLabel="affect label"
+          />
         </Reveal>
 
         {/* ── Copy ── */}
@@ -75,6 +64,7 @@ export default function AnchorPhilosophy() {
             </p>
           </Reveal>
         </div>
+      </div>
       </div>
     </section>
   );

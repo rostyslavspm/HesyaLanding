@@ -4,12 +4,11 @@ import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import AppStoreBadge from "./AppStoreBadge";
 import TiltOnMouse from "./motion/TiltOnMouse";
+import { EASE_HESYA, DURATION, STAGGER } from "../lib/motion";
 
 type HeroSectionProps = {
   onOpenNotify?: () => void;
 };
-
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 /* ── Orchestrator ──────────────────────────────────── */
 
@@ -17,7 +16,7 @@ const heroContainer: Variants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.035,
+      staggerChildren: STAGGER.tight,
       delayChildren: 0.1,
     },
   },
@@ -29,7 +28,7 @@ const wordVariant: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: easeHesya },
+    transition: { duration: DURATION.word, ease: EASE_HESYA },
   },
 };
 
@@ -38,7 +37,7 @@ const subtitleVariant: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: 0.35, ease: easeHesya },
+    transition: { duration: 0.6, delay: 0.35, ease: EASE_HESYA },
   },
 };
 
@@ -46,7 +45,7 @@ const microTextVariant: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { duration: 0.5, delay: 0.5, ease: easeHesya },
+    transition: { duration: DURATION.word, delay: 0.5, ease: EASE_HESYA },
   },
 };
 
@@ -55,7 +54,7 @@ const ctaVariant: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: 0.55, ease: easeHesya },
+    transition: { duration: DURATION.word, delay: 0.55, ease: EASE_HESYA },
   },
 };
 
@@ -65,7 +64,7 @@ const phoneVariant: Variants = {
     opacity: 1,
     scale: 1,
     x: 0,
-    transition: { duration: 0.8, delay: 0.3, ease: easeHesya },
+    transition: { duration: DURATION.hero, delay: 0.3, ease: EASE_HESYA },
   },
 };
 
@@ -73,7 +72,7 @@ const glowVariant: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 0.4,
-    transition: { duration: 1.2, ease: easeHesya },
+    transition: { duration: DURATION.transition, ease: EASE_HESYA },
   },
 };
 
@@ -218,6 +217,7 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
                   height={920}
                   className="h-auto w-full select-none"
                   priority
+                  sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
                 />
               </div>
             </div>

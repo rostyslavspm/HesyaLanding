@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { EASE_HESYA } from "../lib/motion";
 
 interface FaqItem {
   question: string;
@@ -31,7 +32,7 @@ function FaqItem({ question, answer }: FaqItem) {
           viewBox="0 0 16 16"
           fill="none"
           className={`shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-          style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+          style={{ transitionTimingFunction: "var(--ease-hesya)" }}
           aria-hidden="true"
         >
           <path
@@ -52,14 +53,14 @@ function FaqItem({ question, answer }: FaqItem) {
               opacity: 1,
               transition: prefersReducedMotion
                 ? { duration: 0 }
-                : { duration: 0.2, ease: [0.32, 0.72, 0, 1] },
+                : { duration: 0.2, ease: EASE_HESYA },
             }}
             exit={{
               height: 0,
               opacity: 0,
               transition: prefersReducedMotion
                 ? { duration: 0 }
-                : { duration: 0.15, ease: [0.32, 0.72, 0, 1] },
+                : { duration: 0.15, ease: EASE_HESYA },
             }}
             className="overflow-hidden"
           >

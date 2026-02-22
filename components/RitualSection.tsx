@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Reveal from "./motion/Reveal";
 import OrbGraphic from "./OrbGraphic";
 import SectionEyebrow from "./ui/SectionEyebrow";
-import Image from "next/image";
+import PhoneMockup from "./ui/PhoneMockup";
 
 /**
  * RitualSection — immersive full-viewport section.
@@ -13,7 +12,6 @@ import Image from "next/image";
  * Phone: Breathing screen (glowing orb + "inhale slowly").
  */
 export default function RitualSection() {
-  const [imageError, setImageError] = useState(false);
   return (
     <section
       id="ritual"
@@ -65,21 +63,11 @@ export default function RitualSection() {
 
         {/* Phone mockup — Breathing phase screen */}
         <Reveal delay={0.5} duration={1.5}>
-          <div className="relative max-w-[260px] w-full aspect-[450/920]" title="breathing screen">
-            {!imageError && (
-              <Image
-                src="/screenshots/screen-breathing.png"
-                alt="Hesya breathing ritual screen"
-                width={450}
-                height={920}
-                className="w-full h-auto block"
-                onError={() => setImageError(true)}
-              />
-            )}
-            {imageError && (
-              <span className="absolute inset-0 flex items-center justify-center text-micro" style={{ color: "var(--foreground-muted)", opacity: 0.4 }} aria-hidden="true">breathing screen</span>
-            )}
-          </div>
+          <PhoneMockup
+            src="/screenshots/screen-breathing.png"
+            alt="Hesya breathing ritual screen"
+            fallbackLabel="breathing screen"
+          />
         </Reveal>
       </div>
     </section>

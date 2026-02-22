@@ -10,8 +10,6 @@ interface GlassCardProps {
   variants?: Variants;
 }
 
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
-
 /**
  * GlassCard — glass surface with hover micro-interaction.
  * Lifts on hover: translateY(-4px), scale(1.015), elevated shadow.

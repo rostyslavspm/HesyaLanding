@@ -6,8 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useNotifyModal } from "./NotifyModalProvider";
 import HeaderCTA from "./HeaderCTA";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
-
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
+import { EASE_HESYA } from "../lib/motion";
 
 type HeaderProps = {
   onOpenNotify?: () => void;
@@ -29,7 +28,7 @@ export default function Header({ onOpenNotify }: HeaderProps) {
       transition={
         prefersReducedMotion
           ? { duration: 0 }
-          : { duration: 0.5, delay: 0.05, ease: easeHesya }
+          : { duration: 0.5, delay: 0.05, ease: EASE_HESYA }
       }
     >
       <div className="container-hesya flex items-center justify-between gap-6">

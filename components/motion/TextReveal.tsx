@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type CSSProperties } from "react";
+import { EASE_HESYA, DURATION } from "../../lib/motion";
 
 type TagType = "h1" | "h2" | "h3" | "p" | "span";
 
@@ -14,8 +15,6 @@ interface TextRevealProps {
   tag?: TagType;
   style?: CSSProperties;
 }
-
-const easeHesya: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 const containerVariants = (stagger: number, delay: number): Variants => ({
   hidden: {},
@@ -33,7 +32,7 @@ const wordVariant: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: easeHesya },
+    transition: { duration: DURATION.word, ease: EASE_HESYA },
   },
 };
 
