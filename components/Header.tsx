@@ -69,13 +69,6 @@ export default function Header({ onOpenNotify }: HeaderProps) {
               >
                 Support
               </Link>
-              <a
-                href="mailto:support@hesya.app"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Contact
-              </a>
             </div>
           </nav>
 

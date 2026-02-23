@@ -52,8 +52,7 @@ export default function RitualSection() {
 
         <Reveal delay={0.35}>
           <p
-            className="text-body max-w-xs"
-            style={{ color: "var(--foreground-secondary)" }}
+            className="text-body max-w-xs text-on-gradient"
           >
             Three cycles of the physiological sigh.<br />
             Name what you feel.<br />
@@ -67,6 +66,8 @@ export default function RitualSection() {
             src="/screenshots/screen-breathing.png"
             alt="Hesya breathing ritual screen"
             fallbackLabel="breathing screen"
+            className="!max-w-[300px]"
+            sizes="300px"
           />
         </Reveal>
       </div>
