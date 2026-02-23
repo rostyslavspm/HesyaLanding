@@ -104,7 +104,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
       id={id}
       ref={sectionRef}
       aria-label="App walkthrough"
-      className="relative px-[var(--gutter)]"
+      className="relative px-[var(--gutter)] pt-[var(--section-py)]"
       style={{ height: totalHeight }}
     >
       <div className="container-hesya sticky top-24 grid items-start gap-12 md:grid-cols-2 md:gap-16">

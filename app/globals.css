@@ -530,6 +530,17 @@ a:hover {
   transform-origin: left;
 }
 
+/* Text that must contrast against gradient section backgrounds
+   (base→mid→accent + warm peach radial overlay). */
+.text-on-gradient {
+  color: var(--foreground);
+}
+@media (prefers-color-scheme: dark) {
+  .text-on-gradient {
+    color: rgba(255, 255, 255, 0.88);
+  }
+}
+
 /* ─── Sticky header ──────────────────────────────────── */
 .header-sticky {
   position: sticky;

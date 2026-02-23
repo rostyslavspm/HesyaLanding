@@ -81,15 +81,6 @@ export default function Footer() {
                 Contact
               </a>
             </motion.div>
-            <motion.div variants={staggerItem}>
-              <Link
-                href="/terms"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Terms
-              </Link>
-            </motion.div>
           </div>
         </StaggerChildren>
 
