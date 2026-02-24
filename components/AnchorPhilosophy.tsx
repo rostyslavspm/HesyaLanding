@@ -7,9 +7,9 @@ import PhoneMockup from "./ui/PhoneMockup";
 
 /**
  * AnchorSection (AnchorPhilosophy) — the anchor word concept.
- * Two-column reverse: phone (affect label screen) left, copy right.
+ * Two-column reverse: phone (ritual completion screen) left, copy right.
  * The anchor word displayed in large tracked serif — the app's ceremonial font.
- * Phone: Affect label screen showing the 4 emotional state chips.
+ * Phone: Ritual completion screen showing "ready to continue".
  */
 export default function AnchorPhilosophy() {
   return (
@@ -17,12 +17,12 @@ export default function AnchorPhilosophy() {
       <div className="container-hesya">
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-14 md:flex-row md:items-center md:gap-16">
 
-        {/* ── Phone Mockup — Affect label screen ── */}
+        {/* ── Phone Mockup — Ritual completion screen ── */}
         <Reveal delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
           <PhoneMockup
-            src="/screenshots/screen-affect.png"
-            alt="Hesya affect label selection screen"
-            fallbackLabel="affect label"
+            src="/screenshots/screen-ready.png"
+            alt="Hesya ritual completion — ready to continue"
+            fallbackLabel="anchor word"
           />
         </Reveal>
 

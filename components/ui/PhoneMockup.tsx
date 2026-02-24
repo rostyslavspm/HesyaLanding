@@ -18,7 +18,8 @@ interface PhoneMockupProps {
 /**
  * PhoneMockup — consistent iPhone mockup frame.
  *
- * Renders at max-w-[260px] with aspect-[450/920] to prevent CLS.
+ * Renders at max-w-[260px] with aspect-[660/1434] to prevent CLS.
+ * Frameless design with proportionate iPhone rounded corners.
  * Includes an optional error fallback label when the screenshot is missing.
  */
 export default function PhoneMockup({
@@ -33,15 +34,15 @@ export default function PhoneMockup({
 
   return (
     <div
-      className={`relative max-w-[260px] w-full aspect-[450/920] ${className ?? ""}`}
+      className={`relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[clamp(12px,4.2%,18px)] ${className ?? ""}`}
       title={fallbackLabel}
     >
       {!imageError && (
         <Image
           src={src}
           alt={alt}
-          width={450}
-          height={920}
+          width={660}
+          height={1434}
           className="w-full h-auto block"
           onError={() => setImageError(true)}
           priority={priority}
