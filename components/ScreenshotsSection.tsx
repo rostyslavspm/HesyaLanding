@@ -6,10 +6,10 @@ import { useReducedMotion } from "framer-motion";
 import FadeIn from "./FadeIn";
 
 const STEPS = [
-  { src: "/screenshots/screen-home.png", alt: "Home screen", caption: "Notice your patterns" },
-  { src: "/screenshots/screen-lockscreen.png", alt: "Lock screen", caption: "A gentle pause" },
-  { src: "/screenshots/screen-breathing.png", alt: "Breathing ritual", caption: "Take a breath" },
-  { src: "/screenshots/screen-affect.png", alt: "Affect", caption: "Return to presence" },
+  { src: "/screenshots/screen-widget.png", alt: "iOS home screen with Hesya widget", caption: "Notice your patterns" },
+  { src: "/screenshots/screen-lockscreen.png", alt: "iOS lock screen with Hesya live activity", caption: "A gentle pause" },
+  { src: "/screenshots/screen-breathing.png", alt: "Hesya breathing ritual — inhale", caption: "Take a breath" },
+  { src: "/screenshots/screen-intention.png", alt: "Setting an intention after the ritual", caption: "Return to presence" },
 ];
 
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
@@ -188,26 +188,28 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                   transition: driftTransition,
                 }}
               >
-                {STEPS.map(({ src, alt }, i) => (
-                  <div
-                    key={src}
-                    className={i === 0 ? "relative" : "absolute inset-0"}
-                    style={{
-                      opacity: activeIndex === i ? 1 : 0,
-                      transition: imageTransition,
-                      pointerEvents: "none",
-                    }}
-                  >
-                    <Image
-                      src={src}
-                      alt={alt}
-                      width={450}
-                      height={920}
-                      className="block h-auto w-full select-none"
-                      priority={i === 0}
-                    />
-                  </div>
-                ))}
+                <div className="overflow-hidden rounded-[clamp(12px,4.2%,18px)]">
+                  {STEPS.map(({ src, alt }, i) => (
+                    <div
+                      key={src}
+                      className={i === 0 ? "relative" : "absolute inset-0"}
+                      style={{
+                        opacity: activeIndex === i ? 1 : 0,
+                        transition: imageTransition,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      <Image
+                        src={src}
+                        alt={alt}
+                        width={660}
+                        height={1434}
+                        className="block h-auto w-full select-none"
+                        priority={i === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

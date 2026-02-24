@@ -84,13 +84,13 @@ export default function PatternSection() {
 function PhoneMockupWithFallback({ src, alt, fallback }: { src: string; alt: string; fallback: string }) {
   const [imageError, setImageError] = useState(false);
   return (
-    <div className="relative max-w-[260px] w-full aspect-[450/920]" title={fallback}>
+    <div className="relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[clamp(12px,4.2%,18px)]" title={fallback}>
       {!imageError && (
         <Image
           src={src}
           alt={alt}
-          width={450}
-          height={920}
+          width={660}
+          height={1434}
           className="w-full h-auto block"
           onError={() => setImageError(true)}
         />

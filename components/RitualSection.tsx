@@ -65,13 +65,13 @@ export default function RitualSection() {
 
         {/* Phone mockup — Breathing phase screen */}
         <FadeIn delay={0.5} duration={1.5}>
-          <div className="relative max-w-[260px] w-full aspect-[450/920]" title="breathing screen">
+          <div className="relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[clamp(12px,4.2%,18px)]" title="breathing screen">
             {!imageError && (
               <Image
                 src="/screenshots/screen-breathing.png"
                 alt="Hesya breathing ritual screen"
-                width={450}
-                height={920}
+                width={660}
+                height={1434}
                 className="w-full h-auto block"
                 onError={() => setImageError(true)}
               />

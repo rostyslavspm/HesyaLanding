@@ -18,15 +18,15 @@ export default function AnchorPhilosophy() {
     <section className="section-standard noise-overlay px-6" aria-label="Your anchor - Choose one word">
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-14 md:flex-row md:items-center md:gap-16">
 
-        {/* ── Phone Mockup — Affect label screen ── */}
+        {/* ── Phone Mockup — Ritual completion screen ── */}
         <FadeIn delay={0.15} duration={1.5} className="shrink-0 md:flex-1 flex justify-center md:justify-start">
-          <div className="relative max-w-[260px] w-full aspect-[450/920]" title="affect label">
+          <div className="relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[clamp(12px,4.2%,18px)]" title="anchor word">
             {!imageError && (
               <Image
-                src="/screenshots/screen-affect.png"
-                alt="Hesya affect label selection screen"
-                width={450}
-                height={920}
+                src="/screenshots/screen-ready.png"
+                alt="Hesya ritual completion — ready to continue"
+                width={660}
+                height={1434}
                 className="w-full h-auto block"
                 onError={() => setImageError(true)}
               />
