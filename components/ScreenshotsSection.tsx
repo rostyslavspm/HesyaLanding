@@ -12,8 +12,8 @@ const STEPS = [
     description: "Hesya quietly observes your rhythm — switching, stretching, drifting — and shows it on your lock screen.",
   },
   {
-    src: "/screenshots/screen-lockscreen.png",
-    alt: "iOS lock screen with Hesya live activity",
+    src: "/screenshots/screen-notification.png",
+    alt: "Hesya notification — is there space for a breath?",
     caption: "A gentle pause",
     description: "When it senses drift, Hesya offers a brief moment. Not a block — an invitation to check in with yourself.",
   },

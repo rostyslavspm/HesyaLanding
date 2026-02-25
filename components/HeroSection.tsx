@@ -210,15 +210,17 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
                 className="relative animate-shadow-breathe"
                 style={{ filter: "drop-shadow(var(--shadow-hero))" }}
               >
-                <Image
-                  src="/screenshots/screen-home.png"
-                  alt="Hesya home screen"
-                  width={450}
-                  height={920}
-                  className="h-auto w-full select-none"
-                  priority
-                  sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
-                />
+                <div className="overflow-hidden rounded-[clamp(12px,4.2%,18px)]">
+                  <Image
+                    src="/screenshots/screen-home.png"
+                    alt="Hesya home screen"
+                    width={660}
+                    height={1434}
+                    className="h-auto w-full select-none"
+                    priority
+                    sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
+                  />
+                </div>
               </div>
             </div>
           </TiltOnMouse>
@@ -312,6 +314,7 @@ function HeroStatic({ onOpenNotify }: HeroSectionProps) {
                   height={1434}
                   className="h-auto w-full select-none"
                   priority
+                  sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
                 />
               </div>
             </div>
