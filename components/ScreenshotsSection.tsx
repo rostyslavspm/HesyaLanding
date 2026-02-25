@@ -18,7 +18,7 @@ const STEPS = [
     description: "When it senses drift, Hesya offers a brief moment. Not a block — an invitation to check in with yourself.",
   },
   {
-    src: "/screenshots/screen-breathing.png",
+    src: "/screenshots/screen-breath.png",
     alt: "Hesya breathing ritual — inhale",
     caption: "Take a breath",
     description: "Three cycles of the physiological sigh. A simple act that shifts your nervous system from reactive to present.",
@@ -219,9 +219,10 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                   {STEPS.map(({ src, alt }, i) => (
                     <div
                       key={src}
-                      className={i === 0 ? "relative" : "absolute inset-0"}
+                      className={`${i === 0 ? "relative" : "absolute inset-0"} overflow-hidden rounded-[2rem]`}
                       style={{
                         opacity: activeIndex === i ? 1 : 0,
+                        zIndex: activeIndex === i ? 1 : 0,
                         transition: imageTransition,
                         pointerEvents: "none",
                       }}
