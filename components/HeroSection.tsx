@@ -210,7 +210,7 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
                 className="relative animate-shadow-breathe"
                 style={{ filter: "drop-shadow(var(--shadow-hero))" }}
               >
-                <div className="overflow-hidden rounded-[clamp(12px,4.2%,18px)]">
+                <div className="overflow-hidden rounded-[2rem]">
                   <Image
                     src="/screenshots/screen-home.png"
                     alt="Hesya home screen"
@@ -306,7 +306,7 @@ function HeroStatic({ onOpenNotify }: HeroSectionProps) {
               className="relative"
               style={{ filter: "drop-shadow(var(--shadow-hero))" }}
             >
-              <div className="overflow-hidden rounded-[clamp(12px,4.2%,18px)]">
+              <div className="overflow-hidden rounded-[2rem]">
                 <Image
                   src="/screenshots/screen-home.png"
                   alt="Hesya home screen"

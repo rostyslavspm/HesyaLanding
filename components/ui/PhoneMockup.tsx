@@ -34,7 +34,7 @@ export default function PhoneMockup({
 
   return (
     <div
-      className={`relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[clamp(12px,4.2%,18px)] ${className ?? ""}`}
+      className={`relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[2rem] ${className ?? ""}`}
       title={fallbackLabel}
     >
       {!imageError && (

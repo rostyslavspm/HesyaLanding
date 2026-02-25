@@ -215,7 +215,7 @@ export default function ScreenshotsSection({ id = "screens" }: { id?: string }) 
                   transition: driftTransition,
                 }}
               >
-                <div className="overflow-hidden rounded-[clamp(12px,4.2%,18px)]">
+                <div className="overflow-hidden rounded-[2rem]">
                   {STEPS.map(({ src, alt }, i) => (
                     <div
                       key={src}
