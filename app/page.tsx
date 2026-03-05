@@ -1,6 +1,5 @@
 "use client";
 
-import { useNotifyModal } from "../components/NotifyModalProvider";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import WhatHesyaDoesSection from "../components/WhatHesyaDoesSection";
@@ -16,13 +15,11 @@ import Footer from "../components/Footer";
 import ParallaxLayer from "../components/motion/ParallaxLayer";
 
 export default function Home() {
-  const openNotify = useNotifyModal();
-
   return (
     <>
-      <Header onOpenNotify={openNotify} />
+      <Header />
       <main id="main" aria-label="Hesya landing page">
-        <HeroSection onOpenNotify={openNotify} />
+        <HeroSection />
 
         {/* Decorative parallax blob — Hero → WhatHesyaDoes transition */}
         <div className="relative overflow-hidden pointer-events-none" style={{ height: 0 }}>
@@ -63,7 +60,7 @@ export default function Home() {
         <ScienceSection />
 
         <div className="section-blend-out">
-          <FinalCTASection onOpenNotify={openNotify} />
+          <FinalCTASection />
         </div>
       </main>
       <Footer />

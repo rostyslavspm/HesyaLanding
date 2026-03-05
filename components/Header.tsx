@@ -3,18 +3,13 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { useNotifyModal } from "./NotifyModalProvider";
 import HeaderCTA from "./HeaderCTA";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
 import { EASE_HESYA } from "../lib/motion";
 
-type HeaderProps = {
-  onOpenNotify?: () => void;
-};
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 
-export default function Header({ onOpenNotify }: HeaderProps) {
-  const openFromContext = useNotifyModal();
-  const openNotify = onOpenNotify ?? openFromContext;
+export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
   useHeaderScroll(headerRef);
@@ -74,12 +69,12 @@ export default function Header({ onOpenNotify }: HeaderProps) {
 
           {/* CTA */}
           <div className="hidden sm:block">
-            <HeaderCTA onClick={openNotify} label="Get notified" />
+            <HeaderCTA href={TESTFLIGHT_URL} label="Try on TestFlight" />
           </div>
 
           {/* Mobile CTA only (nav hidden) */}
           <div className="sm:hidden">
-            <HeaderCTA onClick={openNotify} label="Notify me" />
+            <HeaderCTA href={TESTFLIGHT_URL} label="TestFlight" />
           </div>
         </div>
       </div>
