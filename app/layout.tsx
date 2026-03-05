@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Lato, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import NotifyModalProvider from "../components/NotifyModalProvider";
 import SmoothScroll from "../components/SmoothScroll";
 
 const lato = Lato({
@@ -59,14 +58,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lato.variable} ${instrumentSerif.variable}`}>
       <body suppressHydrationWarning className="font-sans antialiased">
-        <NotifyModalProvider>
-          <SmoothScroll>
-            <a href="#main" className="skip-link">
-              Skip to main content
-            </a>
-            {children}
-          </SmoothScroll>
-        </NotifyModalProvider>
+        <SmoothScroll>
+          <a href="#main" className="skip-link">
+            Skip to main content
+          </a>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -6,9 +6,7 @@ import AppStoreBadge from "./AppStoreBadge";
 import TiltOnMouse from "./motion/TiltOnMouse";
 import { EASE_HESYA, DURATION, STAGGER } from "../lib/motion";
 
-type HeroSectionProps = {
-  onOpenNotify?: () => void;
-};
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 
 /* ── Orchestrator ──────────────────────────────────── */
 
@@ -96,12 +94,12 @@ function AnimatedWords({ text }: { text: string }) {
 
 /* ── Component ─────────────────────────────────────── */
 
-export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
+export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
 
   /* Reduced-motion: render static (original layout, no animation) */
   if (prefersReducedMotion) {
-    return <HeroStatic onOpenNotify={onOpenNotify} />;
+    return <HeroStatic />;
   }
 
   return (
@@ -161,8 +159,8 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
             variants={ctaVariant}
           >
             <AppStoreBadge
-              onClick={onOpenNotify}
-              label="Get notified on launch"
+              href={TESTFLIGHT_URL}
+              label="Try the beta on TestFlight"
               footer={null}
             />
             <p
@@ -170,12 +168,6 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
               style={{ color: "var(--foreground-muted)" }}
             >
               Free&nbsp;&middot;&nbsp;No tracking&nbsp;&middot;&nbsp;iOS
-            </p>
-            <p
-              className="text-micro whitespace-nowrap"
-              style={{ color: "var(--foreground-muted)" }}
-            >
-              iOS only&nbsp;&middot;&nbsp;Launching soon
             </p>
             <a
               href="#what"
@@ -232,7 +224,7 @@ export default function HeroSection({ onOpenNotify }: HeroSectionProps) {
 
 /* ── Static fallback (reduced motion) ──────────────── */
 
-function HeroStatic({ onOpenNotify }: HeroSectionProps) {
+function HeroStatic() {
   return (
     <section className="section-full relative overflow-hidden" aria-label="Hero">
       <div
@@ -264,8 +256,8 @@ function HeroStatic({ onOpenNotify }: HeroSectionProps) {
 
           <div className="flex flex-col items-center gap-3 md:items-start">
             <AppStoreBadge
-              onClick={onOpenNotify}
-              label="Get notified on launch"
+              href={TESTFLIGHT_URL}
+              label="Try the beta on TestFlight"
               footer={null}
             />
             <p
@@ -273,12 +265,6 @@ function HeroStatic({ onOpenNotify }: HeroSectionProps) {
               style={{ color: "var(--foreground-muted)" }}
             >
               Free&nbsp;&middot;&nbsp;No tracking&nbsp;&middot;&nbsp;iOS
-            </p>
-            <p
-              className="text-micro whitespace-nowrap"
-              style={{ color: "var(--foreground-muted)" }}
-            >
-              iOS only&nbsp;&middot;&nbsp;Launching soon
             </p>
             <a
               href="#what"

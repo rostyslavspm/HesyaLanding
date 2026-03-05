@@ -5,14 +5,12 @@ import OrbGraphic from "./OrbGraphic";
 import Reveal from "./motion/Reveal";
 import TextReveal from "./motion/TextReveal";
 
-type FinalCTASectionProps = {
-  onOpenNotify?: () => void;
-};
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 
 /**
- * FinalCTA — full-viewport closing ritual. Gradient + orb + launch list CTA.
+ * FinalCTA — full-viewport closing ritual. Gradient + orb + TestFlight CTA.
  */
-export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) {
+export default function FinalCTASection() {
   return (
     <section
       className="section-full noise-overlay relative overflow-hidden bg-fixed-fallback"
@@ -20,7 +18,7 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
         background:
           "linear-gradient(160deg, var(--base) 0%, var(--mid) 50%, var(--accent) 100%)",
       }}
-      aria-label="Get notified when Hesya launches"
+      aria-label="Try Hesya on TestFlight"
     >
       <div aria-hidden className="cta-vignette" />
       <div className="container-hesya relative z-10">
@@ -43,15 +41,15 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
               className="text-body text-reading"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Hesya is coming to iPhone soon. Leave your email and
-              we&apos;ll let you know once — when it&apos;s ready.
+              Hesya is available for beta testing on TestFlight.
+              Try it free — no tracking, no noise.
             </p>
           </Reveal>
 
           <Reveal variant="slide-up" delay={0.35}>
             <AppStoreBadge
-              onClick={onOpenNotify}
-              label="Be the first to try Hesya"
+              href={TESTFLIGHT_URL}
+              label="Try the beta on TestFlight"
               footer={null}
             />
           </Reveal>
@@ -61,7 +59,7 @@ export default function FinalCTASection({ onOpenNotify }: FinalCTASectionProps) 
               className="text-micro"
               style={{ color: "var(--foreground-muted)" }}
             >
-              One email · No spam · Unsubscribe anytime
+              Free&nbsp;&middot;&nbsp;No tracking&nbsp;&middot;&nbsp;iOS
             </p>
           </Reveal>
         </div>
