@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import NotifyModalProvider from "../components/NotifyModalProvider";
 import SmoothScroll from "../components/SmoothScroll";
 
 const inter = Inter({
@@ -64,14 +63,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
       <body suppressHydrationWarning className="font-sans antialiased noise-overlay overflow-x-hidden">
-        <NotifyModalProvider>
-          <SmoothScroll>
-            <a href="#main" className="skip-link">
-              Skip to main content
-            </a>
-            {children}
-          </SmoothScroll>
-        </NotifyModalProvider>
+        <SmoothScroll>
+          <a href="#main" className="skip-link">
+            Skip to main content
+          </a>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
