@@ -44,7 +44,7 @@ export default function TheWidget() {
 
         <div className="widget-content relative flex justify-center items-center w-full">
           {/* Mockup with The Breath loop */}
-          <div className="animate-breath relative w-[220px] md:w-[320px]">
+          <div className="animate-breath relative w-[220px] md:w-[320px] will-change-transform transform-gpu">
             <Image
               src="/screenshots/Homescreen-widget.png"
               alt="Hesya Widget on Home Screen"
@@ -56,10 +56,14 @@ export default function TheWidget() {
             />
             {/* Blur mask over everything except the widget. */}
             <div 
-              className="absolute inset-0 rounded-[3rem] backdrop-blur-[12px] bg-white/30 pointer-events-none"
+              className="absolute inset-0 rounded-[3rem] backdrop-blur-[12px] bg-white/30 pointer-events-none filter-gpu"
               style={{
                  WebkitMaskImage: "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)",
-                 maskImage: "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)"
+                 maskImage: "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)",
+                 WebkitTransform: "translateZ(0)",
+                 transform: "translateZ(0)",
+                 WebkitBackfaceVisibility: "hidden",
+                 backfaceVisibility: "hidden"
               }}
             />
           </div>
