@@ -99,8 +99,9 @@ export default function ThePearl() {
 
       <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
         <h2 className="pearl-text text-display-italic text-[var(--color-soft-obsidian)] leading-[1.3]">
-          Most apps want your time.<br />
-          We want to give it back.
+          Three breaths.
+          <br /><br />
+          <span className="text-4xl">A pause between drift and choice.</span>
         </h2>
       </div>
     </section>

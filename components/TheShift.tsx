@@ -103,9 +103,10 @@ export default function TheShift() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center max-w-5xl">
         
         <div className="shift-content text-center md:text-left z-10">
-          <h2 className="text-display-italic mb-6">Sleep & Night</h2>
+          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4 transition-colors duration-1000">WHAT HESYA NOTICES</p>
+          <h2 className="text-display-italic mb-6">Drift has a shape.</h2>
           <p className="text-body opacity-80 max-w-lg mx-auto md:mx-0">
-            When the sun sets, Hesya adapts. The interface dims, cooldowns extend organically, and notifications surrender to your circadian rhythms. 
+            Hesya watches patterns in how you use your phone — not what you&apos;re doing, just how it flows. Everything happens on your device. Nothing leaves it.
           </p>
         </div>
 

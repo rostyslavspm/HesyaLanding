@@ -35,11 +35,14 @@ export default function TheFinale() {
       <div className="container mx-auto px-6 h-full flex flex-col items-center justify-center">
         
         <div className="finale-content text-center mb-10 flex flex-col items-center">
-          <p className="font-mono tracking-[0.3em] text-[var(--color-soft-obsidian)]/60 text-sm mb-8">
-            4.9 ★★★★★
+          <h2 className="text-display-italic text-[var(--color-soft-obsidian)] mb-6">
+            Your mind already knows<br />the way back.
+          </h2>
+          <p className="text-body text-[var(--color-soft-obsidian)]/80 max-w-md mb-8">
+            Hesya is available for beta testing on TestFlight. Try it free — no tracking, no noise.
           </p>
           <div className="btn-magnetic inline-block cursor-pointer">
-             <AppStoreBadge label="Get notified on launch" footer={null} onClick={() => window.location.href="#"} />
+             <AppStoreBadge label="Try the beta on TestFlight" footer={null} onClick={() => window.location.href="#"} />
           </div>
         </div>
 

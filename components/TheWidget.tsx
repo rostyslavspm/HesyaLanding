@@ -33,9 +33,12 @@ export default function TheWidget() {
       <div className="container mx-auto px-6 max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         
         <div className="widget-content text-center md:text-left">
-          <h2 className="text-display-italic mb-6 text-[var(--color-soft-obsidian)]">Silent Presence</h2>
+          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4">YOUR ANCHOR</p>
+          <h2 className="text-display-italic mb-6 text-[var(--color-soft-obsidian)]">A word that matters.</h2>
           <p className="text-body text-[var(--color-soft-obsidian)]/80 max-w-md mx-auto md:mx-0">
-            A quiet reminder on your home screen. It lives elegantly alongside your apps, waiting only for when you need to center yourself.
+            Choose one word that matters to you. A value. A reminder of what you&apos;re for.
+            <br /><br />
+            It lives on your lock screen and widget. Always visible. Never urgent. At the end of every ritual, it&apos;s the last thing you see.
           </p>
         </div>
 

@@ -58,17 +58,24 @@ export default function TheHero() {
         </div>
 
         {/* Headline */}
-        <h1 className="animate-in text-display-italic text-[var(--color-soft-obsidian)] max-w-4xl mb-12">
+        <h1 className="animate-in text-display-italic text-[var(--color-soft-obsidian)] max-w-4xl mb-8">
           When your attention slips,
           <br />
-          Hesya brings you back.
+          Hesya invites you back.
         </h1>
+
+        <p className="animate-in max-w-[36rem] text-[var(--color-soft-obsidian)]/80 text-lg mb-8">
+          An iPhone companion that helps you notice distraction and return to what matters — without noise or guilt.
+        </p>
 
         {/* Action */}
         <div className="animate-in">
           <button className="btn-pill btn-magnetic text-tracked">
-            Get the App
+            Try the beta on TestFlight
           </button>
+          <p className="mt-6 text-sm text-[var(--color-soft-obsidian)]/50 tracking-wide uppercase">
+            Built to feel native. Designed to stay quiet.
+          </p>
         </div>
 
       </div>

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import HeroSection from "../components/HeroSection";
-import WhatHesyaDoesSection from "../components/WhatHesyaDoesSection";
-import PatternSection from "../components/PatternSection";
-import RitualSection from "../components/RitualSection";
-import AnchorPhilosophy from "../components/AnchorPhilosophy";
-import ScreenshotsSection from "../components/ScreenshotsSection";
-import DeeperValueSection from "../components/DeeperValueSection";
-import PrivacySection from "../components/PrivacySection";
-import ScienceSection from "../components/ScienceSection";
-import FinalCTASection from "../components/FinalCTASection";
-import ParallaxLayer from "../components/motion/ParallaxLayer";
+import TheHero from "../components/TheHero";
+import TheValues from "../components/TheValues";
+import ThePearl from "../components/ThePearl";
+import TheShift from "../components/TheShift";
+import TheWidget from "../components/TheWidget";
+import TheFinale from "../components/TheFinale";
 
 export const metadata: Metadata = {
   title: "Hesya — Notice when you drift. Return when you choose.",
@@ -23,32 +18,12 @@ export default function Home() {
     <>
       <Header />
       <main id="main" aria-label="Hesya landing page">
-        <HeroSection />
-
-        {/* Decorative parallax blob — Hero → WhatHesyaDoes transition */}
-        <div className="relative overflow-hidden pointer-events-none" style={{ height: 0 }}>
-          <ParallaxLayer
-            speed={0.12}
-            className="absolute left-1/2 -translate-x-1/2 -top-[200px] w-[600px] h-[400px]"
-            style={{
-              background: "radial-gradient(ellipse at center, var(--orb-glow), transparent 70%)",
-              opacity: 0.12,
-            }}
-          />
-        </div>
-
-        <WhatHesyaDoesSection id="what" />
-        <PatternSection />
-        <RitualSection />
-        <AnchorPhilosophy />
-        <ScreenshotsSection />
-        <DeeperValueSection />
-        <PrivacySection />
-        <ScienceSection />
-
-        <div className="section-blend-out">
-          <FinalCTASection />
-        </div>
+        <TheHero />
+        <TheValues />
+        <ThePearl />
+        <TheShift />
+        <TheWidget />
+        <TheFinale />
       </main>
       <Footer />
     </>
