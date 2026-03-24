@@ -19,10 +19,10 @@ function FaqItem({ question, answer }: FaqItem) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="border-b border-border">
+    <div className="border-b border-[var(--color-soft-obsidian)]/10">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left text-sm font-normal transition-opacity hover:opacity-70"
+        className="flex w-full items-center justify-between gap-4 py-6 text-left text-lg md:text-xl font-medium text-[var(--color-soft-obsidian)] transition-opacity hover:opacity-70"
         aria-expanded={open}
       >
         {question}
@@ -64,7 +64,7 @@ function FaqItem({ question, answer }: FaqItem) {
             }}
             className="overflow-hidden"
           >
-            <p className="pb-4 text-sm leading-relaxed text-foreground-secondary">
+            <p className="pb-6 text-base md:text-lg leading-relaxed text-[var(--color-soft-obsidian)]/70">
               {answer}
             </p>
           </motion.div>
@@ -76,8 +76,8 @@ function FaqItem({ question, answer }: FaqItem) {
 
 export default function FaqSection({ title, items }: FaqSectionProps) {
   return (
-    <div className="mb-10">
-      <h2 className="mb-4 text-lg font-normal">{title}</h2>
+    <div className="mb-12">
+      <h2 className="mb-6 text-2xl font-serif italic text-[var(--color-soft-obsidian)]">{title}</h2>
       <div>
         {items.map((item) => (
           <FaqItem key={item.question} {...item} />
