@@ -13,19 +13,13 @@ export default function TheShift() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Body background shift
+      // Image crossfade on scroll
       ScrollTrigger.create({
         trigger: container.current,
         start: "top 50%",
         end: "bottom 50%",
         onEnter: () => {
-          gsap.to(document.body, {
-            backgroundColor: "var(--color-deep-midnight)",
-            color: "var(--color-mist-white)",
-            duration: 1.2,
-            ease: "power2.inOut"
-          });
-          // Crossfade to dark mode mockup
+          // Crossfade to secondary mockup
           if (imageRef.current) {
             gsap.to(imageRef.current, {
               opacity: 1,
@@ -35,12 +29,6 @@ export default function TheShift() {
           }
         },
         onLeaveBack: () => {
-          gsap.to(document.body, {
-            backgroundColor: "var(--color-mist-white)",
-            color: "var(--color-soft-obsidian)",
-            duration: 1.2,
-            ease: "power2.inOut"
-          });
           if (imageRef.current) {
             gsap.to(imageRef.current, {
               opacity: 0,
@@ -50,12 +38,6 @@ export default function TheShift() {
           }
         },
         onEnterBack: () => {
-          gsap.to(document.body, {
-            backgroundColor: "var(--color-deep-midnight)",
-            color: "var(--color-mist-white)",
-            duration: 1.2,
-            ease: "power2.inOut"
-          });
           if (imageRef.current) {
             gsap.to(imageRef.current, {
               opacity: 1,
@@ -65,12 +47,6 @@ export default function TheShift() {
           }
         },
         onLeave: () => {
-          gsap.to(document.body, {
-            backgroundColor: "var(--color-mist-white)",
-            color: "var(--color-soft-obsidian)",
-            duration: 1.2,
-            ease: "power2.inOut"
-          });
           if (imageRef.current) {
             gsap.to(imageRef.current, {
               opacity: 0,
@@ -122,11 +98,11 @@ export default function TheShift() {
                 className="w-full h-auto select-none"
                 priority
               />
-              {/* Dark Mode Mockup (crossfades on top) */}
+              {/* Pattern State Mockup (crossfades on top) */}
               <Image
                 ref={imageRef}
-                src="/screenshots/screen-home-dark.png" // User must provide this asset
-                alt="Hesya Dark Mode"
+                src="/screenshots/screen-lockscreen.png"
+                alt="Hesya Pattern Screen"
                 width={660}
                 height={1434}
                 className="absolute inset-0 w-full h-auto select-none opacity-0"

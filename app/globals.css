@@ -42,7 +42,7 @@ body {
   font-size: clamp(2.25rem, 8vw, 5rem);
   font-weight: 300;
   letter-spacing: -0.025em;
-  line-height: +1.05;
+  line-height: 1.05;
 }
 
 .text-display-italic {
@@ -51,7 +51,7 @@ body {
   font-weight: 300;
   font-style: italic;
   letter-spacing: -0.025em;
-  line-height: +1.05;
+  line-height: 1.05;
 }
 
 .text-body {

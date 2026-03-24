@@ -34,7 +34,7 @@ function DiagnosticShuffler() {
   }, []);
 
   return (
-    <div ref={containerRef} className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center justify-between h-[360px] md:h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+    <div ref={containerRef} className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center justify-between min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       <div className="text-center mb-8 mt-2">
         <h3 className="text-display-italic text-4xl mb-2 text-[var(--color-soft-obsidian)]">Notice</h3>
         <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">See when your rhythm changes — switching, stretching, drifting.</p>
@@ -131,7 +131,7 @@ export default function TheValues() {
   return (
     <section ref={container} className="py-20 md:py-32 px-6 bg-[var(--color-mist-white)] relative z-10">
       <div className="container mx-auto">
-        <div className="mb-20 text-center max-w-3xl mx-auto">
+        <div className="mb-12 md:mb-20 text-center max-w-3xl mx-auto">
           <h2 className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-6">WHAT HESYA DOES</h2>
           <p className="text-body text-[var(--color-soft-obsidian)]/80 text-xl font-medium">
             Hesya watches how you move through your phone — not what you do, just the rhythm. When it senses drift, it offers a gentle moment to return.

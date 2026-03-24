@@ -18,26 +18,44 @@ export default function ThePearl() {
     ctx = gsap.context(() => {
       let isHovering = false;
 
-      // Mouse follower effect
-      const onMouseMove = (e: MouseEvent) => {
+      // Mouse & Touch follower effect
+      const onPointerMove = (e: MouseEvent | TouchEvent) => {
         if (!container.current) return;
         const rect = container.current.getBoundingClientRect();
         
-        // Calculate relative position of mouse inside the container
+        let clientX, clientY;
+        if ('touches' in e && e.touches.length > 0) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else if ('clientX' in e) {
+          clientX = (e as MouseEvent).clientX;
+          clientY = (e as MouseEvent).clientY;
+        } else {
+          return;
+        }
+
+        // Calculate relative position inside the container
         // mapping [-1, 1] range
-        mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-        mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        mouseX = ((clientX - rect.left) / rect.width - 0.5) * 2;
+        mouseY = ((clientY - rect.top) / rect.height - 0.5) * 2;
       };
 
       if (container.current) {
-        container.current.addEventListener("mousemove", onMouseMove);
-        // Reset when mouse leaves
+        container.current.addEventListener("mousemove", onPointerMove);
+        container.current.addEventListener("touchmove", onPointerMove, { passive: true });
+        
+        // Reset effects
         container.current.addEventListener("mouseenter", () => isHovering = true);
-        container.current.addEventListener("mouseleave", () => {
+        container.current.addEventListener("touchstart", () => isHovering = true, { passive: true });
+        
+        const resetHover = () => {
           isHovering = false;
           mouseX = 0;
           mouseY = 0;
-        });
+        };
+        
+        container.current.addEventListener("mouseleave", resetHover);
+        container.current.addEventListener("touchend", resetHover);
       }
 
       // requestAnimationFrame ticker managed by GSAP
@@ -70,8 +88,8 @@ export default function ThePearl() {
 
       return () => {
         if (container.current) {
-          container.current.removeEventListener("mousemove", onMouseMove);
-          container.current.removeEventListener("mouseleave", () => {});
+          container.current.removeEventListener("mousemove", onPointerMove);
+          container.current.removeEventListener("touchmove", onPointerMove);
         }
       };
     }, container);
@@ -87,7 +105,7 @@ export default function ThePearl() {
       {/* The Pearl Gradient background */}
       <div 
         ref={pearlRef}
-        className="absolute w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
+        className="absolute w-[150vw] h-[150vw] sm:w-[600px] sm:h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle at center, var(--color-pearl-glow) 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0) 70%)",
           filter: "blur(60px)",
