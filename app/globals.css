@@ -1,371 +1,79 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════
-   HESYA DESIGN SYSTEM — Web UI Kit
-   Extracted from Hesya iOS (HesyaTypography.swift,
-   Palette.swift, RitualGradientPalette.swift,
-   StainedGlassUI.swift, AnchorStyle.swift)
-   ═══════════════════════════════════════════════════════ */
+@theme inline {
+  --color-mist-white: #F2F2F2;
+  --color-soft-obsidian: #262322;
+  --color-pearl-glow: #FFFFFF;
+  --color-deep-midnight: #161B22;
 
-/* ─── Light Mode — Clean Neutral
-   Calm, minimal, spacious. Spec: clean light neutral.
-   ──────────────────────────────────────────────────────── */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
 :root {
-  --base:   #FAF9F7;
-  --mid:    #F5F4F0;
-  --accent: #F7F6F2;
-  --wave:   #6B6B6B;
-
-  --background: #FAF9F7;
-
-  /* Text — neutral, accessible (WCAG AA on all section backgrounds) */
-  --foreground:           rgba(28, 28, 28, 0.9);
-  --foreground-secondary: rgba(28, 28, 28, 0.65);
-  --foreground-muted:     rgba(28, 28, 28, 0.64);
-  --foreground-reading:   color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
-
-  --surface:          rgba(255, 255, 255, 0.52);
-  --surface-elevated: rgba(255, 255, 255, 0.70);
-  --surface-tinted:   rgba(248, 248, 246, 0.58);
-  --border:           rgba(0, 0, 0, 0.06);
-
-  /* State indicator colors — from WidgetOrbColors.forState() */
-  --state-calm:        rgba(150, 145, 138, 0.85);
-  --state-pushing:     rgba(232, 166, 0,   0.90);
-  --state-overwhelmed: rgba(255, 100, 72,  0.90);
-  --state-restless:    rgba(20,  178, 171, 0.90);
-
-  /* Orb — calm state (warm daytime) */
-  --orb-center: rgba(255, 252, 245, 0.94);
-  --orb-edge:   rgba(210, 185, 155, 0.58);
-  --orb-glow:   rgba(245, 224, 195, 0.55);
-
-  /* Motion — from AnchorStyle.Motion */
-  --ease-hesya:     cubic-bezier(0.32, 0.72, 0, 1);
-  --dur-micro:      0.35s;
-  --dur-hover:      0.25s;
-  --dur-word:       0.5s;
-  --dur-reveal:     0.55s;
-  --dur-hero:       0.8s;
-  --dur-transition: 1.2s;
-  --dur-ritual:     1.5s;
-
-  /* Stagger scale */
-  --stagger-tight:   0.035;
-  --stagger-default: 0.06;
-  --stagger-loose:   0.1;
+  --background: var(--color-mist-white);
+  --foreground: var(--color-soft-obsidian);
 
   /* Layout */
   --container: 1100px;
   --gutter: clamp(20px, 4vw, 44px);
-
-  /* Section rhythm */
   --section-py: clamp(72px, 10vw, 128px);
   --section-py-lg: clamp(92px, 12vw, 168px);
 
-  /* Radius */
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
-
-  /* Hairlines + focus */
-  --hairline: rgba(0, 0, 0, 0.06);
-  --focus: color-mix(in srgb, var(--wave) 55%, transparent);
-
-  /* Shadows */
-  --shadow-soft: 0 18px 60px rgba(0,0,0,0.22);
-  --shadow-hero: 0 28px 120px rgba(0,0,0,0.28);
-  --shadow-device: 0 40px 120px rgba(0,0,0,0.28);
-
-  /* Z layers */
-  --z-header: 50;
-  --z-overlay: 40;
-  --z-content: 10;
+  /* Easing */
+  --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
 }
-
-/* ─── Dark Mode — Deep Night Palette ───────────────────
-   From Palette.swift night: base #141822, warm beige text
-   ──────────────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --base:   #141822;
-    --mid:    #1D2531;
-    --accent: #27303E;
-    --wave:   #8A9EB8;
-
-    --background: #141822;
-
-    --foreground:           rgba(209, 199, 188, 0.82);
-    --foreground-secondary: rgba(209, 199, 188, 0.76);
-    --foreground-muted:     rgba(209, 199, 188, 0.68);
-
-    --surface:          rgba(50, 60, 76, 0.42);
-    --surface-elevated: rgba(60, 72, 90, 0.60);
-    --surface-tinted:   rgba(30, 38, 52, 0.58);
-    --border:           rgba(100, 120, 150, 0.24);
-
-    --orb-center: rgba(118, 128, 152, 0.88);
-    --orb-edge:   rgba(55, 68, 88, 0.58);
-    --orb-glow:   rgba(45, 60, 85, 0.48);
-  }
-}
-
-/* ─── Tailwind v4 Theme Bridge ──────────────────────── */
-@theme inline {
-  --color-background:           var(--background);
-  --color-foreground:           var(--foreground);
-  --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-muted:     var(--foreground-muted);
-  --color-base:                 var(--base);
-  --color-mid:                  var(--mid);
-  --color-accent:               var(--accent);
-  --color-wave:                 var(--wave);
-  --color-surface:              var(--surface);
-  --color-surface-elevated:     var(--surface-elevated);
-  --color-surface-tinted:       var(--surface-tinted);
-  --color-border:               var(--border);
-
-  --font-sans:  var(--font-lato);
-  --font-serif: var(--font-serif);
-}
-
-/* ─── Base ──────────────────────────────────────────── */
-/* scroll-behavior removed — Lenis handles smooth scroll (with reduced-motion fallback) */
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   min-height: 100svh;
+  overflow-x: hidden; /* Prevents global noise overlay bleed on mobile */
 }
 
-/* ─── Typography Scale ──────────────────────────────────
-   Mapped from HesyaTypography.swift
-   ──────────────────────────────────────────────────────── */
+/* Tracking utility for Inter elements */
+.text-tracked {
+  letter-spacing: 0.05em;
+}
 
-/* Display — serif, ceremonial (anchor word, hero headline) */
+/* Typography Overrides */
 .text-display {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 400;
+  font-size: clamp(2.25rem, 8vw, 5rem);
+  font-weight: 300;
   letter-spacing: -0.025em;
-  line-height: 1.08;
+  line-height: +1.05;
 }
 
-/* Hero headline — slightly tighter tracking for ceremonial feel */
-.text-hero {
-  letter-spacing: -0.02em;
-}
-
-.text-display-sm {
+.text-display-italic {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
-}
-
-/* Anchor word — large tracked serif */
-.text-anchor {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5.5vw, 4.5rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.0;
-}
-
-/* Section headings — light sans */
-.text-heading {
-  font-size: clamp(1.125rem, 2.5vw, 1.625rem);
+  font-size: clamp(2.25rem, 8vw, 5rem);
   font-weight: 300;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  line-height: +1.05;
 }
 
-/* Eyebrow — small, tracked, muted (matches ritual "your body noticed") */
-.text-eyebrow {
-  font-size: 0.6875rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--foreground-muted);
-}
-
-/* Body — light, generous line-height */
 .text-body {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.78;
-}
-
-.text-body-sm {
-  font-size: 0.875rem;
-  font-weight: 300;
-  line-height: 1.72;
-}
-
-.text-micro {
-  font-size: 0.6875rem;
+  font-size: 1.125rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-.text-reading {
-  color: var(--foreground-reading);
-}
-
-/* ─── Breathing Orb Animations ──────────────────────────
-   6s cycle: matches GradientOrbView.swift (0.92 → 1.08 scale)
-   Physiological sigh: 4s inhale + 1.5s top-up + 8s exhale
+/* ─── Noise Grain Overlay ───────────────────────────────────────
+   Global 0.04 opacity SVG noise overlay to eliminate digital flatness.
    ──────────────────────────────────────────────────────── */
-@keyframes breathe {
-  0%, 100% { transform: scale(0.92); }
-  50%       { transform: scale(1.08); }
-}
-
-@keyframes breathe-glow {
-  0%, 100% { opacity: 0.28; transform: scale(0.90); }
-  50%       { opacity: 0.55; transform: scale(1.10); }
-}
-
-.animate-breathe      { animation: breathe      6s    var(--ease-hesya) infinite; }
-.animate-breathe-glow { animation: breathe-glow 6s    var(--ease-hesya) infinite; }
-
-/* ─── Hero atmosphere (barely perceptible) ─────────────── */
-@keyframes hero-drift {
-  0%   { transform: translate3d(0px, 0px, 0px) scale(1); }
-  50%  { transform: translate3d(0px, -12px, 0px) scale(1.02); }
-  100% { transform: translate3d(0px, 0px, 0px) scale(1); }
-}
-
-@keyframes shadow-breathe {
-  0%, 100% { filter: drop-shadow(0 40px 120px rgba(0,0,0,0.28)); }
-  50%      { filter: drop-shadow(0 48px 140px rgba(0,0,0,0.32)); }
-}
-
-.animate-hero-drift {
-  animation: hero-drift 18s ease-in-out infinite;
-}
-
-.animate-shadow-breathe {
-  animation: shadow-breathe 18s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-breathe,
-  .animate-breathe-glow,
-  .animate-hero-drift,
-  .animate-shadow-breathe {
-    animation: none;
-  }
-  a {
-    transition: none;
-  }
-  .header-sticky,
-  .header-sticky[data-scrolled="true"] {
-    transition: none;
-  }
-}
-
-/* ─── Glass Surfaces ────────────────────────────────────
-   Mapped from RaycastGlassCard: ultraThinMaterial + noise
-   + white stroke @ 0.18–0.22 + highlight gradient
-   ──────────────────────────────────────────────────────── */
-.glass {
-  background: var(--surface);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 2px 8px  rgba(0, 0, 0, 0.04),
-    0 4px 16px rgba(0, 0, 0, 0.03);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.glass-elevated {
-  background: var(--surface-elevated);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid var(--border);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 4px 12px rgba(0, 0, 0, 0.06),
-    0 8px 28px rgba(0, 0, 0, 0.04);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-elevated::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 55%);
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.glass-tinted {
-  background: var(--surface-tinted);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.20),
-    0 2px 8px  rgba(0, 0, 0, 0.04),
-    0 6px 20px rgba(0, 0, 0, 0.04);
-  position: relative;
-  overflow: hidden;
-}
-
-@media (prefers-color-scheme: dark) {
-  .glass {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.10),
-      0 2px 8px  rgba(0, 0, 0, 0.22),
-      0 4px 16px rgba(0, 0, 0, 0.14);
-  }
-  .glass-elevated {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 4px 12px rgba(0, 0, 0, 0.30),
-      0 8px 28px rgba(0, 0, 0, 0.18);
-  }
-}
-
-/* ─── Noise Grain ───────────────────────────────────────
-   Simulates GlassNoiseOverlay (grainNoise Metal shader)
-   via SVG turbulence. Soft-light blend, ~3.5% opacity.
-   ──────────────────────────────────────────────────────── */
-/* Animated grain shift — organic film-grain movement */
-@keyframes grain-shift {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-2%, 1%); }
-  50%  { transform: translate(1%, -2%); }
-  75%  { transform: translate(-1%, 3%); }
-  100% { transform: translate(0, 0); }
-}
-
 .noise-overlay::after {
   content: "";
   position: absolute;
-  inset: -4px; /* slight overflow to hide edge seams during translate */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  inset: -4px; 
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
-  opacity: 0.038;
-  mix-blend-mode: soft-light;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
   pointer-events: none;
   border-radius: inherit;
-  animation: grain-shift 8s steps(4) infinite;
+  z-index: 40;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -375,250 +83,53 @@ body {
   }
 }
 
-/* ─── Section Layout Helpers ────────────────────────── */
-.section-full {
-  min-height: 100svh;
-  display: flex;
+/* ─── Global Animations ─────────────────────────────────────── */
+/* The Breath Loop */
+@keyframes breath-loop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.animate-breath {
+  animation: breath-loop 8s ease-in-out infinite;
+}
+
+@keyframes clock-sweep {
+  0% { stroke-dashoffset: 289; transform: rotate(0deg); transform-origin: center; }
+  50% { stroke-dashoffset: 200; transform: rotate(45deg); transform-origin: center; }
+  100% { stroke-dashoffset: 289; transform: rotate(90deg); transform-origin: center; }
+}
+
+/* Magnetic Button Hover */
+.btn-magnetic {
+  transition: transform 0.4s var(--ease-hesya), box-shadow 0.4s var(--ease-hesya);
+  will-change: transform;
+}
+.btn-magnetic:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Pill Button Style */
+.btn-pill {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--section-py-lg) var(--gutter);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-pearl-glow);
+  color: var(--color-soft-obsidian);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-pill:hover {
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.section-standard {
-  padding: var(--section-py) var(--gutter);
+/* Utility for all containers */
+.rounded-container {
+  border-radius: 3rem;
 }
-
-.container-hesya {
-  width: 100%;
-  max-width: var(--container);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ─── Section Depth — gradient faders between sections ──────
-   Creates spatial layering instead of flat stacking.
-   Apply .section-blend-in / .section-blend-out to section wrappers.
-   ──────────────────────────────────────────────────────── */
-.section-blend-in {
-  position: relative;
-}
-.section-blend-in::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: clamp(48px, 6vw, 80px);
-  background: linear-gradient(to bottom, var(--background), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.section-blend-out {
-  position: relative;
-}
-.section-blend-out::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: clamp(48px, 6vw, 80px);
-  background: linear-gradient(to top, var(--background), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ─── Closing CTA vignette ───────────────────────────────── */
-.cta-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(
-    80% 60% at 50% 30%,
-    transparent 0%,
-    rgba(0, 0, 0, 0.22) 100%
-  );
-  opacity: 0.25;
-}
-@media (prefers-color-scheme: light) {
-  .cta-vignette {
-    background: radial-gradient(
-      80% 60% at 50% 30%,
-      transparent 0%,
-      rgba(0, 0, 0, 0.08) 100%
-    );
-    opacity: 0.4;
-  }
-}
-
-/* ─── Tonal chapters ─────────────────────────────────────── */
-/* oklch gradients avoid muddy midpoints when blending warm tones */
-.bg-chapter-soft {
-  background: radial-gradient(
-    in oklch,
-    70% 60% at 50% 20%,
-    color-mix(in srgb, var(--orb-glow) 22%, transparent) 0%,
-    transparent 60%
-  );
-}
-
-.bg-chapter-warm {
-  background: radial-gradient(
-    in oklch,
-    60% 50% at 45% 15%,
-    color-mix(in srgb, var(--orb-edge) 18%, transparent) 0%,
-    transparent 62%
-  );
-}
-
-/* ─── background-attachment: fixed fallback for iOS Safari ───
-   iOS Safari ignores background-attachment: fixed on non-body elements.
-   Use .bg-fixed-fallback to apply fixed only when supported.
-   ──────────────────────────────────────────────────────── */
-.bg-fixed-fallback {
-  background-attachment: scroll;
-}
-@supports (background-attachment: fixed) {
-  .bg-fixed-fallback {
-    background-attachment: fixed;
-  }
-}
-
-/* ─── Pattern State Dots ────────────────────────────── */
-.dot-calm        { background: var(--state-calm); }
-.dot-pushing     { background: var(--state-pushing); }
-.dot-overwhelmed { background: var(--state-overwhelmed); }
-.dot-restless    { background: var(--state-restless); }
-
-/* ─── Link transitions ──────────────────────────────── */
-a {
-  transition: opacity var(--dur-micro) var(--ease-hesya),
-              text-decoration-color var(--dur-micro) var(--ease-hesya);
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-}
-a:hover {
-  opacity: 0.92;
-  text-decoration-color: currentColor;
-}
-
-/* ─── Animated link underline ─────────────────────────
-   Directional scaleX sweep: right→left on hover-in,
-   left→right on hover-out. Apply to nav/text links only.
-   ──────────────────────────────────────────────────────── */
-.link-animated {
-  position: relative;
-  text-decoration: none !important;
-  text-decoration-color: transparent !important;
-}
-.link-animated::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--dur-micro) var(--ease-hesya);
-}
-.link-animated:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* Text that must contrast against gradient section backgrounds
-   (base→mid→accent + warm peach radial overlay). */
-.text-on-gradient {
-  color: var(--foreground);
-}
-@media (prefers-color-scheme: dark) {
-  .text-on-gradient {
-    color: rgba(255, 255, 255, 0.88);
-  }
-}
-
-/* ─── Sticky header ──────────────────────────────────── */
-.header-sticky {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-header);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: color-mix(in srgb, var(--background) 72%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
-  transition:
-    background var(--dur-transition) var(--ease-hesya),
-    border-color var(--dur-transition) var(--ease-hesya),
-    backdrop-filter var(--dur-transition) var(--ease-hesya),
-    box-shadow var(--dur-transition) var(--ease-hesya);
-}
-.header-sticky[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--background) 82%, transparent);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-}
-.header-sticky::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-/* ─── Modal ───────────────────────────────────────────── */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: var(--z-overlay);
-}
-
-.modal-panel {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: var(--gutter);
-  z-index: var(--z-overlay);
-}
-
-/* ─── Prose (legal/support pages) ──────────────────── */
-.prose h1 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-  color: var(--foreground);
-}
-.prose h2 {
-  font-size: 1.125rem;
-  font-weight: 400;
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
-  color: var(--foreground);
-}
-.prose p, .prose li {
-  font-weight: 300;
-  line-height: 1.78;
-  margin-bottom: 1rem;
-  color: var(--foreground-secondary);
-}
-.prose strong { color: var(--foreground); font-weight: 400; }
-.prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-.prose a { color: var(--wave); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ─── Skip to content (accessibility) ──────────────────── */
 .skip-link {
@@ -643,11 +154,7 @@ a:hover {
   margin: 0;
   overflow: visible;
   clip: auto;
-  background: var(--surface);
-  border-radius: 0.5rem;
-  color: var(--foreground);
+  background: var(--color-pearl-glow);
+  color: var(--color-soft-obsidian);
   font-size: 0.875rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  outline: 2px solid var(--wave);
-  outline-offset: 2px;
 }

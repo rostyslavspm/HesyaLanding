@@ -1,18 +1,19 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import type { Metadata } from "next";
+import { Lato, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import NotifyModalProvider from "../components/NotifyModalProvider";
 import SmoothScroll from "../components/SmoothScroll";
 
-const inter = Inter({
+const lato = Lato({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
   display: "swap",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400"],
   style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
@@ -50,20 +51,14 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
-      <body suppressHydrationWarning className="font-sans antialiased noise-overlay overflow-x-hidden">
+    <html lang="en" className={`${lato.variable} ${instrumentSerif.variable}`}>
+      <body suppressHydrationWarning className="font-sans antialiased">
         <NotifyModalProvider>
           <SmoothScroll>
             <a href="#main" className="skip-link">
