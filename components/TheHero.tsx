@@ -64,7 +64,7 @@ export default function TheHero() {
           Hesya invites you back.
         </h1>
 
-        <p className="animate-in max-w-[36rem] text-[var(--color-soft-obsidian)]/80 text-lg mb-8">
+        <p className="animate-in max-w-xl md:max-w-2xl text-[var(--color-soft-obsidian)]/80 text-lg md:text-xl mb-8">
           An iPhone companion that helps you notice distraction and return to what matters — without noise or guilt.
         </p>
 

@@ -115,12 +115,13 @@ export default function ThePearl() {
         }}
       />
 
-      <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
-        <h2 className="pearl-text text-display-italic text-[var(--color-soft-obsidian)] leading-[1.3]">
+      <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl pearl-text">
+        <h2 className="text-display-italic text-[var(--color-soft-obsidian)] leading-[1.3] mb-6">
           Three breaths.
-          <br /><br />
-          <span className="text-4xl">A pause between drift and choice.</span>
         </h2>
+        <p className="text-[var(--color-soft-obsidian)]/70 text-2xl md:text-3xl font-serif italic">
+          A pause between drift and choice.
+        </p>
       </div>
     </section>
   );

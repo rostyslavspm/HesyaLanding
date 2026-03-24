@@ -51,6 +51,7 @@ export default function TheWidget() {
               width={660}
               height={1434}
               className="w-full h-auto select-none rounded-[3rem] shadow-[0_40px_120px_rgba(0,0,0,0.15)]"
+              unoptimized
               priority
             />
             {/* Blur mask over everything except the widget. */}

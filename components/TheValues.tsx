@@ -34,19 +34,19 @@ function DiagnosticShuffler() {
   }, []);
 
   return (
-    <div ref={containerRef} className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center justify-between min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-      <div className="text-center mb-8 mt-2">
-        <h3 className="text-display-italic text-4xl mb-2 text-[var(--color-soft-obsidian)]">Notice</h3>
+    <div ref={containerRef} className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+      <div className="text-center mb-6">
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Notice</h3>
         <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">See when your rhythm changes — switching, stretching, drifting.</p>
       </div>
 
-      <div className="relative w-full h-40 flex items-center justify-center mb-6">
+      <div className="relative w-full flex-1 flex flex-col items-center justify-center min-h-[160px] mt-4">
         {states.map((state, i) => {
           const isObj = (i - activeIndex + 3) % 3; // 0 is front, 1 is middle, 2 is back
           
-          let y = "0%", scale = 1, zIndex = 30, opacity = 1;
-          if (isObj === 1) { y = "-15%"; scale = 0.9; zIndex = 20; opacity = 0.6; }
-          if (isObj === 2) { y = "-30%"; scale = 0.8; zIndex = 10; opacity = 0.3; }
+          let y = "0px", scale = 1, zIndex = 30, opacity = 1;
+          if (isObj === 1) { y = "-16px"; scale = 0.9; zIndex = 20; opacity = 0.6; }
+          if (isObj === 2) { y = "-32px"; scale = 0.8; zIndex = 10; opacity = 0.3; }
 
           return (
              <div 
@@ -65,13 +65,13 @@ function DiagnosticShuffler() {
 
 function RitualClock() {
   return (
-    <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center justify-between h-[360px] md:h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-      <div className="text-center mb-8 mt-2">
-        <h3 className="text-display-italic text-4xl mb-2 text-[var(--color-soft-obsidian)]">Pause</h3>
+    <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+      <div className="text-center mb-6">
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Pause</h3>
         <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">A gentle cue creates a moment of space before reacting.</p>
       </div>
 
-      <div className="relative w-40 h-40 flex items-center justify-center mb-6">
+      <div className="relative flex-[0.8] w-40 flex items-center justify-center mt-auto mb-4">
         <svg className="w-full h-full rotate-[-90deg]" viewBox="0 0 100 100">
            {/* Background track */}
            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-mist-white)" strokeWidth="2" />
@@ -88,13 +88,13 @@ function RitualClock() {
 
 function StatusPulse() {
   return (
-    <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center justify-between h-[360px] md:h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-      <div className="text-center mb-8 mt-2">
-        <h3 className="text-display-italic text-4xl mb-2 text-[var(--color-soft-obsidian)]">Return</h3>
+    <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+      <div className="text-center mb-6">
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Return</h3>
         <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">Choose where to place your attention — with calm, not guilt.</p>
       </div>
 
-      <div className="relative w-full h-40 flex items-center justify-center mb-6">
+      <div className="relative flex-1 w-full flex flex-col items-center justify-center mt-auto">
         <div className="relative flex items-center justify-center">
           {/* Outer glow - using a muted sage/emerald instead of neon green */}
           <div className="absolute w-20 h-20 border border-[var(--color-soft-obsidian)]/5 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
