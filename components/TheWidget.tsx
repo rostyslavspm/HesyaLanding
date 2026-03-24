@@ -58,8 +58,8 @@ export default function TheWidget() {
             <div 
               className="absolute inset-0 rounded-[3rem] backdrop-blur-[12px] bg-white/30 pointer-events-none"
               style={{
-                 WebkitMaskImage: "radial-gradient(ellipse 23% 10.5% at 76% 16.5%, transparent 95%, black 100%)",
-                 maskImage: "radial-gradient(ellipse 23% 10.5% at 76% 16.5%, transparent 95%, black 100%)"
+                 WebkitMaskImage: "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)",
+                 maskImage: "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)"
               }}
             />
           </div>
