@@ -70,9 +70,9 @@ export default function TheHero() {
 
         {/* Action */}
         <div className="animate-in">
-          <button className="btn-pill btn-magnetic text-tracked">
+          <a href="https://testflight.apple.com/join/2sE4MyhY" className="btn-pill btn-magnetic text-tracked">
             Try the beta on TestFlight
-          </button>
+          </a>
           <p className="mt-6 text-sm text-[var(--color-soft-obsidian)]/50 tracking-wide uppercase">
             Built to feel native. Designed to stay quiet.
           </p>

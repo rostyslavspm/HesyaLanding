@@ -78,7 +78,7 @@ function RitualClock() {
            {/* Quiet Hours Highlight (e.g. 10PM to 7AM) */}
            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-soft-obsidian)" strokeWidth="4" strokeDasharray="289" strokeDashoffset="180" className="opacity-10" />
            {/* Ritual Windows Highlight (animating) */}
-           <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-soft-obsidian)" strokeWidth="6" strokeDasharray="289" strokeDashoffset="289" className="animate-[clock-sweep_8s_ease-in-out_infinite]" strokeLinecap="round" />
+           <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-soft-obsidian)" strokeWidth="6" strokeDasharray="289" strokeDashoffset="289" className="animate-[clock-sweep_8s_ease-in-out_infinite] motion-reduce:animate-none" strokeLinecap="round" />
         </svg>
         <div className="absolute w-2 h-2 rounded-full bg-[var(--color-soft-obsidian)]" />
       </div>
@@ -97,8 +97,8 @@ function StatusPulse() {
       <div className="relative flex-1 w-full flex flex-col items-center justify-center mt-auto">
         <div className="relative flex items-center justify-center">
           {/* Outer glow - using a muted sage/emerald instead of neon green */}
-          <div className="absolute w-20 h-20 border border-[var(--color-soft-obsidian)]/5 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
-          <div className="absolute w-12 h-12 bg-[#829E93]/10 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite_0.5s]" />
+          <div className="absolute w-20 h-20 border border-[var(--color-soft-obsidian)]/5 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] motion-reduce:animate-none" />
+          <div className="absolute w-12 h-12 bg-[#829E93]/10 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite_0.5s] motion-reduce:animate-none" />
           {/* Center dot */}
           <div className="relative w-4 h-4 bg-[#829E93] rounded-full shadow-[0_0_12px_rgba(130,158,147,0.4)]" />
         </div>

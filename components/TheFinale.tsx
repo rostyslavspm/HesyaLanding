@@ -42,7 +42,7 @@ export default function TheFinale() {
             Hesya is available for beta testing on TestFlight. Try it free — no tracking, no noise.
           </p>
           <div className="btn-magnetic inline-block cursor-pointer">
-             <AppStoreBadge label="Try the beta on TestFlight" footer={null} onClick={() => window.location.href="#"} />
+             <AppStoreBadge href="https://testflight.apple.com/join/2sE4MyhY" label="Try the beta on TestFlight" footer={null} />
           </div>
         </div>
 
