@@ -36,9 +36,10 @@ export default function TheWidget() {
           <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4">YOUR ANCHOR</p>
           <h2 className="text-display-italic mb-6 text-[var(--color-soft-obsidian)]">A word that matters.</h2>
           <p className="text-body text-[var(--color-soft-obsidian)]/80 max-w-md mx-auto md:mx-0">
-            Choose one word that matters to you. A value. A reminder of what you&apos;re for.
+            After the breath, after the pause — one word stays.
+            A value you chose. A reminder of what you&apos;re for.
             <br /><br />
-            It lives on your lock screen and widget. Always visible. Never urgent. At the end of every ritual, it&apos;s the last thing you see.
+            It lives on your lock screen and home screen. Always visible. Never urgent.
           </p>
         </div>
 

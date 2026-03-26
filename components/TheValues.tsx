@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 function DiagnosticShuffler() {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const states = ["Deep Work", "Infinite Scroll", "Social Loop"];
+  const states = ["Pushing through", "Restless drift", "Quiet overwhelm"];
 
   useEffect(() => {
     let interval: NodeJS.Timeout;

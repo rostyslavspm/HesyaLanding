@@ -10,7 +10,7 @@ import TheFinale from "../components/TheFinale";
 
 export const metadata: Metadata = {
   title: "Hesya — Notice when you drift. Return when you choose.",
-  description: "Hesya notices when you drift — long focus sessions, rapid switching, restless seeking — and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
+  description: "Hesya notices when your screen time drifts and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
 };
 
 export default function Home() {
@@ -19,9 +19,9 @@ export default function Home() {
       <Header />
       <main id="main" aria-label="Hesya landing page">
         <TheHero />
-        <TheValues />
-        <ThePearl />
         <TheShift />
+        <ThePearl />
+        <TheValues />
         <TheWidget />
         <TheFinale />
       </main>

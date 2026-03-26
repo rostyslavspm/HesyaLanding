@@ -79,10 +79,14 @@ export default function TheShift() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center max-w-5xl">
         
         <div className="shift-content text-center md:text-left z-10">
-          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4 transition-colors duration-1000">WHAT HESYA NOTICES</p>
+          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4 transition-colors duration-1000">YOU ALREADY FEEL IT</p>
           <h2 className="text-display-italic mb-6">Drift has a shape.</h2>
+          <p className="text-body opacity-80 max-w-lg mx-auto md:mx-0 mb-4">
+            The unlock that leads nowhere. The scroll that doesn&apos;t satisfy.
+            It&apos;s not a failure of willpower — it&apos;s a pattern, and it&apos;s measurable.
+          </p>
           <p className="text-body opacity-80 max-w-lg mx-auto md:mx-0">
-            Hesya watches patterns in how you use your phone — not what you&apos;re doing, just how it flows. Everything happens on your device. Nothing leaves it.
+            Hesya sees the shape of that drift — on-device, privately — and offers a moment to choose what comes next.
           </p>
         </div>
 
