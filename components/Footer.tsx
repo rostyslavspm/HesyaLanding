@@ -47,7 +47,7 @@ export default function Footer() {
         {/* Tagline */}
         <Reveal delay={0.08}>
           <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-            A mindful attention companion for iPhone.
+            A calm focus companion for iPhone.
           </p>
         </Reveal>
 

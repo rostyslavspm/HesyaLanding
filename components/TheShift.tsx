@@ -79,14 +79,13 @@ export default function TheShift() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center max-w-5xl">
         
         <div className="shift-content text-center md:text-left z-10">
-          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4 transition-colors duration-1000">YOU ALREADY FEEL IT</p>
-          <h2 className="text-display-italic mb-6">Drift has a shape.</h2>
+          <p className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-4 transition-colors duration-1000">YOU KNOW THE FEELING</p>
+          <h2 className="text-display-italic mb-6">You meant to do one thing.</h2>
           <p className="text-body opacity-80 max-w-lg mx-auto md:mx-0 mb-4">
-            The unlock that leads nowhere. The scroll that doesn&apos;t satisfy.
-            It&apos;s not a failure of willpower — it&apos;s a pattern, and it&apos;s measurable.
+            You sat down for something specific. A while later you&apos;re somewhere else — and you&apos;re not sure when you left.
           </p>
           <p className="text-body opacity-80 max-w-lg mx-auto md:mx-0">
-            Hesya sees the shape of that drift — on-device, privately — and offers a moment to choose what comes next.
+            Hesya keeps the one thing you named in view, and brings you back to it — in your own words, the moment you drift.
           </p>
         </div>
 
@@ -96,17 +95,17 @@ export default function TheShift() {
               {/* Light Mode Mockup */}
               <Image
                 src="/screenshots/screen-home.png"
-                alt="Hesya Light Mode"
+                alt="Hesya — today's intent"
                 width={660}
                 height={1434}
                 className="w-full h-auto select-none"
                 priority
               />
-              {/* Pattern State Mockup (crossfades on top) */}
+              {/* Drift-return mockup (crossfades on top) */}
               <Image
                 ref={imageRef}
                 src="/screenshots/screen-lockscreen.png"
-                alt="Hesya Pattern Screen"
+                alt="Hesya — a quiet return when you drift"
                 width={660}
                 height={1434}
                 className="absolute inset-0 w-full h-auto select-none opacity-0"

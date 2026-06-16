@@ -1,28 +1,34 @@
 # Hesya Landing — Website Copy
 
-All user-visible text extracted from the Hesya landing site, organized by page and section in scroll order.
+All user-visible text extracted from the Hesya landing site, organized by page and section in scroll order. This reflects the v2 product: **declare an intention → protect a focus session → return in your own words when attention drifts → outcome-neutral reflection → private journal.**
+
+> Last synced: June 16, 2026 (v2 content rewrite).
 
 ---
 
 ## Metadata & SEO
 
-**Page title:** Hesya — Notice when you drift. Return when you choose.
+**Page title:** Hesya — Name what matters. Stay with it.
 
-**Meta description:** Hesya notices when you drift — long focus sessions, rapid switching, restless seeking — and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.
+**Meta description:** Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.
 
-**OpenGraph title:** Hesya — Notice when you drift. Return when you choose.
+**OpenGraph title:** Hesya — Name what matters. Stay with it.
 
-**OpenGraph description:** Hesya notices when you drift and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.
+**OpenGraph description:** Declare one intention, protect a focus session, and return in your own words when attention drifts. A calm iPhone companion — free, private, no accounts.
 
-**Twitter title:** Hesya — Notice when you drift. Return when you choose.
+**Twitter title:** Hesya — Name what matters. Stay with it.
 
-**Twitter description:** Hesya notices when you drift and offers a gentle ritual to return to presence. Free, private, on-device only.
+**Twitter description:** Declare one intention, protect a focus session, and return in your own words when attention drifts. Free, private, no accounts.
 
-**OG image alt:** Hesya — Notice when you drift. Return when you choose.
+**OG image alt:** Hesya — Name what matters. Stay with it.
+
+**OG image display text:** Hesya / Name what matters. Stay with it. / hesya.app
 
 ---
 
 ## Landing Page
+
+The page renders six sections in order: Hero → The Shift → The Pearl → What Hesya Does → The Widget → Final CTA, between a sticky Header and the Footer.
 
 ### Header
 
@@ -36,20 +42,37 @@ All user-visible text extracted from the Hesya landing site, organized by page a
 ### Hero
 
 **Headline:**
-When your attention slips,
-Hesya invites you back.
+Name what matters.
+Stay with it.
 
 **Subtitle:**
-An iPhone companion that helps you notice distraction and return to what matters — without noise or guilt.
-
-**Micro text:**
-Built to feel native. Designed to stay quiet.
+Declare what you want to have done, start a focus session, and Hesya holds it with you — returning you in your own words when attention drifts.
 
 **CTA button:** Try the beta on TestFlight
 
-**Meta line:** Free · No tracking · iOS
+**Micro text:** Built to feel native. Designed to step back.
 
-**Secondary link:** See how it works
+---
+
+### The Shift
+
+**Eyebrow:** YOU KNOW THE FEELING
+
+**Headline:** You meant to do one thing.
+
+**Body 1:**
+You sat down for something specific. A while later you're somewhere else — and you're not sure when you left.
+
+**Body 2:**
+Hesya keeps the one thing you named in view, and brings you back to it — in your own words, the moment you drift.
+
+---
+
+### The Pearl
+
+**Headline:** Three breaths.
+
+**Subtitle:** *A pause between drift and choice.*
 
 ---
 
@@ -58,168 +81,43 @@ Built to feel native. Designed to stay quiet.
 **Eyebrow:** WHAT HESYA DOES
 
 **Description:**
-Hesya watches how you move through your phone — not what you do, just the rhythm. When it senses drift, it offers a gentle moment to return.
+You name one intention and start a session. Hesya holds it where you can see it, returns you when attention drifts, and closes with a quiet reflection — never a score.
 
-**Card 1 — Notice:**
-See when your rhythm changes — switching, stretching, drifting.
+**Card 1 — Declare:**
+Name what you want to have done — in your own words. Hesya keeps it verbatim.
+*(Animated card cycles example intents: "Finish the proposal", "Be present at dinner", "Write the first section".)*
 
-**Card 2 — Pause:**
-A gentle cue creates a moment of space before reacting.
+**Card 2 — Return:**
+Drift into something else and a quiet cue brings you back to your intent — never a scold.
 
-**Card 3 — Return:**
-Choose where to place your attention — with calm, not guilt.
+**Card 3 — Reflect:**
+When you finish, mark how it felt. A private note, never a score.
 
 ---
 
-### What Hesya Notices (Pattern Section)
+### The Widget
 
-**Eyebrow:** What Hesya notices
+**Eyebrow:** WHERE YOU WORK
 
-**Headline:**
-Drift has
-a shape.
+**Headline:** Your intent, in view.
 
 **Body:**
-Hesya watches patterns in how you use your phone — not what you're doing, just how it flows. Everything happens on your device. Nothing leaves it. Read our privacy policy ->
+The one thing you named follows you — on the Lock Screen, in the Live Activity, and on your Mac's menu bar while you work.
 
-**Pattern states:**
-
-| State | Label | Description |
-|-------|-------|-------------|
-| Calm | Steady pace | moderate activity, recent ritual |
-| Pushing | Long focus session | 60+ minutes in one place |
-| Overwhelmed | Switching between things | 3-4 app switches, seeking relief |
-| Restless | Many quick switches | 5+ rapid switches, seeking stimulation |
-
----
-
-### Three Breaths (Ritual Section)
-
-**Eyebrow:** Three breaths
-
-**Headline:**
-*A pause between drift and choice.*
-
-**Body:**
-Three cycles of the physiological sigh.
-Name what you feel.
-Set a small intention.
-
----
-
-### Your Anchor (Anchor Philosophy)
-
-**Eyebrow:** Your anchor
-
-**Anchor word example:** SERENITY
-
-**Body 1:**
-Choose one word that matters to you. A value. A reminder of what you're for. Learn more ->
-
-**Body 2:**
-It lives on your lock screen and widget. Always visible. Never urgent. At the end of every ritual, it's the last thing you see.
-
----
-
-### Walkthrough (Screenshots Section)
-
-**Eyebrow:** A WALKTHROUGH
-
-**Headline:** *A quiet sequence.*
-
-**Step 1 — Notice your patterns:**
-Hesya quietly observes your rhythm — switching, stretching, drifting — and shows it on your lock screen.
-
-**Step 2 — A gentle pause:**
-When it senses drift, Hesya offers a brief moment. Not a block — an invitation to check in with yourself.
-
-**Step 3 — Take a breath:**
-Three cycles of the physiological sigh. A simple act that shifts your nervous system from reactive to present.
-
-**Step 4 — Return to presence:**
-Name what you feel, set a small intention, and see your anchor word — the last thing before you continue.
-
-**Bottom text:** iPhone-only · designed to feel native
-
----
-
-### The Name (Deeper Value Section)
-
-**Eyebrow:** THE NAME
-
-**Word:** *hesychia*
-
-**Subtitle:** From the Greek ησυχία — inner stillness.
-
-**Key claim:** Attention is a skill.
-
-**Body 1:**
-For over a thousand years, contemplatives practiced hesychia: watching where the mind goes, breathing to return, anchoring to what matters.
-
-**Body 2:**
-Three techniques. Timeless problem.
-No belief required.
-
-**Meta:** A practice, not a fix. Designed for iPhone. Built to feel calm.
-
----
-
-### Privacy Section
-
-**Eyebrow:** PRIVACY
-
-**Headline:** *Private by design.*
-
-**Body:** Hesya works on your device. No accounts. No analytics. No ads.
-
-**Proofs:**
-- Everything stays on your iPhone.
-- Pattern detection is local — not sent anywhere.
-- You can disable permissions anytime in iOS Settings.
-
-**Link:** Read the privacy policy
-
----
-
-### The Research (Science Section)
-
-**Eyebrow:** THE RESEARCH
-
-**Description:**
-Hesya is built on decades of research into attention, habit formation, and contemplative practice — not trends.
-
-**Card 1:**
-- **Stat:** ~66%
-- **Claim:** of daily behaviors run on autopilot — outside conscious awareness.
-- **Source:** Wood & Neal, Annual Review of Psychology, 2007
-
-**Card 2:**
-- **Stat:** More scrolling, more boredom
-- **Claim:** Digital switching increases boredom and lowers sustained attention — the opposite of what we expect.
-- **Source:** Tam & Inzlicht, Journal of Experimental Psychology, 2024
-
-**Card 3:**
-- **Stat:** One pause changes the pattern
-- **Claim:** A brief breathing pause with an intention prompt significantly reduces unintentional phone use.
-- **Source:** Okeke et al., Proceedings of the ACM MobileHCI, 2018
-
-**Card 4:**
-- **Stat:** IF this -> THEN that
-- **Claim:** Implementation intentions help people act in line with their values, even under tempting conditions.
-- **Source:** Gollwitzer & Sheeran, Advances in Experimental Social Psychology, 2006
+Quietly present while the session runs. Always there when you glance. Never urgent.
 
 ---
 
 ### Final CTA
 
-**Headline:** *Your mind already knows the way back.*
+**Headline:**
+One intention is
+enough to begin.
 
 **Body:**
-Hesya is available for beta testing on TestFlight. Try it free — no tracking, no noise.
+Hesya is in beta on TestFlight. Free, private, and quiet by design — no accounts, nothing that identifies you.
 
-**CTA button:** Try the beta on TestFlight
-
-**Meta line:** Free · No tracking · iOS
+**CTA button:** Try the beta on TestFlight *(App Store badge linking to TestFlight)*
 
 ---
 
@@ -227,7 +125,7 @@ Hesya is available for beta testing on TestFlight. Try it free — no tracking, 
 
 **Wordmark:** Hesya *(decorative, aria-hidden)*
 
-**Tagline:** A mindful attention companion for iPhone.
+**Tagline:** A calm focus companion for iPhone.
 
 **Nav links:** Support, Privacy, Contact (support@hesya.app)
 
@@ -239,53 +137,43 @@ Hesya is available for beta testing on TestFlight. Try it free — no tracking, 
 
 **Page title:** Privacy Policy — Hesya
 
-**Meta description:** Hesya privacy policy. All data stays on your device.
+**Meta description:** Your sessions, intents, and reflections stay on your device. The only thing that ever leaves is a small set of anonymous, identifier-free usage counts.
 
 **Back link:** <- Back to Hesya
 
-**Last updated:** February 16, 2026
+**Last updated:** June 16, 2026
 
-### Privacy Policy
+### Overview
+Hesya is a focus companion: you declare an intention, protect a session, and reflect when it ends. It is built so that your data stays yours. This page explains exactly what the app does with information — and what it deliberately doesn't do.
 
-#### Overview
-Hesya is a mindfulness app designed to help you maintain awareness of your digital habits through gentle pattern detection and optional ritual pauses.
+### What stays on your device
+Everything you create or configure lives only on your iPhone:
+- **Sessions & intents:** what you typed, when you started and finished.
+- **Reflections & journal:** moods and notes after a session.
+- **Settings:** cue preferences, quiet hours, the apps you select as distracting.
 
-#### What We Collect
-**We do not collect, store, or transmit any personal data from your device.**
+Deleting the app deletes all of it. There is no copy on any server.
 
-#### Local Data Storage
-All app functionality operates entirely on your device:
-- **Pattern Detection:** When enabled, Hesya observes your app switching patterns to detect behavioral states (calm, pushing, overwhelmed, restless). This analysis happens entirely on your device using Apple's Screen Time API.
-- **Anchor Word:** Your chosen anchor word is stored locally on your device and in your device's widget data.
-- **Ritual History:** Your ritual completion times are stored locally to help schedule appropriate reminders.
-- **Settings:** All preferences (reminders, quiet hours, etc.) are stored locally on your device.
+### Screen Time (optional)
+If you grant Screen Time access, Hesya uses Apple's FamilyControls framework for one purpose: during a session you started, it asks iOS to signal when time in apps *you selected* crosses a threshold, so it can offer a gentle cue back to your intent.
 
-#### Screen Time Permission
-Hesya uses Apple's Screen Time API (FamilyControls framework) to observe your app usage patterns. This permission allows the app to:
-- Detect when you switch between apps
-- Identify patterns in your device usage (not specific app content)
-- Present contextual wellness suggestions
+**Important:** Apple's framework never tells Hesya *which* app you used — only that the threshold was crossed. No app names, usage history, or browsing activity are ever visible to Hesya, stored, or transmitted. The permission is optional; every feature except drift cues works without it.
 
-**Important:** Hesya never records which specific apps you use. No app names or website URLs are stored. All pattern detection is anonymous and happens on your device. Nothing is sent to external servers.
+### Anonymous usage events
+To understand whether the app's core flows work, Hesya records a few anonymous events — for example "a session was started" or "onboarding was completed." Each event contains only the event name, a timestamp, the app version, and a structural category (such as the session type).
 
-#### Third-Party Services
-Hesya does not integrate with any third-party analytics, advertising, or data collection services.
+There is deliberately **no identifier of any kind** — no device ID, install ID, user ID, or IP logging. These are population-level counts that cannot be linked to you or your device. They are sent to our own first-party server; no third-party analytics service is involved. Reflection notes and intent text never leave your device.
 
-#### Children's Privacy
-Hesya does not knowingly collect any information from children. The app is rated 4+.
+### Third-Party Services & Children
+Hesya does not integrate with any third-party analytics, advertising, or tracking SDKs. There is no cross-app or cross-site tracking. Hesya does not knowingly collect information from children; the app is rated 4+.
 
-#### Data Retention
-Since no data leaves your device, you maintain complete control. Deleting the app removes all associated data from your device.
-
-#### Your Rights
-- Disable pattern detection at any time in Settings
-- Revoke Screen Time permission through iOS Settings
+### Your Rights & Retention
+Your personal content stays on your device and you control it. Deleting the app removes it entirely. The only information that ever leaves — the anonymous usage events above — contains nothing that identifies you.
+- Choose your distracting apps, or none, anytime in Settings
+- Revoke Screen Time or Notification permissions through iOS Settings
 - Delete all app data by deleting the app
 
-#### Changes to This Policy
-We will update this policy as needed and notify users through app updates.
-
-#### Contact
+### Contact
 For questions about privacy practices, please contact: support@hesya.app
 
 ---
@@ -305,63 +193,63 @@ For questions about privacy practices, please contact: support@hesya.app
 ### Getting Started
 
 **Q: How does Hesya work?**
-Hesya gently observes your app-switching patterns (with your permission) to notice when you might benefit from a mindful pause. When patterns suggest overwhelm, sustained focus, or restlessness, Hesya invites you to take a ritual break — a guided breathing exercise with your chosen anchor word.
+You type what you want to have done — your intent — and start a focus session. Hesya keeps that intent visible while you work: on the in-session screen, the Lock Screen widget, and the Live Activity. If you drift into apps you've marked as distracting, a quiet cue invites you back. When the session ends, a short reflection closes the loop, and finished sessions live in your private journal.
+
+**Q: What is an intent?**
+One short line in your own words — "Finish the proposal introduction" or "Be present at dinner." Hesya keeps it verbatim and never rewrites or interprets it. You can add up to three, or start a session with none at all.
 
 **Q: Do I need to grant Screen Time permission?**
-No, it's optional. Hesya works without it using a simpler detection method based on when you complete rituals. With Screen Time permission, Hesya can provide more nuanced pattern recognition, but you can skip it if you prefer.
-
-**Q: What is an "anchor word"?**
-An anchor word is a value or intention that matters to you — like "PEACE," "BALANCE," or "PRESENCE." During rituals, Hesya helps you reconnect with this word through breathing exercises and reflection.
+No, it's optional. Sessions, the breathing pause, reflections, the journal, and widgets all work without it. Screen Time access enables drift cues: during a session, iOS can tell Hesya when time in the apps you selected as distracting crosses a threshold — without ever revealing which app you used.
 
 ### Privacy & Permissions
 
 **Q: What data does Hesya collect?**
-None. Everything happens on your device. Hesya never records which apps you use, and no data is sent to external servers.
+Your sessions, intents, reflections, and settings stay on your device. Hesya never records which apps you use. The only thing that ever leaves your device is a small set of anonymous usage counts (for example "a session was started") with no identifier of any kind — they cannot be linked to you. See the Privacy Policy for detail.
 
 **Q: Why does Hesya ask for Screen Time permission?**
-This allows Hesya to observe your app-switching patterns (not specific app names) to detect states like "overwhelmed" or "long focus session." This permission is optional — you can skip it and still use the app.
+Only to power drift cues during sessions you start. Apple's framework tells Hesya that cumulative time in your selected apps crossed a threshold — never which app, never your history. It's optional and revocable anytime in iOS Settings.
 
 **Q: Can I revoke permissions later?**
-Yes. You can disable pattern detection in Hesya's Settings, or revoke Screen Time/Notification permissions through iOS Settings > Hesya.
+Yes — iOS Settings > Hesya. The app keeps working without them; drift detection simply falls back to a gentler, time-based signal.
 
 ### Using Hesya
 
-**Q: How do I start a ritual?**
-Tap "A breath" on the home screen, tap the widget, or tap a notification when Hesya invites you to pause. The ritual includes three breathing cycles, naming your current state, and a reflective question about your anchor word.
+**Q: How do I start a session?**
+Type your intent on the Focus screen (or leave it empty) and tap Begin — three taps or fewer, by design. The in-session screen shows your intent and a quiet clock; Pause and Complete are always available.
 
-**Q: How long does a ritual take?**
-About 2-3 minutes. You can go through it at your own pace.
+**Q: What's the difference between Deep Work and Present Evening?**
+Two flavors of intentional time — one for focused work, one for being present off-screen. They change the framing copy, not the rules.
 
-**Q: What do the different patterns mean?**
-Steady pace: you're in a good rhythm. Long focus session: 60+ minutes without a break. Switching between things: 3-4 app switches recently. Many quick switches: 5+ rapid app switches, possibly seeking stimulation.
+**Q: What is the breathing pause?**
+Three slow cycles of the physiological sigh — inhale, a short top-up, a long exhale (about 40 seconds) — then a quiet "Ready?" with two choices: resume or stay paused. It is always skippable.
 
 **Q: How do I add the Hesya widget?**
-Long-press your home screen > tap the + button > search for Hesya > choose a widget size > tap Add Widget. The widget displays your anchor word and current state with a unique ring pattern for each state.
+Long-press your Home Screen or Lock Screen, tap + / Customize, find Hesya, and add it. The widget shows your current intent and session state. On macOS Tahoe, your session's Live Activity can also appear in the Mac menu bar.
 
 ### Troubleshooting
 
-**Q: Hesya isn't detecting patterns**
-Make sure Pattern Detection is ON in Settings, grant Screen Time permission if you haven't already, use your device normally for 15 minutes (detection updates every 15 min), and complete a ritual if you skipped Screen Time permission.
+**Q: Drift cues aren't appearing**
+Check three things: Screen Time permission is granted (iOS Settings > Hesya), at least one app is selected as distracting (Hesya Settings), and a session is actually active. Cues also stay quiet during pauses, quiet hours, and mute windows — silence is often the product working as designed.
 
-**Q: I'm not receiving reminder notifications**
-Check that notifications are enabled in Settings > Reminders, you've granted notification permission in iOS Settings > Hesya > Notifications, you're not in Quiet Hours, and Do Not Disturb or Focus modes aren't suppressing notifications.
+**Q: I'm not receiving notifications**
+Check that notification permission is granted in iOS Settings > Hesya, that you're not in Quiet Hours or a mute window, and that Do Not Disturb or Focus modes aren't suppressing them.
 
 **Q: Does Hesya work offline?**
-Yes, completely. Hesya doesn't need an internet connection to function.
+Yes. Everything core works without a connection. The only network traffic is anonymous, identifier-free usage counts, which simply wait until you're back online.
 
 ### General
 
 **Q: Is Hesya free?**
-Yes, Hesya is completely free with no ads or in-app purchases.
+Yes — free, with no ads and no in-app purchases.
 
 **Q: Do I need to create an account?**
-No. Hesya doesn't require any account — just download and use.
+No. There are no accounts — download and use.
 
 **Q: What devices are supported?**
-Hesya works on all iPhones and iPads running iOS/iPadOS 18.0+. Live Activities (Dynamic Island) require iPhone 14 Pro or later.
+iPhone on iOS 26 or later. On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.
 
 **Q: Can I use Hesya on multiple devices?**
-Yes, but settings and history are device-specific since everything is stored locally. There's no cloud sync.
+Your sessions and journal are stored on each device — there's no cloud sync yet. A native Mac companion is planned.
 
 ### Still need help?
 
@@ -375,11 +263,9 @@ We aim to respond within 24-48 hours.
 
 | Image | Alt text |
 |-------|----------|
-| Hero phone | Hesya home screen |
-| Pattern phone | Hesya lock screen widget |
-| Ritual phone | Hesya breathing ritual screen |
-| Anchor phone | Hesya ritual completion — ready to continue |
-| Walkthrough step 1 | iOS home screen with Hesya widget |
-| Walkthrough step 2 | Hesya notification — is there space for a breath? |
-| Walkthrough step 3 | Hesya breathing ritual — inhale |
-| Walkthrough step 4 | Setting an intention after the ritual |
+| Hero phone | Hesya — today's intent on the home screen |
+| Shift phone (light) | Hesya — today's intent |
+| Shift phone (crossfade) | Hesya — a quiet return when you drift |
+| Widget phone | Hesya widget showing today's intent |
+
+> **Screenshots pending v2 replacement.** The components still reference pre-v2 captures — `/screenshots/screen-home.png`, `/screenshots/screen-lockscreen.png`, `/screenshots/Homescreen-widget.png`. Replace with v2 captures (intent on the Focus screen, the in-session screen, the drift-return cue, the Lock Screen widget showing an intent) once available; the alt text above already describes the intended v2 imagery.

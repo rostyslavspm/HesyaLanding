@@ -36,10 +36,10 @@ export default function TheFinale() {
         
         <div className="finale-content text-center mb-10 flex flex-col items-center">
           <h2 className="text-display-italic text-[var(--color-soft-obsidian)] mb-6">
-            Your mind already knows<br />the way back.
+            One intention is<br />enough to begin.
           </h2>
           <p className="text-body text-[var(--color-soft-obsidian)]/80 max-w-md mb-8">
-            Hesya is available for beta testing on TestFlight. Try it free — no tracking, no noise.
+            Hesya is in beta on TestFlight. Free, private, and quiet by design — no accounts, nothing that identifies you.
           </p>
           <div className="btn-magnetic inline-block cursor-pointer">
              <AppStoreBadge href="https://testflight.apple.com/join/2sE4MyhY" label="Try the beta on TestFlight" footer={null} />

@@ -9,8 +9,8 @@ import TheWidget from "../components/TheWidget";
 import TheFinale from "../components/TheFinale";
 
 export const metadata: Metadata = {
-  title: "Hesya — Notice when you drift. Return when you choose.",
-  description: "Hesya notices when your screen time drifts and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
+  title: "Hesya — Name what matters. Stay with it.",
+  description: "Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
 };
 
 export default function Home() {

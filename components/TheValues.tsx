@@ -9,7 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 function DiagnosticShuffler() {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const states = ["Pushing through", "Restless drift", "Quiet overwhelm"];
+  // Example intents — the user's own words, kept verbatim.
+  const states = ["Finish the proposal", "Be present at dinner", "Write the first section"];
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -36,8 +37,8 @@ function DiagnosticShuffler() {
   return (
     <div ref={containerRef} className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       <div className="text-center mb-6">
-        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Notice</h3>
-        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">See when your rhythm changes — switching, stretching, drifting.</p>
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Declare</h3>
+        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">Name what you want to have done — in your own words. Hesya keeps it verbatim.</p>
       </div>
 
       <div className="relative w-full flex-1 flex flex-col items-center justify-center min-h-[160px] mt-4">
@@ -67,8 +68,8 @@ function RitualClock() {
   return (
     <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       <div className="text-center mb-6">
-        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Pause</h3>
-        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">A gentle cue creates a moment of space before reacting.</p>
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Return</h3>
+        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">Drift into something else and a quiet cue brings you back to your intent — never a scold.</p>
       </div>
 
       <div className="relative flex-[0.8] w-40 flex items-center justify-center mt-auto mb-4">
@@ -90,8 +91,8 @@ function StatusPulse() {
   return (
     <div className="value-card bg-[var(--color-pearl-glow)] rounded-[3rem] p-8 md:p-10 flex flex-col items-center min-h-[360px] md:min-h-[420px] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       <div className="text-center mb-6">
-        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Return</h3>
-        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">Choose where to place your attention — with calm, not guilt.</p>
+        <h3 className="text-display-italic text-4xl mb-3 text-[var(--color-soft-obsidian)]">Reflect</h3>
+        <p className="text-body text-[var(--color-soft-obsidian)]/60 text-sm tracking-wide px-4">When you finish, mark how it felt. A private note, never a score.</p>
       </div>
 
       <div className="relative flex-1 w-full flex flex-col items-center justify-center mt-auto">
@@ -134,7 +135,7 @@ export default function TheValues() {
         <div className="mb-12 md:mb-20 text-center max-w-3xl mx-auto">
           <h2 className="text-sm font-bold tracking-widest uppercase text-[var(--color-soft-obsidian)]/50 mb-6">WHAT HESYA DOES</h2>
           <p className="text-body text-[var(--color-soft-obsidian)]/80 text-xl font-medium">
-            Hesya watches how you move through your phone — not what you do, just the rhythm. When it senses drift, it offers a gentle moment to return.
+            You name one intention and start a session. Hesya holds it where you can see it, returns you when attention drifts, and closes with a quiet reflection — never a score.
           </p>
         </div>
 

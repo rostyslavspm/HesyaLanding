@@ -48,7 +48,7 @@ export default function TheHero() {
           <div className="animate-breath">
             <Image
               src="/screenshots/screen-home.png"
-              alt="Hesya App PEACE Screen"
+              alt="Hesya — today's intent on the home screen"
               width={660}
               height={1434}
               className="w-full h-auto select-none rounded-[2.5rem] shadow-[0_40px_120px_rgba(0,0,0,0.18)]"
@@ -59,13 +59,13 @@ export default function TheHero() {
 
         {/* Headline */}
         <h1 className="animate-in text-display-italic text-[var(--color-soft-obsidian)] max-w-4xl mb-8">
-          When your attention slips,
+          Name what matters.
           <br />
-          Hesya invites you back.
+          Stay with it.
         </h1>
 
         <p className="animate-in max-w-xl md:max-w-2xl text-[var(--color-soft-obsidian)]/80 text-lg md:text-xl mb-8">
-          An iPhone companion that helps you notice distraction and return to what matters — without noise or guilt.
+          Declare what you want to have done, start a focus session, and Hesya holds it with you — returning you in your own words when attention drifts.
         </p>
 
         {/* Action */}
@@ -74,7 +74,7 @@ export default function TheHero() {
             Try the beta on TestFlight
           </a>
           <p className="mt-6 text-sm text-[var(--color-soft-obsidian)]/50 tracking-wide uppercase">
-            Built to feel native. Designed to stay quiet.
+            Built to feel native. Designed to step back.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Hesya — Notice when you drift. Return when you choose.";
+export const alt = "Hesya — Name what matters. Stay with it.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -69,7 +69,7 @@ export default async function Image() {
               color: "rgba(44,44,46,0.58)",
             }}
           >
-            Notice when you drift. Return when you choose.
+            Name what matters. Stay with it.
           </div>
         </div>
         <div
