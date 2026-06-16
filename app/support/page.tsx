@@ -13,17 +13,17 @@ const gettingStarted = [
   {
     question: "How does Hesya work?",
     answer:
-      "Hesya gently observes your app-switching patterns (with your permission) to notice when you might benefit from a mindful pause. When patterns suggest overwhelm, sustained focus, or restlessness, Hesya invites you to take a ritual break — a guided breathing exercise with your chosen anchor word.",
+      "You type what you want to have done — your intent — and start a focus session. Hesya keeps that intent visible while you work: on the in-session screen, the Lock Screen widget, and the Live Activity. If you drift into apps you've marked as distracting, a quiet cue invites you back. When the session ends, a short reflection closes the loop, and finished sessions live in your private journal.",
+  },
+  {
+    question: "What is an intent?",
+    answer:
+      'One short line in your own words — "Finish the proposal introduction" or "Be present at dinner." Hesya keeps it verbatim and never rewrites or interprets it. You can add up to three, or start a session with none at all.',
   },
   {
     question: "Do I need to grant Screen Time permission?",
     answer:
-      "No, it's optional. Hesya works without it using a simpler detection method based on when you complete rituals. With Screen Time permission, Hesya can provide more nuanced pattern recognition, but you can skip it if you prefer.",
-  },
-  {
-    question: 'What is an "anchor word"?',
-    answer:
-      'An anchor word is a value or intention that matters to you — like "PEACE," "BALANCE," or "PRESENCE." During rituals, Hesya helps you reconnect with this word through breathing exercises and reflection.',
+      "No, it's optional. Sessions, the breathing pause, reflections, the journal, and widgets all work without it. Screen Time access enables drift cues: during a session, iOS can tell Hesya when time in the apps you selected as distracting crosses a threshold — without ever revealing which app you used.",
   },
 ];
 
@@ -31,77 +31,79 @@ const privacy = [
   {
     question: "What data does Hesya collect?",
     answer:
-      "None. Everything happens on your device. Hesya never records which apps you use, and no data is sent to external servers.",
+      "Your sessions, intents, reflections, and settings stay on your device. Hesya never records which apps you use. The only thing that ever leaves your device is a small set of anonymous usage counts (for example “a session was started”) with no identifier of any kind — they cannot be linked to you. See the Privacy Policy for detail.",
   },
   {
     question: "Why does Hesya ask for Screen Time permission?",
     answer:
-      'This allows Hesya to observe your app-switching patterns (not specific app names) to detect states like "overwhelmed" or "long focus session." This permission is optional — you can skip it and still use the app.',
+      "Only to power drift cues during sessions you start. Apple's framework tells Hesya that cumulative time in your selected apps crossed a threshold — never which app, never your history. It's optional and revocable anytime in iOS Settings.",
   },
   {
     question: "Can I revoke permissions later?",
     answer:
-      "Yes. You can disable pattern detection in Hesya's Settings, or revoke Screen Time/Notification permissions through iOS Settings > Hesya.",
+      "Yes — iOS Settings > Hesya. The app keeps working without them; drift detection simply falls back to a gentler, time-based signal.",
   },
 ];
 
 const usingHesya = [
   {
-    question: "How do I start a ritual?",
+    question: "How do I start a session?",
     answer:
-      'Tap "A breath" on the home screen, tap the widget, or tap a notification when Hesya invites you to pause. The ritual includes three breathing cycles, naming your current state, and a reflective question about your anchor word.',
+      "Type your intent on the Focus screen (or leave it empty) and tap Begin — three taps or fewer, by design. The in-session screen shows your intent and a quiet clock; Pause and Complete are always available.",
   },
   {
-    question: "How long does a ritual take?",
-    answer: "About 2–3 minutes. You can go through it at your own pace.",
+    question: "What's the difference between Deep Work and Present Evening?",
+    answer:
+      "Two flavors of intentional time — one for focused work, one for being present off-screen. They change the framing copy, not the rules.",
   },
   {
-    question: "What do the different patterns mean?",
+    question: "What is the breathing pause?",
     answer:
-      "Steady pace: you're in a good rhythm. Long focus session: 60+ minutes without a break. Switching between things: 3–4 app switches recently. Many quick switches: 5+ rapid app switches, possibly seeking stimulation.",
+      'Three slow cycles of the physiological sigh — inhale, a short top-up, a long exhale (about 40 seconds) — then a quiet "Ready?" with two choices: resume or stay paused. It is always skippable.',
   },
   {
     question: "How do I add the Hesya widget?",
     answer:
-      "Long-press your home screen > tap the + button > search for Hesya > choose a widget size > tap Add Widget. The widget displays your anchor word and current state with a unique ring pattern for each state.",
+      "Long-press your Home Screen or Lock Screen, tap + / Customize, find Hesya, and add it. The widget shows your current intent and session state. On macOS Tahoe, your session's Live Activity can also appear in the Mac menu bar.",
   },
 ];
 
 const troubleshooting = [
   {
-    question: "Hesya isn't detecting patterns",
+    question: "Drift cues aren't appearing",
     answer:
-      "Make sure Pattern Detection is ON in Settings, grant Screen Time permission if you haven't already, use your device normally for 15 minutes (detection updates every 15 min), and complete a ritual if you skipped Screen Time permission.",
+      "Check three things: Screen Time permission is granted (iOS Settings > Hesya), at least one app is selected as distracting (Hesya Settings), and a session is actually active. Cues also stay quiet during pauses, quiet hours, and mute windows — silence is often the product working as designed.",
   },
   {
-    question: "I'm not receiving reminder notifications",
+    question: "I'm not receiving notifications",
     answer:
-      "Check that notifications are enabled in Settings > Reminders, you've granted notification permission in iOS Settings > Hesya > Notifications, you're not in Quiet Hours, and Do Not Disturb or Focus modes aren't suppressing notifications.",
+      "Check that notification permission is granted in iOS Settings > Hesya, that you're not in Quiet Hours or a mute window, and that Do Not Disturb or Focus modes aren't suppressing them.",
   },
   {
     question: "Does Hesya work offline?",
-    answer: "Yes, completely. Hesya doesn't need an internet connection to function.",
+    answer:
+      "Yes. Everything core works without a connection. The only network traffic is anonymous, identifier-free usage counts, which simply wait until you're back online.",
   },
 ];
 
 const general = [
   {
     question: "Is Hesya free?",
-    answer: "Yes, Hesya is completely free with no ads or in-app purchases.",
+    answer: "Yes — free, with no ads and no in-app purchases.",
   },
   {
     question: "Do I need to create an account?",
-    answer: "No. Hesya doesn't require any account — just download and use.",
+    answer: "No. There are no accounts — download and use.",
   },
   {
     question: "What devices are supported?",
     answer:
-      "Hesya works on all iPhones and iPads running iOS/iPadOS 18.0+. Live Activities (Dynamic Island) require iPhone 14 Pro or later.",
+      "iPhone on iOS 26 or later. On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.",
   },
   {
     question: "Can I use Hesya on multiple devices?",
     answer:
-      "Yes, but settings and history are device-specific since everything is stored locally. There's no cloud sync.",
+      "Your sessions and journal are stored on each device — there's no cloud sync yet. A native Mac companion is planned.",
   },
 ];
 

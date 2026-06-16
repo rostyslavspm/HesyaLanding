@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Hesya",
-  description: "Hesya privacy policy. All data stays on your device.",
+  description: "Your sessions, intents, and reflections stay on your device. The only thing that ever leaves is a small set of anonymous, identifier-free usage counts.",
 };
 
 export default function PrivacyPage() {
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <div className="mb-16">
             <h1 className="text-display-italic text-[var(--color-soft-obsidian)] mb-4">Privacy Policy</h1>
             <p className="text-body text-[var(--color-soft-obsidian)]/60">
-              Last updated: February 16, 2026
+              Last updated: June 16, 2026
             </p>
           </div>
 
@@ -32,83 +32,95 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Overview</h2>
               <p>
-                Hesya is a mindfulness app designed to help you maintain awareness of
-                your digital habits through gentle pattern detection and optional
-                ritual pauses.
+                Hesya is a focus companion: you declare an intention, protect a
+                session, and reflect when it ends. It is built so that your data
+                stays yours. This page explains exactly what the app does with
+                information — and what it deliberately doesn&apos;t do.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">What We Collect</h2>
-              <p className="font-medium text-[var(--color-soft-obsidian)]">
-                We do not collect, store, or transmit any personal data from your device.
+              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">What stays on your device</h2>
+              <p className="mb-4">
+                Everything you create or configure lives only on your iPhone:
               </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Local Data Storage</h2>
-              <p className="mb-4">All app functionality operates entirely on your device:</p>
               <ul className="list-disc pl-6 space-y-3">
                 <li>
-                  <strong className="text-[var(--color-soft-obsidian)]">Pattern Detection:</strong> When enabled, Hesya observes
-                  your app switching patterns to detect behavioral states (calm,
-                  pushing, overwhelmed, restless). This analysis happens entirely on
-                  your device using Apple&apos;s Screen Time API.
+                  <strong className="text-[var(--color-soft-obsidian)]">Sessions &amp; intents:</strong> what you typed,
+                  when you started and finished.
                 </li>
                 <li>
-                  <strong className="text-[var(--color-soft-obsidian)]">Anchor Word:</strong> Your chosen anchor word is stored
-                  locally on your device and in your device&apos;s widget data.
+                  <strong className="text-[var(--color-soft-obsidian)]">Reflections &amp; journal:</strong> moods and
+                  notes after a session.
                 </li>
                 <li>
-                  <strong className="text-[var(--color-soft-obsidian)]">Ritual History:</strong> Your ritual completion times are
-                  stored locally to help schedule appropriate reminders.
-                </li>
-                <li>
-                  <strong className="text-[var(--color-soft-obsidian)]">Settings:</strong> All preferences (reminders, quiet hours,
-                  etc.) are stored locally on your device.
+                  <strong className="text-[var(--color-soft-obsidian)]">Settings:</strong> cue preferences, quiet hours,
+                  the apps you select as distracting.
                 </li>
               </ul>
+              <p className="mt-4">
+                Deleting the app deletes all of it. There is no copy on any server.
+              </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Screen Time Permission</h2>
+              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Screen Time (optional)</h2>
               <p className="mb-4">
-                Hesya uses Apple&apos;s Screen Time API (FamilyControls framework) to
-                observe your app usage patterns. This permission allows the app to:
+                If you grant Screen Time access, Hesya uses Apple&apos;s FamilyControls
+                framework for one purpose: during a session you started, it asks iOS
+                to signal when time in apps <em>you selected</em> crosses a threshold,
+                so it can offer a gentle cue back to your intent.
               </p>
-              <ul className="list-disc pl-6 space-y-3 mb-6">
-                <li>Detect when you switch between apps</li>
-                <li>Identify patterns in your device usage (not specific app content)</li>
-                <li>Present contextual wellness suggestions</li>
-              </ul>
               <div className="bg-[var(--color-pearl-glow)] p-6 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
                 <p>
-                  <strong className="text-[var(--color-soft-obsidian)]">Important:</strong> Hesya never records which specific apps
-                  you use. No app names or website URLs are stored. All pattern
-                  detection is anonymous and happens on your device. Nothing is sent to
-                  external servers.
+                  <strong className="text-[var(--color-soft-obsidian)]">Important:</strong> Apple&apos;s framework never tells
+                  Hesya <em>which</em> app you used — only that the threshold was crossed.
+                  No app names, usage history, or browsing activity are ever visible to
+                  Hesya, stored, or transmitted. The permission is optional; every
+                  feature except drift cues works without it.
                 </p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Third-Party Services & Children</h2>
+              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Anonymous usage events</h2>
               <p className="mb-4">
-                Hesya does not integrate with any third-party analytics, advertising,
-                or data collection services. Hesya does not knowingly collect any information from children. The
-                app is rated 4+.
+                To understand whether the app&apos;s core flows work, Hesya records a
+                few anonymous events — for example &ldquo;a session was started&rdquo;
+                or &ldquo;onboarding was completed.&rdquo; Each event contains only the
+                event name, a timestamp, the app version, and a structural category
+                (such as the session type).
+              </p>
+              <p>
+                There is deliberately <strong className="text-[var(--color-soft-obsidian)]">no identifier of any kind</strong> —
+                no device ID, install ID, user ID, or IP logging. These are
+                population-level counts that cannot be linked to you or your device.
+                They are sent to our own first-party server; no third-party analytics
+                service is involved. Reflection notes and intent text never leave your
+                device.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Your Rights & Retention</h2>
+              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Third-Party Services &amp; Children</h2>
               <p className="mb-4">
-                Since no data leaves your device, you maintain complete control.
-                Deleting the app removes all associated data from your device.
+                Hesya does not integrate with any third-party analytics, advertising,
+                or tracking SDKs. There is no cross-app or cross-site tracking. Hesya
+                does not knowingly collect information from children; the app is rated 4+.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Your Rights &amp; Retention</h2>
+              <p className="mb-4">
+                Your personal content stays on your device and you control it.
+                Deleting the app removes it entirely. The only information that ever
+                leaves — the anonymous usage events above — contains nothing that
+                identifies you.
               </p>
               <ul className="list-disc pl-6 space-y-3">
-                <li>Disable pattern detection at any time in Settings</li>
-                <li>Revoke Screen Time permission through iOS Settings</li>
+                <li>Choose your distracting apps, or none, anytime in Settings</li>
+                <li>Revoke Screen Time or Notification permissions through iOS Settings</li>
                 <li>Delete all app data by deleting the app</li>
               </ul>
             </section>

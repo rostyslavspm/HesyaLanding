@@ -18,28 +18,28 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Hesya — Notice when you drift. Return when you choose.",
+  title: "Hesya — Name what matters. Stay with it.",
   description:
-    "Hesya notices when your screen time drifts and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
+    "Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
   authors: [{ name: "Rostyslav Slobodianiuk" }],
   creator: "Rostyslav Slobodianiuk",
   metadataBase: new URL("https://hesya.app"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hesya — Notice when you drift. Return when you choose.",
+    title: "Hesya — Name what matters. Stay with it.",
     description:
-      "Hesya notices when you drift and offers a gentle ritual to return to presence. Inspired by hesychia, the ancient practice of inner stillness. Free, private, on-device only.",
+      "Declare one intention, protect a focus session, and return in your own words when attention drifts. A calm iPhone companion — free, private, no accounts.",
     url: "https://hesya.app",
     siteName: "Hesya",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Hesya — Notice when you drift. Return when you choose." }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Hesya — Name what matters. Stay with it." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hesya — Notice when you drift. Return when you choose.",
+    title: "Hesya — Name what matters. Stay with it.",
     description:
-      "Hesya notices when you drift and offers a gentle ritual to return to presence. Free, private, on-device only.",
+      "Declare one intention, protect a focus session, and return in your own words when attention drifts. Free, private, no accounts.",
     images: ["/opengraph-image"],
   },
   icons: {
