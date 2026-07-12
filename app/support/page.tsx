@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "../../components/Header";
+import HeaderV2 from "../../components/HeaderV2";
 import FaqSection from "../../components/FaqAccordion";
-import Footer from "../../components/Footer";
+import FooterV2 from "../../components/FooterV2";
 
 export const metadata: Metadata = {
   title: "Support & FAQ — Hesya",
@@ -110,7 +110,7 @@ const general = [
 export default function SupportPage() {
   return (
     <>
-      <Header />
+      <HeaderV2 />
       <main id="main" className="min-h-screen bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
         <div className="container mx-auto max-w-3xl">
           <Link
@@ -151,7 +151,7 @@ export default function SupportPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterV2 />
     </>
   );
 }

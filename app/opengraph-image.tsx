@@ -15,33 +15,19 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#E7EEF3",
+          background: "linear-gradient(180deg, #0f1419 0%, #1a2332 100%)",
         }}
       >
         <div
           style={{
             position: "absolute",
             left: "50%",
-            top: 250,
+            top: 200,
             transform: "translate(-50%, -50%)",
-            width: 120,
-            height: 120,
+            width: 200,
+            height: 200,
             borderRadius: "50%",
-            backgroundColor: "#AFC4D6",
-            opacity: 0.9,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: 250,
-            transform: "translate(-50%, -50%)",
-            width: 170,
-            height: 170,
-            borderRadius: "50%",
-            border: "1.5px solid #AFC4D6",
-            opacity: 0.4,
+            background: "radial-gradient(circle, rgba(130,158,147,0.35) 0%, transparent 70%)",
           }}
         />
         <div
@@ -49,24 +35,25 @@ export default async function Image() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 12,
-            marginTop: 130,
+            gap: 16,
+            marginTop: 80,
           }}
         >
           <div
             style={{
-              fontSize: 48,
-              fontWeight: 300,
-              color: "rgba(44,44,46,0.80)",
+              fontSize: 56,
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.95)",
+              letterSpacing: "-0.02em",
             }}
           >
             Hesya
           </div>
           <div
             style={{
-              fontSize: 22,
-              fontWeight: 300,
-              color: "rgba(44,44,46,0.58)",
+              fontSize: 28,
+              fontWeight: 400,
+              color: "rgba(255,255,255,0.65)",
             }}
           >
             Name what matters. Stay with it.
@@ -76,9 +63,9 @@ export default async function Image() {
           style={{
             position: "absolute",
             bottom: 50,
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: 400,
-            color: "rgba(44,44,46,0.42)",
+            color: "rgba(255,255,255,0.35)",
           }}
         >
           hesya.app

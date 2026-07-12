@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import HeaderV2 from "../../components/HeaderV2";
+import FooterV2 from "../../components/FooterV2";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Hesya",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <Header />
+      <HeaderV2 />
       <main id="main" className="min-h-screen bg-[var(--color-mist-white)] py-32 px-6" aria-label="Privacy policy">
         <div className="container mx-auto max-w-3xl">
           <Link
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterV2 />
     </>
   );
 }

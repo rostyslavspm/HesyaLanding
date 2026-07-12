@@ -18,6 +18,8 @@ export const DURATION = {
   hero: 0.8,
   transition: 1.2,
   ritual: 1.5,
+  float: 6,
+  tab: 0.4,
 } as const;
 
 /** Named stagger scale (seconds between children). */
