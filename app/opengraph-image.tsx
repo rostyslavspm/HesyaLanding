@@ -12,36 +12,23 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#E7EEF3",
+          background: "linear-gradient(180deg, #15163c 0%, #4960c6 58%, #8faeea 100%)",
+          position: "relative",
         }}
       >
         <div
           style={{
             position: "absolute",
             left: "50%",
-            top: 250,
+            top: 170,
             transform: "translate(-50%, -50%)",
-            width: 120,
-            height: 120,
+            width: 330,
+            height: 330,
             borderRadius: "50%",
-            backgroundColor: "#AFC4D6",
-            opacity: 0.9,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: 250,
-            transform: "translate(-50%, -50%)",
-            width: 170,
-            height: 170,
-            borderRadius: "50%",
-            border: "1.5px solid #AFC4D6",
-            opacity: 0.4,
+            background: "radial-gradient(circle, rgba(255,255,255,0.38) 0%, transparent 70%)",
+            filter: "blur(8px)",
           }}
         />
         <div
@@ -50,35 +37,54 @@ export default async function Image() {
             flexDirection: "column",
             alignItems: "center",
             gap: 12,
-            marginTop: 130,
+            marginTop: -120,
           }}
         >
           <div
             style={{
-              fontSize: 48,
-              fontWeight: 300,
-              color: "rgba(44,44,46,0.80)",
+              fontSize: 62,
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.95)",
+              letterSpacing: "-0.02em",
             }}
           >
             Hesya
           </div>
           <div
             style={{
-              fontSize: 22,
-              fontWeight: 300,
-              color: "rgba(44,44,46,0.58)",
+              fontSize: 28,
+              fontWeight: 500,
+              color: "rgba(255,255,255,0.84)",
             }}
           >
             Name what matters. Stay with it.
           </div>
         </div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 96,
+            width: 720,
+            borderRadius: 24,
+            padding: "20px 24px",
+            border: "1px solid rgba(255,255,255,0.28)",
+            background: "rgba(255,255,255,0.14)",
+            color: "rgba(255,255,255,0.9)",
+            fontSize: 22,
+            fontWeight: 500,
+            backdropFilter: "blur(14px)",
+          }}
+        >
+          Finish the proposal introduction
+        </div>
         <div
           style={{
             position: "absolute",
             bottom: 50,
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: 400,
-            color: "rgba(44,44,46,0.42)",
+            color: "rgba(255,255,255,0.35)",
           }}
         >
           hesya.app
