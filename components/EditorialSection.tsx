@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DURATION, GSAP_EASE } from "../lib/motion";
+import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,90 +15,103 @@ export default function EditorialSection() {
   const pearlRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let mouseX = 0;
-    let mouseY = 0;
-    let isHovering = false;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let hostEl: HTMLDivElement | null = null;
+    let pointerMoveHandler: ((event: PointerEvent) => void) | null = null;
+    let pointerLeaveHandler: (() => void) | null = null;
 
     const ctx = gsap.context(() => {
-      const onPointerMove = (e: MouseEvent | TouchEvent) => {
-        if (!container.current) return;
-        const rect = container.current.getBoundingClientRect();
-        let clientX: number;
-        let clientY: number;
-        if ("touches" in e && e.touches.length > 0) {
-          clientX = e.touches[0].clientX;
-          clientY = e.touches[0].clientY;
-        } else if ("clientX" in e) {
-          clientX = (e as MouseEvent).clientX;
-          clientY = (e as MouseEvent).clientY;
-        } else {
-          return;
-        }
-        mouseX = ((clientX - rect.left) / rect.width - 0.5) * 2;
-        mouseY = ((clientY - rect.top) / rect.height - 0.5) * 2;
-      };
+      if (!prefersReduced) {
+        const qx = gsap.quickTo(pearlRef.current, "x", { duration: 0.9, ease: GSAP_EASE.smooth });
+        const qy = gsap.quickTo(pearlRef.current, "y", { duration: 0.9, ease: GSAP_EASE.smooth });
+        pointerMoveHandler = (event: PointerEvent) => {
+          if (!container.current) return;
+          const rect = container.current.getBoundingClientRect();
+          const mouseX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+          const mouseY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+          qx(mouseX * 48);
+          qy(mouseY * 48);
+        };
+        pointerLeaveHandler = () => {
+          qx(0);
+          qy(0);
+        };
 
-      const el = container.current;
-      if (el) {
-        el.addEventListener("mousemove", onPointerMove);
-        el.addEventListener("touchmove", onPointerMove, { passive: true });
-        el.addEventListener("mouseenter", () => { isHovering = true; });
-        el.addEventListener("touchstart", () => { isHovering = true; }, { passive: true });
-        const reset = () => { isHovering = false; mouseX = 0; mouseY = 0; };
-        el.addEventListener("mouseleave", reset);
-        el.addEventListener("touchend", reset);
+        hostEl = container.current;
+        hostEl?.addEventListener("pointermove", pointerMoveHandler);
+        hostEl?.addEventListener("pointerleave", pointerLeaveHandler);
       }
 
-      gsap.ticker.add(() => {
-        if (!pearlRef.current) return;
-        gsap.to(pearlRef.current, {
-          x: `calc(-50% + ${mouseX * 120}px)`,
-          y: `calc(-50% + ${mouseY * 120}px)`,
-          duration: isHovering ? 2.5 : 3,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
-      });
-
-      gsap.from(".editorial-text", {
-        scrollTrigger: { trigger: container.current, start: "top 70%" },
-        y: 40,
+      gsap.from(".editorial-animate", {
+        scrollTrigger: { trigger: container.current, start: "top 72%" },
+        y: 36,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power3.out",
+        duration: DURATION.heroLayer,
+        stagger: 0.12,
+        ease: GSAP_EASE.standard,
       });
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      if (hostEl && pointerMoveHandler) {
+        hostEl.removeEventListener("pointermove", pointerMoveHandler);
+      }
+      if (hostEl && pointerLeaveHandler) {
+        hostEl.removeEventListener("pointerleave", pointerLeaveHandler);
+      }
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section
+      id="editorial-section"
       ref={container}
-      className="section-dark relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden py-24 md:py-32"
+      className="section-dark section-standard relative overflow-hidden"
     >
       <div
         ref={pearlRef}
-        className="pointer-events-none absolute h-[600px] w-[600px] rounded-full md:h-[800px] md:w-[800px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full md:h-[820px] md:w-[820px]"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(130,158,147,0.25) 0%, rgba(130,158,147,0.08) 40%, transparent 70%)",
+            "radial-gradient(circle at center, rgba(132,153,255,0.28) 0%, rgba(126,219,248,0.12) 45%, transparent 70%)",
           filter: "blur(60px)",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
         }}
       />
 
-      <div className="editorial-text container-hesya relative z-10 max-w-3xl text-center">
-        <h2 className="text-display-sans mb-6 text-white">Three breaths.</h2>
-        <p
-          className="text-2xl italic text-white/60 md:text-3xl"
-          style={{ fontFamily: "var(--font-serif)" }}
-        >
-          A pause between drift and choice.
-        </p>
+      <div className="container-hesya relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div className="editorial-animate relative overflow-hidden rounded-[2rem] border border-white/20 bg-white/5 p-3 shadow-[var(--shadow-glass)]">
+          <Image
+            src="/hero/editorial-focus.svg"
+            alt="Hesya reflective focus visualization"
+            width={1200}
+            height={760}
+            className="h-auto w-full rounded-[1.6rem]"
+            priority={false}
+          />
+        </div>
+
+        <div className="text-left">
+          <p className="editorial-animate text-eyebrow mb-4 text-white/60">Becoming focused again</p>
+          <h2 className="editorial-animate text-display-sans mb-5 text-white">Three breaths.</h2>
+          <p
+            className="editorial-animate mb-5 text-2xl italic text-white/70 md:text-3xl"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            A pause between drift and choice.
+          </p>
+          <p className="editorial-animate mb-7 max-w-lg text-body-sm text-white/70">
+            When attention scatters, Hesya helps you reset gently and return on purpose. Less
+            urgency, more intention.
+          </p>
+          <Link
+            href="/support"
+            className="editorial-animate inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white"
+          >
+            Read the full workflow
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

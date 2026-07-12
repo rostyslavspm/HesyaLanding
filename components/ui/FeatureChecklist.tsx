@@ -1,7 +1,7 @@
 import { Circle } from "lucide-react";
 
 type FeatureChecklistProps = {
-  items: string[];
+  items: readonly string[];
   className?: string;
   onDark?: boolean;
 };

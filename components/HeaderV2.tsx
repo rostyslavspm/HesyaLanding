@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
-import { EASE_HESYA } from "../lib/motion";
+import { DURATION, EASE_HESYA } from "../lib/motion";
 
 const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 
@@ -62,20 +62,31 @@ export default function HeaderV2() {
         transition={
           prefersReducedMotion
             ? { duration: 0 }
-            : { duration: 0.5, delay: 0.05, ease: EASE_HESYA }
+            : { duration: DURATION.reveal, delay: 0.05, ease: EASE_HESYA }
         }
       >
         <div className="container-hesya flex items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="header-brand text-heading"
-            style={{
-              color: onDark ? "var(--foreground-on-dark)" : "var(--foreground)",
-              fontFamily: "var(--font-serif)",
-            }}
-          >
-            Hesya
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="header-brand text-heading"
+              style={{
+                color: onDark ? "var(--foreground-on-dark)" : "var(--foreground)",
+                fontFamily: "var(--font-serif)",
+              }}
+            >
+              Hesya
+            </Link>
+            <span
+              className="rounded-full px-2 py-1 text-[11px] font-medium uppercase tracking-[0.08em]"
+              style={{
+                color: onDark ? "rgba(255,255,255,0.6)" : "var(--foreground-muted)",
+                background: onDark ? "rgba(255,255,255,0.12)" : "rgba(38,35,34,0.06)",
+              }}
+            >
+              Beta
+            </span>
+          </div>
 
           <div className="flex items-center gap-3 md:gap-4">
             <nav
@@ -87,7 +98,9 @@ export default function HeaderV2() {
               <div className="flex items-center gap-8 px-2">
                 <Link
                   href="/privacy"
-                  className="header-nav-link text-micro link-animated"
+                  className={`header-nav-link text-micro ${
+                    onDark ? "link-animated-on-dark" : "link-animated"
+                  }`}
                   style={{
                     color: onDark ? "var(--foreground-muted-on-dark)" : "var(--foreground-muted)",
                   }}
@@ -96,7 +109,9 @@ export default function HeaderV2() {
                 </Link>
                 <Link
                   href="/support"
-                  className="header-nav-link text-micro link-animated"
+                  className={`header-nav-link text-micro ${
+                    onDark ? "link-animated-on-dark" : "link-animated"
+                  }`}
                   style={{
                     color: onDark ? "var(--foreground-muted-on-dark)" : "var(--foreground-muted)",
                   }}
@@ -108,7 +123,9 @@ export default function HeaderV2() {
 
             <a
               href="mailto:support@hesya.app"
-              className="header-nav-link hidden text-micro md:inline"
+              className={`header-nav-link hidden text-micro md:inline ${
+                onDark ? "link-animated-on-dark" : "link-animated"
+              }`}
               style={{
                 color: onDark ? "var(--foreground-muted-on-dark)" : "var(--foreground-muted)",
               }}

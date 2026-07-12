@@ -77,7 +77,7 @@ function FaqItem({ question, answer }: FaqItem) {
 export default function FaqSection({ title, items }: FaqSectionProps) {
   return (
     <div className="mb-12">
-      <h2 className="mb-6 text-2xl font-serif italic text-[var(--color-soft-obsidian)]">{title}</h2>
+      <h2 className="mb-6 text-2xl font-semibold tracking-tight text-[var(--color-soft-obsidian)]">{title}</h2>
       <div>
         {items.map((item) => (
           <FaqItem key={item.question} {...item} />

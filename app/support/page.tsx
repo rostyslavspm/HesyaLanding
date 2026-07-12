@@ -111,17 +111,17 @@ export default function SupportPage() {
   return (
     <>
       <HeaderV2 />
-      <main id="main" className="min-h-screen bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
-        <div className="container mx-auto max-w-3xl">
+      <main id="main" className="section-light min-h-screen section-standard-sm pt-24" aria-label="Support and FAQ">
+        <div className="container-hesya max-w-3xl">
           <Link
             href="/"
-            className="inline-block text-sm text-[var(--color-soft-obsidian)]/50 tracking-widest uppercase hover:text-[var(--color-soft-obsidian)] transition-colors mb-12"
+            className="mb-10 inline-block text-micro uppercase tracking-[0.12em] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
           >
             &larr; Back to Hesya
           </Link>
 
           <div className="mb-16 text-center">
-            <h1 className="text-display-italic text-[var(--color-soft-obsidian)] mb-6">
+            <h1 className="text-display-sans mb-5 text-[var(--color-soft-obsidian)]">
               Support & FAQ
             </h1>
             <p className="text-body text-[var(--color-soft-obsidian)]/70 text-lg">
@@ -137,8 +137,8 @@ export default function SupportPage() {
             <FaqSection title="General" items={general} />
           </div>
 
-          <div className="bg-[var(--color-pearl-glow)] mt-16 rounded-[3rem] p-12 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-            <h2 className="text-3xl font-serif italic mb-4 text-[var(--color-soft-obsidian)]">Still need help?</h2>
+          <div className="panel-elevated mt-16 rounded-[3rem] p-12 text-center">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-[var(--color-soft-obsidian)]">Still need help?</h2>
             <p className="mb-8 text-body text-[var(--color-soft-obsidian)]/60">
               We aim to respond within 24–48 hours.
             </p>

@@ -12,22 +12,23 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(180deg, #0f1419 0%, #1a2332 100%)",
+          background: "linear-gradient(180deg, #15163c 0%, #4960c6 58%, #8faeea 100%)",
+          position: "relative",
         }}
       >
         <div
           style={{
             position: "absolute",
             left: "50%",
-            top: 200,
+            top: 170,
             transform: "translate(-50%, -50%)",
-            width: 200,
-            height: 200,
+            width: 330,
+            height: 330,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(130,158,147,0.35) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255,255,255,0.38) 0%, transparent 70%)",
+            filter: "blur(8px)",
           }}
         />
         <div
@@ -35,13 +36,13 @@ export default async function Image() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 16,
-            marginTop: 80,
+            gap: 12,
+            marginTop: -120,
           }}
         >
           <div
             style={{
-              fontSize: 56,
+              fontSize: 62,
               fontWeight: 600,
               color: "rgba(255,255,255,0.95)",
               letterSpacing: "-0.02em",
@@ -52,12 +53,30 @@ export default async function Image() {
           <div
             style={{
               fontSize: 28,
-              fontWeight: 400,
-              color: "rgba(255,255,255,0.65)",
+              fontWeight: 500,
+              color: "rgba(255,255,255,0.84)",
             }}
           >
             Name what matters. Stay with it.
           </div>
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 96,
+            width: 720,
+            borderRadius: 24,
+            padding: "20px 24px",
+            border: "1px solid rgba(255,255,255,0.28)",
+            background: "rgba(255,255,255,0.14)",
+            color: "rgba(255,255,255,0.9)",
+            fontSize: 22,
+            fontWeight: 500,
+            backdropFilter: "blur(14px)",
+          }}
+        >
+          Finish the proposal introduction
         </div>
         <div
           style={{

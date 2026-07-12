@@ -1,33 +1,52 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Shield, Smartphone, Sparkles, Apple } from "lucide-react";
-import { EASE_HESYA } from "../lib/motion";
+import { ShieldCheck, Smartphone, Timer, Apple } from "lucide-react";
+import { DURATION, EASE_HESYA, STAGGER } from "../lib/motion";
 
-const badges = [
-  { icon: Shield, label: "No accounts" },
-  { icon: Smartphone, label: "On your device" },
-  { icon: Sparkles, label: "Free, no ads" },
-  { icon: Apple, label: "iOS 26+" },
+const proofItems = [
+  {
+    metric: "0",
+    label: "Accounts required",
+    icon: ShieldCheck,
+  },
+  {
+    metric: "100%",
+    label: "Intent data stays on device",
+    icon: Smartphone,
+  },
+  {
+    metric: "40s",
+    label: "Guided breathing reset",
+    icon: Timer,
+  },
+  {
+    metric: "iOS 26+",
+    label: "Native beta support",
+    icon: Apple,
+  },
 ];
 
 export default function TrustStrip() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="section-light border-y border-[var(--border)] py-10 md:py-12">
+    <section className="section-light section-standard-sm border-y border-[var(--border)]" id="trust-section">
       <div className="container-hesya">
+        <p className="mb-6 text-center text-eyebrow text-[var(--foreground-muted)]">
+          Trusted by people who need calm focus, not more noise
+        </p>
         <motion.ul
-          className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 md:gap-x-16"
+          className="grid grid-cols-2 gap-4 md:grid-cols-4"
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.1 } },
+            visible: { transition: { staggerChildren: STAGGER.default } },
           }}
         >
-          {badges.map(({ icon: Icon, label }) => (
+          {proofItems.map(({ metric, label, icon: Icon }) => (
             <motion.li
               key={label}
               variants={{
@@ -35,13 +54,17 @@ export default function TrustStrip() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.5, ease: EASE_HESYA },
+                  transition: { duration: DURATION.reveal, ease: EASE_HESYA },
                 },
               }}
-              className="flex items-center gap-2.5"
+              className="panel-elevated rounded-[var(--radius-lg)] p-4 md:p-5"
             >
-              <Icon className="h-4 w-4 text-[var(--foreground-muted)]" strokeWidth={1.5} />
-              <span className="text-eyebrow text-[var(--foreground-muted)]">{label}</span>
+              <div className="mb-3 flex items-center gap-2">
+                <Icon className="h-4 w-4 text-[var(--foreground-muted)]" strokeWidth={1.6} />
+                <span className="text-xs uppercase tracking-[0.11em] text-[var(--foreground-muted)]">Proof</span>
+              </div>
+              <p className="text-heading text-[var(--foreground)]">{metric}</p>
+              <p className="mt-1 text-body-sm text-[var(--foreground-muted)]">{label}</p>
             </motion.li>
           ))}
         </motion.ul>

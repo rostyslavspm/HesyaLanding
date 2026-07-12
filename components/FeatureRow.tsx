@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FeatureChecklist from "./ui/FeatureChecklist";
 import GradientBlob from "./ui/GradientBlob";
+import { DURATION, GSAP_EASE, STAGGER } from "../lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,23 +33,26 @@ export default function FeatureRow({
   const container = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const ctx = gsap.context(() => {
-      gsap.from(".feature-text", {
-        scrollTrigger: { trigger: container.current, start: "top 75%" },
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: "power3.out",
-      });
-      gsap.from(".feature-visual", {
-        scrollTrigger: { trigger: container.current, start: "top 75%" },
-        y: 40,
-        opacity: 0,
-        duration: 1.1,
-        delay: 0.2,
-        ease: "power3.out",
-      });
+      if (!prefersReduced) {
+        gsap.from(".feature-text", {
+          scrollTrigger: { trigger: container.current, start: "top 75%" },
+          y: 30,
+          opacity: 0,
+          duration: DURATION.sectionEnter,
+          stagger: STAGGER.default,
+          ease: GSAP_EASE.standard,
+        });
+        gsap.from(".feature-visual", {
+          scrollTrigger: { trigger: container.current, start: "top 75%" },
+          y: 40,
+          opacity: 0,
+          duration: DURATION.heroLayer,
+          delay: 0.15,
+          ease: GSAP_EASE.standard,
+        });
+      }
     }, container);
     return () => ctx.revert();
   }, []);
@@ -58,7 +62,7 @@ export default function FeatureRow({
   return (
     <section
       ref={container}
-      className={`py-20 md:py-32 ${altTint ? "bg-white" : "section-light"}`}
+      className={`section-standard ${altTint ? "bg-white" : "section-light"}`}
     >
       <div className="container-hesya">
         <div
@@ -83,7 +87,7 @@ export default function FeatureRow({
             }`}
           >
             <GradientBlob color={gradientColor} />
-            <div className="relative z-10 w-full max-w-sm">{visual}</div>
+            <div className="relative z-10 w-full max-w-[460px]">{visual}</div>
           </div>
         </div>
       </div>

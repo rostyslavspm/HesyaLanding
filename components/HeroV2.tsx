@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarClock, Sparkles } from "lucide-react";
 import FloatingGlassCard from "./ui/FloatingGlassCard";
 import ParallaxLayer from "./motion/ParallaxLayer";
 import TiltOnMouse from "./motion/TiltOnMouse";
+import { DURATION, GSAP_EASE } from "../lib/motion";
 
 const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 
@@ -15,22 +16,22 @@ export default function HeroV2() {
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
     const ctx = gsap.context(() => {
       gsap.from(".hero-animate", {
         y: 40,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power3.out",
+        duration: DURATION.hero,
+        stagger: 0.12,
+        ease: GSAP_EASE.standard,
       });
 
-      gsap.to(".hero-float-card", {
-        y: "+=8",
-        duration: 3,
-        ease: "sine.inOut",
-        stagger: { each: 0.4, from: "random" },
+      if (prefersReduced) return;
+
+      gsap.to(".hero-float-loop", {
+        y: -10,
+        duration: DURATION.float,
+        stagger: { each: 0.35, from: "random" },
+        ease: GSAP_EASE.drift,
         repeat: -1,
         yoyo: true,
       });
@@ -41,73 +42,93 @@ export default function HeroV2() {
 
   return (
     <section
+      id="hero-section"
       ref={container}
-      className="relative min-h-[92vh] overflow-hidden bg-gradient-to-b from-[var(--color-hero-bg)] to-[var(--color-hero-gradient-end)] pb-20 pt-12 md:pb-32 md:pt-16"
+      className="section-standard-lg relative min-h-[96vh] overflow-hidden bg-gradient-to-b from-[var(--color-hero-bg)] via-[var(--color-hero-gradient-mid)] to-[var(--color-hero-gradient-end)] pt-12"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop')",
-        }}
+      <Image
+        src="/hero/hero-atmosphere.svg"
+        alt=""
+        fill
+        priority
+        className="pointer-events-none object-cover opacity-70 mix-blend-screen"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hero-bg)]/60 via-transparent to-[var(--color-hero-gradient-end)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.3),transparent_56%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hero-bg)]/24 via-transparent to-[var(--color-hero-bg)]/60" />
 
       <div className="container-hesya relative z-10 flex flex-col items-center text-center">
+        <p className="hero-animate mb-6 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-micro text-white/80">
+          Looking for Superhuman-level focus design?
+        </p>
         <h1 className="hero-animate text-display-sans mb-6 max-w-4xl text-white">
           Name what matters.
           <br />
           Stay with it.
         </h1>
 
-        <p className="hero-animate mb-8 max-w-2xl text-lg text-white/70 md:text-xl">
+        <p className="hero-animate mb-8 max-w-2xl text-lg text-white/75 md:text-xl">
           Declare what you want to have done, start a focus session, and Hesya holds it with you —
           returning you in your own words when attention drifts.
         </p>
 
-        <div className="hero-animate mb-16">
+        <div className="hero-animate mb-12 flex flex-col items-center gap-4 sm:flex-row">
           <a href={TESTFLIGHT_URL} className="btn-primary-gradient">
             Try the beta on TestFlight
             <ArrowRight className="h-4 w-4" />
           </a>
-          <p className="mt-6 text-sm uppercase tracking-wide text-white/40">
-            Built to feel native. Designed to step back.
-          </p>
+          <a
+            href="#suite-section"
+            className="text-micro text-white/80 underline-offset-4 transition hover:text-white hover:underline"
+          >
+            See how Hesya works
+          </a>
         </div>
 
-        <div className="relative mx-auto w-full max-w-4xl">
-          <div className="relative flex min-h-[320px] items-end justify-center md:min-h-[400px]">
-            <ParallaxLayer speed={0.2} className="absolute left-[5%] top-[10%] z-20 md:left-[8%]">
-              <FloatingGlassCard delay={0} className="hero-float-card w-[140px] md:w-[180px]">
-                <p className="text-eyebrow mb-2 text-white/50">Intent</p>
-                <p className="text-sm font-medium text-white">Finish the proposal</p>
+        <div className="hero-animate relative mx-auto w-full max-w-5xl">
+          <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[520px]">
+            <ParallaxLayer speed={0.16} className="absolute left-1/2 top-3 z-30 w-full max-w-[560px] -translate-x-1/2">
+              <FloatingGlassCard className="hero-float-loop text-left">
+                <p className="text-eyebrow mb-2 text-white/55">Assistant</p>
+                <p className="text-sm text-white">
+                  You are chatting with Laura and Antonio. Book 15 minutes with Mike this Monday?
+                </p>
+                <div className="mt-3 flex items-center gap-2 text-xs text-white/70">
+                  <CalendarClock className="h-3.5 w-3.5" />
+                  Monday at 3:00 PM
+                </div>
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.15} className="absolute right-[5%] top-[5%] z-20 md:right-[10%]">
-              <FloatingGlassCard delay={1.2} className="hero-float-card w-[150px] md:w-[190px]">
-                <p className="text-eyebrow mb-2 text-white/50">Session</p>
-                <p className="font-mono text-2xl font-light text-white">42:18</p>
-                <p className="mt-1 text-xs text-white/50">Deep Work</p>
+            <ParallaxLayer speed={0.2} className="absolute left-[2%] top-[33%] z-20 hidden md:block">
+              <FloatingGlassCard className="hero-float-loop w-[220px] text-left">
+                <p className="text-eyebrow mb-2 text-white/55">Inbox</p>
+                <p className="text-sm font-medium text-white">Design review moved to Thursday</p>
+                <p className="mt-1 text-xs text-white/65">
+                  Quick heads-up - we are pushing design review to 2pm.
+                </p>
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.25} className="absolute bottom-[15%] left-[15%] z-20 hidden sm:block">
-              <FloatingGlassCard delay={2.4} className="hero-float-card w-[160px]">
-                <p className="text-eyebrow mb-2 text-white/50">Widget</p>
-                <p className="text-sm text-white/80">Be present at dinner</p>
+            <ParallaxLayer speed={0.12} className="absolute right-[4%] top-[38%] z-20 hidden md:block">
+              <FloatingGlassCard className="hero-float-loop w-[220px] text-left">
+                <p className="text-eyebrow mb-2 text-white/55">Live Activity</p>
+                <p className="text-sm text-white">Finish the proposal</p>
+                <div className="mt-2 flex items-center gap-2 text-xs text-white/70">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Quiet return active
+                </div>
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.1} className="relative z-10">
-              <TiltOnMouse className="hero-animate">
-                <div className="animate-breath w-[180px] md:w-[240px]">
+            <ParallaxLayer speed={0.08} className="relative z-10 mt-14">
+              <TiltOnMouse>
+                <div className="animate-breath w-[200px] md:w-[260px]">
                   <Image
-                    src="/screenshots/screen-home.svg"
+                    src="/screenshots/screen-home.png"
                     alt="Hesya — today's intent on the home screen"
                     width={660}
                     height={1434}
-                    className="h-auto w-full select-none rounded-[2.5rem] shadow-[0_40px_120px_rgba(0,0,0,0.4)]"
+                    className="h-auto w-full select-none rounded-[2.5rem] shadow-[0_40px_120px_rgba(15,18,48,0.45)]"
                     priority
                   />
                 </div>
