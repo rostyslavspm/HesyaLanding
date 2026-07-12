@@ -32,7 +32,7 @@ export default function TrustStrip() {
 
   return (
     <section
-      className="section-light section-standard-sm border-y border-[var(--border)]"
+      className="section-light section-standard-sm section-divider-soft border-y border-[var(--border)]"
       id="trust-section"
     >
       <div className="container-hesya">

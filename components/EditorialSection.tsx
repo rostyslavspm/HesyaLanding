@@ -80,7 +80,7 @@ export default function EditorialSection() {
       />
 
       <div className="container-hesya relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div className="editorial-animate relative overflow-hidden rounded-[2rem] border border-white/20 bg-white/5 p-3 shadow-[var(--shadow-glass)]">
+        <div className="editorial-animate relative overflow-hidden rounded-[2rem] border border-white/24 bg-white/[0.06] p-2.5 shadow-[var(--shadow-glass)]">
           <Image
             src="/hero/editorial-focus.svg"
             alt="Hesya reflective focus visualization"
@@ -93,9 +93,11 @@ export default function EditorialSection() {
 
         <div className="text-left">
           <p className="editorial-animate text-eyebrow mb-4 text-white/60">Becoming focused again</p>
-          <h2 className="editorial-animate text-display-sans mb-5 text-white">Three breaths.</h2>
+          <h2 className="editorial-animate mb-5 text-[clamp(2.25rem,4.5vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-white">
+            Three breaths.
+          </h2>
           <p
-            className="editorial-animate mb-5 text-2xl italic text-white/70 md:text-3xl"
+            className="editorial-animate mb-5 text-[1.55rem] italic leading-[1.3] text-white/74 md:text-[1.9rem]"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             A pause between drift and choice.

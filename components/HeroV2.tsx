@@ -44,7 +44,7 @@ export default function HeroV2() {
     <section
       id="hero-section"
       ref={container}
-      className="section-standard-lg relative min-h-[96vh] overflow-hidden bg-gradient-to-b from-[var(--color-hero-bg)] via-[var(--color-hero-gradient-mid)] to-[var(--color-hero-gradient-end)] pt-12"
+      className="section-standard-lg relative min-h-[100vh] overflow-hidden bg-gradient-to-b from-[var(--color-hero-bg)] via-[var(--color-hero-gradient-mid)] to-[var(--color-hero-gradient-end)] pt-12"
     >
       <Image
         src="/artem-zhukov-uTQxfPzPfdY-unsplash.jpg"
@@ -59,25 +59,27 @@ export default function HeroV2() {
         fill
         className="pointer-events-none object-cover opacity-30 mix-blend-screen"
       />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_75%,rgba(18,24,62,0.52),transparent_46%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_83%_26%,rgba(229,236,255,0.22),transparent_46%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(225,232,255,0.28),transparent_58%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hero-bg)]/35 via-[var(--color-hero-bg)]/16 to-[var(--color-hero-bg)]/68" />
 
       <div className="container-hesya relative z-10 flex flex-col items-center text-center">
-        <p className="hero-animate mb-6 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-micro text-white/80">
+        <p className="hero-animate mb-6 rounded-full border border-white/26 bg-white/14 px-4 py-2 text-micro text-white/84 shadow-[0_8px_24px_rgba(16,24,64,0.24)]">
           Now in TestFlight beta
         </p>
-        <h1 className="hero-animate text-display-sans mb-6 max-w-4xl text-white">
+        <h1 className="hero-animate text-display-sans mb-6 max-w-[960px] text-white">
           Name what matters.
           <br />
           Stay with it.
         </h1>
 
-        <p className="hero-animate mb-8 max-w-2xl text-lg text-white/75 md:text-xl">
+        <p className="hero-animate mb-9 max-w-2xl text-[1.08rem] text-white/78 md:text-[1.22rem]">
           Declare what you want to have done, start a focus session, and Hesya holds it with you —
           returning you in your own words when attention drifts.
         </p>
 
-        <div className="hero-animate mb-12 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="hero-animate mb-14 flex flex-col items-center gap-4 sm:flex-row">
           <a href={TESTFLIGHT_URL} className="btn-primary-gradient">
             Join the TestFlight beta
             <ArrowRight className="h-4 w-4" />
@@ -91,8 +93,8 @@ export default function HeroV2() {
         </div>
 
         <div className="hero-animate relative mx-auto w-full max-w-5xl">
-          <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[520px]">
-            <ParallaxLayer speed={0.16} className="absolute left-1/2 top-3 z-30 w-full max-w-[560px] -translate-x-1/2">
+          <div className="relative flex min-h-[430px] items-end justify-center md:min-h-[540px]">
+            <ParallaxLayer speed={0.16} className="absolute left-1/2 top-2 z-30 w-full max-w-[620px] -translate-x-1/2">
               <FloatingGlassCard className="hero-float-loop text-left">
                 <p className="text-eyebrow mb-2 text-white/55">Assistant</p>
                 <p className="text-sm text-white">
@@ -105,8 +107,8 @@ export default function HeroV2() {
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.2} className="absolute left-[2%] top-[33%] z-20 hidden md:block">
-              <FloatingGlassCard className="hero-float-loop w-[220px] text-left">
+            <ParallaxLayer speed={0.2} className="absolute left-[1%] top-[39%] z-20 hidden md:block">
+              <FloatingGlassCard className="hero-float-loop w-[238px] text-left">
                 <p className="text-eyebrow mb-2 text-white/55">Inbox</p>
                 <p className="text-sm font-medium text-white">Design review moved to Thursday</p>
                 <p className="mt-1 text-xs text-white/65">
@@ -115,8 +117,8 @@ export default function HeroV2() {
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.12} className="absolute right-[4%] top-[38%] z-20 hidden md:block">
-              <FloatingGlassCard className="hero-float-loop w-[220px] text-left">
+            <ParallaxLayer speed={0.12} className="absolute right-[2%] top-[44%] z-20 hidden md:block">
+              <FloatingGlassCard className="hero-float-loop w-[236px] text-left">
                 <p className="text-eyebrow mb-2 text-white/55">Live Activity</p>
                 <p className="text-sm text-white">Finish the proposal</p>
                 <div className="mt-2 flex items-center gap-2 text-xs text-white/70">
@@ -126,9 +128,9 @@ export default function HeroV2() {
               </FloatingGlassCard>
             </ParallaxLayer>
 
-            <ParallaxLayer speed={0.08} className="relative z-10 mt-14">
+            <ParallaxLayer speed={0.08} className="relative z-10 mt-10">
               <TiltOnMouse>
-                <div className="animate-breath w-[200px] md:w-[260px]">
+                <div className="animate-breath w-[212px] md:w-[278px]">
                   <Image
                     src="/screenshots/screen-home.png"
                     alt="Hesya — today's intent on the home screen"

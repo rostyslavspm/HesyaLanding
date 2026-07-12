@@ -62,19 +62,21 @@ export default function FeatureRow({
   return (
     <section
       ref={container}
-      className={`section-standard ${altTint ? "bg-white" : "section-light"}`}
+      className={`section-standard section-divider-soft ${altTint ? "section-light-alt" : "section-light"}`}
     >
       <div className="container-hesya">
         <div
-          className={`grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 ${
+          className={`grid grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-[4.5rem] ${
             reverse ? "md:[direction:rtl]" : ""
           }`}
         >
           <div className={`feature-text ${reverse ? "md:[direction:ltr]" : ""}`}>
             <p className="text-eyebrow mb-4 text-[var(--foreground-muted)]">{eyebrow}</p>
-            <h2 className="text-display-sans mb-6 text-[var(--color-soft-obsidian)]">{title}</h2>
+            <h2 className="mb-6 text-[clamp(2rem,4vw,3.08rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-[var(--color-soft-obsidian)]">
+              {title}
+            </h2>
             {bodyParagraphs.map((para) => (
-              <p key={para} className="text-body mb-4 text-[var(--foreground-muted)] last:mb-6">
+              <p key={para} className="text-body mb-4 max-w-xl text-[var(--foreground-muted)] last:mb-6">
                 {para}
               </p>
             ))}
@@ -87,7 +89,7 @@ export default function FeatureRow({
             }`}
           >
             <GradientBlob color={gradientColor} />
-            <div className="relative z-10 w-full max-w-[460px]">{visual}</div>
+            <div className="relative z-10 w-full max-w-[500px]">{visual}</div>
           </div>
         </div>
       </div>

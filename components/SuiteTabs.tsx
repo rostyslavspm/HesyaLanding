@@ -59,7 +59,7 @@ export default function SuiteTabs() {
   const active = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section className="section-light section-standard" id="suite-section">
+    <section className="section-light-alt section-standard section-divider-soft" id="suite-section">
       <div className="container-hesya">
         <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
           <p className="text-eyebrow mb-4 text-[var(--foreground-muted)]">Your Hesya suite</p>
@@ -82,10 +82,10 @@ export default function SuiteTabs() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+              className={`rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                 activeTab === tab.id
-                  ? "bg-[var(--color-soft-obsidian)] text-white shadow-[var(--shadow-soft)]"
-                  : "bg-white/85 text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                  ? "border-[var(--color-soft-obsidian)] bg-[var(--color-soft-obsidian)] text-white shadow-[var(--shadow-soft)]"
+                  : "border-[var(--border)] bg-white/85 text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
               }`}
               aria-selected={activeTab === tab.id}
               role="tab"
@@ -96,8 +96,8 @@ export default function SuiteTabs() {
         </div>
 
         <div className="mx-auto mt-10 max-w-6xl">
-          <div className="glass panel-elevated relative overflow-hidden rounded-[var(--radius-xl)] p-8 md:p-12">
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-2/5 bg-gradient-to-l from-white/70 to-transparent" />
+          <div className="panel-elevated relative overflow-hidden rounded-[var(--radius-xl)] p-8 md:p-12">
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-2/5 bg-gradient-to-l from-white/78 to-transparent" />
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -110,7 +110,7 @@ export default function SuiteTabs() {
               >
                 <div className="text-left">
                   <p className="text-eyebrow mb-4 text-[var(--foreground-muted)]">{active.label}</p>
-                  <h3 className="mb-4 text-3xl font-semibold leading-tight tracking-tight text-[var(--foreground)] md:text-4xl">
+                  <h3 className="mb-4 text-[2rem] font-semibold leading-[1.08] tracking-tight text-[var(--foreground)] md:text-[2.38rem]">
                     {active.title}
                   </h3>
                   <p className="text-body-sm mb-6 max-w-xl text-[var(--foreground-muted)]">
@@ -126,7 +126,7 @@ export default function SuiteTabs() {
                   </Link>
                 </div>
                 <motion.div
-                  className="relative flex min-h-[280px] items-center justify-center rounded-[2rem] bg-white/75 p-6 md:p-8"
+                  className="relative flex min-h-[290px] items-center justify-center rounded-[2rem] border border-[var(--border)] bg-white/82 p-6 md:p-8"
                   variants={{
                     hidden: { opacity: 0, y: 14 },
                     visible: {

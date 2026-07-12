@@ -35,12 +35,12 @@ export default function FinaleV2() {
     <section
       id="finale-section"
       ref={container}
-      className="section-standard-sm relative overflow-hidden bg-white"
+      className="section-light-alt section-standard-sm section-divider-soft relative overflow-hidden"
     >
       <div className="container-hesya flex flex-col items-center text-center">
         <div className="panel-elevated w-full max-w-4xl rounded-[var(--radius-xl)] px-6 py-12 md:px-12 md:py-14">
           <p className="finale-content text-eyebrow mb-4 text-[var(--foreground-muted)]">Ready to begin</p>
-          <h2 className="finale-content text-display-sans mb-5 text-[var(--color-soft-obsidian)]">
+          <h2 className="finale-content mb-5 text-[clamp(2.1rem,4.5vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--color-soft-obsidian)]">
             One intention is enough.
           </h2>
           <p className="finale-content text-body mx-auto mb-8 max-w-2xl text-[var(--foreground-muted)]">
