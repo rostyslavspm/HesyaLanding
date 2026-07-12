@@ -47,18 +47,24 @@ export default function HeroV2() {
       className="section-standard-lg relative min-h-[96vh] overflow-hidden bg-gradient-to-b from-[var(--color-hero-bg)] via-[var(--color-hero-gradient-mid)] to-[var(--color-hero-gradient-end)] pt-12"
     >
       <Image
-        src="/hero/hero-atmosphere.svg"
+        src="/artem-zhukov-uTQxfPzPfdY-unsplash.jpg"
         alt=""
         fill
         priority
-        className="pointer-events-none object-cover opacity-70 mix-blend-screen"
+        className="pointer-events-none object-cover object-center opacity-84"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.3),transparent_56%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hero-bg)]/24 via-transparent to-[var(--color-hero-bg)]/60" />
+      <Image
+        src="/hero/hero-atmosphere.svg"
+        alt=""
+        fill
+        className="pointer-events-none object-cover opacity-30 mix-blend-screen"
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(225,232,255,0.28),transparent_58%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hero-bg)]/35 via-[var(--color-hero-bg)]/16 to-[var(--color-hero-bg)]/68" />
 
       <div className="container-hesya relative z-10 flex flex-col items-center text-center">
         <p className="hero-animate mb-6 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-micro text-white/80">
-          Looking for Superhuman-level focus design?
+          Now in TestFlight beta
         </p>
         <h1 className="hero-animate text-display-sans mb-6 max-w-4xl text-white">
           Name what matters.
@@ -73,7 +79,7 @@ export default function HeroV2() {
 
         <div className="hero-animate mb-12 flex flex-col items-center gap-4 sm:flex-row">
           <a href={TESTFLIGHT_URL} className="btn-primary-gradient">
-            Try the beta on TestFlight
+            Join the TestFlight beta
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
