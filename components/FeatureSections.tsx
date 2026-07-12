@@ -41,7 +41,7 @@ function ShiftCrossfadeVisual() {
   return (
     <div ref={container} className="flex justify-center">
       <TiltOnMouse>
-        <div className="animate-breath relative w-[200px] overflow-hidden rounded-[2.5rem] bg-black shadow-[0_20px_80px_rgba(0,0,0,0.25)] md:w-[240px]">
+        <div className="animate-breath relative w-[200px] overflow-hidden rounded-[2.5rem] border border-white/20 bg-black shadow-[0_20px_80px_rgba(0,0,0,0.25)] md:w-[240px]">
           <Image
             src="/screenshots/screen-home.png"
             alt="Hesya — today's intent"
@@ -72,11 +72,10 @@ function WidgetVisual() {
           alt="Hesya widget showing today's intent"
           width={660}
           height={1434}
-          className="h-auto w-full select-none rounded-[2.5rem] shadow-[0_40px_120px_rgba(0,0,0,0.15)]"
-          unoptimized
+          className="h-auto w-full select-none rounded-[2.5rem] border border-white/20 shadow-[0_40px_120px_rgba(0,0,0,0.15)]"
         />
         <div
-          className="absolute inset-0 rounded-[2.5rem] bg-white/30 backdrop-blur-[12px] pointer-events-none"
+          className="absolute inset-0 rounded-[2.5rem] bg-white/24 backdrop-blur-[9px] pointer-events-none"
           style={{
             WebkitMaskImage:
               "radial-gradient(ellipse 23% 10.5% at 73.5% 18%, transparent 95%, black 100%)",
@@ -108,7 +107,7 @@ function PrivacyCueVisual() {
 
 function ReflectionVisual() {
   return (
-    <div className="glass rounded-[var(--radius-xl)] p-6 md:p-8">
+    <div className="panel-elevated rounded-[var(--radius-xl)] p-6 md:p-8">
       <p className="text-eyebrow mb-4 text-[var(--foreground-muted)]">Session close</p>
       <div className="mb-6 flex justify-center">
         <StatusPulse />

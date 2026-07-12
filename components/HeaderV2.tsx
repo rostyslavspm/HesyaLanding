@@ -12,51 +12,81 @@ const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
 export default function HeaderV2() {
   const headerRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
-  const [pastHero, setPastHero] = useState(false);
+  const [announcementDismissed, setAnnouncementDismissed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem("hesya-announcement-dismissed") === "1";
+  });
+  const [onDark, setOnDark] = useState(false);
   useHeaderScroll(headerRef);
 
   useEffect(() => {
-    const onScroll = () => {
-      setPastHero(window.scrollY > window.innerHeight * 0.6);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    let ticking = false;
 
-  const onDark = !pastHero;
+    const updateDarkState = () => {
+      const hero = document.getElementById("hero-section");
+      if (!hero) {
+        setOnDark(false);
+        ticking = false;
+        return;
+      }
+
+      const { top, bottom } = hero.getBoundingClientRect();
+      const heroIntersectsHeaderZone = top < 180 && bottom > 120;
+      setOnDark(heroIntersectsHeaderZone);
+      ticking = false;
+    };
+
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateDarkState);
+        ticking = true;
+      }
+    };
+
+    updateDarkState();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, []);
 
   return (
     <>
       {!announcementDismissed && (
-        <div className="relative z-50 bg-[var(--color-surface-dark)] px-[var(--gutter)] py-2.5 text-center">
-          <p className="text-micro text-white/70">
-            Hesya is in beta on TestFlight —{" "}
-            <a
-              href={TESTFLIGHT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-white"
+        <div className="relative z-50 border-b border-white/10 bg-[var(--color-surface-dark)] py-2.5 text-center">
+          <div className="container-hesya relative">
+            <p className="text-micro text-white/70">
+              Hesya is in beta on TestFlight —{" "}
+              <a
+                href={TESTFLIGHT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-white"
+              >
+                try it free
+              </a>
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setAnnouncementDismissed(true);
+                window.localStorage.setItem("hesya-announcement-dismissed", "1");
+              }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70"
+              aria-label="Dismiss announcement"
             >
-              try it free
-            </a>
-          </p>
-          <button
-            type="button"
-            onClick={() => setAnnouncementDismissed(true)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70"
-            aria-label="Dismiss announcement"
-          >
-            <X className="h-4 w-4" />
-          </button>
+              <X className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       )}
 
       <motion.header
         ref={headerRef}
         {...(onDark ? { "data-on-dark": true } : {})}
-        className="header-sticky relative px-[var(--gutter)] py-4 md:py-5"
+        className="header-sticky relative py-3 md:py-4"
         initial={prefersReducedMotion ? false : { opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={
@@ -89,6 +119,20 @@ export default function HeaderV2() {
           </div>
 
           <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex items-center gap-3 sm:hidden">
+              <Link
+                href="/privacy"
+                className={`text-micro ${onDark ? "link-animated-on-dark text-white/78" : "link-animated text-[var(--foreground-muted)]"}`}
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/support"
+                className={`text-micro ${onDark ? "link-animated-on-dark text-white/78" : "link-animated text-[var(--foreground-muted)]"}`}
+              >
+                Support
+              </Link>
+            </div>
             <nav
               className={`hidden items-center rounded-full px-4 py-2 sm:flex ${
                 onDark ? "glass-dark" : "glass"

@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { DiagnosticShuffler, RitualClock, StatusPulse } from "./demos/SuiteDemos";
 import { DURATION, EASE_HESYA, STAGGER } from "../lib/motion";
 import FeatureChecklist from "./ui/FeatureChecklist";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PencilLine, RotateCcw, NotebookPen } from "lucide-react";
 
 const tabs = [
   {
@@ -21,6 +21,7 @@ const tabs = [
     ],
     actionLabel: "Explore focus flow",
     actionHref: "/support",
+    icon: PencilLine,
     demo: <DiagnosticShuffler compact />,
   },
   {
@@ -35,6 +36,7 @@ const tabs = [
     ],
     actionLabel: "Read privacy details",
     actionHref: "/privacy",
+    icon: RotateCcw,
     demo: <RitualClock compact />,
   },
   {
@@ -49,6 +51,7 @@ const tabs = [
     ],
     actionLabel: "Learn how sessions work",
     actionHref: "/support",
+    icon: NotebookPen,
     demo: <StatusPulse compact />,
   },
 ] as const;
@@ -82,14 +85,16 @@ export default function SuiteTabs() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                 activeTab === tab.id
                   ? "border-[var(--color-soft-obsidian)] bg-[var(--color-soft-obsidian)] text-white shadow-[var(--shadow-soft)]"
                   : "border-[var(--border)] bg-white/85 text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
               }`}
               aria-selected={activeTab === tab.id}
+              aria-controls={`suite-panel-${tab.id}`}
               role="tab"
             >
+              <tab.icon className="h-3.5 w-3.5" />
               {tab.label}
             </button>
           ))}
@@ -106,6 +111,7 @@ export default function SuiteTabs() {
                 exit={prefersReducedMotion ? undefined : { opacity: 0, y: -16 }}
                 transition={{ duration: DURATION.tabContent, ease: EASE_HESYA }}
                 role="tabpanel"
+                id={`suite-panel-${activeTab}`}
                 className="relative z-10 grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_1.1fr]"
               >
                 <div className="text-left">
