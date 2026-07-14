@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "../../components/Header";
+import MarketingChrome from "../../components/MarketingChrome";
 import FaqSection from "../../components/FaqAccordion";
 import Footer from "../../components/Footer";
 
@@ -110,7 +110,7 @@ const general = [
 export default function SupportPage() {
   return (
     <>
-      <Header />
+      <MarketingChrome variant="light" />
       <main id="main" className="min-h-screen bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
         <div className="container mx-auto max-w-3xl">
           <Link

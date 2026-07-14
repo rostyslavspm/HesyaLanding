@@ -22,6 +22,11 @@
 
 # misc
 .DS_Store
+public/images/.DS_Store
+
+# local agent tooling
+.claude/worktrees/
+.claude/launch.json
 *.pem
 
 # debug

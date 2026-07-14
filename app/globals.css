@@ -1,72 +1,51 @@
 @import "tailwindcss";
+@import "./design-tokens.css";
+@import "./design-system.css";
 
+/* ─── Tailwind v4 theme bridge ───────────────────────── */
 @theme inline {
-  --color-mist-white: #F2F2F2;
-  --color-soft-obsidian: #262322;
-  --color-pearl-glow: #FFFFFF;
-  --color-deep-midnight: #161B22;
+  --color-mist-white: var(--color-mist-white);
+  --color-soft-obsidian: var(--color-soft-obsidian);
+  --color-pearl-glow: var(--color-pearl-glow);
+  --color-deep-midnight: var(--color-deep-midnight);
+  --color-hero-bg: var(--color-hero-bg);
+  --color-hero-cta: var(--color-hero-cta);
+  --color-forest-bg: var(--color-forest-bg);
+  --color-footer-bg: var(--color-footer-bg);
+  --color-stone-100: var(--color-stone-100);
+  --color-stone-200: var(--color-stone-200);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-fill: var(--color-accent-fill);
+  --color-sky-from: var(--color-sky-from);
+  --color-sky-to: var(--color-sky-to);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border-subtle: var(--border-subtle);
 
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
-}
 
-:root {
-  --background: var(--color-mist-white);
-  --foreground: var(--color-soft-obsidian);
-
-  /* Layout */
-  --container: 1100px;
-  --gutter: clamp(20px, 4vw, 44px);
-  --section-py: clamp(72px, 10vw, 128px);
-  --section-py-lg: clamp(92px, 12vw, 168px);
-
-  /* Easing */
-  --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   min-height: 100svh;
-  overflow-x: hidden; /* Prevents global noise overlay bleed on mobile */
+  overflow-x: hidden;
 }
 
-/* Tracking utility for Inter elements */
-.text-tracked {
-  letter-spacing: 0.05em;
-}
-
-/* Typography Overrides */
-.text-display {
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 8vw, 5rem);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-
-.text-display-italic {
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 8vw, 5rem);
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-
-.text-body {
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-/* ─── Noise Grain Overlay ───────────────────────────────────────
-   Global 0.04 opacity SVG noise overlay to eliminate digital flatness.
-   ──────────────────────────────────────────────────────── */
+/* ─── Noise grain ────────────────────────────────────── */
 .noise-overlay::after {
   content: "";
   position: absolute;
-  inset: -4px; 
+  inset: -4px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   opacity: 0.04;
@@ -76,21 +55,15 @@ body {
   z-index: 40;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .noise-overlay::after {
-    animation: none;
-    inset: 0;
-  }
-  .animate-breath {
-    animation: none;
-  }
-}
-
-/* ─── Global Animations ─────────────────────────────────────── */
-/* The Breath Loop */
+/* ─── Motion ─────────────────────────────────────────── */
 @keyframes breath-loop {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
 }
 
 .animate-breath {
@@ -98,43 +71,50 @@ body {
 }
 
 @keyframes clock-sweep {
-  0% { stroke-dashoffset: 289; transform: rotate(0deg); transform-origin: center; }
-  50% { stroke-dashoffset: 200; transform: rotate(45deg); transform-origin: center; }
-  100% { stroke-dashoffset: 289; transform: rotate(90deg); transform-origin: center; }
+  0% {
+    stroke-dashoffset: 289;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  50% {
+    stroke-dashoffset: 200;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+  100% {
+    stroke-dashoffset: 289;
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
 }
 
-/* Magnetic Button Hover */
-.btn-magnetic {
-  transition: transform 0.4s var(--ease-hesya), box-shadow 0.4s var(--ease-hesya);
-  will-change: transform;
-}
-.btn-magnetic:hover {
-  transform: scale(1.05) translateY(-2px);
-}
-
-/* Pill Button Style */
-.btn-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 2.5rem;
-  border-radius: 9999px;
-  background-color: var(--color-pearl-glow);
-  color: var(--color-soft-obsidian);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-.btn-pill:hover {
-  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05);
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  92% {
+    opacity: 1;
+  }
 }
 
-/* Utility for all containers */
-.rounded-container {
-  border-radius: 3rem;
+.hero-flying-card {
+  animation: hero-float 8s var(--ease-hesya) infinite;
 }
 
-/* ─── Skip to content (accessibility) ──────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-flying-card {
+    opacity: 1;
+  }
+}
+/* ─── Accessibility ──────────────────────────────────── */
 .skip-link {
   position: absolute;
   width: 1px;
@@ -146,6 +126,7 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
 .skip-link:focus {
   position: fixed;
   top: 1rem;
@@ -160,4 +141,16 @@ body {
   background: var(--color-pearl-glow);
   color: var(--color-soft-obsidian);
   font-size: 0.875rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noise-overlay::after,
+  .animate-breath,
+  .hero-flying-card {
+    animation: none;
+  }
+
+  .btn-magnetic:hover {
+    transform: none;
+  }
 }

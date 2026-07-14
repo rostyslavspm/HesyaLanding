@@ -1,29 +1,28 @@
 import type { Metadata } from "next";
-import Header from "../components/Header";
+import MarketingChrome from "../components/MarketingChrome";
 import Footer from "../components/Footer";
-import TheHero from "../components/TheHero";
-import TheValues from "../components/TheValues";
-import ThePearl from "../components/ThePearl";
-import TheShift from "../components/TheShift";
-import TheWidget from "../components/TheWidget";
-import TheFinale from "../components/TheFinale";
+import HeroSection from "../components/sections/HeroSection";
+import FeatureSuite from "../components/sections/FeatureSuite";
+import RecognitionSection from "../components/sections/RecognitionSection";
+import ManifestoTeaser from "../components/sections/ManifestoTeaser";
+import DownloadSection from "../components/sections/DownloadSection";
 
 export const metadata: Metadata = {
-  title: "Hesya — Name what matters. Stay with it.",
-  description: "Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
+  title: "Hesya — Return to what matters",
+  description:
+    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts. Get the beta on TestFlight.",
 };
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <MarketingChrome variant="dark" />
       <main id="main" aria-label="Hesya landing page">
-        <TheHero />
-        <TheShift />
-        <ThePearl />
-        <TheValues />
-        <TheWidget />
-        <TheFinale />
+        <HeroSection />
+        <RecognitionSection />
+        <FeatureSuite />
+        <ManifestoTeaser />
+        <DownloadSection />
       </main>
       <Footer />
     </>

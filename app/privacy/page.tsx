@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "../../components/Header";
+import MarketingChrome from "../../components/MarketingChrome";
 import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <Header />
+      <MarketingChrome variant="light" />
       <main id="main" className="min-h-screen bg-[var(--color-mist-white)] py-32 px-6" aria-label="Privacy policy">
         <div className="container mx-auto max-w-3xl">
           <Link

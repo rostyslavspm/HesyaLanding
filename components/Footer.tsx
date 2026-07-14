@@ -1,95 +1,100 @@
 "use client";
 
 import Link from "next/link";
-import Reveal from "./motion/Reveal";
-import StaggerChildren, { staggerItem } from "./motion/StaggerChildren";
-import { motion } from "framer-motion";
+import { SECTIONS, URLS } from "@/lib/design-system";
 
-/**
- * Footer — closing brand signature.
- * Large serif wordmark at low opacity, staggered nav reveals,
- * gradient divider line. The last impression matters.
- */
+const FOOTER_COLUMNS = [
+  {
+    title: "Product",
+    links: [
+      { href: "/#features", label: "Features" },
+      { href: URLS.testflight, label: "Get the beta", external: true },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: "/manifesto", label: "Manifesto" },
+      { href: "/support", label: "Support" },
+      { href: "mailto:support@hesya.app", label: "Contact", mailto: true },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [{ href: "/privacy", label: "Privacy" }],
+  },
+] as const;
+
 export default function Footer() {
   return (
-    <footer className="relative px-[var(--gutter)] pt-20 pb-16">
-      {/* Gradient divider replacing flat border-top */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-[min(80%,600px)]"
-        aria-hidden="true"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, var(--foreground-muted) 50%, transparent 100%)",
-          opacity: 0.18,
-        }}
-      />
-
-      <div className="container-hesya flex flex-col items-center gap-12 text-center">
-        {/* Serif wordmark — large, ghosted */}
-        <Reveal variant="scale" duration={1.0}>
-          <p
-            className="select-none"
-            aria-hidden="true"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(3rem, 8vw, 6rem)",
-              fontWeight: 400,
-              letterSpacing: "-0.03em",
-              lineHeight: 1,
-              color: "var(--foreground)",
-              opacity: 0.06,
-            }}
-          >
-            Hesya
-          </p>
-        </Reveal>
-
-        {/* Tagline */}
-        <Reveal delay={0.08}>
-          <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
-            A calm focus companion for iPhone.
-          </p>
-        </Reveal>
-
-        {/* Navigation — staggered entrance */}
-        <StaggerChildren as="nav" aria-label="Footer navigation">
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-            <motion.div variants={staggerItem}>
-              <Link
-                href="/support"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Support
-              </Link>
-            </motion.div>
-            <motion.div variants={staggerItem}>
-              <Link
-                href="/privacy"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Privacy
-              </Link>
-            </motion.div>
-            <motion.div variants={staggerItem}>
-              <a
-                href="mailto:support@hesya.app"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Contact
-              </a>
-            </motion.div>
+    <footer
+      className={`${SECTIONS.footer} section-bleed-x px-[var(--gutter)] pt-16 md:pt-20`}
+      aria-label="Site footer"
+    >
+      <div className="container-marketing">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+          <div className="max-w-[16rem] shrink-0">
+            <Link
+              href="/"
+              className="text-heading"
+              style={{
+                color: "var(--color-on-dark)",
+                fontFamily: "var(--font-serif)",
+              }}
+            >
+              Hesya
+            </Link>
+            <p className="mt-4 text-micro text-[var(--color-on-dark-muted)]">
+              A calm focus companion for iPhone.
+            </p>
           </div>
-        </StaggerChildren>
 
-        {/* Copyright — quiet fade */}
-        <Reveal delay={0.2}>
-          <p className="text-micro" style={{ color: "var(--foreground-muted)" }}>
+          <nav
+            className="grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-3 sm:gap-x-14 lg:justify-items-start"
+            aria-label="Footer"
+          >
+            {FOOTER_COLUMNS.map((column) => (
+              <div key={column.title}>
+                <p className="text-eyebrow text-[var(--color-on-dark-muted)]">
+                  {column.title}
+                </p>
+                <ul className="mt-4 space-y-3 pl-0">
+                  {column.links.map((link) => (
+                    <li key={link.href} className="list-none">
+                      {"external" in link || "mailto" in link ? (
+                        <a
+                          href={link.href}
+                          className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
+                          {...("external" in link
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
+
+        <div className="footer-watermark-zone relative mt-14 min-h-[clamp(7rem,16vw,11rem)] border-t border-[var(--border-dark)] pt-8 md:mt-20 md:min-h-[clamp(8rem,18vw,13rem)]">
+          <p className="relative z-[1] text-micro text-[var(--color-on-dark-muted)]">
             Hesya &copy; {new Date().getFullYear()}
           </p>
-        </Reveal>
+          <p className="footer-watermark" aria-hidden>
+            HESYA
+          </p>
+        </div>
       </div>
     </footer>
   );

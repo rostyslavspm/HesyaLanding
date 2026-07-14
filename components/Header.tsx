@@ -1,83 +1,68 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import HeaderCTA from "./HeaderCTA";
+import { useChromeHeight } from "@/hooks/useChromeHeight";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
 import { EASE_HESYA } from "../lib/motion";
+import DesktopNav from "./sections/Navbar/DesktopNav";
+import NavbarActions from "./sections/Navbar/NavbarActions";
+import MobileMenu from "./sections/Navbar/MobileMenu";
 
-const TESTFLIGHT_URL = "https://testflight.apple.com/join/2sE4MyhY";
+type HeaderProps = {
+  variant?: "light" | "dark";
+};
 
-export default function Header() {
+export default function Header({ variant = "light" }: HeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [menuOpen, setMenuOpen] = useState(false);
   useHeaderScroll(headerRef);
+  useChromeHeight(headerRef, "--header-height");
+
+  const isDark = variant === "dark";
 
   return (
-    <motion.header
-      ref={headerRef}
-      className="header-sticky relative px-[var(--gutter)] py-4 md:py-5"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={
-        prefersReducedMotion
-          ? { duration: 0 }
-          : { duration: 0.5, delay: 0.05, ease: EASE_HESYA }
-      }
-    >
-      <div className="container-hesya flex items-center justify-between gap-6">
-        {/* Brand */}
-        <Link
-          href="/"
-          className="text-heading"
-          style={{ color: "var(--foreground)", fontFamily: "var(--font-serif)" }}
-        >
-          Hesya
-        </Link>
-
-        {/* Right cluster */}
-        <div className="flex items-center gap-4">
-          {/* Nav pill (desktop/tablet) */}
-          <nav
-            className="hidden sm:flex items-center rounded-full px-4 py-2"
-            aria-label="Main navigation"
+    <>
+      <motion.header
+        ref={headerRef}
+        className={`header-sticky px-[var(--gutter)] py-4 md:py-5 ${
+          isDark ? "header-dark" : ""
+        }`}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.5, delay: 0.05, ease: EASE_HESYA }
+        }
+      >
+        <div className="container-marketing grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <Link
+            href="/"
+            className="shrink-0 justify-self-start text-sm font-semibold uppercase tracking-[0.12em]"
             style={{
-              background: "var(--surface-tinted)",
-              border: "1px solid var(--border)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
+              color: isDark ? "var(--color-on-dark)" : "var(--foreground)",
+              fontFamily: "var(--font-sans)",
             }}
           >
-            <div className="flex items-center gap-8 px-2">
-              <Link
-                href="/privacy"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Privacy
-              </Link>
-              <Link
-                href="/support"
-                className="text-micro link-animated"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Support
-              </Link>
-            </div>
-          </nav>
+            Hesya
+          </Link>
 
-          {/* CTA */}
-          <div className="hidden sm:block">
-            <HeaderCTA href={TESTFLIGHT_URL} label="Try on TestFlight" />
+          <div className="justify-self-center">
+            <DesktopNav variant={isDark ? "dark" : "light"} />
           </div>
 
-          {/* Mobile CTA only (nav hidden) */}
-          <div className="sm:hidden">
-            <HeaderCTA href={TESTFLIGHT_URL} label="TestFlight" />
-          </div>
+          <NavbarActions
+            variant={isDark ? "dark" : "light"}
+            menuOpen={menuOpen}
+            onOpenMenu={() => setMenuOpen(true)}
+          />
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }

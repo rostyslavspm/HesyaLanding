@@ -1,0 +1,131 @@
+/**
+ * Hesya Landing — Design Tokens
+ * Structure aligned with Superhuman reference; palette tuned for Hesya (warm, calm).
+ */
+
+:root {
+  /* ─── Primitives ─────────────────────────────────────── */
+  --color-mist-white: #f2f2f2;
+  --color-soft-obsidian: #262322;
+  --color-pearl-glow: #ffffff;
+  --color-deep-midnight: #161b22;
+
+  /* Superhuman-structure dark surfaces */
+  --color-hero-bg: #14121f;
+  --color-hero-cta: #1b1938;
+  --color-hero-cta-ring: rgb(53 48 136);
+  --color-forest-bg: #152520;
+  --color-footer-bg: #2e1f1f;
+
+  /* Light / suite surfaces */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #ece9e1;
+  --color-stone-border: color(srgb 0.451 0.443 0.427 / 0.2);
+
+  /* Accent — purple family (links, tabs, outlines) */
+  --color-accent: #714cb6;
+  --color-accent-hover: #533192;
+  --color-accent-muted: #5b4d8a;
+  --color-accent-fill: #c4b5fd;
+  --color-accent-fill-hover: #ddd6fe;
+
+  /* CTA icon gradient stops */
+  --color-cta-icon-from: #857dfa;
+  --color-cta-icon-mid: #554dcb;
+  --color-cta-icon-to: #4a43b0;
+  --color-cta-icon-glow-teal: color-mix(in srgb, var(--feature-return) 35%, transparent);
+  --color-cta-icon-glow-sky: color-mix(in srgb, var(--color-sky-from) 35%, transparent);
+  --color-cta-icon-glow-lavender: color-mix(in srgb, var(--color-accent-fill) 28%, transparent);
+
+  /* Sky banner (bottom CTA) */
+  --color-sky-from: #b8dce8;
+  --color-sky-to: #f0e8f4;
+
+  /* Hero atmosphere */
+  --color-hero-sky-top: rgba(120, 90, 140, 0.45);
+  --color-hero-sky-mid: rgba(60, 50, 90, 0.25);
+
+  /* Text on dark */
+  --color-on-dark: rgba(255 255 255 / 0.95);
+  --color-on-dark-secondary: rgba(255 255 255 / 0.8);
+  --color-on-dark-muted: rgba(255 255 255 / 0.5);
+
+  /* Text on light */
+  --color-on-light: var(--color-soft-obsidian);
+  --color-on-light-secondary: color(srgb 0.078 0.078 0.075 / 0.65);
+  --color-on-light-muted: rgba(38 35 34 / 0.5);
+
+  /* ─── Semantic aliases ───────────────────────────────── */
+  --background: var(--color-mist-white);
+  --foreground: var(--color-soft-obsidian);
+  --foreground-secondary: rgba(38 35 34 / 0.8);
+  --foreground-muted: rgba(38 35 34 / 0.64);
+  --foreground-reading: color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
+
+  --surface: rgba(255 255 255 / 0.72);
+  --surface-elevated: rgba(255 255 255 / 0.88);
+  --surface-tinted: rgba(248 248 246 / 0.58);
+  --surface-dark: rgba(255 255 255 / 0.08);
+  --surface-dark-elevated: rgba(255 255 255 / 0.12);
+
+  --border: rgba(0 0 0 / 0.06);
+  --border-strong: var(--color-soft-obsidian);
+  --border-subtle: var(--color-stone-border);
+  --border-dark: rgba(255 255 255 / 0.12);
+  --border-dark-strong: rgba(255 255 255 / 0.2);
+
+  --focus: color-mix(in srgb, var(--color-accent) 55%, transparent);
+
+  /* ─── Layout ─────────────────────────────────────────── */
+  --container: 1100px;
+  --container-marketing: 1440px;
+  --gutter: clamp(16px, 4vw, 24px);
+  --header-height: 82px;
+  --suite-sticky-height: 0px;
+  --scroll-anchor-gap: 16px;
+  --banner-height: 2.5rem;
+  --hero-bleed: clamp(1rem, 3vh, 2.5rem);
+  --hero-composition-max: 56rem;
+
+  /* Per-feature accents (tabs) */
+  --feature-declare: #714cb6;
+  --feature-return: #829e93;
+  --feature-reflect: #c084a8;
+  --feature-presence: #5b8fc7;
+
+  --section-py: clamp(72px, 10vw, 128px);
+  --section-py-lg: clamp(92px, 12vw, 168px);
+  --section-py-compact: clamp(48px, 6vw, 80px);
+
+  /* ─── Radius ─────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ─── Shadows ────────────────────────────────────────── */
+  --shadow-soft: 0 18px 60px rgba(0 0 0 / 0.12);
+  --shadow-hero: 0 28px 120px rgba(0 0 0 / 0.28);
+  --shadow-cta-dark: rgb(20 20 19 / 0.24) 0 1px 2px, var(--color-hero-cta-ring) 0 0 0 1px;
+  --shadow-cta-icon: rgb(20 20 19 / 0.08) 0 1px 2px;
+
+  /* ─── Typography weights (Inter; Superhuman uses ~460/540) */
+  --font-weight-ui: 460;
+  --font-weight-marketing: 540;
+  --font-weight-body: 400;
+  --font-weight-semibold: 600;
+
+  /* ─── Motion ─────────────────────────────────────────── */
+  --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-micro: 0.25s;
+  --dur-hover: 0.35s;
+  --dur-reveal: 0.55s;
+  --dur-section: 1.2s;
+
+  /* ─── Z-index ────────────────────────────────────────── */
+  --z-header: 200;
+  --z-sticky-subnav: 199;
+  --z-overlay: 10;
+}

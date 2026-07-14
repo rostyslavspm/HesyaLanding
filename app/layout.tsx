@@ -18,28 +18,35 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Hesya — Name what matters. Stay with it.",
+  title: "Hesya — Return to what matters",
   description:
-    "Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
+    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
   authors: [{ name: "Rostyslav Slobodianiuk" }],
   creator: "Rostyslav Slobodianiuk",
   metadataBase: new URL("https://hesya.app"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hesya — Name what matters. Stay with it.",
+    title: "Hesya — Return to what matters",
     description:
-      "Declare one intention, protect a focus session, and return in your own words when attention drifts. A calm iPhone companion — free, private, no accounts.",
+      "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
     url: "https://hesya.app",
     siteName: "Hesya",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Hesya — Name what matters. Stay with it." }],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Hesya — Return to what matters",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hesya — Name what matters. Stay with it.",
+    title: "Hesya — Return to what matters",
     description:
-      "Declare one intention, protect a focus session, and return in your own words when attention drifts. Free, private, no accounts.",
+      "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
     images: ["/opengraph-image"],
   },
   icons: {

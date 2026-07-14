@@ -1,17 +1,18 @@
 # Hesya Landing Page
 
-Landing page for [Hesya](https://hesya.app) — a quiet pause app for iOS.
+Landing page for [Hesya](https://hesya.app) — a calm focus companion for iPhone.
 
 ## Stack
 
 - Next.js 16 (App Router) + TypeScript
 - Tailwind CSS v4
-- Framer Motion
+- GSAP + Lenis (scroll) + Framer Motion (chrome micro-interactions)
 - Deployed on Vercel
 
 ## Pages
 
 - `/` — Marketing homepage
+- `/manifesto` — Philosophy / manifesto
 - `/privacy` — Privacy policy
 - `/support` — Support & FAQ
 
@@ -22,19 +23,35 @@ npm install
 npm run dev
 ```
 
-## Build
+## Build & lint
 
 ```bash
 npm run build
+npm run lint
 ```
 
-## Screenshots
+## Assets
 
-Place app screenshots in `public/screenshots/` with these exact filenames:
+### Hero & manifesto backgrounds
 
-- `screen-home.png` — Home screen
-- `screen-lockscreen.png` — Lock screen widget
-- `screen-breathing.png` — Ritual/breathing screen
-- `screen-affect.png` — Affect label selection screen
+Place in `public/images/`:
 
-If your files use different names (e.g. `Hesya Homescreen.png`), rename them to match.
+- `hero-forest.jpg` — hero backdrop (see `lib/content/assetSpecs.ts`)
+- `manifesto-scene.jpg` — manifesto teaser left panel
+
+### Feature screenshots
+
+Place in `public/screenshots/`:
+
+- `screen-intention.png` — Declare
+- `screen-lockscreen.png` — Return
+- `screen-ready.png` — Reflect
+- `Homescreen-widget.png` — Presence
+
+Hero phone mockup uses `screen-lockscreen.png` via `lib/content/heroMoments.ts`.
+
+Asset specs and creative briefs: `lib/content/assetSpecs.ts`.
+
+## Beta
+
+TestFlight: `https://testflight.apple.com/join/2sE4MyhY`
