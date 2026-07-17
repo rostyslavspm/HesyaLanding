@@ -5,7 +5,7 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "framer-motion";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Fully disabled when user prefers reduced motion.
  */
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {

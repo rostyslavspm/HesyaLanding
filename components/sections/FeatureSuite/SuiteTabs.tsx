@@ -1,19 +1,55 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { HESYA_FEATURES } from "@/lib/content/features";
-import {
-  FEATURE_SCROLL_EVENT,
-  getFeatureSections,
-  isFeatureId,
-  resolveActiveSection,
-  scrollToFeatureAnchor,
-} from "@/lib/motion/scroll";
+import { gsap } from "@/lib/motion/gsap";
 
 type SuiteTabsProps = {
   activeId: string;
   onSelect: (id: string) => void;
 };
+
+function TabUnderline({ active }: { active: boolean }) {
+  const pathRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const path = pathRef.current;
+    if (!path) return;
+
+    const length = path.getTotalLength();
+    gsap.set(path, {
+      strokeDasharray: length,
+      strokeDashoffset: active ? 0 : length,
+    });
+
+    if (active) {
+      gsap.fromTo(
+        path,
+        { strokeDashoffset: length },
+        { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }
+      );
+    }
+  }, [active]);
+
+  return (
+    <svg
+      className="tab-underline"
+      viewBox="0 0 120 8"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <path
+        ref={pathRef}
+        d="M2,6 C28,1 52,7 78,4 S112,2 118,5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.5"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
 
 export default function SuiteTabs({ activeId, onSelect }: SuiteTabsProps) {
   return (
@@ -31,121 +67,26 @@ export default function SuiteTabs({ activeId, onSelect }: SuiteTabsProps) {
             aria-selected={isActive}
             aria-controls={feature.id}
             data-active={isActive ? "true" : "false"}
-            className="tab-item"
+            className="tab-item relative"
             style={{ "--tab-accent": feature.accent } as CSSProperties}
             onClick={() => onSelect(feature.id)}
           >
             <Icon
-              className="h-5 w-5 shrink-0"
+              className="relative z-10 h-5 w-5 shrink-0"
               aria-hidden
               strokeWidth={1.75}
               style={{ color: isActive ? feature.accent : undefined }}
             />
             <span
-              className="text-product-label"
+              className="text-product-label relative z-10 tab-item-label"
               style={{ color: isActive ? feature.accent : undefined }}
             >
               {feature.title}
             </span>
+            <TabUnderline active={isActive} />
           </button>
         );
       })}
     </div>
   );
-}
-
-export function useFeatureTabSpy(defaultId = HESYA_FEATURES[0].id) {
-  const [activeId, setActiveId] = useState(defaultId);
-  const scrollingToRef = useRef<string | null>(null);
-
-  useEffect(() => {
-    let frame = 0;
-    let lenisHandler: (() => void) | null = null;
-
-    const syncFromScroll = () => {
-      if (scrollingToRef.current) return;
-
-      const sections = getFeatureSections();
-      const next = resolveActiveSection(sections);
-      if (next) {
-        setActiveId(next);
-      }
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(syncFromScroll);
-    };
-
-    const attachLenis = () => {
-      const lenis = window.__hesyaLenis;
-      if (!lenis || lenisHandler) return;
-
-      lenis.on("scroll", onScroll);
-      lenisHandler = onScroll;
-    };
-
-    syncFromScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", syncFromScroll);
-    attachLenis();
-
-    const retryTimer = window.setInterval(() => {
-      attachLenis();
-      if (lenisHandler) {
-        window.clearInterval(retryTimer);
-        syncFromScroll();
-      }
-    }, 50);
-
-    const onFeatureScroll = (event: Event) => {
-      const id = (event as CustomEvent<{ id: string }>).detail?.id;
-      if (!id) return;
-
-      scrollingToRef.current = id;
-      setActiveId(id);
-    };
-
-    const onHashChange = () => {
-      const id = window.location.hash.slice(1);
-      if (!isFeatureId(id)) return;
-
-      scrollingToRef.current = id;
-      setActiveId(id);
-    };
-
-    window.addEventListener(FEATURE_SCROLL_EVENT, onFeatureScroll);
-    window.addEventListener("hashchange", onHashChange);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.clearInterval(retryTimer);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", syncFromScroll);
-      window.removeEventListener(FEATURE_SCROLL_EVENT, onFeatureScroll);
-      window.removeEventListener("hashchange", onHashChange);
-      const lenis = window.__hesyaLenis;
-      if (lenis && lenisHandler) {
-        lenis.off("scroll", lenisHandler);
-      }
-    };
-  }, []);
-
-  const scrollToFeature = useCallback((id: string) => {
-    scrollingToRef.current = id;
-    setActiveId(id);
-
-    scrollToFeatureAnchor(id, () => {
-      window.setTimeout(() => {
-        scrollingToRef.current = null;
-        const sections = getFeatureSections();
-        const next = resolveActiveSection(sections);
-        if (next) {
-          setActiveId(next);
-        }
-      }, 80);
-    });
-  }, []);
-
-  return { activeId, scrollToFeature };
 }

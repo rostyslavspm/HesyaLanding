@@ -17,11 +17,11 @@ export default function HeroContent() {
       <p
         className={`${TYPE.marketingSubhead} max-w-[580px] text-[var(--color-on-dark-secondary)]`}
       >
-        Name one intention. When attention drifts, Hesya helps you notice —
-        and return in your own words. Without guilt. Without control.
+        Name one intention. When attention drifts, Hesya helps you notice and
+        return in your own words. Without guilt. Without control.
       </p>
 
-      <div className="mt-1 flex flex-col items-center gap-2 md:mt-2">
+      <div className="mt-1 flex flex-col items-center md:mt-2">
         <Link href={URLS.testflight} className={`btn-magnetic ${BTN.ctaDark}`}>
           <span>Get the beta</span>
           <span className="btn-cta-icon" aria-hidden>
@@ -30,9 +30,6 @@ export default function HeroContent() {
             </svg>
           </span>
         </Link>
-        <p className="text-micro text-[var(--color-on-dark-muted)]">
-          Free · Private · No accounts
-        </p>
       </div>
     </div>
   );

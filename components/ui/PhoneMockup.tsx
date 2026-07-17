@@ -34,9 +34,19 @@ export default function PhoneMockup({
 
   return (
     <div
-      className={`relative max-w-[260px] w-full aspect-[660/1434] overflow-hidden rounded-[2rem] ${className ?? ""}`}
+      className={`relative max-w-[260px] w-full aspect-[660/1434] ${className ?? ""}`}
+      style={{ clipPath: "inset(0 round 16%)" }}
       title={fallbackLabel}
     >
+      <div 
+        className="pointer-events-none absolute inset-0 z-20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15),inset_0_0_12px_rgba(0,0,0,0.6)]"
+        style={{ borderRadius: "16%" }}
+      />
+      <div 
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{ background: "linear-gradient(105deg, rgba(255,255,255,0.15) 0%, transparent 45%)" }} 
+      />
+      
       {!imageError && (
         <Image
           src={src}
@@ -51,7 +61,7 @@ export default function PhoneMockup({
       )}
       {imageError && fallbackLabel && (
         <span
-          className="absolute inset-0 flex items-center justify-center text-micro"
+          className="absolute inset-0 z-0 flex items-center justify-center text-micro"
           style={{ color: "var(--foreground-muted)", opacity: 0.4 }}
           aria-hidden="true"
         >

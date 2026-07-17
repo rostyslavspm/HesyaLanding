@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import Footer from "../../components/Footer";
+import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
   title: "Manifesto — Hesya",
@@ -86,19 +87,14 @@ export default function ManifestoPage() {
     <>
       <MarketingChrome variant="light" />
       <main id="main" className="bg-[var(--color-mist-white)] pt-8 pb-20 md:pb-32">
-        <article className="container mx-auto max-w-2xl px-6">
-          <Link
-            href="/"
-            className="text-sm text-[var(--color-soft-obsidian)]/50 transition-opacity hover:opacity-70"
-          >
+        <article className={`${LAYOUT_CLASS.prose} px-6`}>
+          <Link href="/" className={TYPE.pageBack}>
             ← Back to Hesya
           </Link>
 
           <header className="mt-8 border-b border-black/5 pb-10">
-            <p className="text-sm font-bold uppercase tracking-widest text-[var(--color-soft-obsidian)]/50">
-              Manifesto
-            </p>
-            <h1 className="mt-4 font-serif text-[clamp(2.25rem,6vw,3.5rem)] font-light italic leading-[1.1] tracking-[-0.025em] text-[var(--color-soft-obsidian)]">
+            <p className={TYPE.pageLabel}>Manifesto</p>
+            <h1 className={`${TYPE.editorialItalic} mt-4 text-[var(--color-soft-obsidian)]`}>
               On Attention, Agency, and Presence
             </h1>
           </header>
@@ -106,15 +102,10 @@ export default function ManifestoPage() {
           <div className="mt-12 space-y-14">
             {SECTIONS.map((section) => (
               <section key={section.title}>
-                <h2 className="font-serif text-2xl font-light italic text-[var(--color-soft-obsidian)]">
-                  {section.title}
-                </h2>
+                <h2 className={TYPE.editorialSection}>{section.title}</h2>
                 <div className="mt-6 space-y-4">
                   {section.paragraphs.map((paragraph) => (
-                    <p
-                      key={paragraph.slice(0, 32)}
-                      className="text-lg leading-[1.75] text-[var(--color-soft-obsidian)]/80"
-                    >
+                    <p key={paragraph.slice(0, 32)} className={TYPE.proseBody}>
                       {paragraph}
                     </p>
                   ))}

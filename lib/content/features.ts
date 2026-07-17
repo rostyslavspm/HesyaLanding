@@ -21,7 +21,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
     id: "declare",
     title: "Declare",
     accent: "var(--feature-declare)",
-    heading: "Name what matters — in your own words",
+    heading: "Name what matters, in your own words",
     description:
       "One intention, kept verbatim. Not a goal system. Not a streak. Just the thing you want to have done, held where you can see it.",
     features: [
@@ -31,7 +31,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
       "No dashboards or scores",
     ],
     screenshot: "/screenshots/screen-intention.png",
-    screenshotAlt: "Hesya — declare your intention",
+    screenshotAlt: "Hesya declare your intention",
     linkText: "See it in the beta",
     linkHref: URLS.testflight,
     icon: PenLine,
@@ -42,7 +42,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
     accent: "var(--feature-return)",
     heading: "A gentle cue when attention drifts",
     description:
-      "When you slip into something else, Hesya brings you back — quietly, in your own words. Never a scold. Never a block.",
+      "When you slip into something else, Hesya brings you back quietly, in your own words. Never a scold. Never a block.",
     features: [
       "Notice drift without judgment",
       "Return in your own language",
@@ -50,7 +50,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
       "No guilt-based messaging",
     ],
     screenshot: "/screenshots/screen-lockscreen.png",
-    screenshotAlt: "Hesya — a quiet return on the Lock Screen",
+    screenshotAlt: "Hesya quiet return on the Lock Screen",
     linkText: "See it in the beta",
     linkHref: URLS.testflight,
     icon: RotateCcw,
@@ -61,7 +61,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
     accent: "var(--feature-reflect)",
     heading: "Close with presence, not performance",
     description:
-      "When the session ends, mark how it felt. A private note — outcome-neutral, never a score. Success is choosing, not optimizing.",
+      "When the session ends, mark how it felt. A private note, outcome-neutral, never a score. Success is choosing, not optimizing.",
     features: [
       "Outcome-neutral reflection",
       "No streaks or badges",
@@ -69,7 +69,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
       "Designed to step back over time",
     ],
     screenshot: "/screenshots/screen-ready.png",
-    screenshotAlt: "Hesya — quiet reflection after a session",
+    screenshotAlt: "Hesya quiet reflection after a session",
     linkText: "See it in the beta",
     linkHref: URLS.testflight,
     icon: Sparkles,
@@ -80,7 +80,7 @@ export const HESYA_FEATURES: HesyaFeature[] = [
     accent: "var(--feature-presence)",
     heading: "Your intent, always in view",
     description:
-      "The one thing you named follows you — on the Lock Screen, in the Live Activity, and on your widget. Quietly present. Never urgent.",
+      "The one thing you named follows you on the Lock Screen, in the Live Activity, and on your widget. Quietly present. Never urgent.",
     features: [
       "Home Screen widget",
       "Live Activity while you work",

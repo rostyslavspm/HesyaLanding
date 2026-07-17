@@ -32,8 +32,21 @@ export const TYPE = {
   productLabel: "text-product-label",
   editorialDisplay: "text-editorial-display",
   editorialItalic: "text-editorial-italic",
+  editorialSection: "text-editorial-section",
+  pageBack: "text-page-back",
+  pageLabel: "text-page-label",
+  proseBody: "text-prose-body",
+  proseLead: "text-prose-lead",
+  proseMuted: "text-prose-muted",
+  proseQuestion: "text-prose-question",
+  proseAnswer: "text-prose-answer",
   eyebrow: "text-eyebrow",
   linkAccent: "text-link-accent",
+} as const;
+
+/** Layout role classes */
+export const LAYOUT_CLASS = {
+  prose: "container-prose",
 } as const;
 
 /** Button role classes */

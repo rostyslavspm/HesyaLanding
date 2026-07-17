@@ -1,4 +1,9 @@
 import { HESYA_FEATURES } from "@/lib/content/features";
+import {
+  computeTargetScroll,
+  getFeaturePinTrigger,
+  getFeatureSegmentRatio,
+} from "./featurePin";
 import { prefersReducedMotion } from "./prefersReducedMotion";
 
 export const FEATURE_SCROLL_EVENT = "hesya:feature-scroll";
@@ -66,6 +71,10 @@ export function resolveActiveSection(sections: HTMLElement[]): string | null {
 }
 
 export function getFeatureSections(): HTMLElement[] {
+  if (typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches) {
+    return [];
+  }
+
   return HESYA_FEATURES.map((feature) => document.getElementById(feature.id)).filter(
     Boolean
   ) as HTMLElement[];
@@ -106,6 +115,22 @@ export function scrollToFeatureAnchor(id: string, onComplete?: () => void): void
   window.dispatchEvent(
     new CustomEvent(FEATURE_SCROLL_EVENT, { detail: { id } })
   );
+
+  const pinTrigger = getFeaturePinTrigger();
+  const segmentRatio = getFeatureSegmentRatio(id);
+  const targetScroll = computeTargetScroll(segmentRatio);
+  const lenis = typeof window !== "undefined" ? window.__hesyaLenis : undefined;
+  const reducedMotion = prefersReducedMotion();
+
+  if (pinTrigger && lenis && targetScroll !== null) {
+    lenis.scrollTo(targetScroll, {
+      duration: reducedMotion ? 0 : 0.8,
+      immediate: reducedMotion,
+      force: true,
+      onComplete,
+    });
+    return;
+  }
 
   scrollToAnchor(id, onComplete);
 }

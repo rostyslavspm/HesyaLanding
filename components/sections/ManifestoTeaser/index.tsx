@@ -3,14 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MANIFESTO_TEASER } from "@/lib/content/manifesto";
 import { MANIFESTO_IMAGE } from "@/lib/content/assetSpecs";
 import { SECTIONS, TYPE } from "@/lib/design-system";
+import {
+  gsap,
+  GSAP_DURATION,
+  GSAP_EASE,
+  registerGsapPlugins,
+} from "@/lib/motion/gsap";
 import { prefersReducedMotion } from "@/lib/motion/prefersReducedMotion";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ManifestoTeaser() {
   const container = useRef<HTMLElement>(null);
@@ -18,30 +20,34 @@ export default function ManifestoTeaser() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
 
+    registerGsapPlugins();
+
     const ctx = gsap.context(() => {
-      gsap.from(".manifesto-visual", {
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
           start: "top 75%",
         },
-        y: 32,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
       });
 
-      gsap.from(".manifesto-copy", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 75%",
-        },
-        y: 32,
+      tl.from(".manifesto-visual", {
+        scale: 0.97,
         opacity: 0,
-        duration: 1.2,
-        delay: 0.1,
-        ease: "power3.out",
-      });
+        duration: GSAP_DURATION.reveal * 1.8,
+        ease: GSAP_EASE.hero,
+      }).from(
+        ".manifesto-copy > *",
+        {
+          y: 20,
+          opacity: 0,
+          duration: GSAP_DURATION.reveal * 1.2,
+          stagger: 0.08,
+          ease: GSAP_EASE.out,
+        },
+        "-=0.55"
+      );
     }, container);
+
     return () => ctx.revert();
   }, []);
 
@@ -80,7 +86,7 @@ export default function ManifestoTeaser() {
             Becoming present.
           </h2>
 
-          <p className="mt-6 max-w-lg text-lg leading-[1.7] text-[var(--color-on-dark-secondary)]">
+          <p className={`mt-6 max-w-lg ${TYPE.featureBody} text-[var(--color-on-dark-secondary)]`}>
             {MANIFESTO_TEASER}
           </p>
 

@@ -4,13 +4,13 @@
 export const RETURN_PROMPT = {
   context: "You've been away for a little while.",
   intention: "Be present at dinner",
-  offer: "Return to what you named — without guilt?",
+  offer: "Return to what you named, without guilt?",
   reply: "yes, bring me back",
 };
 
 export const HERO_PHONE = {
   src: "/screenshots/screen-lockscreen.png",
-  alt: "Hesya — your intention on the Lock Screen",
+  alt: "Hesya your intention on the Lock Screen",
   fallbackLabel: "Lock Screen",
 } as const;
 

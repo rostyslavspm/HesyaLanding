@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { EASE_HESYA } from "../lib/motion";
+import { TYPE } from "@/lib/design-system";
 
 interface FaqItem {
   question: string;
@@ -16,13 +15,12 @@ interface FaqSectionProps {
 
 function FaqItem({ question, answer }: FaqItem) {
   const [open, setOpen] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="border-b border-[var(--color-soft-obsidian)]/10">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 py-6 text-left text-lg md:text-xl font-medium text-[var(--color-soft-obsidian)] transition-opacity hover:opacity-70"
+        className={`${TYPE.proseQuestion} flex w-full items-center justify-between gap-4 py-6 text-left transition-opacity hover:opacity-70`}
         aria-expanded={open}
       >
         {question}
@@ -44,32 +42,20 @@ function FaqItem({ question, answer }: FaqItem) {
           />
         </svg>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-              transition: prefersReducedMotion
-                ? { duration: 0 }
-                : { duration: 0.2, ease: EASE_HESYA },
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-              transition: prefersReducedMotion
-                ? { duration: 0 }
-                : { duration: 0.15, ease: EASE_HESYA },
-            }}
-            className="overflow-hidden"
+      <div
+        className="faq-panel grid transition-[grid-template-rows] duration-200 ease-[var(--ease-hesya)]"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <p
+            className={`${TYPE.proseAnswer} pb-6 transition-opacity duration-200 ease-[var(--ease-hesya)] ${
+              open ? "opacity-100" : "opacity-0"
+            }`}
           >
-            <p className="pb-6 text-base md:text-lg leading-relaxed text-[var(--color-soft-obsidian)]/70">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {answer}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -77,7 +63,7 @@ function FaqItem({ question, answer }: FaqItem) {
 export default function FaqSection({ title, items }: FaqSectionProps) {
   return (
     <div className="mb-12">
-      <h2 className="mb-6 text-2xl font-serif italic text-[var(--color-soft-obsidian)]">{title}</h2>
+      <h2 className={`${TYPE.editorialSection} mb-6`}>{title}</h2>
       <div>
         {items.map((item) => (
           <FaqItem key={item.question} {...item} />

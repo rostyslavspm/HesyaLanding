@@ -111,11 +111,16 @@
   --shadow-cta-dark: rgb(20 20 19 / 0.24) 0 1px 2px, var(--color-hero-cta-ring) 0 0 0 1px;
   --shadow-cta-icon: rgb(20 20 19 / 0.08) 0 1px 2px;
 
-  /* ─── Typography weights (Inter; Superhuman uses ~460/540) */
-  --font-weight-ui: 460;
-  --font-weight-marketing: 540;
+  /* Loaded weights only — Inter 400/500/600, Cormorant 300–600, Newsreader 400/500 */
   --font-weight-body: 400;
   --font-weight-semibold: 600;
+
+  /* ─── Font roles ─────────────────────────────────────── */
+  --font-heading-serif: var(--font-serif), "Cormorant Garamond", serif;
+  --font-body-serif: var(--font-body), "Newsreader", Georgia, serif;
+  --font-ui-sans: var(--font-sans), "Inter", -apple-system, sans-serif;
+  --font-size-body: 1.125rem;
+  --line-height-body: 1.65;
 
   /* ─── Motion ─────────────────────────────────────────── */
   --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);

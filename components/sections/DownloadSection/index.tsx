@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BTN, SECTIONS, TYPE, URLS } from "@/lib/design-system";
+import {
+  gsap,
+  GSAP_DURATION,
+  GSAP_EASE,
+  registerGsapPlugins,
+} from "@/lib/motion/gsap";
 import { prefersReducedMotion } from "@/lib/motion/prefersReducedMotion";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function DownloadSection() {
   const container = useRef<HTMLElement>(null);
@@ -14,18 +16,32 @@ export default function DownloadSection() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
 
+    registerGsapPlugins();
+
     const ctx = gsap.context(() => {
-      gsap.from(".download-content", {
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
           start: "top 85%",
         },
-        y: 24,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
       });
+
+      tl.from(".download-headline", {
+        scale: 0.98,
+        opacity: 0,
+        duration: GSAP_DURATION.reveal * 1.1,
+        ease: GSAP_EASE.out,
+      }).from(
+        ".download-cta",
+        {
+          opacity: 0,
+          duration: GSAP_DURATION.reveal * 0.8,
+          ease: GSAP_EASE.out,
+        },
+        "-=0.35"
+      );
     }, container);
+
     return () => ctx.revert();
   }, []);
 
@@ -49,10 +65,10 @@ export default function DownloadSection() {
 
       <div className="container-marketing relative z-[1]">
         <div className="download-content flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <h2 className={`${TYPE.marketingDisplay} max-w-[720px]`}>
+          <h2 className={`download-headline ${TYPE.marketingDisplay} max-w-[720px]`}>
             Presence that lives where you reach
           </h2>
-          <a href={URLS.testflight} className={`btn-magnetic shrink-0 ${BTN.ctaBanner}`}>
+          <a href={URLS.testflight} className={`download-cta btn-magnetic shrink-0 ${BTN.ctaBanner}`}>
             Get the beta
           </a>
         </div>

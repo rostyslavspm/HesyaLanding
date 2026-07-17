@@ -42,13 +42,13 @@ function FeatureMedia({
         style={{ background: overlays[overlayVariant] }}
       />
       <div className="relative flex w-full items-center justify-center p-6 md:p-9">
-        <div className="feature-media-breathe relative w-full max-w-[420px] overflow-hidden rounded-[2rem] shadow-[var(--shadow-hero)]">
+        <div className="relative w-full max-w-[420px] max-h-[85vh] overflow-hidden rounded-[2rem] shadow-[var(--shadow-hero)]">
           <Image
             src={screenshot}
             alt={screenshotAlt}
             width={660}
             height={1434}
-            className="h-auto w-full select-none"
+            className="h-auto max-h-[85vh] w-full object-contain select-none"
             sizes="(max-width: 768px) 80vw, 420px"
           />
         </div>
@@ -71,16 +71,16 @@ export default function FeatureCard() {
         return (
           <article
             key={feature.id}
-            id={feature.id}
             role="tabpanel"
             aria-labelledby={`tab-${feature.id}`}
             className="feature-card scroll-mt-[calc(var(--header-height)+var(--suite-sticky-height)+var(--scroll-anchor-gap))] border-y border-[var(--border-subtle)] bg-[var(--color-stone-100)] first:border-t-0 last:border-b-0"
           >
+            <span id={feature.id} className="sr-only" aria-hidden="true" />
             <div
               className={`flex flex-col md:flex-row ${isReversed ? "md:flex-row-reverse" : ""}`}
             >
               <div className="flex basis-1/2 flex-col">
-                <div className="bg-hatch-row flex min-h-16 items-center gap-3 border-b border-[var(--border-subtle)] px-[18px] md:px-9">
+                <div className="flex min-h-16 items-center gap-3 border-b border-[var(--border-subtle)] px-[18px] md:px-9">
                   <Icon
                     className="h-5 w-5 shrink-0 text-[var(--color-soft-obsidian)]"
                     aria-hidden
@@ -89,7 +89,7 @@ export default function FeatureCard() {
                   <span className={TYPE.productLabel}>{feature.title}</span>
                 </div>
 
-                <div className="flex flex-1 flex-col px-[18px] py-8 md:p-9">
+                <div className="flex flex-1 flex-col justify-center px-[18px] py-8 md:p-9">
                   <h3 className={`${TYPE.featureTitle} mb-[18px] max-w-[900px] md:mb-6`}>
                     {feature.heading}
                   </h3>
@@ -117,7 +117,7 @@ export default function FeatureCard() {
                     </Link>
                   )}
 
-                  <ul className="list-feature mt-auto">
+                  <ul className="list-feature">
                     {feature.features.map((item) => (
                       <li key={item}>{item}</li>
                     ))}

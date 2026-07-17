@@ -37,6 +37,9 @@ export default function RecognitionSection() {
       className={`${SECTIONS.mist} section-bleed-x border-y border-[var(--border-subtle)] section-pad-compact`}
     >
       <div className="container-marketing">
+        <p className="text-micro mb-6 text-center text-[var(--foreground-muted)]">
+          Free · Private · No accounts
+        </p>
         <div className="mx-auto flex max-w-[680px] flex-col items-center text-center">
           <p className="text-eyebrow text-[var(--foreground-muted)]">You already feel it</p>
 
@@ -50,14 +53,14 @@ export default function RecognitionSection() {
             aria-atomic="true"
           >
             {isStatic ? (
-              <p className="text-lg leading-[1.65] text-[var(--foreground-secondary)]">
+              <p className={`${TYPE.proseBody} text-[var(--foreground-secondary)]`}>
                 &ldquo;{activeQuote}&rdquo;
               </p>
             ) : (
               RECOGNITION_QUOTES.map((quote, quoteIndex) => (
                 <p
                   key={quote}
-                  className="absolute inset-x-0 text-lg leading-[1.65] text-[var(--foreground-secondary)] transition-opacity duration-700"
+                  className={`absolute inset-x-0 ${TYPE.proseBody} text-[var(--foreground-secondary)] transition-opacity duration-700`}
                   style={{ opacity: quoteIndex === index ? 1 : 0 }}
                   aria-hidden={quoteIndex !== index}
                 >
@@ -68,7 +71,7 @@ export default function RecognitionSection() {
           </div>
 
           <p className="mt-6 text-micro text-[var(--foreground-muted)]">
-            Hesya doesn&apos;t fix this with control — it offers a quiet way back.
+            Hesya doesn&apos;t fix this with control. It offers a quiet way back.
           </p>
         </div>
       </div>

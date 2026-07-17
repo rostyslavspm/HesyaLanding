@@ -1,5 +1,3 @@
-"use client";
-
 import { HERO_WIDGETS } from "@/lib/content/heroMoments";
 import ReturnPromptCard from "./ReturnPromptCard";
 import HeroPhone from "./HeroPhone";
@@ -8,12 +6,14 @@ import HeroWidgets from "./HeroWidgets";
 export default function HeroShowcase() {
   return (
     <div className="hero-showcase">
-      <div className="hero-showcase-stage">
+      <div className="hero-showcase-stage hero-drift-layer">
         <div className="hero-composition">
           <div className="hero-composition-side hero-composition-side--left">
             <ReturnPromptCard />
           </div>
+
           <HeroPhone />
+
           <div className="hero-composition-side hero-composition-side--right">
             <HeroWidgets />
           </div>

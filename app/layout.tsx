@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cormorant_Garamond, Newsreader } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
+import MotionShell from "../components/motion/MotionShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,6 +15,14 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -59,7 +68,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -68,8 +76,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
-      <body suppressHydrationWarning className="font-sans antialiased noise-overlay overflow-x-hidden">
+    <html
+      lang="en"
+      className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}
+    >
+      <body suppressHydrationWarning className="antialiased noise-overlay overflow-x-hidden">
+        <MotionShell />
         <SmoothScroll>
           <a href="#main" className="skip-link">
             Skip to main content
