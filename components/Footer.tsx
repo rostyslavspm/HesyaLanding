@@ -36,11 +36,8 @@ export default function Footer() {
           <div className="max-w-[16rem] shrink-0">
             <Link
               href="/"
-              className="text-heading"
-              style={{
-                color: "var(--color-on-dark)",
-                fontFamily: "var(--font-serif)",
-              }}
+              className="text-brand"
+              style={{ color: "var(--color-on-dark)" }}
             >
               Hesya
             </Link>
@@ -58,7 +55,7 @@ export default function Footer() {
                 <p className="text-eyebrow text-[var(--color-on-dark-muted)]">
                   {column.title}
                 </p>
-                <ul className="mt-4 space-y-3 pl-0">
+                <ul className="mt-4 space-y-3 ps-0">
                   {column.links.map((link) => (
                     <li key={link.href} className="list-none">
                       {"external" in link || "mailto" in link ? (
@@ -87,12 +84,12 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="footer-watermark-zone relative mt-14 min-h-[clamp(7rem,16vw,11rem)] border-t border-[var(--border-dark)] pt-8 md:mt-20 md:min-h-[clamp(8rem,18vw,13rem)]">
+        <div className="footer-watermark-zone relative mt-16 min-h-[clamp(8rem,20vw,14rem)] border-t border-[var(--border-dark)] pt-8 md:mt-24 md:min-h-[clamp(10rem,22vw,16rem)]">
           <p className="relative z-[1] text-micro text-[var(--color-on-dark-muted)]">
             Hesya &copy; {new Date().getFullYear()}
           </p>
           <p className="footer-watermark" aria-hidden>
-            HESYA
+            Hesya
           </p>
         </div>
       </div>

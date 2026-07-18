@@ -42,6 +42,12 @@ export const TYPE = {
   proseAnswer: "text-prose-answer",
   eyebrow: "text-eyebrow",
   linkAccent: "text-link-accent",
+  brand: "text-brand",
+  micro: "text-micro",
+  body: "text-body",
+  uiMicroLabel: "text-ui-micro-label",
+  uiCaption: "text-ui-caption",
+  navItem: "text-nav-item",
 } as const;
 
 /** Layout role classes */

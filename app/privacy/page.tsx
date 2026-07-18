@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Hesya",
+  title: "Privacy Policy: Hesya",
   description: "Your sessions, intents, and reflections stay on your device. The only thing that ever leaves is a small set of anonymous, identifier-free usage counts.",
 };
 
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                 Hesya is a focus companion: you declare an intention, protect a
                 session, and reflect when it ends. It is built so that your data
                 stays yours. This page explains exactly what the app does with
-                information — and what it deliberately doesn&apos;t do.
+                information, and what it deliberately doesn&apos;t do.
               </p>
             </section>
 
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
               <p className="mb-4">
                 Everything you create or configure lives only on your iPhone:
               </p>
-              <ul className="list-disc space-y-3 pl-6">
+              <ul className="list-disc space-y-3 ps-6">
                 <li>
                   <strong>Sessions &amp; intents:</strong> what you typed,
                   when you started and finished.
@@ -69,10 +69,10 @@ export default function PrivacyPage() {
                 to signal when time in apps <em>you selected</em> crosses a threshold,
                 so it can offer a gentle cue back to your intent.
               </p>
-              <div className="rounded-[2rem] bg-[var(--color-pearl-glow)] p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+              <div className="rounded-[2rem] bg-[var(--color-pearl-glow)] p-6 shadow-[0_8px_30px_oklch(0_0_0/0.04)]">
                 <p>
                   <strong>Important:</strong> Apple&apos;s framework never tells
-                  Hesya <em>which</em> app you used — only that the threshold was crossed.
+                  Hesya <em>which</em> app you used, only that the threshold was crossed.
                   No app names, usage history, or browsing activity are ever visible to
                   Hesya, stored, or transmitted. The permission is optional; every
                   feature except drift cues works without it.
@@ -84,14 +84,14 @@ export default function PrivacyPage() {
               <h2 className={`${TYPE.editorialSection} mb-4`}>Anonymous usage events</h2>
               <p className="mb-4">
                 To understand whether the app&apos;s core flows work, Hesya records a
-                few anonymous events — for example &ldquo;a session was started&rdquo;
+                few anonymous events: for example &ldquo;a session was started&rdquo;
                 or &ldquo;onboarding was completed.&rdquo; Each event contains only the
                 event name, a timestamp, the app version, and a structural category
                 (such as the session type).
               </p>
               <p>
-                There is deliberately <strong>no identifier of any kind</strong> —
-                no device ID, install ID, user ID, or IP logging. These are
+                There is deliberately <strong>no identifier of any kind</strong>
+                (no device ID, install ID, user ID, or IP logging). These are
                 population-level counts that cannot be linked to you or your device.
                 They are sent to our own first-party server; no third-party analytics
                 service is involved. Reflection notes and intent text never leave your
@@ -113,10 +113,10 @@ export default function PrivacyPage() {
               <p className="mb-4">
                 Your personal content stays on your device and you control it.
                 Deleting the app removes it entirely. The only information that ever
-                leaves — the anonymous usage events above — contains nothing that
+                leaves (the anonymous usage events above) contains nothing that
                 identifies you.
               </p>
-              <ul className="list-disc space-y-3 pl-6">
+              <ul className="list-disc space-y-3 ps-6">
                 <li>Choose your distracting apps, or none, anytime in Settings</li>
                 <li>Revoke Screen Time or Notification permissions through iOS Settings</li>
                 <li>Delete all app data by deleting the app</li>

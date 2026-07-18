@@ -38,22 +38,19 @@ export default function PhoneMockup({
       style={{ clipPath: "inset(0 round 16%)" }}
       title={fallbackLabel}
     >
-      <div 
-        className="pointer-events-none absolute inset-0 z-20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15),inset_0_0_12px_rgba(0,0,0,0.6)]"
-        style={{ borderRadius: "16%" }}
-      />
-      <div 
+      <div
         className="pointer-events-none absolute inset-0 z-10"
-        style={{ background: "linear-gradient(105deg, rgba(255,255,255,0.15) 0%, transparent 45%)" }} 
+        style={{ background: "linear-gradient(105deg, oklch(1 0 0 / 0.15) 0%, transparent 45%)" }}
       />
-      
+
       {!imageError && (
         <Image
           src={src}
           alt={alt}
           width={660}
           height={1434}
-          className="w-full h-auto block"
+          className="screenshot-outline block h-auto w-full"
+          style={{ borderRadius: "16%" }}
           onError={() => setImageError(true)}
           priority={priority}
           sizes={sizes}

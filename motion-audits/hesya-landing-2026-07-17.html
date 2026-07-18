@@ -1,173 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hesya Landing — Motion Audit</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hesya Landing — Motion Audit · design-motion-principles</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sans: "Public Sans", system-ui, sans-serif;
-    --mono: "Geist Mono", ui-monospace, monospace;
-    --display: "Public Sans", system-ui, sans-serif;
-    --bg: oklch(0.145 0.008 255);
-    --surface: oklch(0.185 0.008 255);
-    --surface-2: oklch(0.215 0.010 255);
-    --paper: oklch(0.965 0.004 255);
-    --paper-dim: oklch(0.965 0.004 255 / 0.62);
-    --muted: oklch(0.965 0.004 255 / 0.38);
-    --faint: oklch(0.965 0.004 255 / 0.22);
-    --line: oklch(0.965 0.010 255 / 0.09);
-    --line-strong: oklch(0.965 0.010 255 / 0.16);
-    --accent: oklch(0.72 0.12 175);
-    --accent-soft: oklch(0.78 0.10 175);
-    --accent-tint: oklch(0.72 0.12 175 / 0.12);
-    --crit: oklch(0.72 0.18 25);
-    --crit-tint: oklch(0.72 0.18 25 / 0.12);
-    --imp: oklch(0.78 0.14 75);
-    --imp-tint: oklch(0.78 0.14 75 / 0.12);
-    --opp: oklch(0.72 0.12 175);
-    --opp-tint: oklch(0.72 0.12 175 / 0.10);
-    --strong: oklch(0.78 0.14 145);
-    --concern: oklch(0.78 0.14 75);
-    --problem: oklch(0.72 0.18 25);
-    --t-good: oklch(0.78 0.14 145);
-    --t-mid: oklch(0.78 0.14 75);
-    --t-slow: oklch(0.72 0.18 25);
-    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px; --s9: 64px;
+    --ink:        oklch(0.155 0.006 255);
+    --surface:    oklch(0.195 0.007 255);
+    --surface-2:  oklch(0.235 0.008 255);
+    --paper:      oklch(0.945 0.004 255);
+    --paper-dim:  oklch(0.800 0.006 255);
+    --muted:      oklch(0.680 0.008 255);
+    --faint:      oklch(0.505 0.008 255);
+    --line:       oklch(0.95 0.01 255 / 0.09);
+    --line-strong:oklch(0.95 0.01 255 / 0.16);
+    --accent:      var(--paper);
+    --accent-soft: var(--paper-dim);
+    --accent-tint: color-mix(in oklch, var(--paper) 12%, transparent);
+    --crit:      oklch(0.655 0.185 25);
+    --crit-tint: oklch(0.655 0.185 25 / 0.15);
+    --imp:       oklch(0.805 0.125 78);
+    --imp-tint:  oklch(0.805 0.125 78 / 0.15);
+    --opp:       oklch(0.745 0.135 152);
+    --opp-tint:  oklch(0.745 0.135 152 / 0.15);
+    --t-good:  oklch(0.745 0.135 152);
+    --t-mid:   oklch(0.805 0.125 78);
+    --t-slow:  oklch(0.655 0.185 25);
+    --strong:  var(--opp);
+    --concern: var(--imp);
+    --problem: var(--crit);
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px;
+    --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+    --display: "Familjen Grotesk", "Hanken Grotesk", system-ui, sans-serif;
+    --sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
   :root:has(#theme-light:checked) {
-    --bg: oklch(0.975 0.003 255);
-    --surface: oklch(1 0 255);
-    --surface-2: oklch(0.955 0.004 255);
-    --paper: oklch(0.165 0.006 255);
-    --paper-dim: oklch(0.165 0.006 255 / 0.62);
-    --muted: oklch(0.165 0.006 255 / 0.42);
-    --faint: oklch(0.165 0.006 255 / 0.24);
-    --line: oklch(0.165 0.010 255 / 0.10);
-    --line-strong: oklch(0.165 0.010 255 / 0.18);
-    --accent-tint: oklch(0.55 0.12 175 / 0.10);
+    --ink:        oklch(0.985 0.003 255);
+    --surface:    oklch(0.965 0.004 255);
+    --surface-2:  oklch(0.940 0.005 255);
+    --paper:      oklch(0.180 0.006 255);
+    --paper-dim:  oklch(0.330 0.008 255);
+    --muted:      oklch(0.475 0.010 255);
+    --faint:      oklch(0.640 0.009 255);
+    --line:       oklch(0.180 0.010 255 / 0.12);
+    --line-strong:oklch(0.180 0.010 255 / 0.22);
+    --crit:      oklch(0.555 0.195 25);
+    --crit-tint: oklch(0.555 0.195 25 / 0.12);
+    --imp:       oklch(0.580 0.155 78);
+    --imp-tint:  oklch(0.580 0.155 78 / 0.14);
+    --opp:       oklch(0.555 0.140 152);
+    --opp-tint:  oklch(0.555 0.140 152 / 0.13);
+    --t-good: oklch(0.555 0.140 152);
+    --t-mid:  oklch(0.580 0.155 78);
+    --t-slow: oklch(0.555 0.195 25);
   }
   :root:has(#theme-light:checked) .tf-dot-text { fill: oklch(0.985 0.003 255); }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--paper-dim); background: var(--bg); -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) clamp(20px, 4vw, 40px) 80px; }
-  .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-  .mono-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-  .theme-switch { display: flex; justify-content: flex-end; margin-bottom: var(--s6); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--paper);
+    font-family: var(--sans); font-size: 16px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent-tint); }
+  a { color: var(--accent-soft); text-underline-offset: 3px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 40px) 96px; }
+  .mono-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  code { font-family: var(--mono); font-size: 0.86em; color: var(--paper-dim); }
+  .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .theme-switch { display: flex; justify-content: flex-end; margin-bottom: var(--s5); }
   .theme-switch__pill { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 100px; overflow: hidden; }
-  .theme-switch__pill label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 6px 14px; cursor: pointer; }
-  #theme-dark:checked ~ .theme-switch__pill label[for="theme-dark"],
+  .theme-switch__pill label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 6px 14px; cursor: pointer; user-select: none; transition: background 0.15s ease, color 0.15s ease; }
+  #theme-dark:checked  ~ .theme-switch__pill label[for="theme-dark"],
   #theme-light:checked ~ .theme-switch__pill label[for="theme-light"] { background: var(--accent-tint); color: var(--accent-soft); }
-  header.doc .eyebrow { margin-bottom: var(--s4); }
-  header.doc .title { font-family: var(--display); font-size: clamp(32px, 5vw, 48px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; color: var(--paper); margin: 0 0 var(--s5); max-width: 18ch; }
-  header.doc .lede { font-size: clamp(16px, 2vw, 18px); max-width: 62ch; margin: 0 0 var(--s6); }
-  .meta-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s4); margin-bottom: var(--s6); }
-  .meta-row .k { display: block; margin-bottom: 2px; }
-  .meta-row .v { color: var(--paper); }
-  .stats { display: flex; flex-wrap: wrap; gap: var(--s4); }
-  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: var(--s4) var(--s5); min-width: 100px; }
-  .stat a { text-decoration: none; color: inherit; }
-  .stat .num { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--paper); }
+  header.doc { padding-bottom: var(--s7); margin-bottom: var(--s8); border-bottom: 1px solid var(--line); }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: var(--s3); }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--accent); display: inline-block; }
+  h1.title { font-family: var(--display); font-size: clamp(38px, 6vw, 60px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: var(--s5) 0 var(--s4); color: var(--paper); max-width: 18ch; }
+  .lede { font-size: clamp(17px, 2.2vw, 19px); color: var(--paper-dim); max-width: 66ch; line-height: 1.6; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: var(--s6); margin-top: var(--s6); }
+  .meta-row .k { display: block; margin-bottom: 4px; }
+  .meta-row .v { font-size: 15px; color: var(--paper); }
+  .stats { display: flex; gap: clamp(20px, 4vw, 44px); margin-top: var(--s7); flex-wrap: wrap; }
+  .stat .num { font-family: var(--display); font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
   .stat.crit .num { color: var(--crit); }
-  .stat.imp .num { color: var(--imp); }
-  .stat.opp .num { color: var(--opp); }
+  .stat.imp .num  { color: var(--imp); }
+  .stat.opp .num  { color: var(--opp); }
+  .stat .lbl { margin-top: var(--s2); }
+  .stat a { color: inherit; text-decoration: none; }
   section { margin-bottom: var(--s9); }
   .sec-index { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; color: var(--accent-soft); }
-  h2.section-title { font-family: var(--display); font-size: clamp(24px, 3.4vw, 32px); font-weight: 600; letter-spacing: -0.02em; margin: var(--s2) 0 var(--s4); color: var(--paper); }
+  h2.section-title { font-family: var(--display); font-size: clamp(24px, 3.4vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin: var(--s2) 0 var(--s4); color: var(--paper); }
   .section-sub { color: var(--paper-dim); max-width: 74ch; margin: 0 0 var(--s6); }
   .section-sub em { color: var(--paper); font-style: italic; }
   .assessment { border-top: 1px solid var(--line); padding-top: var(--s6); }
-  .assessment p { font-family: var(--display); font-size: clamp(20px, 2.8vw, 26px); line-height: 1.42; color: var(--paper); max-width: 36ch; margin: var(--s4) 0 0; }
+  .assessment .mono-label { color: var(--accent-soft); }
+  .assessment p { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 2.8vw, 26px); line-height: 1.42; letter-spacing: -0.01em; color: var(--paper); max-width: 36ch; margin: var(--s4) 0 0; }
   .assessment p em { font-style: italic; color: var(--accent-soft); }
   .lens-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); }
   .lens-table th, .lens-table td { padding: var(--s4) var(--s5); text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
   .lens-table tr:last-child td { border-bottom: none; }
-  .lens-table thead th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+  .lens-table thead th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
   .lens-name { font-weight: 600; color: var(--paper); width: 28%; }
   .lens-name .who { display: block; margin-top: 2px; color: var(--muted); font-weight: 400; font-size: 13.5px; }
   .lens-name .weight { display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-soft); }
+  .lens-read { color: var(--paper-dim); }
   .lens-read em { color: var(--paper); font-style: italic; }
-  .verdict { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; }
-  .verdict::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
-  .v-strong { color: var(--strong); } .v-strong::before { background: var(--strong); }
+  .verdict { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+  .verdict::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .v-strong  { color: var(--strong); }  .v-strong::before  { background: var(--strong); }
   .v-concern { color: var(--concern); } .v-concern::before { background: var(--concern); }
   .v-problem { color: var(--problem); } .v-problem::before { background: var(--problem); }
-  .v-mixed { color: var(--muted); } .v-mixed::before { background: var(--muted); }
-  .timing-grid { display: grid; grid-template-columns: 1fr 300px; gap: clamp(28px, 5vw, 48px); }
+  .v-mixed   { color: var(--muted); }   .v-mixed::before   { background: var(--muted); }
+  .timing-grid { display: grid; grid-template-columns: 1fr 320px; gap: clamp(28px, 5vw, 56px); align-items: start; }
   @media (max-width: 860px) { .timing-grid { grid-template-columns: 1fr; } }
-  .key-list { list-style: none; margin: 0; padding: 0; }
-  .key-list li { display: grid; grid-template-columns: 22px 1fr auto; gap: var(--s3); padding: var(--s2) 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-  .key-list .kn { font-family: var(--mono); color: var(--paper); }
-  .kt.good { color: var(--t-good); font-family: var(--mono); font-size: 11px; }
-  .kt.mid { color: var(--t-mid); font-family: var(--mono); font-size: 11px; }
-  .kt.slow { color: var(--t-slow); font-family: var(--mono); font-size: 11px; }
-  .kt.none { color: var(--faint); font-family: var(--mono); font-size: 11px; }
+  .timing-figure { width: 100%; height: auto; }
+  .timing-key h4 { margin: 0 0 var(--s4); }
+  .key-list { list-style: none; margin: 0 0 var(--s6); padding: 0; display: grid; gap: 2px; }
+  .key-list li { display: grid; grid-template-columns: 22px 1fr auto; align-items: baseline; gap: var(--s3); padding: var(--s2) 0; border-bottom: 1px solid var(--line); }
+  .key-list li:last-child { border-bottom: none; }
+  .key-list .kn { font-family: var(--mono); font-size: 12px; color: var(--paper); font-variant-numeric: tabular-nums; }
+  .key-list .ka { color: var(--paper-dim); }
+  .key-list .kt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+  .kt.good { color: var(--t-good); } .kt.mid { color: var(--t-mid); } .kt.slow { color: var(--t-slow); } .kt.none { color: var(--faint); }
+  .zone-defs { display: grid; gap: var(--s3); margin-top: var(--s5); }
+  .zone-def { display: grid; grid-template-columns: 12px 1fr; gap: var(--s3); align-items: start; }
+  .zone-def .dot { width: 11px; height: 11px; border-radius: 50%; margin-top: 6px; }
+  .zone-def .zt { font-weight: 600; color: var(--paper); }
+  .zone-def .zd { font-size: 13.5px; color: var(--muted); }
+  .whats-off { margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--line); }
+  .whats-off .mono-label { color: var(--accent-soft); }
+  .whats-off p { margin: var(--s2) 0 0; color: var(--paper-dim); font-size: 14px; max-width: 60ch; }
   .lens-sec { margin-bottom: var(--s9); padding-top: var(--s6); border-top: 1px solid var(--line); }
   .lens-sec__head { display: flex; align-items: baseline; gap: var(--s4); flex-wrap: wrap; margin-bottom: var(--s2); }
-  .lens-sec__head h3 { font-family: var(--display); font-size: clamp(22px, 3vw, 28px); font-weight: 600; margin: 0; color: var(--paper); }
+  .lens-sec__head h3 { font-family: var(--display); font-size: clamp(22px, 3vw, 28px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin: 0; color: var(--paper); }
   .lens-sec__weight { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft); border: 1px solid var(--line-strong); border-radius: 100px; padding: 4px 10px; }
+  .lens-sec__verdict { margin: 0 0 var(--s6); }
   .lens-block { margin: var(--s6) 0; }
+  .lens-block > .mono-label { display: block; margin-bottom: var(--s4); }
   .lens-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); max-width: 78ch; }
-  .lens-list li { display: grid; grid-template-columns: 22px 1fr; gap: var(--s2); color: var(--paper-dim); }
+  .lens-list li { display: grid; grid-template-columns: 22px 1fr; gap: var(--s2); align-items: start; color: var(--paper-dim); }
+  .lens-list .mk { font-family: var(--mono); font-size: 13px; line-height: 1.5; }
   .lens-list.good .mk { color: var(--strong); }
-  .lens-list.opp .mk { color: var(--accent-soft); }
+  .lens-list.opp .mk  { color: var(--accent-soft); }
+  .lens-list li em { color: var(--paper); font-style: italic; }
   .lens-take { margin-top: var(--s6); background: var(--surface-2); border-radius: 10px; padding: var(--s5); }
-  .lens-take p { margin: 0; color: var(--paper); }
+  .lens-take .mono-label { color: var(--accent-soft); display: block; margin-bottom: var(--s2); }
+  .lens-take p { margin: 0; color: var(--paper); max-width: 70ch; }
   .findings { display: flex; flex-direction: column; gap: var(--s5); }
-  .finding-row { display: grid; grid-template-columns: 1fr 360px; gap: clamp(24px, 3vw, 36px); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 30px); }
+  .finding-row { display: grid; grid-template-columns: 1fr 380px; gap: clamp(24px, 3vw, 36px); align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 30px); }
   .finding-row[data-sev="crit"] { border-color: var(--crit-tint); }
   @media (max-width: 860px) { .finding-row { grid-template-columns: 1fr; } }
-  .severity { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 9px; border-radius: 100px; }
+  .find-tags { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin-bottom: var(--s3); }
+  .severity { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; padding: 4px 9px; border-radius: 100px; }
   .severity.crit { background: var(--crit-tint); color: var(--crit); }
-  .severity.imp { background: var(--imp-tint); color: var(--imp); }
+  .severity.imp  { background: var(--imp-tint);  color: var(--imp); }
+  .severity.opp  { background: var(--opp-tint);  color: var(--opp); }
   .lens-chip { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 4px 9px; border: 1px solid var(--line-strong); border-radius: 100px; }
-  .find-tags { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s3); }
-  .find-title { font-family: var(--display); font-size: clamp(19px, 2.4vw, 23px); font-weight: 600; margin: 0 0 var(--s4); color: var(--paper); }
-  .find-body p { margin: 0 0 var(--s4); }
-  .find-body em { color: var(--paper); font-style: italic; }
+  .find-title { font-family: var(--display); font-size: clamp(19px, 2.4vw, 23px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.22; margin: 0 0 var(--s4); color: var(--paper); }
+  .find-body { display: grid; gap: var(--s4); }
+  .find-body p { margin: 0; color: var(--paper-dim); }
+  .find-body p em { color: var(--paper); font-style: italic; }
+  .find-body .label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px; }
   .fix { background: var(--surface-2); border-radius: 8px; padding: var(--s4) var(--s5); }
-  .fix .label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft); display: block; margin-bottom: 3px; }
-  .fix p { color: var(--paper); margin: 0; }
-  code { font-family: var(--mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
-  .demo { position: sticky; top: var(--s5); }
+  .fix .label { color: var(--accent-soft); }
+  .fix p { color: var(--paper); }
+  .find-loc { font-size: 13px; }
+  .demo { position: relative; align-self: start; position: sticky; top: var(--s5); }
   @media (max-width: 860px) { .demo { position: static; } }
-  .demo__bar { display: flex; justify-content: space-between; margin-bottom: var(--s3); font-size: 13px; }
-  .demo__timing { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .demo__bar { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s3); margin-bottom: var(--s3); }
+  .demo__meta { min-width: 0; }
+  .demo__title { display: block; font-size: 13.5px; font-weight: 600; color: var(--paper); line-height: 1.3; }
+  .demo__timing { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .demo__controls { display: flex; align-items: center; gap: var(--s3); flex-shrink: 0; }
   .demo__loop { font-family: var(--mono); font-size: 12px; color: var(--faint); }
-  .demo__stage { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: var(--s6); min-height: 140px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .ui-card { background: var(--bg); border: 1px solid var(--line-strong); border-radius: 12px; padding: 16px; min-width: 160px; box-shadow: 0 8px 24px oklch(0 0 0 / 0.15); }
+  .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 100px; overflow: hidden; }
+  .seg label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 4px 9px; cursor: pointer; user-select: none; transition: background 0.15s ease, color 0.15s ease; }
+  .demo input[id$="-a"]:checked ~ .demo__bar .seg label[for$="-a"],
+  .demo input[id$="-l"]:checked ~ .demo__bar .seg label[for$="-l"],
+  .demo input[id$="-d"]:checked ~ .demo__bar .seg label[for$="-d"] { background: var(--accent-tint); color: var(--accent-soft); }
+  .demo__stage {
+    --st-bg: var(--surface-2); --st-fg: var(--paper);
+    --st-line: var(--line-strong);
+    --st-dim: color-mix(in oklch, var(--paper) 55%, transparent);
+    background: var(--st-bg); color: var(--st-fg);
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: var(--s6) var(--s5); min-height: 168px;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .demo input[id$="-l"]:checked ~ .demo__stage {
+    --st-bg: oklch(0.985 0.003 255); --st-fg: oklch(0.180 0.006 255);
+    --st-line: oklch(0.180 0.010 255 / 0.18); --st-dim: oklch(0.180 0.010 255 / 0.45);
+  }
+  .demo input[id$="-d"]:checked ~ .demo__stage {
+    --st-bg: oklch(0.180 0.006 255); --st-fg: oklch(0.985 0.003 255);
+    --st-line: oklch(0.985 0.010 255 / 0.18); --st-dim: oklch(0.985 0.010 255 / 0.50);
+  }
+  .ui-btn { display: inline-flex; align-items: center; justify-content: center; padding: 9px 18px; border-radius: 8px; background: var(--st-fg); color: var(--st-bg); font-family: var(--sans); font-size: 13px; font-weight: 600; }
+  .ui-card { background: var(--st-bg); border: 1px solid var(--st-line); border-radius: 10px; padding: 14px 16px; min-width: 180px; box-shadow: 0 8px 24px oklch(0 0 0 / 0.12); }
+  .ui-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--st-fg); }
+  .ui-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-dim); }
+  .ui-quote { font-size: 15px; line-height: 1.45; color: var(--st-fg); max-width: 22ch; text-align: center; }
   .rec { margin-bottom: var(--s7); }
+  .rec .tier-label { display: flex; align-items: center; gap: var(--s4); margin: 0 0 var(--s4); }
+  .rec .tier-label .mono-label { white-space: nowrap; }
+  .rec .tier-label .rule { height: 1px; background: var(--line); flex: 1; }
+  .rec .tier-label .count { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .rec.crit .mono-label { color: var(--crit); }
+  .rec.imp  .mono-label { color: var(--imp); }
+  .rec.opp  .mono-label { color: var(--opp); }
   .rec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); font-size: 14px; }
   .rec-table th, .rec-table td { text-align: left; padding: var(--s3) var(--s4); border-bottom: 1px solid var(--line); vertical-align: top; }
-  .rec-table thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
-  .rec.crit .mono-label { color: var(--crit); }
-  .rec.imp .mono-label { color: var(--imp); }
-  .rec.opp .mono-label { color: var(--opp); }
+  .rec-table tr:last-child td { border-bottom: none; }
+  .rec-table thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); font-weight: 500; }
+  .rec-table td:first-child { color: var(--paper); }
+  .rec-table td:nth-child(2) { white-space: nowrap; }
+  .rec-table td { color: var(--paper-dim); }
   .ref-summary { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(24px, 4vw, 40px); }
-  .ref-summary .big { font-family: var(--display); font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; color: var(--paper); margin: var(--s2) 0 0; }
-  .ref-lean { list-style: none; margin: var(--s5) 0 0; padding: 0; }
-  .ref-lean li { display: grid; grid-template-columns: 130px 1fr; gap: var(--s4); padding: var(--s3) 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .ref-summary .big { font-family: var(--display); font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; letter-spacing: -0.015em; color: var(--paper); margin: var(--s2) 0 0; }
+  .ref-summary .why { color: var(--paper-dim); margin: var(--s3) 0 var(--s6); max-width: 64ch; }
+  .ref-lean { display: grid; gap: var(--s3); margin: 0; padding: 0; list-style: none; }
+  .ref-lean li { display: grid; grid-template-columns: 130px 1fr; gap: var(--s4); padding: var(--s3) 0; border-top: 1px solid var(--line); color: var(--paper-dim); font-size: 14px; }
   .ref-lean .nm { font-weight: 600; color: var(--paper); }
-  footer.doc { margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11px; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--s3); }
+  footer.doc { margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--s3); }
+  @media (max-width: 600px) {
+    .lens-table { display: block; padding: var(--s2) var(--s4); }
+    .lens-table thead { display: none; }
+    .lens-table tbody, .lens-table tr, .lens-table td { display: block; }
+    .lens-table tr { padding: var(--s4) 0; border-bottom: 1px solid var(--line); }
+    .lens-table tr:last-child { border-bottom: none; }
+    .lens-table td { padding: 0; border: none; }
+    .lens-table .lens-name { width: auto; margin-bottom: var(--s2); }
+    .ref-lean li { grid-template-columns: 1fr; gap: var(--s1); }
+  }
   @media (prefers-reduced-motion: no-preference) {
-    @keyframes breathe24 { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.012); opacity: 0.94; } }
-    @keyframes breathe8 { 0%,100% { transform: scale(1); } 50% { transform: scale(1.018); } }
-    @keyframes gsapSet { 0%,40% { opacity: 1; transform: translateY(0); } 45% { opacity: 0.3; transform: translateY(-12px); } 55% { opacity: 0.3; transform: translateY(12px); } 60%,100% { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeReveal { 0%,30% { opacity: 0; transform: translateY(24px); } 50%,100% { opacity: 1; transform: translateY(0); } }
-    @keyframes magnetic { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-    .demo-breathe24 .ui-card { animation: breathe24 3s ease-in-out infinite; }
-    .demo-breathe8 .ui-card { animation: breathe8 1.5s ease-in-out infinite; }
-    .demo-gsap .ui-card { animation: gsapSet 3s steps(1) infinite; }
-    .demo-fade .ui-card { animation: fadeReveal 3s cubic-bezier(0.22,1,0.36,1) infinite; }
-    .demo-magnetic .ui-btn { animation: magnetic 2s ease-in-out infinite; display: inline-block; padding: 10px 20px; border-radius: 8px; background: var(--paper); color: var(--bg); font-weight: 600; }
+    @keyframes m1 {
+      0%   { opacity: 0; transform: translateX(100%); }
+      55%  { opacity: 1; transform: translateX(0); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .demo-1__mt { animation: m1 3s cubic-bezier(0.22, 1, 0.36, 1) infinite; width: 100%; }
+    @keyframes m2 {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-1px); opacity: 0.99; }
+    }
+    .demo-2__mt { animation: m2 3s ease-in-out infinite; }
+    @keyframes m3 {
+      0%   { opacity: 0; transform: translateY(6px); filter: blur(3px); }
+      55%  { opacity: 1; transform: translateY(0); filter: blur(0); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    .demo-3__mt { animation: m3 3s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes m4 {
+      0%   { opacity: 0; transform: translateY(12px) scale(0.985); }
+      55%  { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .demo-4__mt { animation: m4 3s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes m5 {
+      0%   { opacity: 0; transform: translateY(-6px) scale(0.98); transform-origin: top left; }
+      55%  { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .demo-5__mt { animation: m5 3s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes m6 {
+      0%   { opacity: 0.35; transform: translateY(10px); }
+      55%  { opacity: 1; transform: translateY(0); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .demo-6__mt { animation: m6 3s cubic-bezier(0.33, 1, 0.68, 1) infinite; }
   }
   @media (prefers-reduced-motion: reduce) {
     .demo__loop { display: none; }
-    .demo__stage * { animation: none !important; }
+    [class*="__mt"], [class*="__mt"] * { animation: none !important; transition: none !important; }
   }
 </style>
 </head>
@@ -184,56 +294,60 @@
   </div>
 
   <header class="doc">
-    <div class="eyebrow mono-label">Motion audit · design-motion-principles</div>
-    <h1 class="title">Hesya — where motion earns its place</h1>
+    <div class="eyebrow">Motion audit · design-motion-principles</div>
+    <h1 class="title">Hesya — finish the gaps, quiet the loops</h1>
     <p class="lede">
-      A pass over the marketing landing page — hero drift, pinned feature deck, ambient glass panels,
-      scroll reveals, and tab navigation — read through three practitioners' lenses, weighted for a
-      calm wellness brand that should feel crafted, not busy.
+      A pass over the marketing landing — hero drift, pinned feature deck, ambient glass, scroll reveals,
+      nav overlays, and quote rotation — weighted for a calm wellness brand: polish first, delight selectively,
+      restraint on high-frequency chrome.
     </p>
     <div class="meta-row">
       <div><span class="mono-label k">What it is</span><span class="v">Marketing landing · wellness iOS app</span></div>
-      <div><span class="mono-label k">Stack</span><span class="v">Next.js 16 · GSAP + Lenis · Framer Motion (partial)</span></div>
+      <div><span class="mono-label k">Stack</span><span class="v">Next.js 16 · GSAP + Lenis · CSS transitions</span></div>
+      <div><span class="mono-label k">Weighting</span><span class="v">Jakub primary · Jhey secondary · Emil selective</span></div>
       <div><span class="mono-label k">Date</span><span class="v">2026-07-17</span></div>
     </div>
     <div class="stats">
-      <div class="stat"><div class="num">7</div><div class="mono-label">Findings</div></div>
-      <div class="stat crit"><a href="#rec-crit"><div class="num">2</div><div class="mono-label">Critical</div></a></div>
-      <div class="stat imp"><a href="#rec-imp"><div class="num">3</div><div class="mono-label">Important</div></a></div>
-      <div class="stat opp"><a href="#rec-opp"><div class="num">2</div><div class="mono-label">Opportunities</div></a></div>
+      <div class="stat"><div class="num">9</div><div class="mono-label lbl">Findings</div></div>
+      <div class="stat crit"><a href="#rec-crit"><div class="num">2</div><div class="mono-label lbl">Critical</div></a></div>
+      <div class="stat imp"><a href="#rec-imp"><div class="num">4</div><div class="mono-label lbl">Important</div></a></div>
+      <div class="stat opp"><a href="#rec-opp"><div class="num">3</div><div class="mono-label lbl">Opportunities</div></a></div>
     </div>
   </header>
 
   <section class="assessment">
     <span class="mono-label">Overall</span>
     <p>
-      Hesya has <em>ambitious</em> motion — hero displacement, a 400vh pinned deck, SVG tab underlines.
-      The craft is real, but ambient layers compete and scroll-scrub uses per-frame <code>gsap.set</code>
-      instead of interruptible transitions. Tighten the always-on motion; keep the scroll-story moments.
+      The scroll story is <em>real craft</em> — scrubbed pin deck, gated hero drift, SVG tab underlines.
+      The unfinished edges are chrome: a mobile menu that snaps, ambient loops that never rest, and a few
+      transitions that stop at opacity. Finish those, then deepen hero + deck — don’t add more atmosphere.
     </p>
   </section>
 
   <section>
     <div class="sec-index">01</div>
     <h2 class="section-title">How each practitioner reads the motion</h2>
-    <p class="section-sub">Weighted for a marketing page where scroll-story earns time, but ambient motion must stay nearly invisible.</p>
+    <p class="section-sub">
+      Marketing pages earn longer scroll choreography. Nav, menus, and quote swaps should still feel like
+      <em>production chrome</em> — fast, paired, nearly invisible.
+    </p>
     <table class="lens-table">
       <thead><tr><th>Lens</th><th>Verdict</th><th>One-line read</th></tr></thead>
       <tbody>
         <tr>
           <td class="lens-name">Production Polish <span class="who">Jakub Krehel</span><span class="weight">Primary</span></td>
           <td><span class="verdict v-problem">Problem</span></td>
-          <td class="lens-read">Pin deck scrub and tab snaps are <em>half-interruptible</em> — <code>snapDeckToFeature</code> helps clicks, but scroll-driven <code>gsap.set</code> every frame fights user intent.</td>
+          <td class="lens-read">Mobile menu and desktop dropdown are <em>half-built</em> — enter without exit, opacity without origin.</td>
         </tr>
         <tr>
-          <td class="lens-name">Restraint &amp; Speed <span class="who">Emil Kowalski</span><span class="weight">Secondary</span></td>
-          <td><span class="verdict v-concern">Concern</span></td>
-          <td class="lens-read">Two competing breathe loops plus infinite phone float — too much always-on motion for a brand selling calm.</td>
-        </tr>
-        <tr>
-          <td class="lens-name">Experimentation &amp; Delight <span class="who">Jhey Tompkins</span><span class="weight">Selective</span></td>
+          <td class="lens-name">Experimentation &amp; Delight <span class="who">Jhey Tompkins</span><span class="weight">Secondary</span></td>
           <td><span class="verdict v-strong">Strong</span></td>
-          <td class="lens-read">Hero drift and pinned deck are the right bets. Don't add more ambient — deepen these two.</td>
+          <td class="lens-read">Hero SVG drift + pinned phone deck are the right bets. Spend budget there, not on more glass breathing.</td>
+        </tr>
+        <tr>
+          <td class="lens-name">Restraint &amp; Speed <span class="who">Emil Kowalski</span><span class="weight">Selective</span></td>
+          <td><span class="verdict v-concern">Concern</span></td>
+          <td class="lens-read">Always-on floats and a 700ms quote fade tax a brand selling calm; nav chrome should stay under ~300ms.</td>
         </tr>
       </tbody>
     </table>
@@ -242,173 +356,398 @@
   <section>
     <div class="sec-index">02</div>
     <h2 class="section-title">Where the timings land</h2>
-    <p class="section-sub">Marketing pages can run longer than utilities — but infinite loops and 1.2s scroll jumps still tax attention.</p>
+    <p class="section-sub">
+      Scroll-bound motion can sit in the deliberate band. Nav, menus, and quote swaps should live left of 300ms.
+      Infinite loops sit outside the scale entirely.
+    </p>
     <div class="timing-grid">
-      <svg viewBox="0 0 660 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duration scale 0 to 1200ms">
+      <svg class="timing-figure" viewBox="0 0 660 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duration scale from 0 to 1200 milliseconds">
+        <style>
+          .tf-track-stop-good { stop-color: var(--t-good); }
+          .tf-track-stop-mid  { stop-color: var(--t-mid); }
+          .tf-track-stop-slow { stop-color: var(--t-slow); }
+          .tf-track-stroke { stroke: var(--line-strong); }
+          .tf-grid { stroke: var(--line-strong); }
+          .tf-axis { fill: var(--faint); }
+          .tf-zone-good { fill: var(--t-good); }
+          .tf-zone-mid  { fill: var(--t-mid); }
+          .tf-zone-slow { fill: var(--t-slow); }
+          .tf-dot-good  { fill: var(--t-good); }
+          .tf-dot-mid   { fill: var(--t-mid); }
+          .tf-dot-slow  { fill: var(--t-slow); }
+          .tf-dot-text  { fill: oklch(0.165 0.006 255); }
+          .tf-missing-ring { stroke: var(--faint); }
+          .tf-missing-text { fill: var(--muted); }
+          .tf-freq { fill: var(--muted); }
+        </style>
         <defs>
           <linearGradient id="track" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="var(--t-good)" stop-opacity="0.3"/>
-            <stop offset="60%" stop-color="var(--t-mid)" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="var(--t-slow)" stop-opacity="0.35"/>
+            <stop offset="0%"   class="tf-track-stop-good" stop-opacity="0.30"/>
+            <stop offset="40%"  class="tf-track-stop-good" stop-opacity="0.22"/>
+            <stop offset="50%"  class="tf-track-stop-mid"  stop-opacity="0.26"/>
+            <stop offset="75%"  class="tf-track-stop-mid"  stop-opacity="0.26"/>
+            <stop offset="85%"  class="tf-track-stop-slow" stop-opacity="0.36"/>
+            <stop offset="100%" class="tf-track-stop-slow" stop-opacity="0.42"/>
           </linearGradient>
         </defs>
-        <rect x="40" y="80" width="600" height="50" rx="8" fill="url(#track)" stroke="var(--line-strong)"/>
-        <g font-family="Geist Mono" font-size="10" fill="var(--faint)" text-anchor="middle">
-          <text x="40" y="150">0</text><text x="190" y="150">300</text><text x="340" y="150">600</text><text x="490" y="150">900</text><text x="636" y="150" text-anchor="end">1200ms</text>
+        <!-- x 40..640 maps 0..1200ms -->
+        <rect x="40" y="118" width="600" height="58" rx="10" fill="url(#track)" class="tf-track-stroke"/>
+        <g class="tf-grid" stroke-dasharray="2 5">
+          <line x1="90" y1="112" x2="90" y2="182"/>
+          <line x1="190" y1="112" x2="190" y2="182"/>
+          <line x1="290" y1="112" x2="290" y2="182"/>
+          <line x1="540" y1="112" x2="540" y2="182"/>
         </g>
-        <circle cx="100" cy="105" r="11" fill="var(--t-good)"/><text x="100" y="109" font-family="Geist Mono" font-size="10" fill="var(--bg)" text-anchor="middle" class="tf-dot-text">1</text>
-        <circle cx="200" cy="105" r="11" fill="var(--t-good)"/><text x="200" y="109" font-family="Geist Mono" font-size="10" fill="var(--bg)" text-anchor="middle" class="tf-dot-text">2</text>
-        <circle cx="320" cy="105" r="11" fill="var(--t-mid)"/><text x="320" y="109" font-family="Geist Mono" font-size="10" fill="var(--bg)" text-anchor="middle" class="tf-dot-text">3</text>
-        <circle cx="420" cy="105" r="11" fill="var(--t-mid)"/><text x="420" y="109" font-family="Geist Mono" font-size="10" fill="var(--bg)" text-anchor="middle" class="tf-dot-text">4</text>
-        <circle cx="580" cy="105" r="11" fill="var(--t-slow)"/><text x="580" y="109" font-family="Geist Mono" font-size="10" fill="var(--bg)" text-anchor="middle" class="tf-dot-text">5</text>
-        <text x="40" y="68" font-family="Geist Mono" font-size="9" fill="var(--t-slow)">∞ loops at 8s / 24s</text>
+        <g font-family="Geist Mono, monospace" font-size="11" class="tf-axis" text-anchor="middle" font-variant-numeric="tabular-nums">
+          <text x="40"  y="204">0</text>
+          <text x="90"  y="204">100</text>
+          <text x="190" y="204">300</text>
+          <text x="290" y="204">500</text>
+          <text x="540" y="204">1000</text>
+          <text x="636" y="204" text-anchor="end">1200ms</text>
+        </g>
+        <g font-family="Geist Mono, monospace" font-size="9.5" letter-spacing="1.6">
+          <text x="115" y="106" text-anchor="middle" class="tf-zone-good">INSTANT / RESPONSIVE</text>
+          <text x="390" y="106" text-anchor="middle" class="tf-zone-mid">DELIBERATE</text>
+          <text x="590" y="106" text-anchor="middle" class="tf-zone-slow">SLUGGISH</text>
+        </g>
+        <!-- missing: mobile menu -->
+        <circle cx="40" cy="147" r="11" fill="none" class="tf-missing-ring" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="40" y="151" font-family="Geist Mono, monospace" font-size="11" font-weight="600" text-anchor="middle" class="tf-missing-text">1</text>
+        <g font-family="Geist Mono, monospace" font-size="11" font-weight="600" text-anchor="middle">
+          <circle cx="140" cy="147" r="12" class="tf-dot-good"/><text x="140" y="151" class="tf-dot-text">2</text>
+          <circle cx="165" cy="147" r="12" class="tf-dot-good"/><text x="165" y="151" class="tf-dot-text">3</text>
+          <circle cx="215" cy="147" r="12" class="tf-dot-good"/><text x="215" y="151" class="tf-dot-text">4</text>
+          <circle cx="315" cy="147" r="12" class="tf-dot-mid"/><text x="315" y="151" class="tf-dot-text">5</text>
+          <circle cx="390" cy="147" r="12" class="tf-dot-mid"/><text x="390" y="151" class="tf-dot-text">6</text>
+          <circle cx="440" cy="147" r="12" class="tf-dot-mid"/><text x="440" y="151" class="tf-dot-text">7</text>
+          <circle cx="535" cy="147" r="12" class="tf-dot-slow"/><text x="535" y="151" class="tf-dot-text">8</text>
+          <circle cx="585" cy="147" r="12" class="tf-dot-slow"/><text x="585" y="151" class="tf-dot-text">9</text>
+        </g>
+        <text x="330" y="244" font-family="Public Sans, sans-serif" font-size="11" text-anchor="middle" class="tf-freq">∞ ambient loops also run at 8s / 10s / 24s outside this scale</text>
       </svg>
-      <div>
+      <div class="timing-key">
         <h4 class="mono-label">The animations</h4>
         <ol class="key-list">
-          <li><span class="kn">1</span><span>Tab underline stroke</span><span class="kt good">350ms</span></li>
-          <li><span class="kn">2</span><span>Hero drift quickTo</span><span class="kt good">800ms</span></li>
-          <li><span class="kn">3</span><span>Scroll reveal (manifesto/download)</span><span class="kt mid">550ms</span></li>
-          <li><span class="kn">4</span><span>Pin scrub crossfade</span><span class="kt mid">scroll-bound</span></li>
-          <li><span class="kn">5</span><span>Lenis programmatic scroll</span><span class="kt slow">1100–1200ms</span></li>
+          <li><span class="kn">1</span><span class="ka">Mobile menu enter/exit</span><span class="kt none">none</span></li>
+          <li><span class="kn">2</span><span class="ka">FAQ accordion</span><span class="kt good">200ms</span></li>
+          <li><span class="kn">3</span><span class="ka">Desktop dropdown opacity</span><span class="kt good">200ms</span></li>
+          <li><span class="kn">4</span><span class="ka">CTA magnetic lift</span><span class="kt good">~250ms</span></li>
+          <li><span class="kn">5</span><span class="ka">Tab underline stroke</span><span class="kt mid">550ms</span></li>
+          <li><span class="kn">6</span><span class="ka">Recognition quote fade</span><span class="kt mid">700ms</span></li>
+          <li><span class="kn">7</span><span class="ka">Hero drift quickTo</span><span class="kt mid">800ms</span></li>
+          <li><span class="kn">8</span><span class="ka">Manifesto visual reveal</span><span class="kt slow">~990ms</span></li>
+          <li><span class="kn">9</span><span class="ka">Lenis / pin scroll</span><span class="kt slow">1200ms+</span></li>
         </ol>
+        <div class="zone-defs">
+          <div class="zone-def"><span class="dot" style="background:var(--t-good)"></span><div><span class="zt">Instant / Responsive</span> · 0–300ms — <span class="zd">menus, FAQ, dropdowns, taps.</span></div></div>
+          <div class="zone-def"><span class="dot" style="background:var(--t-mid)"></span><div><span class="zt">Deliberate</span> · 300–500ms — <span class="zd">earned by large surfaces and brand moments.</span></div></div>
+          <div class="zone-def"><span class="dot" style="background:var(--t-slow)"></span><div><span class="zt">Sluggish</span> · 500ms+ — <span class="zd">reserve for rare cinematic scroll; not for quote swaps.</span></div></div>
+        </div>
+        <div class="whats-off">
+          <span class="mono-label">What's off</span>
+          <p>The highest-frequency chrome gap (mobile menu) has zero duration. The quote rotator sits at 700ms for a content swap that fires every 10s. Manifesto reveal stretches toward 1s while ambient loops never stop.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- JAKUB PRIMARY -->
+  <section class="lens-sec" id="lens-jakub">
     <div class="sec-index">03</div>
-    <h2 class="section-title">Findings with live demos</h2>
-    <div class="findings">
-
-      <div class="finding-row" data-sev="crit">
-        <div class="find-body">
-          <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Emil</span><span class="lens-chip">Jakub</span></div>
-          <h3 class="find-title">Two competing breathe loops on glass surfaces</h3>
-          <p><code>ambientBreath</code> (24s) runs on every <code>.glass-panel</code> while <code>feature-media-breathe</code> (8s) runs on mobile feature cards. Both scale opacity — the anti-checklist definition of "pulsing UI." For a calm wellness brand, one subtle ambient layer is enough.</p>
-          <p class="find-loc"><span class="mono-label">Location</span> <code>app/design-system.css:268</code>, <code>app/design-system.css:927</code></p>
-          <div class="fix"><span class="label">Fix</span><p>Pick one breathe (or none). If kept, single 30s+ loop at &lt;1% scale change, and gate behind <code>prefers-reduced-motion</code> (partially done — verify both are disabled).</p></div>
-        </div>
-        <div class="demo">
-          <div class="demo__bar"><span>Competing loops</span><span class="demo__loop">↻</span></div>
-          <div class="demo__stage" style="gap:16px;">
-            <div class="demo-breathe24"><div class="ui-card">24s glass</div></div>
-            <div class="demo-breathe8"><div class="ui-card">8s card</div></div>
-          </div>
-          <span class="demo__timing">Always-on · never interruptible</span>
-        </div>
-      </div>
-
-      <div class="finding-row" data-sev="crit">
-        <div class="find-body">
-          <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Jakub</span></div>
-          <h3 class="find-title">Pin deck uses <code>gsap.set</code> on every scroll frame</h3>
-          <p>ScrollTrigger <code>onUpdate</code> calls <code>gsap.set</code> on all panels and screens each frame. Tab clicks snap via <code>snapDeckToFeature</code>, but mid-scroll reversals feel glued to scroll position rather than interruptible. Jakub's rule: meaningful state changes need transitions users can cut short.</p>
-          <p class="find-loc"><span class="mono-label">Location</span> <code>hooks/useFeaturePinScroll.ts:246–264</code></p>
-          <div class="fix"><span class="label">Fix</span><p>Consider a single scrubbed timeline with labeled segments, or CSS <code>transition</code> on opacity/transform when tab/hash fires. Keep scrub for scroll, but decouple programmatic navigation from per-frame sets.</p></div>
-        </div>
-        <div class="demo">
-          <div class="demo__bar"><span>Per-frame set vs transition</span><span class="demo__loop">↻</span></div>
-          <div class="demo__stage demo-gsap"><div class="ui-card">Panel A ↔ B</div></div>
-          <span class="demo__timing">Scroll-bound · steps not eased</span>
-        </div>
-      </div>
-
-      <div class="finding-row" data-sev="imp">
-        <div class="find-body">
-          <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span></div>
-          <h3 class="find-title">Uniform fade-up scroll reveals</h3>
-          <p>Manifesto teaser and download section both use <code>gsap.from</code> with <code>opacity: 0, y: 32</code> at <code>start: "top 75%"</code>. Same choreography twice on one page reads as template motion, not intentional pacing.</p>
-          <p class="find-loc"><span class="mono-label">Location</span> <code>components/sections/ManifestoTeaser/index.tsx</code>, <code>components/sections/DownloadSection/index.tsx</code></p>
-          <div class="fix"><span class="label">Fix</span><p>Vary entrance: manifesto could split copy/visual with 40ms stagger; download could scale from 0.98 with opacity only. Match the calmer brand tone.</p></div>
-        </div>
-        <div class="demo">
-          <div class="demo__bar"><span>Uniform reveal</span><span class="demo__loop">↻</span></div>
-          <div class="demo__stage demo-fade"><div class="ui-card">Section enters</div></div>
-          <span class="demo__timing">550ms · opacity + 32px Y</span>
-        </div>
-      </div>
-
-      <div class="finding-row" data-sev="imp">
-        <div class="find-body">
-          <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Emil</span></div>
-          <h3 class="find-title"><code>btn-magnetic</code> hover scale on CTAs</h3>
-          <p>Primary CTAs scale on hover (<code>.btn-magnetic:hover</code>). Emil's anti-pattern: hover-scale on interactive targets. For marketing CTAs frequency is lower than utility apps, but it still fights the "calm" positioning — especially combined with glass breathe.</p>
-          <p class="find-loc"><span class="mono-label">Location</span> <code>app/design-system.css:358</code></p>
-          <div class="fix"><span class="label">Fix</span><p>Replace scale with background/opacity shift over 150ms, or a 1px translateY lift. Keep focus ring as-is.</p></div>
-        </div>
-        <div class="demo">
-          <div class="demo__bar"><span>Hover scale</span><span class="demo__loop">↻</span></div>
-          <div class="demo__stage demo-magnetic"><span class="ui-btn">Get Hesya</span></div>
-          <span class="demo__timing">~200ms · scale 1.04</span>
-        </div>
-      </div>
-
-      <div class="finding-row" data-sev="imp">
-        <div class="find-body">
-          <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span><span class="lens-chip">Emil</span></div>
-          <h3 class="find-title">Dual motion stacks (GSAP + Framer Motion)</h3>
-          <p>GSAP owns scroll (pin, drift, reveals); Framer Motion owns header entrance and FAQ accordion. Both ship to the client. Reduced-motion is handled in both places but inconsistently (<code>useMotionEnabled</code> vs <code>useReducedMotion</code>).</p>
-          <p class="find-loc"><span class="mono-label">Location</span> <code>components/Header.tsx</code>, <code>components/FaqAccordion.tsx</code>, <code>hooks/useFeaturePinScroll.ts</code></p>
-          <div class="fix"><span class="label">Fix</span><p>Consolidate on GSAP for scroll-driven work; migrate header/FAQ to CSS transitions or a single animation layer. Unify reduced-motion gate.</p></div>
-        </div>
-        <div class="demo">
-          <div class="demo__bar"><span>Two runtimes</span></div>
-          <div class="demo__stage" style="font-family:var(--mono);font-size:12px;color:var(--muted);">GSAP + Framer Motion</div>
-        </div>
-      </div>
-
+    <div class="lens-sec__head">
+      <h3>Jakub Krehel — Production Polish</h3>
+      <span class="lens-sec__weight">Primary lens</span>
     </div>
-  </section>
+    <p class="lens-sec__verdict"><span class="verdict v-problem">Problem</span></p>
 
-  <section>
-    <div class="sec-index">04</div>
-    <h2 class="section-title">Opportunities (no demo)</h2>
-    <ul class="lens-list opp">
-      <li><span class="mk">💡</span><span><strong>Hero entrance stagger</strong> — headline → subhead → CTA at 40ms intervals on first paint. One orchestrated load; currently hero content is largely static. <code>components/sections/HeroSection/HeroContent.tsx</code></span></li>
-      <li><span class="mk">💡</span><span><strong>Tab icon micro-motion</strong> — on feature switch, icon could do a 180ms opacity + 4px rise (Jhey selective). The SVG underline already carries weight; icons are the missing accent. <code>components/sections/FeatureSuite/SuiteTabs.tsx</code></span></li>
-    </ul>
-  </section>
-
-  <section class="lens-sec">
-    <div class="lens-sec__head"><h3>Jakub Krehel</h3><span class="lens-sec__weight">Primary</span></div>
-    <p><span class="verdict v-problem">Problem</span></p>
     <div class="lens-block">
-      <span class="mono-label">Working</span>
+      <span class="mono-label">What's working well</span>
       <ul class="lens-list good">
-        <li><span class="mk">✓</span><span>FAQ uses <code>AnimatePresence</code> with enter + exit — paired transitions.</span></li>
-        <li><span class="mk">✓</span><span>Tab underline <code>stroke-dashoffset</code> animates on activation — finished micro-interaction.</span></li>
-        <li><span class="mk">✓</span><span><code>snapDeckToFeature</code> prevents tab/hash desync — good production fix.</span></li>
+        <li><span class="mk">✓</span><span>Pinned feature deck uses a scrubbed GSAP timeline (<code>scrub: 0.45</code>) — scroll-story with interruptible feel. <code>hooks/useFeaturePinScroll.ts</code></span></li>
+        <li><span class="mk">✓</span><span>FAQ height uses CSS <code>grid-template-rows</code> transitions at 200ms — retargetable, paired open/close. <code>components/FaqAccordion.tsx</code></span></li>
+        <li><span class="mk">✓</span><span>Tab underline stroke-dashoffset draws on activation — finished micro-interaction. <code>SuiteTabs.tsx</code></span></li>
+        <li><span class="mk">✓</span><span><code>active:scale-[0.96]</code> on press targets — tactile without bounce.</span></li>
       </ul>
     </div>
+
+    <div class="lens-block">
+      <span class="mono-label">Issues to address</span>
+      <div class="findings">
+
+        <div class="finding-row" data-sev="crit" id="finding-1">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Jakub</span></div>
+            <h4 class="find-title">Mobile menu mounts and unmounts with no enter or exit</h4>
+            <div class="find-body">
+              <p><span class="label">What</span><code>MobileMenu</code> returns <code>null</code> when closed. Open/close is a hard tree mount — overlay and sheet appear and vanish instantly. No opacity, no slide, no exit hold.</p>
+              <p><span class="label">Why it matters</span>This is the textbook half-built motion gap. A full-bleed overlay that <em>pops</em> breaks the calm polish of everything else on the page. Users notice absence of motion more than subtle motion.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>Keep the sheet mounted through exit: dim backdrop 200ms, panel slides from the right with opacity (300ms, <code>--ease-hesya</code> / ease-out-quint). Exit mirrors enter, slightly faster (240ms). CSS transitions or a short GSAP timeline — no Framer required.</p></div>
+              <p class="find-loc"><code>components/sections/Navbar/MobileMenu.tsx:22</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st1" id="st1-a" checked>
+            <input class="vh" type="radio" name="st1" id="st1-l">
+            <input class="vh" type="radio" name="st1" id="st1-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">Sheet enter (mirror for exit)</span><span class="demo__timing">300ms · ease-out-quint</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st1-a">Auto</label><label for="st1-l">Light</label><label for="st1-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage" style="align-items:stretch; justify-content:flex-end; padding:0; min-height:200px;">
+              <div class="demo-1__mt" style="max-width:55%; background:var(--st-bg); border-left:1px solid var(--st-line); padding:20px 16px; box-shadow:-12px 0 32px oklch(0 0 0 / 0.2);">
+                <div class="ui-label" style="margin-bottom:12px;">Menu</div>
+                <div class="ui-row" style="margin-bottom:8px;">Features</div>
+                <div class="ui-row" style="margin-bottom:8px;">Philosophy</div>
+                <div class="ui-btn" style="margin-top:16px; width:100%;">Get the beta</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="finding-row" data-sev="imp" id="finding-3">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span></div>
+            <h4 class="find-title">Recognition quotes crossfade for 700ms on opacity alone</h4>
+            <div class="find-body">
+              <p><span class="label">What</span>Quote rotation stacks absolute paragraphs and toggles opacity over <code>duration-700</code>. Enter and exit are equally prominent; there is no Y or blur to signal materialization.</p>
+              <p><span class="label">Why it matters</span>Exits should be subtler than enters. A 700ms equal fade on text that swaps every 10s feels like a slideshow, not a quiet recognition beat.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>220–280ms: incoming quote opacity + 6px translateY + 3px blur clearing. Outgoing: opacity only, ~160ms. Keep reduced-motion static quote.</p></div>
+              <p class="find-loc"><code>components/sections/RecognitionSection/index.tsx:58</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st3" id="st3-a" checked>
+            <input class="vh" type="radio" name="st3" id="st3-l">
+            <input class="vh" type="radio" name="st3" id="st3-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">Soft quote materialize</span><span class="demo__timing">240ms · opacity + Y + blur</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st3-a">Auto</label><label for="st3-l">Light</label><label for="st3-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage">
+              <div class="demo-3__mt ui-quote">“You open the app to feel better, then leave more scattered.”</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="finding-row" data-sev="imp" id="finding-5">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span><span class="lens-chip">Emil</span></div>
+            <h4 class="find-title">Desktop Features dropdown is opacity-only, not origin-aware</h4>
+            <div class="find-body">
+              <p><span class="label">What</span>The nav menu toggles <code>opacity</code> + <code>visibility</code> over 200ms. Timing is fine; shape is not — it fades from nowhere instead of expanding from the trigger.</p>
+              <p><span class="label">Why it matters</span>Origin-aware motion ties the panel to its button. Opacity alone reads as a floating layer, not a menu.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>Keep 180–220ms. Add <code>transform-origin: top left</code>, <code>translateY(-6px) scale(0.98) → identity</code> with opacity. Exit: reverse, slightly faster.</p></div>
+              <p class="find-loc"><code>components/sections/Navbar/DesktopNav.tsx:45–48</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st5" id="st5-a" checked>
+            <input class="vh" type="radio" name="st5" id="st5-l">
+            <input class="vh" type="radio" name="st5" id="st5-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">Origin-aware dropdown</span><span class="demo__timing">200ms · Y + scale + opacity</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st5-a">Auto</label><label for="st5-l">Light</label><label for="st5-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage" style="align-items:flex-start; justify-content:flex-start;">
+              <div>
+                <div class="ui-label" style="margin-bottom:8px;">Features ▾</div>
+                <div class="demo-5__mt ui-card" style="min-width:160px;">
+                  <div class="ui-row" style="margin-bottom:6px;">Today</div>
+                  <div class="ui-row" style="margin-bottom:6px;">Breathe</div>
+                  <div class="ui-row">Pacer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="finding-row" data-sev="imp" id="finding-6">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span></div>
+            <h4 class="find-title">Feature panels keep <code>will-change</code> on permanently</h4>
+            <div class="find-body">
+              <p><span class="label">What</span><code>.feature-content-panel</code> and <code>.feature-phone-screen</code> set <code>will-change: transform, opacity</code> (and opacity) in CSS, always — not only while pinned/scrubbing.</p>
+              <p><span class="label">Why it matters</span>Permanent promotion burns compositor memory for layers that are idle most of the visit. Jakub’s production rule: target <code>will-change</code> only when motion is imminent.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>Add a class (e.g. <code>.is-animating</code>) while the pin trigger is active, or set/clear <code>will-change</code> in the ScrollTrigger <code>onToggle</code> callback. Idle state: <code>will-change: auto</code>.</p></div>
+              <p class="find-loc"><code>app/design-system.css:1169–1216</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st6" id="st6-a" checked>
+            <input class="vh" type="radio" name="st6" id="st6-l">
+            <input class="vh" type="radio" name="st6" id="st6-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">On-demand panel crossfade</span><span class="demo__timing">scrub / transition · no always-on WC</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st6-a">Auto</label><label for="st6-l">Light</label><label for="st6-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage">
+              <div class="demo-6__mt ui-card">
+                <div class="ui-label" style="margin-bottom:8px;">Feature panel</div>
+                <div class="ui-row">Promoted only while scrubbing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lens-block">
+      <span class="mono-label">Opportunities</span>
+      <ul class="lens-list opp">
+        <li><span class="mk">💡</span><span>Hero content is largely static on first paint — a single 40ms stagger (headline → line → CTA) would give one orchestrated load without ambient noise. <code>HeroContent.tsx</code></span></li>
+      </ul>
+    </div>
+
     <div class="lens-take">
       <span class="mono-label">Through Jakub's lens</span>
-      <p>Finish the interruptibility story on the pin deck. The hardest motion on the page should still feel escapable when the user changes their mind mid-scroll.</p>
+      <p>The vocabulary is strong; the chrome sentences are unfinished. Pair the mobile menu, give the dropdown an origin, soft-materialize quotes, and stop permanently promoting feature layers — then the landing reads as one polished system.</p>
     </div>
   </section>
 
-  <section class="lens-sec">
-    <div class="lens-sec__head"><h3>Emil Kowalski</h3><span class="lens-sec__weight">Secondary</span></div>
-    <p><span class="verdict v-concern">Concern</span></p>
+  <!-- JHEY SECONDARY -->
+  <section class="lens-sec" id="lens-jhey">
+    <div class="sec-index">04</div>
+    <div class="lens-sec__head">
+      <h3>Jhey Tompkins — Experimentation &amp; Delight</h3>
+      <span class="lens-sec__weight">Secondary lens</span>
+    </div>
+    <p class="lens-sec__verdict"><span class="verdict v-strong">Strong</span></p>
+
     <div class="lens-block">
-      <span class="mono-label">Working</span>
+      <span class="mono-label">What's working well</span>
       <ul class="lens-list good">
-        <li><span class="mk">✓</span><span>Lenis disabled entirely when <code>prefers-reduced-motion</code> — correct gate.</span></li>
-        <li><span class="mk">✓</span><span>Hero drift gated behind <code>useMotionEnabled</code> (fine pointer + no reduced motion).</span></li>
+        <li><span class="mk">✓</span><span>Hero SVG displacement via <code>gsap.quickTo</code> on a filter — creative, pointer-gated, reduced-motion safe. <code>HeroDrift.tsx</code></span></li>
+        <li><span class="mk">✓</span><span>Hand-drawn SVG tab underlines — personality without bounce. <code>SuiteTabs.tsx</code></span></li>
+        <li><span class="mk">✓</span><span>Custom <code>--ease-hesya</code> curve used consistently — easing has a brand voice.</span></li>
       </ul>
     </div>
+
+    <div class="lens-block">
+      <span class="mono-label">Opportunities</span>
+      <ul class="lens-list opp">
+        <li><span class="mk">💡</span><span><strong>Tab icon micro-accent</strong> — on feature switch, 180ms opacity + 4px rise on the active icon. The underline already carries weight; icons are the missing beat. <code>SuiteTabs.tsx</code></span></li>
+        <li><span class="mk">💡</span><span><strong>Deepen hero drift, don’t multiply atmosphere</strong> — one stronger pointer response beats three quiet floats. Resist adding more ambient loops.</span></li>
+      </ul>
+    </div>
+
     <div class="lens-take">
-      <span class="mono-label">Through Emil's lens</span>
-      <p>Subtract before adding. Remove one breathe loop, drop hover scale, and shorten programmatic scroll to ~800ms for tab jumps.</p>
+      <span class="mono-label">Through Jhey's lens</span>
+      <p>Hero drift and the pinned phone deck are exactly where this site should spend motion budget. Go deeper there — not on more glass breathing or flying-card loops.</p>
     </div>
   </section>
 
-  <section class="lens-sec">
-    <div class="lens-sec__head"><h3>Jhey Tompkins</h3><span class="lens-sec__weight">Selective</span></div>
-    <p><span class="verdict v-strong">Strong</span></p>
+  <!-- EMIL SELECTIVE -->
+  <section class="lens-sec" id="lens-emil">
+    <div class="sec-index">05</div>
+    <div class="lens-sec__head">
+      <h3>Emil Kowalski — Restraint &amp; Speed</h3>
+      <span class="lens-sec__weight">Selective lens</span>
+    </div>
+    <p class="lens-sec__verdict"><span class="verdict v-concern">Concern</span></p>
+
+    <div class="lens-block">
+      <span class="mono-label">What's working well</span>
+      <ul class="lens-list good">
+        <li><span class="mk">✓</span><span>Lenis fully disabled under <code>prefers-reduced-motion</code>. <code>SmoothScroll.tsx</code></span></li>
+        <li><span class="mk">✓</span><span>Hero drift gated by <code>useMotionEnabled</code> (fine pointer + no reduced motion).</span></li>
+        <li><span class="mk">✓</span><span>CTA <code>.btn-magnetic</code> uses 1px lift + opacity — not hover-scale. <code>design-system.css:519</code></span></li>
+        <li><span class="mk">✓</span><span>Ambient CSS loops kill under reduced-motion media queries.</span></li>
+      </ul>
+    </div>
+
+    <div class="lens-block">
+      <span class="mono-label">Issues to address</span>
+      <div class="findings">
+
+        <div class="finding-row" data-sev="crit" id="finding-2">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Emil</span><span class="lens-chip">Anti-checklist</span></div>
+            <h4 class="find-title">Three infinite ambient loops run on the first viewport</h4>
+            <div class="find-body">
+              <p><span class="label">What</span><code>ambientBreath</code> (24s) on every <code>.glass-panel</code>, <code>hero-phone-float</code> (10s) on the phone, and <code>hero-float</code> (8s) on flying cards. All infinite; none pauseable. Anti-checklist: pulsing / breathe loops on UI surfaces.</p>
+              <p><span class="label">Why it matters</span>A brand selling calm should not keep three layers gently thrashing forever. Individually subtle; stacked, they read as “always animating.” Reduced-motion users are fine — everyone else pays a continuous tax.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>Keep at most one ambient layer (prefer glass at 30s+, &lt;1% scale). Kill phone float or flying-card float — the pointer drift already supplies life. No pause UI needed if loops are gone.</p></div>
+              <p class="find-loc"><code>app/design-system.css:422</code>, <code>:980</code> · <code>app/globals.css:149</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st2" id="st2-a" checked>
+            <input class="vh" type="radio" name="st2" id="st2-l">
+            <input class="vh" type="radio" name="st2" id="st2-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">One quiet ambient (or none)</span><span class="demo__timing">30s+ · &lt;1% scale · optional</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st2-a">Auto</label><label for="st2-l">Light</label><label for="st2-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage">
+              <div class="demo-2__mt ui-card">
+                <div class="ui-label" style="margin-bottom:8px;">Glass</div>
+                <div class="ui-row">Still enough to feel alive</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="finding-row" data-sev="imp" id="finding-4">
+          <div class="finding-row__prose">
+            <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Emil</span></div>
+            <h4 class="find-title">Manifesto visual reveal stretches to ~990ms</h4>
+            <div class="find-body">
+              <p><span class="label">What</span><code>GSAP_DURATION.reveal * 1.8</code> → 0.99s on <code>.manifesto-visual</code>, with copy at 1.2× (~660ms) plus stagger. Marketing can be deliberate; nearly a full second for a section enter is heavy.</p>
+              <p><span class="label">Why it matters</span>Scroll reveals fire often as users explore. At ~1s they start to feel like waiting, not pacing — especially after Lenis already softens scroll.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>Visual: 400–500ms. Copy: 320–400ms with a tight 40–60ms stagger. Keep scale from 0.97–0.98 (not from 0).</p></div>
+              <p class="find-loc"><code>components/sections/ManifestoTeaser/index.tsx:33–46</code></p>
+            </div>
+          </div>
+          <div class="demo">
+            <input class="vh" type="radio" name="st4" id="st4-a" checked>
+            <input class="vh" type="radio" name="st4" id="st4-l">
+            <input class="vh" type="radio" name="st4" id="st4-d">
+            <div class="demo__bar">
+              <div class="demo__meta"><span class="demo__title">Faster section reveal</span><span class="demo__timing">450ms · scale 0.98 + opacity</span></div>
+              <div class="demo__controls">
+                <div class="seg"><label for="st4-a">Auto</label><label for="st4-l">Light</label><label for="st4-d">Dark</label></div>
+                <span class="demo__loop">↻</span>
+              </div>
+            </div>
+            <div class="demo__stage">
+              <div class="demo-4__mt ui-card" style="min-width:220px;">
+                <div class="ui-label" style="margin-bottom:8px;">Manifesto</div>
+                <div class="ui-row">Attention is the scarce resource</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lens-block">
+      <span class="mono-label">Opportunities</span>
+      <ul class="lens-list opp">
+        <li><span class="mk">💡</span><span><code>lib/motion.ts</code> still documents Framer Motion constants — dead docs after the GSAP migration. Clean up to avoid dual-stack confusion.</span></li>
+      </ul>
+    </div>
+
     <div class="lens-take">
-      <span class="mono-label">Through Jhey's lens</span>
-      <p>Hero SVG displacement and the pinned phone deck are exactly where this site should spend motion budget. Go deeper there — not on more glass pulsing.</p>
+      <span class="mono-label">Through Emil's lens</span>
+      <p>Subtract before adding. Collapse ambient to one layer (or zero), shorten the manifesto enter, and keep nav chrome fast. The pin deck already earns its time — don’t let loops and slow fades dilute it.</p>
     </div>
   </section>
 
@@ -417,35 +756,37 @@
     <h2 class="section-title">In the order I'd fix them</h2>
 
     <div class="rec crit" id="rec-crit">
-      <div class="mono-label">Critical · must fix</div>
+      <div class="tier-label"><span class="mono-label">Critical · must fix</span><span class="rule"></span><span class="count">2</span></div>
       <table class="rec-table">
         <thead><tr><th>Issue</th><th>File</th><th>Fix</th></tr></thead>
         <tbody>
-          <tr><td>Competing breathe animations on glass + cards</td><td><code>design-system.css</code></td><td>Remove <code>feature-media-breathe</code> or <code>ambientBreath</code>; keep at most one subtle loop</td></tr>
-          <tr><td>Pin deck per-frame <code>gsap.set</code></td><td><code>useFeaturePinScroll.ts</code></td><td>Scrubbed timeline or CSS transitions for programmatic nav; decouple from scroll frames</td></tr>
+          <tr><td>Mobile menu hard mount/unmount</td><td><code>MobileMenu.tsx</code></td><td>Enter/exit: backdrop fade + sheet slide; keep mounted through exit</td></tr>
+          <tr><td>Three stacked infinite ambient loops</td><td><code>design-system.css</code>, <code>globals.css</code></td><td>Keep ≤1 subtle loop; drop phone float and/or flying-card float</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="rec imp" id="rec-imp">
-      <div class="mono-label">Important · should fix</div>
+      <div class="tier-label"><span class="mono-label">Important · should fix</span><span class="rule"></span><span class="count">4</span></div>
       <table class="rec-table">
         <thead><tr><th>Issue</th><th>File</th><th>Fix</th></tr></thead>
         <tbody>
-          <tr><td>Uniform fade-up reveals</td><td><code>ManifestoTeaser</code>, <code>DownloadSection</code></td><td>Stagger or vary entrance choreography</td></tr>
-          <tr><td>CTA hover scale</td><td><code>design-system.css</code></td><td>Opacity/background shift, no scale</td></tr>
-          <tr><td>Dual GSAP + Framer stacks</td><td>multiple</td><td>Consolidate; unify reduced-motion gate</td></tr>
+          <tr><td>Quote fade 700ms, opacity-only</td><td><code>RecognitionSection</code></td><td>240ms materialize; subtler exit</td></tr>
+          <tr><td>Manifesto reveal ~990ms</td><td><code>ManifestoTeaser</code></td><td>400–500ms visual; tighter copy stagger</td></tr>
+          <tr><td>Dropdown opacity-only</td><td><code>DesktopNav.tsx</code></td><td>Origin-aware Y + scale + opacity</td></tr>
+          <tr><td>Permanent <code>will-change</code></td><td><code>design-system.css</code></td><td>Promote only while pin/scrub active</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="rec opp" id="rec-opp">
-      <div class="mono-label">Opportunities · could enhance</div>
+      <div class="tier-label"><span class="mono-label">Opportunities · could enhance</span><span class="rule"></span><span class="count">3</span></div>
       <table class="rec-table">
         <thead><tr><th>Enhancement</th><th>Where</th><th>Impact</th></tr></thead>
         <tbody>
-          <tr><td>Hero content stagger on load</td><td><code>HeroContent.tsx</code></td><td>First impression polish</td></tr>
-          <tr><td>Tab icon micro-motion on switch</td><td><code>SuiteTabs.tsx</code></td><td>Accent without more ambient noise</td></tr>
+          <tr><td>Hero content load stagger</td><td><code>HeroContent.tsx</code></td><td>First-paint polish without ambient noise</td></tr>
+          <tr><td>Tab icon micro-motion</td><td><code>SuiteTabs.tsx</code></td><td>Accent on the moment users already choose</td></tr>
+          <tr><td>Retire Framer docs in <code>lib/motion.ts</code></td><td><code>lib/motion.ts</code></td><td>Clear single animation stack story</td></tr>
         </tbody>
       </table>
     </div>
@@ -457,18 +798,18 @@
     <div class="ref-summary">
       <span class="mono-label">Referenced most</span>
       <p class="big">Jakub Krehel — Production Polish</p>
-      <p>The pin deck and tab sync are sophisticated — the gaps are craft gaps (interruptibility, paired transitions), not taste gaps. Emil sets the subtraction budget; Jhey marks hero + deck as the delight zones.</p>
+      <p class="why">The pin deck and hero drift are sophisticated; the gaps are craft gaps (paired transitions, origin, layer promotion), not taste gaps. Jhey marks where to invest delight; Emil sets the subtraction budget on ambient and duration.</p>
       <ul class="ref-lean">
-        <li><span class="nm">Lean Emil</span><span>Remove competing ambient loops. Question any always-on motion on a calm brand.</span></li>
-        <li><span class="nm">Lean Jakub</span><span>Make tab/hash navigation interruptible. Vary scroll reveals so they don't feel templated.</span></li>
-        <li><span class="nm">Lean Jhey</span><span>Invest in hero drift + pin deck depth — not more glass breathing.</span></li>
+        <li><span class="nm">Lean Jakub</span><span>Finish mobile menu + dropdown. Soften quote swaps. Scope <code>will-change</code>.</span></li>
+        <li><span class="nm">Lean Jhey</span><span>Deepen hero drift + pin deck — not more ambient loops.</span></li>
+        <li><span class="nm">Lean Emil</span><span>Collapse always-on motion. Shorten manifesto enter. Keep nav chrome under ~300ms.</span></li>
       </ul>
     </div>
   </section>
 
   <footer class="doc">
     <span>Hesya Landing motion audit · design-motion-principles</span>
-    <span>7 findings · 2 critical · 3 important · 2 opportunities</span>
+    <span>9 findings · 2 critical · 4 important · 3 opportunities</span>
   </footer>
 
 </div>

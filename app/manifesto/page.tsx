@@ -5,9 +5,9 @@ import Footer from "../../components/Footer";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Manifesto — Hesya",
+  title: "Manifesto: Hesya",
   description:
-    "On attention, agency, and presence. Why Hesya exists — and what it refuses to become.",
+    "On attention, agency, and presence. Why Hesya exists, and what it refuses to become.",
 };
 
 const SECTIONS = [
@@ -15,10 +15,10 @@ const SECTIONS = [
     title: "The environment",
     paragraphs: [
       "We live in an environment that constantly competes for our attention.",
-      "Much of modern technology is designed to exploit our biological reward systems — not because we are weak, but because we are human. When we feel overwhelmed, pressured, or emotionally depleted, we often escape into passive consumption. Not out of choice, but out of reflex.",
+      "Much of modern technology is designed to exploit our biological reward systems, not because we are weak, but because we are human. When we feel overwhelmed, pressured, or emotionally depleted, we often escape into passive consumption. Not out of choice, but out of reflex.",
       "At the same time, the dominant response to distraction has been control: blockers, metrics, discipline systems, optimisation frameworks.",
       "These approaches often miss the point.",
-      "They treat attention as something to be managed, restricted, or engineered — rather than something to be understood.",
+      "They treat attention as something to be managed, restricted, or engineered, rather than something to be understood.",
     ],
   },
   {
@@ -26,7 +26,7 @@ const SECTIONS = [
     paragraphs: [
       "Attention is awareness before it is control.",
       "People do not primarily lack discipline.",
-      "They lack space — space to notice what is happening inside them, and space to choose intentionally rather than react automatically.",
+      "They lack space: space to notice what is happening inside them, and space to choose intentionally rather than react automatically.",
       "Distraction is rarely the core problem.",
       "Emotional overwhelm is.",
       "When awareness is absent, tools become substitutes for responsibility.",
@@ -40,7 +40,7 @@ const SECTIONS = [
       "This path is presence.",
       "Presence allows rest without guilt.",
       "Presence allows effort without self-violence.",
-      "Presence restores agency — not by forcing behaviour, but by revealing choice.",
+      "Presence restores agency, not by forcing behaviour, but by revealing choice.",
     ],
   },
   {
@@ -50,7 +50,7 @@ const SECTIONS = [
       "This is not about making people more productive.",
       "It is about helping them act with intention.",
       "The role of the system is not to decide.",
-      "The role of the system is to step in briefly — and step back.",
+      "The role of the system is to step in briefly, and step back.",
     ],
   },
   {
@@ -68,7 +68,7 @@ const SECTIONS = [
     paragraphs: [
       "Success is not captured by time saved or tasks completed.",
       "Success is when a person feels calmer in moments of overwhelm, less ashamed of tuning out, and more capable of choosing what matters to them.",
-      "Ultimately, success is when the need for the tool diminishes — because awareness has been internalised.",
+      "Ultimately, success is when the need for the tool diminishes, because awareness has been internalised.",
     ],
   },
   {
@@ -77,7 +77,7 @@ const SECTIONS = [
       "This work is not about fixing people.",
       "People are not broken.",
       "What is broken is an environment that profits from their numbness and a culture that mistakes control for care.",
-      "I believe attention is not something to be conquered — but something to be returned to.",
+      "I believe attention is not something to be conquered, but something to be returned to.",
     ],
   },
 ];

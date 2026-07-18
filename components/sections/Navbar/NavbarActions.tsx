@@ -33,10 +33,10 @@ export default function NavbarActions({
 
       <button
         type="button"
-        className={`inline-flex h-10 w-10 items-center justify-center rounded-lg md:hidden ${
+        className={`inline-flex h-11 w-11 items-center justify-center rounded-lg transition-transform duration-200 ease-[var(--ease-hesya)] active:scale-[0.96] md:hidden ${
           isDark
-            ? "border border-[var(--border-dark)] bg-white/5"
-            : "border border-[var(--border)] bg-white/80"
+            ? "bg-white/5 shadow-[0_0_0_1px_oklch(1_0_0/0.12)]"
+            : "bg-white/80 shadow-[0_0_0_1px_oklch(0_0_0/0.08)]"
         }`}
         onClick={onOpenMenu}
         aria-label="Open menu"

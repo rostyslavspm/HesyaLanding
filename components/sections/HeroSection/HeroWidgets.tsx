@@ -8,12 +8,12 @@ export default function HeroWidgets() {
           {HERO_WIDGETS.map((widget) => (
             <div
               key={widget.id}
-              className="flex flex-col gap-0.5 rounded-xl bg-white/10 px-2.5 py-1.5"
+              className="flex flex-col gap-0.5 rounded bg-white/10 px-2.5 py-1.5"
             >
-              <span className="text-[9px] uppercase tracking-wider text-[var(--color-on-dark-muted)]">
+              <span className="text-ui-micro-label text-[var(--color-on-dark-muted)]">
                 {widget.label}
               </span>
-              <span className="text-xs text-[var(--color-on-dark)]">{widget.value}</span>
+              <span className="text-ui-caption text-[var(--color-on-dark)]">{widget.value}</span>
             </div>
           ))}
         </div>

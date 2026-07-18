@@ -10,6 +10,7 @@ import {
   gsap,
   GSAP_DURATION,
   GSAP_EASE,
+  STAGGER,
   registerGsapPlugins,
 } from "@/lib/motion/gsap";
 import { prefersReducedMotion } from "@/lib/motion/prefersReducedMotion";
@@ -31,20 +32,20 @@ export default function ManifestoTeaser() {
       });
 
       tl.from(".manifesto-visual", {
-        scale: 0.97,
+        scale: 0.98,
         opacity: 0,
-        duration: GSAP_DURATION.reveal * 1.8,
+        duration: GSAP_DURATION.reveal,
         ease: GSAP_EASE.hero,
       }).from(
         ".manifesto-copy > *",
         {
-          y: 20,
+          y: 16,
           opacity: 0,
-          duration: GSAP_DURATION.reveal * 1.2,
-          stagger: 0.08,
+          duration: GSAP_DURATION.revealCopy,
+          stagger: STAGGER.default,
           ease: GSAP_EASE.out,
         },
-        "-=0.55"
+        "-=0.2"
       );
     }, container);
 
@@ -78,15 +79,11 @@ export default function ManifestoTeaser() {
         </div>
 
         <div className="manifesto-copy flex flex-col justify-center px-[var(--gutter)] py-12 md:px-12 md:py-16 lg:px-16 xl:px-20">
-          <p className="text-eyebrow text-[var(--color-on-dark-muted)]">
-            On attention, agency, and presence
-          </p>
-
-          <h2 className={`${TYPE.marketingDisplay} mt-4 text-[var(--color-on-dark)]`}>
+          <h2 className={`${TYPE.marketingDisplay} text-[var(--color-on-dark)]`}>
             Becoming present.
           </h2>
 
-          <p className={`mt-6 max-w-lg ${TYPE.featureBody} text-[var(--color-on-dark-secondary)]`}>
+          <p className={`mt-6 max-w-lg ${TYPE.featureBody}`}>
             {MANIFESTO_TEASER}
           </p>
 

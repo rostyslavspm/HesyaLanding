@@ -5,16 +5,20 @@ const OVERLAY_VARIANTS = ["purple", "teal", "rose", "blue"] as const;
 
 const OVERLAYS: Record<string, string> = {
   purple:
-    "radial-gradient(circle at 100% 0%, rgba(188,132,241,0.19) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(184,220,232,0.15) 0%, transparent 50%)",
+    "radial-gradient(circle at 100% 0%, oklch(0.45 0.12 255 / 0.2) 0%, transparent 50%), radial-gradient(circle at 0% 100%, oklch(0.9 0.025 255 / 0.15) 0%, transparent 50%)",
   teal:
-    "radial-gradient(circle at 100% 0%, rgba(130,158,147,0.19) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(184,220,232,0.13) 0%, transparent 50%)",
+    "radial-gradient(circle at 100% 0%, oklch(0.48 0.05 169 / 0.22) 0%, transparent 50%), radial-gradient(circle at 0% 100%, oklch(0.9 0.025 255 / 0.15) 0%, transparent 50%)",
   rose:
-    "radial-gradient(circle at 100% 0%, rgba(196,181,253,0.17) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(130,158,147,0.13) 0%, transparent 50%)",
+    "radial-gradient(circle at 100% 0%, oklch(0.5 0.09 350 / 0.2) 0%, transparent 50%), radial-gradient(circle at 0% 100%, oklch(0.48 0.05 169 / 0.13) 0%, transparent 50%)",
   blue:
-    "radial-gradient(circle at 100% 0%, rgba(184,220,232,0.17) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(130,158,147,0.15) 0%, transparent 50%)",
+    "radial-gradient(circle at 100% 0%, oklch(0.48 0.08 255 / 0.2) 0%, transparent 50%), radial-gradient(circle at 0% 100%, oklch(0.48 0.05 169 / 0.15) 0%, transparent 50%)",
 };
 
-export default function FeaturePhoneStage() {
+type FeaturePhoneStageProps = {
+  activeId: string;
+};
+
+export default function FeaturePhoneStage({ activeId }: FeaturePhoneStageProps) {
   return (
     <div className="feature-phone-stage">
       <div
@@ -22,19 +26,19 @@ export default function FeaturePhoneStage() {
         className="feature-phone-stage-bg"
         style={{
           background:
-            "linear-gradient(180deg, #e8e4dc 0%, #d4ddd8 50%, #c8d4e0 100%)",
+            "linear-gradient(180deg, oklch(0.93 0.012 90) 0%, oklch(0.9 0.02 169) 50%, oklch(0.88 0.025 255) 100%)",
         }}
       />
       <div className="feature-phone-frame">
         {HESYA_FEATURES.map((feature, index) => {
+          const isActive = feature.id === activeId;
           const overlayVariant = OVERLAY_VARIANTS[index % OVERLAY_VARIANTS.length];
 
           return (
             <div
               key={feature.id}
-              data-feature-screen
-              className="feature-phone-screen"
-              aria-hidden={index !== 0}
+              className={`feature-phone-screen${isActive ? " is-active" : ""}`}
+              aria-hidden={!isActive}
             >
               <div
                 aria-hidden

@@ -1,9 +1,4 @@
 import { HESYA_FEATURES } from "@/lib/content/features";
-import {
-  computeTargetScroll,
-  getFeaturePinTrigger,
-  getFeatureSegmentRatio,
-} from "./featurePin";
 import { prefersReducedMotion } from "./prefersReducedMotion";
 
 export const FEATURE_SCROLL_EVENT = "hesya:feature-scroll";
@@ -38,46 +33,10 @@ export function getScrollAnchorOffset(): number {
 
   const headerHeight =
     Number.parseFloat(styles.getPropertyValue("--header-height")) || 82;
-  const suiteStickyHeight =
-    Number.parseFloat(styles.getPropertyValue("--suite-sticky-height")) || 0;
   const gap =
     Number.parseFloat(styles.getPropertyValue("--scroll-anchor-gap")) || 16;
 
-  return headerHeight + suiteStickyHeight + gap;
-}
-
-export function resolveActiveSection(sections: HTMLElement[]): string | null {
-  if (sections.length === 0) return null;
-
-  const anchorLine = getScrollAnchorOffset();
-  const viewportBottom = window.innerHeight;
-
-  let bestId = sections[0].id;
-  let bestVisible = -1;
-
-  for (const section of sections) {
-    const rect = section.getBoundingClientRect();
-    const visibleTop = Math.max(rect.top, anchorLine);
-    const visibleBottom = Math.min(rect.bottom, viewportBottom);
-    const visible = Math.max(0, visibleBottom - visibleTop);
-
-    if (visible > bestVisible) {
-      bestVisible = visible;
-      bestId = section.id;
-    }
-  }
-
-  return bestId;
-}
-
-export function getFeatureSections(): HTMLElement[] {
-  if (typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches) {
-    return [];
-  }
-
-  return HESYA_FEATURES.map((feature) => document.getElementById(feature.id)).filter(
-    Boolean
-  ) as HTMLElement[];
+  return headerHeight + gap;
 }
 
 export function scrollToAnchor(id: string, onComplete?: () => void): void {
@@ -115,22 +74,5 @@ export function scrollToFeatureAnchor(id: string, onComplete?: () => void): void
   window.dispatchEvent(
     new CustomEvent(FEATURE_SCROLL_EVENT, { detail: { id } })
   );
-
-  const pinTrigger = getFeaturePinTrigger();
-  const segmentRatio = getFeatureSegmentRatio(id);
-  const targetScroll = computeTargetScroll(segmentRatio);
-  const lenis = typeof window !== "undefined" ? window.__hesyaLenis : undefined;
-  const reducedMotion = prefersReducedMotion();
-
-  if (pinTrigger && lenis && targetScroll !== null) {
-    lenis.scrollTo(targetScroll, {
-      duration: reducedMotion ? 0 : 0.8,
-      immediate: reducedMotion,
-      force: true,
-      onComplete,
-    });
-    return;
-  }
-
-  scrollToAnchor(id, onComplete);
+  scrollToAnchor("features", onComplete);
 }

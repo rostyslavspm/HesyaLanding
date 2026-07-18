@@ -20,7 +20,7 @@ function FaqItem({ question, answer }: FaqItem) {
     <div className="border-b border-[var(--color-soft-obsidian)]/10">
       <button
         onClick={() => setOpen(!open)}
-        className={`${TYPE.proseQuestion} flex w-full items-center justify-between gap-4 py-6 text-left transition-opacity hover:opacity-70`}
+        className={`${TYPE.proseQuestion} flex w-full items-center justify-between gap-4 py-6 text-start transition-[opacity,transform] duration-200 ease-[var(--ease-hesya)] hover:opacity-70 active:scale-[0.96]`}
         aria-expanded={open}
       >
         {question}

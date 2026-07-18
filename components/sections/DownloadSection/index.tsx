@@ -29,16 +29,16 @@ export default function DownloadSection() {
       tl.from(".download-headline", {
         scale: 0.98,
         opacity: 0,
-        duration: GSAP_DURATION.reveal * 1.1,
+        duration: GSAP_DURATION.reveal,
         ease: GSAP_EASE.out,
       }).from(
         ".download-cta",
         {
           opacity: 0,
-          duration: GSAP_DURATION.reveal * 0.8,
+          duration: GSAP_DURATION.revealCopy,
           ease: GSAP_EASE.out,
         },
-        "-=0.35"
+        "-=0.2"
       );
     }, container);
 
@@ -50,25 +50,19 @@ export default function DownloadSection() {
       ref={container}
       id="download"
       aria-label="Download Hesya"
-      className={`${SECTIONS.sky} section-bleed-x relative overflow-hidden section-pad-compact`}
+      className={`${SECTIONS.sky} section-bleed-x relative overflow-hidden section-pad`}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-1/2 h-[120%] w-[min(42vw,520px)] -translate-y-1/2 opacity-40"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, transparent 68%)",
-          maskImage: "linear-gradient(to left, black 20%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to left, black 20%, transparent 100%)",
-        }}
-      />
+      <div className="download-glow" aria-hidden />
 
       <div className="container-marketing relative z-[1]">
-        <div className="download-content flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <h2 className={`download-headline ${TYPE.marketingDisplay} max-w-[720px]`}>
+        <div className="download-content">
+          <h2 className={`download-headline ${TYPE.marketingDisplay}`}>
             Presence that lives where you reach
           </h2>
-          <a href={URLS.testflight} className={`download-cta btn-magnetic shrink-0 ${BTN.ctaBanner}`}>
+          <a
+            href={URLS.testflight}
+            className={`download-cta btn-magnetic shrink-0 ${BTN.ctaBanner}`}
+          >
             Get the beta
           </a>
         </div>

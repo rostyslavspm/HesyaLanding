@@ -31,10 +31,9 @@ export default function Header({ variant = "light" }: HeaderProps) {
         <div className="container-marketing grid grid-cols-[1fr_auto_1fr] items-center gap-4">
           <Link
             href="/"
-            className="shrink-0 justify-self-start text-sm font-semibold uppercase tracking-[0.12em]"
+            className="text-brand shrink-0 justify-self-start"
             style={{
               color: isDark ? "var(--color-on-dark)" : "var(--foreground)",
-              fontFamily: "var(--font-sans)",
             }}
           >
             Hesya

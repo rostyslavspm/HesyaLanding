@@ -70,8 +70,8 @@ export const HESYA_FEATURES: HesyaFeature[] = [
     ],
     screenshot: "/screenshots/screen-ready.png",
     screenshotAlt: "Hesya quiet reflection after a session",
-    linkText: "See it in the beta",
-    linkHref: URLS.testflight,
+    linkText: "Read the philosophy",
+    linkHref: "/manifesto",
     icon: Sparkles,
   },
   {

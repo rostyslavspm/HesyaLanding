@@ -1,53 +1,36 @@
 "use client";
 
-import { useRef } from "react";
-import FeatureCard from "./FeatureCard";
 import FeatureContentStack from "./FeatureContentStack";
 import FeaturePhoneStage from "./FeaturePhoneStage";
 import SuiteTabs from "./SuiteTabs";
 import WhisperLine from "@/components/ui/WhisperLine";
 import { SECTIONS, TYPE } from "@/lib/design-system";
-import { useChromeHeight } from "@/hooks/useChromeHeight";
-import { useFeaturePinScroll } from "@/hooks/useFeaturePinScroll";
+import { useFeatureSuite } from "@/hooks/useFeatureSuite";
 
 export default function FeatureSuite() {
-  const pinContainerRef = useRef<HTMLDivElement>(null);
-  const stickyChromeRef = useRef<HTMLElement>(null);
-  const { activeId, scrollToFeature } = useFeaturePinScroll(pinContainerRef);
-
-  useChromeHeight(stickyChromeRef, "--suite-sticky-height");
+  const { activeId, selectFeature } = useFeatureSuite();
 
   return (
-    <section id="features" aria-label="What Hesya offers" className={`${SECTIONS.stone} section-bleed-x section-pad`}>
+    <section
+      id="features"
+      aria-label="What Hesya offers"
+      className={`${SECTIONS.stone} section-bleed-x section-pad`}
+    >
       <div className="container-marketing">
-        <header
-          ref={stickyChromeRef}
-          data-chrome="feature-suite-sticky"
-          className="sticky z-[var(--z-sticky-subnav)] bg-[var(--color-stone-100)]"
-          style={{ top: "var(--header-height)" }}
-        >
-          <div className="py-8 md:py-6">
-            <h2 className={`${TYPE.suiteHeading} max-w-[900px]`}>
-              What Hesya offers
-            </h2>
-          </div>
+        <header className="feature-suite-intro">
+          <h2 className={`${TYPE.suiteHeading} max-w-[900px]`}>
+            What Hesya offers
+          </h2>
 
-          <WhisperLine className="whisper-line--light" />
-          <SuiteTabs activeId={activeId} onSelect={scrollToFeature} />
+          <WhisperLine className="whisper-line--light mt-6 md:mt-8" />
+          <SuiteTabs activeId={activeId} onSelect={selectFeature} />
         </header>
 
-        <div ref={pinContainerRef} className="features-pin-container hidden md:block">
-          <div className="sticky-wrapper">
-            <div className="feature-deck-grid">
-              <FeatureContentStack />
-              <FeaturePhoneStage />
-            </div>
+        <div className="feature-suite-deck">
+          <div className="feature-deck-grid">
+            <FeatureContentStack activeId={activeId} />
+            <FeaturePhoneStage activeId={activeId} />
           </div>
-        </div>
-
-        <div className="feature-mobile-stack md:hidden">
-          <WhisperLine className="whisper-line--light mt-6" />
-          <FeatureCard />
         </div>
       </div>
     </section>

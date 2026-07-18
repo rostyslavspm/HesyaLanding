@@ -7,19 +7,19 @@ export default function ReturnPromptCard() {
       <div className="flex flex-col gap-2">
         <Sparkles className="h-4 w-4 text-[var(--color-on-dark)]" aria-hidden />
 
-        <p className="text-xs leading-[1.45] text-[var(--color-on-dark-secondary)]">
+        <p className="text-ui-caption text-[var(--color-on-dark-secondary)]">
           {RETURN_PROMPT.context}
         </p>
 
-        <span className="inline-flex w-fit rounded-md border border-[var(--border-dark-strong)] px-2 py-0.5 text-xs text-[var(--color-on-dark)]">
+        <span className="text-ui-caption inline-flex w-fit rounded-md border border-[var(--border-dark-strong)] px-2 py-0.5 text-[var(--color-on-dark)]">
           {RETURN_PROMPT.intention}
         </span>
 
-        <p className="text-xs leading-[1.45] text-[var(--color-on-dark-secondary)]">
+        <p className="text-ui-caption text-[var(--color-on-dark-secondary)]">
           {RETURN_PROMPT.offer}
         </p>
 
-        <span className="self-end rounded-full rounded-br-none bg-white/13 px-3 py-1.5 text-xs text-[var(--color-on-dark)]">
+        <span className="text-ui-caption self-end rounded-full rounded-br-none bg-white/13 px-3 py-1.5 text-[var(--color-on-dark)]">
           {RETURN_PROMPT.reply}
         </span>
       </div>

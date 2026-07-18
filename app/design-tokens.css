@@ -1,98 +1,104 @@
 /**
  * Hesya Landing — Design Tokens
- * Structure aligned with Superhuman reference; palette tuned for Hesya (warm, calm).
+ * Palette from Hesya widget atmospheres (Breathe / Pacer / Today / Weekly Pulse).
+ * Colors in OKLCH for perceptual uniformity.
  */
 
 :root {
   /* ─── Primitives ─────────────────────────────────────── */
-  --color-mist-white: #f2f2f2;
-  --color-soft-obsidian: #262322;
-  --color-pearl-glow: #ffffff;
-  --color-deep-midnight: #161b22;
+  --color-mist-white: oklch(0.961 0.004 90);
+  --color-soft-obsidian: oklch(0.259 0.005 39.398);
+  --color-pearl-glow: oklch(1 0 0);
+  /* Pacer deep slate — hue locked to cool family (~255°) */
+  --color-deep-midnight: oklch(0.32 0.025 255);
+  /* Today frost highlight */
+  --color-frost: oklch(0.952 0.013 255);
+  /* Weekly Pulse rare accent — glows/atmosphere only (not body text; ~3.8:1 on mist) */
+  --color-pulse-coral: oklch(0.6 0.16 21);
 
-  /* Superhuman-structure dark surfaces */
-  --color-hero-bg: #14121f;
-  --color-hero-cta: #1b1938;
-  --color-hero-cta-ring: rgb(53 48 136);
-  --color-forest-bg: #152520;
-  --color-footer-bg: #2e1f1f;
+  /* Dark surfaces — hero = Today/Pacer frost slate; forest stays Breathe */
+  --color-hero-bg: oklch(0.26 0.025 255);
+  --color-hero-cta: oklch(0.3 0.035 255);
+  --color-hero-cta-ring: oklch(0.45 0.12 255);
+  --color-forest-bg: oklch(0.248 0.04 169);
+  --color-footer-bg: oklch(0.258 0.023 18.801);
+  --color-steel: oklch(0.35 0.03 255);
 
-  /* Light / suite surfaces */
-  --color-stone-50: #fafaf9;
-  --color-stone-100: #f5f5f4;
-  --color-stone-200: #ece9e1;
-  --color-stone-border: color(srgb 0.451 0.443 0.427 / 0.2);
+  /* Light / suite surfaces — warm stone + Today frost */
+  --color-stone-50: oklch(0.985 0.002 95);
+  --color-stone-100: oklch(0.97 0.003 100);
+  --color-stone-200: oklch(0.934 0.01 90);
+  --color-stone-border: oklch(0.55 0.01 255 / 0.2);
 
-  /* Accent — purple family (links, tabs, outlines) */
-  --color-accent: #714cb6;
-  --color-accent-hover: #533192;
-  --color-accent-muted: #5b4d8a;
-  --color-accent-fill: #c4b5fd;
-  --color-accent-fill-hover: #ddd6fe;
+  /* Accent — Weekly Pulse cobalt (links, tabs, outlines) */
+  --color-accent: oklch(0.45 0.12 255);
+  --color-accent-hover: oklch(0.38 0.11 255);
+  --color-accent-muted: oklch(0.48 0.06 255);
+  --color-accent-fill: oklch(0.9 0.03 255);
+  --color-accent-fill-hover: oklch(0.94 0.02 255);
 
-  /* CTA icon gradient stops */
-  --color-cta-icon-from: #857dfa;
-  --color-cta-icon-mid: #554dcb;
-  --color-cta-icon-to: #4a43b0;
-  --color-cta-icon-glow-teal: color-mix(in srgb, var(--feature-return) 35%, transparent);
-  --color-cta-icon-glow-sky: color-mix(in srgb, var(--color-sky-from) 35%, transparent);
-  --color-cta-icon-glow-lavender: color-mix(in srgb, var(--color-accent-fill) 28%, transparent);
+  /* CTA icon gradient — steel → cobalt */
+  --color-cta-icon-from: oklch(0.65 0.1 255);
+  --color-cta-icon-mid: oklch(0.48 0.12 255);
+  --color-cta-icon-to: oklch(0.4 0.1 255);
+  --color-cta-icon-glow-teal: color-mix(in oklch, var(--feature-return) 35%, transparent);
+  --color-cta-icon-glow-sky: color-mix(in oklch, var(--color-sky-from) 35%, transparent);
+  --color-cta-icon-glow-lavender: color-mix(in oklch, var(--feature-reflect) 28%, transparent);
 
-  /* Sky banner (bottom CTA) */
-  --color-sky-from: #b8dce8;
-  --color-sky-to: #f0e8f4;
+  /* Sky banner — Today frost → warm paper */
+  --color-sky-from: oklch(0.9 0.025 255);
+  --color-sky-to: oklch(0.93 0.018 80);
 
-  /* Hero atmosphere */
-  --color-hero-sky-top: rgba(120, 90, 140, 0.45);
-  --color-hero-sky-mid: rgba(60, 50, 90, 0.25);
+  /* Hero atmosphere — Today frost beam over cool slate */
+  --color-hero-sky-top: oklch(0.85 0.02 255 / 0.28);
+  --color-hero-sky-mid: oklch(0.55 0.035 255 / 0.22);
 
   /* Text on dark */
-  --color-on-dark: rgba(255 255 255 / 0.95);
-  --color-on-dark-secondary: rgba(255 255 255 / 0.8);
-  --color-on-dark-muted: rgba(255 255 255 / 0.5);
+  --color-on-dark: oklch(1 0 0 / 0.95);
+  --color-on-dark-secondary: oklch(1 0 0 / 0.8);
+  --color-on-dark-muted: oklch(1 0 0 / 0.62);
 
-  /* Text on light */
+  /* Text on light — solid L (no alpha); AA+ on mist / stone-100 */
   --color-on-light: var(--color-soft-obsidian);
-  --color-on-light-secondary: color(srgb 0.078 0.078 0.075 / 0.65);
-  --color-on-light-muted: rgba(38 35 34 / 0.5);
+  --color-on-light-secondary: oklch(0.42 0.005 39.398); /* ~7.6:1 body */
+  --color-on-light-muted: oklch(0.48 0.005 39.398); /* ~5.9:1 labels */
 
   /* ─── Semantic aliases ───────────────────────────────── */
   --background: var(--color-mist-white);
   --foreground: var(--color-soft-obsidian);
-  --foreground-secondary: rgba(38 35 34 / 0.8);
-  --foreground-muted: rgba(38 35 34 / 0.64);
-  --foreground-reading: color-mix(in srgb, var(--foreground) 72%, var(--foreground-secondary));
+  --foreground-secondary: var(--color-on-light-secondary);
+  --foreground-muted: var(--color-on-light-muted);
+  --foreground-reading: color-mix(in oklch, var(--foreground) 72%, var(--foreground-secondary));
 
-  --surface: rgba(255 255 255 / 0.72);
-  --surface-elevated: rgba(255 255 255 / 0.88);
-  --surface-tinted: rgba(248 248 246 / 0.58);
-  --surface-dark: rgba(255 255 255 / 0.08);
-  --surface-dark-elevated: rgba(255 255 255 / 0.12);
+  --surface: oklch(1 0 0 / 0.72);
+  --surface-elevated: oklch(1 0 0 / 0.88);
+  --surface-tinted: oklch(0.979 0.003 106.448 / 0.58);
+  --surface-dark: oklch(1 0 0 / 0.08);
+  --surface-dark-elevated: oklch(1 0 0 / 0.12);
 
-  --border: rgba(0 0 0 / 0.06);
+  --border: oklch(0 0 0 / 0.06);
   --border-strong: var(--color-soft-obsidian);
   --border-subtle: var(--color-stone-border);
-  --border-dark: rgba(255 255 255 / 0.12);
-  --border-dark-strong: rgba(255 255 255 / 0.2);
+  --border-dark: oklch(1 0 0 / 0.12);
+  --border-dark-strong: oklch(1 0 0 / 0.2);
 
-  --focus: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  --focus: color-mix(in oklch, var(--color-accent) 55%, transparent);
 
   /* ─── Layout ─────────────────────────────────────────── */
   --container: 1100px;
   --container-marketing: 1440px;
   --gutter: clamp(16px, 4vw, 24px);
   --header-height: 82px;
-  --suite-sticky-height: 0px;
   --scroll-anchor-gap: 16px;
   --banner-height: 2.5rem;
   --hero-bleed: clamp(1rem, 3vh, 2.5rem);
   --hero-composition-max: 56rem;
 
-  /* Per-feature accents (tabs) */
-  --feature-declare: #714cb6;
-  --feature-return: #829e93;
-  --feature-reflect: #c084a8;
-  --feature-presence: #5b8fc7;
+  /* Per-feature accents — from widget atmospheres; L tuned for AA on mist */
+  --feature-declare: oklch(0.45 0.12 255); /* Weekly Pulse cobalt */
+  --feature-return: oklch(0.48 0.05 169); /* Breathe sage */
+  --feature-reflect: oklch(0.5 0.09 350); /* Weekly Pulse magenta bridge */
+  --feature-presence: oklch(0.48 0.08 255); /* Pacer slate */
 
   --section-py: clamp(72px, 10vw, 128px);
   --section-py-lg: clamp(92px, 12vw, 168px);
@@ -106,13 +112,14 @@
   --radius-pill: 9999px;
 
   /* ─── Shadows ────────────────────────────────────────── */
-  --shadow-soft: 0 18px 60px rgba(0 0 0 / 0.12);
-  --shadow-hero: 0 28px 120px rgba(0 0 0 / 0.28);
-  --shadow-cta-dark: rgb(20 20 19 / 0.24) 0 1px 2px, var(--color-hero-cta-ring) 0 0 0 1px;
-  --shadow-cta-icon: rgb(20 20 19 / 0.08) 0 1px 2px;
+  --shadow-soft: 0 18px 60px oklch(0 0 0 / 0.12);
+  --shadow-hero: 0 28px 120px oklch(0 0 0 / 0.28);
+  --shadow-cta-dark: oklch(0.191 0.002 106.586 / 0.24) 0 1px 2px, var(--color-hero-cta-ring) 0 0 0 1px;
+  --shadow-cta-icon: oklch(0.191 0.002 106.586 / 0.08) 0 1px 2px;
 
   /* Loaded weights only — Inter 400/500/600, Cormorant 300–600, Newsreader 400/500 */
   --font-weight-body: 400;
+  --font-weight-medium: 500;
   --font-weight-semibold: 600;
 
   /* ─── Font roles ─────────────────────────────────────── */
@@ -120,17 +127,23 @@
   --font-body-serif: var(--font-body), "Newsreader", Georgia, serif;
   --font-ui-sans: var(--font-sans), "Inter", -apple-system, sans-serif;
   --font-size-body: 1.125rem;
+  --font-size-ui: 0.8125rem; /* 13px — nav, tabs, buttons */
+  --font-size-label: 0.875rem; /* 14px — eyebrows, page labels */
+  --font-size-ui-caption: 0.75rem; /* 12px — mock UI only */
+  --font-size-ui-micro: 0.5625rem; /* 9px — decorative phone chrome only */
   --line-height-body: 1.65;
+  --line-height-heading: 1.1;
+  --line-height-label: 1.2;
 
-  /* ─── Motion ─────────────────────────────────────────── */
+  /* ─── Motion (keep in sync with lib/motion/tokens.ts) ── */
   --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
   --dur-micro: 0.25s;
   --dur-hover: 0.35s;
-  --dur-reveal: 0.55s;
+  --dur-chrome: 0.28s;
+  --dur-reveal: 0.45s;
   --dur-section: 1.2s;
 
   /* ─── Z-index ────────────────────────────────────────── */
   --z-header: 200;
-  --z-sticky-subnav: 199;
   --z-overlay: 10;
 }

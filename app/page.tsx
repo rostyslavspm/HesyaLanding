@@ -8,7 +8,7 @@ import ManifestoTeaser from "../components/sections/ManifestoTeaser";
 import DownloadSection from "../components/sections/DownloadSection";
 
 export const metadata: Metadata = {
-  title: "Hesya — Return to what matters",
+  title: "Hesya: Return to what matters",
   description:
     "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts. Get the beta on TestFlight.",
 };

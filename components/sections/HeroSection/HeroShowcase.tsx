@@ -23,10 +23,10 @@ export default function HeroShowcase() {
       <div className="hero-showcase-mobile relative z-[3] flex flex-col gap-2 px-[var(--gutter)] pb-6 pt-4 md:hidden">
         {HERO_WIDGETS.slice(0, 2).map((widget) => (
           <div key={widget.id} className="glass-panel glass-panel-compact">
-            <span className="text-[9px] uppercase tracking-wider text-[var(--color-on-dark-muted)]">
+            <span className="text-ui-micro-label text-[var(--color-on-dark-muted)]">
               {widget.label}
             </span>
-            <p className="mt-1 text-xs text-[var(--color-on-dark)]">{widget.value}</p>
+            <p className="text-ui-caption mt-1 text-[var(--color-on-dark)]">{widget.value}</p>
           </div>
         ))}
       </div>

@@ -27,7 +27,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Hesya — Return to what matters",
+  title: "Hesya: Return to what matters",
   description:
     "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
   authors: [{ name: "Rostyslav Slobodianiuk" }],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hesya.app"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hesya — Return to what matters",
+    title: "Hesya: Return to what matters",
     description:
       "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
     url: "https://hesya.app",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Hesya — Return to what matters",
+        alt: "Hesya: Return to what matters",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hesya — Return to what matters",
+    title: "Hesya: Return to what matters",
     description:
       "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
     images: ["/opengraph-image"],
