@@ -26,7 +26,7 @@ export default function DownloadSection() {
         },
       });
 
-      tl.from(".download-headline", {
+      tl.from(".download-lockup", {
         scale: 0.98,
         opacity: 0,
         duration: GSAP_DURATION.reveal,
@@ -56,14 +56,19 @@ export default function DownloadSection() {
 
       <div className="container-marketing relative z-[1]">
         <div className="download-content">
-          <h2 className={`download-headline ${TYPE.marketingDisplay}`}>
-            Presence that lives where you reach
-          </h2>
+          <div className="download-lockup">
+            <h2 className={`download-headline ${TYPE.marketingDisplay}`}>
+              The way back is never far
+            </h2>
+            <p className="mt-4 max-w-[38ch] text-micro text-[var(--foreground-secondary)]">
+              Free on iPhone. No account, no subscription, nothing to cancel.
+            </p>
+          </div>
           <a
-            href={URLS.testflight}
+            href={URLS.appStore}
             className={`download-cta btn-magnetic shrink-0 ${BTN.ctaBanner}`}
           >
-            Get the beta
+            Get the app
           </a>
         </div>
       </div>

@@ -123,7 +123,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
               key={href}
               href={href}
               onClick={onClose}
-              className="text-body text-[var(--color-on-dark-secondary)]"
+              className="inline-flex min-h-11 items-center text-body text-[var(--color-on-dark-secondary)] transition-transform duration-200 ease-[var(--ease-hesya)] active:scale-[0.96]"
             >
               {label}
             </Link>
@@ -135,12 +135,12 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             Contact
           </a>
           <a
-            href={URLS.testflight}
+            href={URLS.appStore}
             target="_blank"
             rel="noopener noreferrer"
             className={BTN.ctaFilled}
           >
-            Get the beta
+            Get the app
           </a>
         </div>
       </div>

@@ -8,9 +8,9 @@ import ManifestoTeaser from "../components/sections/ManifestoTeaser";
 import DownloadSection from "../components/sections/DownloadSection";
 
 export const metadata: Metadata = {
-  title: "Hesya: Return to what matters",
+  title: "Hesya: Name one thing. Stay with it.",
   description:
-    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts. Get the beta on TestFlight.",
+    "Hesya is a free iPhone app for holding one intention at a time. Name what matters, and when your attention drifts, a quiet cue returns you to your own words — no blocking, no streaks, no scores, no accounts. Free on the App Store.",
 };
 
 export default function Home() {

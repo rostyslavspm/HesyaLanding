@@ -13,44 +13,50 @@ interface PhoneMockupProps {
   /** Next.js responsive sizes hint */
   sizes?: string;
   className?: string;
+  /** Intrinsic pixel size of the asset (defaults to full-device captures) */
+  width?: number;
+  height?: number;
 }
 
 /**
- * PhoneMockup — consistent iPhone mockup frame.
+ * PhoneMockup — frameless iPhone screenshot.
  *
- * Renders at max-w-[260px] with aspect-[660/1434] to prevent CLS.
- * Frameless design with proportionate iPhone rounded corners.
- * Includes an optional error fallback label when the screenshot is missing.
+ * Image drives the aspect ratio. Avoid `object-fit: cover` on a separately
+ * sized frame — subpixel aspect mismatch crops chrome at the edges.
  */
 export default function PhoneMockup({
   src,
   alt,
   fallbackLabel,
   priority = false,
-  sizes = "(max-width: 640px) 260px, 260px",
+  sizes = "(max-width: 640px) 260px, 340px",
   className,
+  width = 1260,
+  height = 2736,
 }: PhoneMockupProps) {
   const [imageError, setImageError] = useState(false);
 
   return (
     <div
-      className={`relative max-w-[260px] w-full aspect-[660/1434] ${className ?? ""}`}
-      style={{ clipPath: "inset(0 round 16%)" }}
+      className={`phone-mockup relative w-full ${className ?? ""}`}
       title={fallbackLabel}
     >
       <div
         className="pointer-events-none absolute inset-0 z-10"
-        style={{ background: "linear-gradient(105deg, oklch(1 0 0 / 0.15) 0%, transparent 45%)" }}
+        style={{
+          background:
+            "linear-gradient(105deg, oklch(1 0 0 / 0.12) 0%, transparent 42%)",
+          borderRadius: "inherit",
+        }}
       />
 
       {!imageError && (
         <Image
           src={src}
           alt={alt}
-          width={660}
-          height={1434}
-          className="screenshot-outline block h-auto w-full"
-          style={{ borderRadius: "16%" }}
+          width={width}
+          height={height}
+          className="phone-mockup-image screenshot-outline"
           onError={() => setImageError(true)}
           priority={priority}
           sizes={sizes}

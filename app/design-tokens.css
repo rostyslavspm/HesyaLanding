@@ -16,11 +16,10 @@
   /* Weekly Pulse rare accent — glows/atmosphere only (not body text; ~3.8:1 on mist) */
   --color-pulse-coral: oklch(0.6 0.16 21);
 
-  /* Dark surfaces — hero = Today/Pacer frost slate; forest stays Breathe */
+  /* Dark surfaces — banner/CTA chrome and footer */
   --color-hero-bg: oklch(0.26 0.025 255);
   --color-hero-cta: oklch(0.3 0.035 255);
   --color-hero-cta-ring: oklch(0.45 0.12 255);
-  --color-forest-bg: oklch(0.248 0.04 169);
   --color-footer-bg: oklch(0.258 0.023 18.801);
   --color-steel: oklch(0.35 0.03 255);
 
@@ -52,6 +51,35 @@
   /* Hero atmosphere — Today frost beam over cool slate */
   --color-hero-sky-top: oklch(0.85 0.02 255 / 0.28);
   --color-hero-sky-mid: oklch(0.55 0.035 255 / 0.22);
+
+  /* ─── The Clearing — luminous cool air ────────────────
+   * Feeling borrowed from Superhuman’s hero atmosphere
+   * (open sky / soft light), not warm paper fog.
+   * Cool frost silver + a soft sky glow pocket. No purple.
+   * Brief §04: inside the air, not before a painted vista. */
+  --mist-glow: oklch(0.94 0.03 245);
+  --mist-deep: oklch(0.72 0.022 252);
+
+  /* Scroll-driven enclosure (brief §04 spatial law: the field
+   * thickens as you go). Set 0→1 by HeroDrift; stays 0 for
+   * reduced motion and before hydration. */
+  --hero-depth: 0;
+
+  /* ─── Night sky (hero) ────────────────────────────────
+   * A generative field, not a photograph: deep indigo at the zenith
+   * warming toward the horizon where the phone sits — Rayleigh at night
+   * (§06.1). Stars are drawn on a 2D canvas; only the gradient lives here. */
+  --sky-horizon: oklch(0.3 0.045 260);
+  --sky-warm: oklch(0.4 0.05 70); /* faint dawn hint at the horizon */
+
+  /* ─── The Reaching Hand — Eärendil beam ───────────────
+   * Sampled from the Pacer surface (Figma 2093:1976), the brief's
+   * §12 locked target: the world closes in and a single beam of
+   * starlight descends. Replaces the retired forest metaphor. */
+  --beam-field: oklch(0.472 0.035 245); /* #4d6377 mid slate */
+  --beam-deep: oklch(0.315 0.02 272); /* #333345 closed corners */
+  --beam-light: oklch(0.878 0.026 258); /* #c2cee4 beam body */
+  --beam-bright: oklch(0.958 0.013 237); /* #ecf5fc beam entry */
 
   /* Text on dark */
   --color-on-dark: oklch(1 0 0 / 0.95);
@@ -88,9 +116,9 @@
   --container: 1100px;
   --container-marketing: 1440px;
   --gutter: clamp(16px, 4vw, 24px);
-  --header-height: 82px;
-  --scroll-anchor-gap: 16px;
-  --banner-height: 2.5rem;
+  /* SSR fallback — useChromeHeight measures the real value after hydration */
+  --header-height: 70px;
+  --scroll-anchor-gap: 16px; /* breathing room below sticky chrome on jump */
   --hero-bleed: clamp(1rem, 3vh, 2.5rem);
   --hero-composition-max: 56rem;
 
@@ -110,6 +138,20 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-pill: 9999px;
+  /* Device corner radius as a proportion of screen width — one iPhone, so the
+   * hero and feature screenshots must round identically at every size. */
+  --phone-radius-ratio: 0.1333;
+
+  /* ─── Compound CTA — exact port of Figma 2557:1914 ────
+   * A translucent sheen laid over the button's own fill: warm amber catching
+   * the trailing edge, falling to deep navy. Both stops sit at 25% alpha, so
+   * this reads as light on a surface, not a painted gradient. The warm end is
+   * the brief's reserved Eärendil accent (§06.4) — the sky and focus star stay
+   * cool, so the one warm point of light lives on the action. */
+  --cta-sheen-angle: 260.704deg;
+  --cta-sheen-warm: rgba(242, 187, 110, 0.25);
+  --cta-sheen-dark: rgba(1, 4, 30, 0.25);
+  --radius-cta: 20px;
 
   /* ─── Shadows ────────────────────────────────────────── */
   --shadow-soft: 0 18px 60px oklch(0 0 0 / 0.12);
@@ -131,9 +173,15 @@
   --font-size-label: 0.875rem; /* 14px — eyebrows, page labels */
   --font-size-ui-caption: 0.75rem; /* 12px — mock UI only */
   --font-size-ui-micro: 0.5625rem; /* 9px — decorative phone chrome only */
-  --line-height-body: 1.65;
-  --line-height-heading: 1.1;
+  --line-height-body: 1.7; /* brand floor — see shared-principles.md */
+  --line-height-display: 1.0; /* large serif display — hero, section headings */
+  --line-height-heading: 1.08; /* smaller headings — feature titles */
   --line-height-label: 1.2;
+
+  /* Optical letter-spacing, tightening as the type grows.
+   * Cormorant at display sizes wants noticeably negative tracking. */
+  --tracking-display: -0.028em;
+  --tracking-heading: -0.018em;
 
   /* ─── Motion (keep in sync with lib/motion/tokens.ts) ── */
   --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
@@ -145,5 +193,4 @@
 
   /* ─── Z-index ────────────────────────────────────────── */
   --z-header: 200;
-  --z-overlay: 10;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { BTN, TYPE, URLS } from "@/lib/design-system";
 
 export default function HeroContent() {
@@ -10,23 +10,29 @@ export default function HeroContent() {
       <h1
         className={`hero-enter-item hero-enter-headline ${TYPE.marketingHero} max-w-[920px] pb-1 text-[var(--color-on-dark)]`}
       >
-        Return to what matters,
+        Name one thing.
         <br className="hidden sm:block" />
-        {" "}in the moment you drift
+        {" "}Stay with it.
       </h1>
 
       <p
-        className={`hero-enter-item hero-enter-sub ${TYPE.marketingSubhead} max-w-[520px] text-[var(--color-on-dark-secondary)]`}
+        className={`hero-enter-item hero-enter-sub ${TYPE.marketingSubhead} max-w-[560px] text-[var(--color-on-dark-secondary)]`}
       >
-        Name one intention. When you drift, Hesya helps you notice and return,
-        without guilt or control.
+        When your attention drifts, a quiet cue brings you back to your own
+        words — never a block, never a score. Free on iPhone.
       </p>
 
       <div className="hero-enter-item hero-enter-cta mt-1 flex flex-col items-center md:mt-2">
-        <Link href={URLS.testflight} className={`btn-magnetic ${BTN.ctaDark}`}>
-          <span>Get the beta</span>
+        <Link href={URLS.appStore} className={`btn-magnetic ${BTN.ctaDark}`}>
+          <span>Get the app</span>
           <span className="btn-cta-icon" aria-hidden>
-            <ArrowUpRight className="h-[18px] w-[18px]" strokeWidth={1.75} />
+            <span className="btn-cta-icon-flare-a" />
+            <span className="btn-cta-icon-flare-b" />
+            <span className="btn-cta-icon-sheen" />
+            <ArrowRight
+              className="btn-cta-icon-glyph h-[18px] w-[18px]"
+              strokeWidth={1.75}
+            />
           </span>
         </Link>
       </div>

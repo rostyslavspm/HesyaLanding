@@ -5,23 +5,30 @@ export default function ReturnPromptCard() {
   return (
     <div className="glass-panel glass-panel-compact pointer-events-none w-full max-w-[220px] lg:max-w-[250px]">
       <div className="flex flex-col gap-2">
-        <Sparkles className="h-4 w-4 text-[var(--color-on-dark)]" aria-hidden />
+        <Sparkles
+          className="h-4 w-4 text-[var(--color-accent)]"
+          aria-hidden
+          strokeWidth={1.75}
+        />
 
-        <p className="text-ui-caption text-[var(--color-on-dark-secondary)]">
+        <p className="text-ui-micro-label text-[var(--color-on-dark-muted)]">
           {RETURN_PROMPT.context}
         </p>
 
-        <span className="text-ui-caption inline-flex w-fit rounded-md border border-[var(--border-dark-strong)] px-2 py-0.5 text-[var(--color-on-dark)]">
+        <p className="text-user-words text-[var(--color-on-dark)]">
           {RETURN_PROMPT.intention}
-        </span>
-
-        <p className="text-ui-caption text-[var(--color-on-dark-secondary)]">
-          {RETURN_PROMPT.offer}
         </p>
 
-        <span className="text-ui-caption self-end rounded-full rounded-br-none bg-white/13 px-3 py-1.5 text-[var(--color-on-dark)]">
-          {RETURN_PROMPT.reply}
-        </span>
+        <div className="mt-1 flex flex-col gap-1">
+          {RETURN_PROMPT.actions.map((action) => (
+            <span
+              key={action}
+              className="text-ui-caption rounded bg-white/10 px-2 py-1 text-[var(--color-on-dark-secondary)]"
+            >
+              {action}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

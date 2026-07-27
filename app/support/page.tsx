@@ -55,7 +55,7 @@ const usingHesya = [
   {
     question: "What's the difference between Deep Work and Present Evening?",
     answer:
-      "Two flavors of intentional time: one for focused work, one for being present off-screen. They change the framing copy, not the rules.",
+      "Two kinds of intentional time: one for deep work, one for being present off-screen. They change the framing copy, not the rules.",
   },
   {
     question: "What is the breathing pause?",

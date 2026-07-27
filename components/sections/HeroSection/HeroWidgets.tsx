@@ -13,7 +13,9 @@ export default function HeroWidgets() {
               <span className="text-ui-micro-label text-[var(--color-on-dark-muted)]">
                 {widget.label}
               </span>
-              <span className="text-ui-caption text-[var(--color-on-dark)]">{widget.value}</span>
+              <span className="text-ui-caption text-[var(--color-on-dark)]">
+                {widget.value}
+              </span>
             </div>
           ))}
         </div>

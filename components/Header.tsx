@@ -24,7 +24,7 @@ export default function Header({ variant = "light" }: HeaderProps) {
     <>
       <header
         ref={headerRef}
-        className={`header-sticky header-enter px-[var(--gutter)] py-4 md:py-5 ${
+        className={`header-sticky header-enter px-[var(--gutter)] py-3 md:py-3.5 ${
           isDark ? "header-dark" : ""
         }`}
       >

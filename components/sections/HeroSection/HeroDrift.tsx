@@ -1,78 +1,51 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, GSAP_DURATION, GSAP_EASE } from "@/lib/motion/gsap";
-import { useMotionEnabled } from "@/hooks/useMotionEnabled";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
+/**
+ * Scroll enclosure — drives `--hero-depth` (0→1) as the hero leaves the
+ * viewport, so the night field thickens as you descend (brief §04 spatial
+ * law). The star field itself is owned by HeroStarfield. Suppressed under
+ * reduced motion (CSS zeroes the enclosure), so no work is done there.
+ */
 export default function HeroDrift() {
-  const enabled = useMotionEnabled();
-  const rafId = useRef(0);
-  const pending = useRef<{ mx: number; my: number } | null>(null);
+  const reduced = usePrefersReducedMotion();
+  const frame = useRef(0);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (reduced) return;
 
-    const viewport = document.getElementById("hero-viewport");
-    const displacement = document.getElementById("hero-drift-displacement");
-    const blurLayer = document.querySelector<HTMLElement>(".hero-backdrop-blur");
+    const stage = document.getElementById("hero-viewport");
+    if (!stage) return;
 
-    if (!viewport || !displacement) return;
-
-    const quickDisplacement = gsap.quickTo(displacement, "scale", {
-      duration: GSAP_DURATION.drift,
-      ease: GSAP_EASE.out,
-    });
-
-    const quickBlur = blurLayer
-      ? gsap.quickTo(blurLayer, "opacity", {
-          duration: GSAP_DURATION.drift,
-          ease: GSAP_EASE.out,
-        })
-      : null;
-
-    const apply = (mx: number, my: number) => {
-      const rect = viewport.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const halfDiagonal =
-        Math.hypot(rect.width, rect.height) / 2 || 1;
-      const d = Math.hypot(mx - cx, my - cy) / halfDiagonal;
-
-      quickDisplacement(d * 15);
-      quickBlur?.(d);
+    const readDepth = () => {
+      const rect = stage.getBoundingClientRect();
+      const travel = rect.height || 1;
+      const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
+      stage.style.setProperty("--hero-depth", progress.toFixed(3));
     };
 
-    const flush = () => {
-      rafId.current = 0;
-      if (!pending.current) return;
-      apply(pending.current.mx, pending.current.my);
-      pending.current = null;
-    };
-
-    const onMove = (event: MouseEvent) => {
-      pending.current = { mx: event.clientX, my: event.clientY };
-      if (!rafId.current) {
-        rafId.current = requestAnimationFrame(flush);
+    const schedule = () => {
+      if (!frame.current) {
+        frame.current = requestAnimationFrame(() => {
+          frame.current = 0;
+          readDepth();
+        });
       }
     };
 
-    const onLeave = () => {
-      pending.current = null;
-      quickDisplacement(0);
-      quickBlur?.(0);
-    };
-
-    viewport.addEventListener("mousemove", onMove, { passive: true });
-    viewport.addEventListener("mouseleave", onLeave);
+    readDepth();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
 
     return () => {
-      viewport.removeEventListener("mousemove", onMove);
-      viewport.removeEventListener("mouseleave", onLeave);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-      quickDisplacement(0);
-      quickBlur?.(0);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame.current) cancelAnimationFrame(frame.current);
+      frame.current = 0;
     };
-  }, [enabled]);
+  }, [reduced]);
 
   return null;
 }

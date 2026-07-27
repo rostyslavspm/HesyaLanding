@@ -67,6 +67,33 @@ export function scrollToAnchor(id: string, onComplete?: () => void): void {
   }
 }
 
+/**
+ * Scroll a feature block just under the site header *and* the suite's docked
+ * nav, so the block's first line clears both bars.
+ */
+export function scrollToFeatureBlock(id: string, onComplete?: () => void): void {
+  if (!isFeatureId(id)) return;
+
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  const nav = document.querySelector(".feature-suite-nav");
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+  const offset = getScrollAnchorOffset() + navHeight;
+
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+  const lenis = typeof window !== "undefined" ? window.__hesyaLenis : undefined;
+  const reducedMotion = prefersReducedMotion();
+
+  if (lenis && !reducedMotion) {
+    lenis.scrollTo(top, { duration: 1.1, force: true, onComplete });
+    return;
+  }
+
+  window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
+  if (onComplete) window.setTimeout(onComplete, reducedMotion ? 0 : 1100);
+}
+
 export function scrollToFeatureAnchor(id: string, onComplete?: () => void): void {
   if (!isFeatureId(id)) return;
 

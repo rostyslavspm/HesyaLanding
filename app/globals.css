@@ -13,7 +13,6 @@
   --color-pulse-coral: var(--color-pulse-coral);
   --color-hero-bg: var(--color-hero-bg);
   --color-hero-cta: var(--color-hero-cta);
-  --color-forest-bg: var(--color-forest-bg);
   --color-footer-bg: var(--color-footer-bg);
   --color-stone-100: var(--color-stone-100);
   --color-stone-200: var(--color-stone-200);
@@ -51,6 +50,11 @@ body {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   text-wrap: pretty;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -151,7 +155,11 @@ nav,
   .btn-cta-banner:active,
   .btn-cta-ghost:active,
   .btn-pill:active,
-  .tab-item:active {
+  .tab-item:active,
+  .text-link-accent:active,
+  .link-animated:active,
+  .nav-link:active,
+  .nav-link-light:active {
     transform: none;
   }
 }

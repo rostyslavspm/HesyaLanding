@@ -1,14 +1,22 @@
 import { HERO_WIDGETS } from "@/lib/content/heroMoments";
+import DeclareCard from "./DeclareCard";
 import ReturnPromptCard from "./ReturnPromptCard";
+import ReflectCard from "./ReflectCard";
 import HeroPhone from "./HeroPhone";
 import HeroWidgets from "./HeroWidgets";
 
+/**
+ * The four moments orbiting the intention. Each card is a real product
+ * surface — declare, return, reflect, presence — kept deliberately quiet so
+ * the focus star stays the only bright thing in the field.
+ */
 export default function HeroShowcase() {
   return (
     <div className="hero-showcase">
-      <div className="hero-showcase-stage hero-drift-layer">
+      <div className="hero-showcase-stage">
         <div className="hero-composition">
           <div className="hero-composition-side hero-composition-side--left">
+            <DeclareCard />
             <ReturnPromptCard />
           </div>
 
@@ -16,17 +24,23 @@ export default function HeroShowcase() {
 
           <div className="hero-composition-side hero-composition-side--right">
             <HeroWidgets />
+            <ReflectCard />
           </div>
         </div>
       </div>
 
       <div className="hero-showcase-mobile relative z-[3] flex flex-col gap-2 px-[var(--gutter)] pb-6 pt-4 md:hidden">
         {HERO_WIDGETS.slice(0, 2).map((widget) => (
-          <div key={widget.id} className="glass-panel glass-panel-compact">
+          <div
+            key={widget.id}
+            className="glass-panel glass-panel-compact"
+          >
             <span className="text-ui-micro-label text-[var(--color-on-dark-muted)]">
               {widget.label}
             </span>
-            <p className="text-ui-caption mt-1 text-[var(--color-on-dark)]">{widget.value}</p>
+            <p className="text-ui-caption mt-1 text-[var(--color-on-dark)]">
+              {widget.value}
+            </p>
           </div>
         ))}
       </div>

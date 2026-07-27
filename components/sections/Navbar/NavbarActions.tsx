@@ -12,24 +12,29 @@ export default function NavbarActions({
   onOpenMenu,
 }: NavbarActionsProps) {
   const isDark = variant === "dark";
-  const textLink = isDark
-    ? "nav-link hidden lg:inline-flex"
-    : "nav-link-light hidden lg:inline-flex";
+  const textLink = isDark ? "nav-link" : "nav-link-light";
 
+  // Responsive show/hide lives on plain wrappers: `.nav-link` and
+  // `.btn-cta-filled` set `display`, and design-system.css is unlayered, so a
+  // component class on the same element would beat Tailwind's `hidden`.
   return (
     <div className="justify-self-end flex items-center gap-3 md:gap-4">
-      <a href="mailto:support@hesya.app" className={textLink}>
-        Contact
-      </a>
+      <span className="hidden lg:block">
+        <a href="mailto:support@hesya.app" className={textLink}>
+          Contact
+        </a>
+      </span>
 
-      <a
-        href={URLS.testflight}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`hidden sm:inline-flex ${BTN.ctaFilled}`}
-      >
-        Get the beta
-      </a>
+      <span className="hidden sm:block">
+        <a
+          href={URLS.appStore}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${BTN.ctaFilled} whitespace-nowrap`}
+        >
+          Get the app
+        </a>
+      </span>
 
       <button
         type="button"

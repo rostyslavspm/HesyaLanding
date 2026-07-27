@@ -7,24 +7,29 @@ type SuiteTabsProps = {
   onSelect: (id: string) => void;
 };
 
+/**
+ * Section nav for the suite. Every block is present in the document now, so
+ * these are anchor links (with `aria-current`), not ARIA tabs — the active
+ * state follows scroll position and clicking jumps to the block.
+ */
 export default function SuiteTabs({ activeId, onSelect }: SuiteTabsProps) {
   return (
-    <div className="tab-bar" role="tablist" aria-label="Hesya features">
+    <nav className="tab-bar" aria-label="Moments in a session">
       {HESYA_FEATURES.map((feature) => {
         const Icon = feature.icon;
         const isActive = activeId === feature.id;
 
         return (
-          <button
+          <a
             key={feature.id}
-            id={`tab-${feature.id}`}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            aria-controls={feature.id}
+            href={`#${feature.id}`}
+            aria-current={isActive ? "true" : undefined}
             data-active={isActive ? "true" : "false"}
             className="tab-item relative"
-            onClick={() => onSelect(feature.id)}
+            onClick={(event) => {
+              event.preventDefault();
+              onSelect(feature.id);
+            }}
           >
             <Icon
               className="tab-item-icon relative z-10 h-5 w-5 shrink-0"
@@ -38,9 +43,9 @@ export default function SuiteTabs({ activeId, onSelect }: SuiteTabsProps) {
             >
               {feature.title}
             </span>
-          </button>
+          </a>
         );
       })}
-    </div>
+    </nav>
   );
 }

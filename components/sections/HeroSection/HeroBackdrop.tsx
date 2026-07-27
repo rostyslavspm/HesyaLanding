@@ -1,32 +1,30 @@
 import Image from "next/image";
-import { HERO_IMAGE } from "@/lib/content/assetSpecs";
+import HeroStarfield from "./HeroStarfield";
 
+/**
+ * Night-sky hero field — a real photograph for depth, with the generative
+ * layer composited on top: the one warm Eärendil star (and a few soft parallax
+ * sparkles) drift over the picture. A scrim ties the tones together and keeps
+ * the serif legible; the enclosure still thickens on scroll.
+ */
 export default function HeroBackdrop() {
   return (
     <div
-      className="hero-backdrop hero-drift-layer pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      className="hero-backdrop pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden
     >
       <Image
-        src={HERO_IMAGE.path}
+        src="/images/hero-sky.jpg"
         alt=""
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[center_58%] md:object-[center_55%]"
+        className="hero-sky-photo"
       />
-      <div className="hero-backdrop-blur absolute inset-0" aria-hidden>
-        <Image
-          src={HERO_IMAGE.path}
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-[center_58%] md:object-[center_55%]"
-        />
-      </div>
-      <div className="hero-backdrop-sky" aria-hidden />
-      <div className="hero-backdrop-shade-top" aria-hidden />
-      <div className="hero-backdrop-shade-bottom" aria-hidden />
+      <div className="hero-sky-scrim" />
+      <HeroStarfield />
+      <div className="hero-sky-grain" />
+      <div className="hero-mist-enclose" />
     </div>
   );
 }

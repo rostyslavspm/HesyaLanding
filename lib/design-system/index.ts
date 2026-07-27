@@ -8,7 +8,7 @@ export const LAYOUT = {
 } as const;
 
 export const URLS = {
-  testflight: "https://testflight.apple.com/join/2sE4MyhY",
+  appStore: "https://apps.apple.com/us/app/hesya/id6759712299",
 } as const;
 
 /** Marketing section background classes — pair with section-pad* utilities */
@@ -16,7 +16,6 @@ export const SECTIONS = {
   dark: "section-dark",
   stone: "section-stone",
   mist: "section-mist",
-  forest: "section-forest",
   sky: "section-sky",
   footer: "section-footer",
 } as const;

@@ -39,7 +39,7 @@ export default function RecognitionSection() {
       <div className="container-marketing">
         <div className="mx-auto flex max-w-[680px] flex-col items-center text-center">
           <h2 className={`${TYPE.marketingDisplay} text-[var(--foreground)]`}>
-            Drift has a shape.
+            Drift is not a failing.
           </h2>
 
           <div
@@ -67,7 +67,7 @@ export default function RecognitionSection() {
           </div>
 
           <p className="mt-6 text-micro text-[var(--foreground-muted)]">
-            Free, private, no accounts. A quiet way back, not more control.
+            Free, private, no accounts. A way back — not another thing to manage.
           </p>
         </div>
       </div>

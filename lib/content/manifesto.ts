@@ -1,2 +1,2 @@
 export const MANIFESTO_TEASER =
-  "We live in an environment that constantly competes for our attention. Hesya offers a gentle pause, not control or optimization, so you can notice what is happening and choose again.";
+  "We live inside an environment built to take attention. Hesya does not add to it. It removes what stands between you and the thing you meant to do, then steps back. You choose what matters; Hesya only helps you keep to it.";

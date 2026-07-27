@@ -8,7 +8,7 @@ const FOOTER_COLUMNS = [
     title: "Product",
     links: [
       { href: "/#features", label: "Features" },
-      { href: URLS.testflight, label: "Get the beta", external: true },
+      { href: URLS.appStore, label: "Get the app", external: true },
     ],
   },
   {
@@ -42,7 +42,7 @@ export default function Footer() {
               Hesya
             </Link>
             <p className="mt-4 text-micro text-[var(--color-on-dark-muted)]">
-              A calm focus companion for iPhone.
+              A calm companion for your attention. On iPhone.
             </p>
           </div>
 
@@ -55,7 +55,7 @@ export default function Footer() {
                 <p className="text-eyebrow text-[var(--color-on-dark-muted)]">
                   {column.title}
                 </p>
-                <ul className="mt-4 space-y-3 ps-0">
+                <ul className="mt-4 space-y-0 ps-0">
                   {column.links.map((link) => (
                     <li key={link.href} className="list-none">
                       {"external" in link || "mailto" in link ? (

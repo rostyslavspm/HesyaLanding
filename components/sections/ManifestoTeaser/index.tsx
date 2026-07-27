@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import { MANIFESTO_TEASER } from "@/lib/content/manifesto";
-import { MANIFESTO_IMAGE } from "@/lib/content/assetSpecs";
-import { SECTIONS, TYPE } from "@/lib/design-system";
+import { TYPE } from "@/lib/design-system";
 import {
   gsap,
   GSAP_DURATION,
@@ -31,8 +30,8 @@ export default function ManifestoTeaser() {
         },
       });
 
-      tl.from(".manifesto-visual", {
-        scale: 0.98,
+      // The beam arrives before the words it illuminates.
+      tl.from(".reaching-hand-field", {
         opacity: 0,
         duration: GSAP_DURATION.reveal,
         ease: GSAP_EASE.hero,
@@ -45,7 +44,7 @@ export default function ManifestoTeaser() {
           stagger: STAGGER.default,
           ease: GSAP_EASE.out,
         },
-        "-=0.2"
+        "-=0.3"
       );
     }, container);
 
@@ -57,38 +56,22 @@ export default function ManifestoTeaser() {
       ref={container}
       id="philosophy"
       aria-label="On attention, agency, and presence"
-      className={`${SECTIONS.forest} section-bleed-x overflow-hidden`}
+      className="reaching-hand section-bleed-x relative overflow-hidden section-pad"
     >
-      <div className="grid min-h-0 grid-cols-1 md:min-h-[560px] md:grid-cols-2">
-        <div className="manifesto-visual relative min-h-[360px] md:min-h-full">
-          <Image
-            src={MANIFESTO_IMAGE.path}
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-[center_28%]"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-forest-bg)]/10 to-[var(--color-forest-bg)]/80"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[var(--color-forest-bg)]/20 mix-blend-multiply"
-          />
-        </div>
+      <div className="reaching-hand-field" aria-hidden />
+      <div className="reaching-hand-grain" aria-hidden />
 
-        <div className="manifesto-copy flex flex-col justify-center px-[var(--gutter)] py-12 md:px-12 md:py-16 lg:px-16 xl:px-20">
+      <div className="container-marketing">
+        <div className="manifesto-copy max-w-[46rem]">
           <h2 className={`${TYPE.marketingDisplay} text-[var(--color-on-dark)]`}>
-            Becoming present.
+            The light does not choose for you.
           </h2>
 
-          <p className={`mt-6 max-w-lg ${TYPE.featureBody}`}>
-            {MANIFESTO_TEASER}
-          </p>
+          <p className="manifesto-lead mt-8">{MANIFESTO_TEASER}</p>
 
-          <Link href="/manifesto" className="btn-cta-ghost mt-8 w-fit">
-            Read the full manifesto
+          <Link href="/manifesto" className="manifesto-link mt-10">
+            <span>Read the full manifesto</span>
+            <ArrowRight className="h-4 w-4 shrink-0" aria-hidden strokeWidth={2} />
           </Link>
         </div>
       </div>

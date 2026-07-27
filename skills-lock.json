@@ -19,6 +19,12 @@
       "skillPath": "skills/better-ui/SKILL.md",
       "computedHash": "cb08e0fc63bdd829277770815d645979e0661ae5717dfb01e39a921138b684da"
     },
+    "design-motion-principles": {
+      "source": "kylezantos/design-motion-principles",
+      "sourceType": "github",
+      "skillPath": "skills/design-motion-principles/SKILL.md",
+      "computedHash": "6410c1844f511249f11f38d30d217cfecf7f595f45a868d74284b6380bab47d7"
+    },
     "design-taste-frontend": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",

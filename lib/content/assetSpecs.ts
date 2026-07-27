@@ -3,33 +3,13 @@
  * Drop files into public/ at the paths below.
  */
 
-export const HERO_IMAGE = {
-  path: "/images/hero-forest.jpg",
-  filename: "hero-forest.jpg",
-  width: 3840,
-  height: 2160,
-  aspect: "16:9",
-  format: "JPG or WebP",
-  maxBytes: 500_000,
-  brief:
-    "Misty forest at dusk. No people. Trees and atmosphere in the lower two-thirds; darker sky or canopy in the upper third for headline legibility. Calm, not dramatic. Purple-green tones that work under a subtle violet overlay.",
-  focalPoint: "center 52%",
-  safeZone:
-    "Keep the upper 35% relatively uncluttered (sky, mist, or soft canopy) for headline overlay.",
-} as const;
-
-export const MANIFESTO_IMAGE = {
-  path: "/images/manifesto-scene.jpg",
-  filename: "manifesto-scene.jpg",
-  width: 2400,
-  height: 1600,
-  aspect: "3:2",
-  format: "JPG or WebP",
-  maxBytes: 400_000,
-  brief:
-    "Distinct from the hero — darker forest green, more enclosed, editorial mood. No people required; optional distant silhouette only. Composed for the left half of a split section (subject weighted left-center).",
-  focalPoint: "left center",
-} as const;
+/**
+ * The hero and manifesto photography specs were retired when both sections
+ * moved to generative fields ported from the app surfaces — the Clearing
+ * (Figma 2093:2013) and the Reaching Hand (Figma 2093:1976). Brand brief §04
+ * rules out looking at a scene through a window, and §12 retires the forest
+ * metaphor outright, so neither section takes a photograph any more.
+ */
 
 export const FEATURE_SCREENSHOTS = {
   width: 1290,
@@ -38,12 +18,12 @@ export const FEATURE_SCREENSHOTS = {
   format: "PNG",
   maxBytes: 800_000,
   brief:
-    "Native-resolution iPhone screenshots on a neutral or transparent background. One screen per feature: intention, lock screen return, reflection, widget.",
+    "Native-resolution iPhone screenshots (1260×2736). One screen per feature: declare, return cue, journal, home widget.",
   files: [
-    { id: "declare", path: "/screenshots/screen-intention.png" },
-    { id: "return", path: "/screenshots/screen-lockscreen.png" },
-    { id: "reflect", path: "/screenshots/screen-ready.png" },
-    { id: "presence", path: "/screenshots/Homescreen-widget.png" },
+    { id: "declare", path: "/screenshots/screen-declare.png" },
+    { id: "return", path: "/screenshots/screen-return.png" },
+    { id: "reflect", path: "/screenshots/screen-journal.png" },
+    { id: "presence", path: "/screenshots/screen-homescreen.png" },
   ],
 } as const;
 
