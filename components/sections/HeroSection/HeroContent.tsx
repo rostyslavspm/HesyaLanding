@@ -10,16 +10,14 @@ export default function HeroContent() {
       <h1
         className={`hero-enter-item hero-enter-headline ${TYPE.marketingHero} max-w-[920px] pb-1 text-[var(--color-on-dark)]`}
       >
-        Name one thing.
-        <br className="hidden sm:block" />
-        {" "}Stay with it.
+        Choose where your attention goes.
       </h1>
 
       <p
         className={`hero-enter-item hero-enter-sub ${TYPE.marketingSubhead} max-w-[560px] text-[var(--color-on-dark-secondary)]`}
       >
-        When your attention drifts, a quiet cue brings you back to your own
-        words — never a block, never a score. Free on iPhone.
+        Reclaim your attention when it drifts — no locked apps, no daily
+        streaks to keep.
       </p>
 
       <div className="hero-enter-item hero-enter-cta mt-1 flex flex-col items-center md:mt-2">

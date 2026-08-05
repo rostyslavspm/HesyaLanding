@@ -1250,12 +1250,22 @@
    * that's visible — and therefore that text staying on-screen — is
    * unaffected by size. Confirmed at every viewport tested below, including
    * the shortest (single-column, translateY(20%)) tier.
+   *
+   * Recalibrated to 20rem after the headline/subhead copy rewrite (shorter
+   * headline, now one line instead of two; tighter padding and flex-gap
+   * above the showcase) shrank the real reserved footprint from ~468px to
+   * ~295px, measured at the same breakpoints, worst case still 1920px+
+   * (plateaus there and stays flat through at least 2560px — both hero type
+   * sizes are already at their clamp() ceiling by then). 20rem/320px keeps
+   * the same ~25px margin above the new worst case that 31rem kept above
+   * the old one — this constant must be re-measured again if the copy
+   * changes, not left stale.
    */
   .hero-phone-mockup {
     --phone-w: min(
       30vw,
       34rem,
-      max(0px, calc((100svh - var(--header-height) - 31rem) * 0.562))
+      max(0px, calc((100svh - var(--header-height) - 20rem) * 0.562))
     );
   }
 }

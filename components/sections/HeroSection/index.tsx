@@ -16,8 +16,8 @@ export default function HeroSection() {
       <HeroDrift />
       <HeroBackdrop />
 
-      <div className="relative z-[2] flex min-h-[calc(100svh-var(--header-height))] flex-1 flex-col gap-12 md:gap-14 lg:gap-16">
-        <div className="container-marketing hero-copy shrink pt-4 md:pt-6 lg:pt-8">
+      <div className="relative z-[2] flex min-h-[calc(100svh-var(--header-height))] flex-1 flex-col gap-12 md:gap-8">
+        <div className="container-marketing hero-copy shrink pt-4 md:pt-2">
           <HeroContent />
         </div>
         <HeroShowcase />
