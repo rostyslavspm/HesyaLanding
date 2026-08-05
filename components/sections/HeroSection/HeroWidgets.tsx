@@ -2,7 +2,7 @@ import { HERO_WIDGETS } from "@/lib/content/heroMoments";
 
 export default function HeroWidgets() {
   return (
-    <div className="pointer-events-none w-full max-w-[168px]">
+    <div className="hero-card-widgets pointer-events-none w-full max-w-[168px]">
       <div className="glass-panel glass-panel-compact">
         <div className="flex flex-col gap-1.5">
           {HERO_WIDGETS.map((widget) => (

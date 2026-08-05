@@ -472,6 +472,12 @@
 /**
  * Superhuman-style glass panel with gradient border mask.
  * Use on cards floating over dark sections.
+ *
+ * Fill opacity matched directly against superhuman.com's own hero cards
+ * (inspected live: linear-gradient(rgba(40,22,71,.3) 0%, rgba(40,22,71,.2)
+ * 100%) under the same 210deg/18%→transparent sheen). This used to be
+ * 55%→35% — nearly double theirs — reading as solid panels rather than
+ * glass over the starfield.
  */
 .glass-panel {
   position: relative;
@@ -484,8 +490,8 @@
       transparent 30%
     ),
     linear-gradient(
-      color-mix(in oklch, var(--color-hero-bg) 55%, transparent) 0%,
-      color-mix(in oklch, var(--color-steel) 35%, transparent) 100%
+      color-mix(in oklch, var(--color-hero-bg) 30%, transparent) 0%,
+      color-mix(in oklch, var(--color-steel) 20%, transparent) 100%
     );
   backdrop-filter: blur(12px);
   animation: ambientBreath 30s ease-in-out infinite;
@@ -1189,6 +1195,31 @@
 
   .hero-composition-side--right {
     align-items: flex-start;
+  }
+
+  /*
+   * RULE — cards float at irregular heights and distances from the phone,
+   * not mirrored. Reference: superhuman.com's own hero cards, inspected
+   * live — four floating panels at wildly different sizes/heights (45px to
+   * 328px tall) with no left/right symmetry at all. Ours were two evenly
+   * stacked, bottom-aligned columns, mirrored left-to-right — the opposite
+   * of that. Each card gets its own nudge; none of the four repeat another
+   * one's offset.
+   */
+  .hero-card-declare {
+    transform: translateY(-0.875rem);
+  }
+
+  .hero-card-return {
+    transform: translate(-0.625rem, 0.75rem);
+  }
+
+  .hero-card-widgets {
+    transform: translate(1.25rem, 0.5rem);
+  }
+
+  .hero-card-reflect {
+    transform: translateY(-1.5rem);
   }
 
   /*
