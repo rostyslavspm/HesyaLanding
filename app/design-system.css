@@ -1219,6 +1219,29 @@
    * CTA and the phone, and read as "the phone shrank too much" — it hadn't
    * shrunk wrong, it just wasn't using space it safely could have.
    *
+   * Second error, found after that first tightening still looked too small:
+   * the height budget above was being spent as if the phone's full rendered
+   * height had to fit above the fold. It doesn't — .hero-phone's
+   * translateY(18%) pushes 18% of the phone's own height *past* the bottom
+   * edge on purpose (that's the "emerges from the bottom, cut a bit" crop),
+   * so only the remaining 82% needs to clear the copy at all. Sizing as if
+   * 100% needed to fit left ~22% of real, safe height on the table. Given
+   * available vertical room A, the true max height is A / 0.82, not A —
+   * converting straight to width via the aspect ratio (0.461) folds both
+   * steps into one multiplier: 0.461 / 0.82 ≈ 0.562.
+   *
+   * Third error: this used to be `max(12rem, calc(...))` — a floor meant to
+   * keep the phone from looking silly on the shortest viewports. But a
+   * floor applied AFTER a safety cap can undo the safety cap: on a short,
+   * width≥768px window (e.g. 1024×650) the safety-derived value can fall
+   * below 12rem, and `max()` would force it back up past what's actually
+   * safe — the exact overlap this whole rule exists to prevent, just
+   * reintroduced at the opposite end of the height range. There's no floor
+   * value that's simultaneously "looks substantial" and "always safe" here,
+   * since the safe ceiling itself keeps shrinking as height does. Safety
+   * has to win unconditionally, so there's no floor at all below — small is
+   * the honest, correct answer on a viewport this short.
+   *
    * RULE — never crop far enough to hide "How do you want to remember this
    * day?" on the phone's screen (~35–45% down the source image, well above
    * the "Set Intent" button this crop is tuned to hide). Because this rule
@@ -1232,7 +1255,7 @@
     --phone-w: min(
       30vw,
       34rem,
-      max(12rem, calc((100svh - var(--header-height) - 31rem) * 0.461))
+      max(0px, calc((100svh - var(--header-height) - 31rem) * 0.562))
     );
   }
 }
