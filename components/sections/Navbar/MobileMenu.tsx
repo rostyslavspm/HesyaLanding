@@ -29,6 +29,9 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
 
   useEffect(() => {
     if (open) {
+      // `mounted` must outlive `open` on close (until onTransitionEnd fires
+      // below), so it can't be derived from `open` alone during render.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMounted(true);
       if (reduceMotion) {
         setVisible(true);
