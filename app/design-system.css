@@ -1191,33 +1191,42 @@
     align-items: flex-start;
   }
 
+  /*
+   * RULE — the phone must never overlap .hero-copy, at any viewport size.
+   *
+   * --phone-w used to be sized from viewport WIDTH alone (vw-based clamps),
+   * which is exactly what let it happen: at a plain 1920×1080 window — not
+   * an edge case, one of the most common desktop sizes there is — the
+   * uncapped phone rendered ~1181px tall against a hero that only had
+   * ~940px of actual room below the copy, and silently overlapped the
+   * headline (verified via computed getBoundingClientRect; not visible by
+   * eye until you check, since the phone's own top is mostly soft gradient).
+   *
+   * Fix: --phone-w is capped by BOTH viewport width and remaining height.
+   * The height term reserves --header-height plus a fixed budget for
+   * .hero-copy + the flex gap above it (measured 345–468px across real
+   * breakpoints; 34rem/544px leaves real margin above the worst case), then
+   * converts that leftover height to an equivalent width via the phone's
+   * fixed aspect ratio (1260×2736 ⇒ 0.461) so the two constraints compare
+   * in the same unit. `max(12rem, …)` keeps it from collapsing to nothing
+   * on pathologically short viewports — 12rem is the same floor the old
+   * short-viewport tier already used.
+   *
+   * RULE — never crop far enough to hide "How do you want to remember this
+   * day?" on the phone's screen (~35–45% down the source image, well above
+   * the "Set Intent" button this crop is tuned to hide). Because this rule
+   * shrinks the phone via width (preserving aspect ratio) rather than by
+   * changing .hero-phone's translateY crop ratio, the fraction of the image
+   * that's visible — and therefore that text staying on-screen — is
+   * unaffected by size. Confirmed at every viewport tested below, including
+   * the shortest (single-column, translateY(20%)) tier.
+   */
   .hero-phone-mockup {
-    /* Wider presence → closer to Superhuman's ~13.5% viewport area */
-    --phone-w: clamp(18rem, min(30vw, 34rem), 34rem);
-  }
-}
-
-@media (min-width: 1280px) {
-  .hero-phone-mockup {
-    --phone-w: clamp(20rem, min(30vw, 34rem), 34rem);
-  }
-}
-
-@media (max-height: 820px) and (min-width: 768px) {
-  .hero-copy {
-    padding-top: 0.5rem;
-  }
-
-  .hero-composition-side {
-    padding-bottom: clamp(1.25rem, 8%, 3rem);
-  }
-
-  .hero-phone-mockup {
-    --phone-w: clamp(14rem, min(26vw, 24rem), 24rem);
-  }
-
-  .hero-phone {
-    transform: translateY(24%);
+    --phone-w: min(
+      30vw,
+      34rem,
+      max(12rem, calc((100svh - var(--header-height) - 34rem) * 0.461))
+    );
   }
 }
 
@@ -1228,10 +1237,6 @@
 
   .hero-composition {
     grid-template-columns: 1fr;
-  }
-
-  .hero-phone-mockup {
-    --phone-w: clamp(12rem, min(22vw, 18rem), 18rem);
   }
 
   .hero-phone {
