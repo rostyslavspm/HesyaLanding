@@ -11,6 +11,12 @@ import {
   isFeatureId,
   scrollToFeatureBlock,
 } from "@/lib/motion/scroll";
+import { DURATION } from "@/lib/motion/tokens";
+
+// A hair longer than the programmatic scroll it's guarding
+// (DURATION.transition), so the observer stays quiet until that scroll
+// animation has actually finished settling.
+const SCROLL_SUPPRESS_MS = DURATION.transition * 1000 + 100;
 
 /**
  * Drives the suite's section nav. Every feature block is in the document, so
@@ -26,7 +32,7 @@ export function useFeatureSuite() {
     if (!isFeatureId(id)) return;
 
     setActiveId(id);
-    suppressUntil.current = performance.now() + 1200;
+    suppressUntil.current = performance.now() + SCROLL_SUPPRESS_MS;
     window.history.replaceState(null, "", `/#${id}`);
     window.dispatchEvent(
       new CustomEvent(FEATURE_SCROLL_EVENT, { detail: { id } })
@@ -38,9 +44,13 @@ export function useFeatureSuite() {
   useEffect(() => {
     const pending = consumePendingFeatureHash();
     if (pending) {
+      // sessionStorage/hash aren't available during SSR, so this can only be
+      // known post-mount — moving it into a lazy useState initializer would
+      // make the client's first hydration render diverge from the server's.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveId(pending);
       restoreFeatureHash(pending);
-      suppressUntil.current = performance.now() + 1200;
+      suppressUntil.current = performance.now() + SCROLL_SUPPRESS_MS;
       requestAnimationFrame(() => scrollToFeatureBlock(pending));
       return;
     }
@@ -48,7 +58,7 @@ export function useFeatureSuite() {
     const hash = window.location.hash.slice(1);
     if (isFeatureId(hash)) {
       setActiveId(hash);
-      suppressUntil.current = performance.now() + 1200;
+      suppressUntil.current = performance.now() + SCROLL_SUPPRESS_MS;
       requestAnimationFrame(() => scrollToFeatureBlock(hash));
     }
   }, []);
@@ -97,7 +107,7 @@ export function useFeatureSuite() {
       const id = window.location.hash.slice(1);
       if (!isFeatureId(id)) return;
       setActiveId(id);
-      suppressUntil.current = performance.now() + 1200;
+      suppressUntil.current = performance.now() + SCROLL_SUPPRESS_MS;
       scrollToFeatureBlock(id);
     };
 

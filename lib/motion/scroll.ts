@@ -1,27 +1,9 @@
 import { HESYA_FEATURES } from "@/lib/content/features";
 import { prefersReducedMotion } from "./prefersReducedMotion";
+import { getLenisInstance } from "./lenisStore";
+import { DURATION } from "./tokens";
 
 export const FEATURE_SCROLL_EVENT = "hesya:feature-scroll";
-
-declare global {
-  interface Window {
-    __hesyaLenis?: {
-      scroll: number;
-      scrollTo: (
-        target: HTMLElement | number,
-        options?: {
-          offset?: number;
-          duration?: number;
-          immediate?: boolean;
-          force?: boolean;
-          onComplete?: () => void;
-        }
-      ) => void;
-      on: (event: "scroll", callback: () => void) => void;
-      off: (event: "scroll", callback: () => void) => void;
-    };
-  }
-}
 
 export function isFeatureId(id: string): boolean {
   return HESYA_FEATURES.some((feature) => feature.id === id);
@@ -45,12 +27,12 @@ export function scrollToAnchor(id: string, onComplete?: () => void): void {
 
   const offset = -getScrollAnchorOffset();
   const top = element.getBoundingClientRect().top + window.scrollY + offset;
-  const lenis = typeof window !== "undefined" ? window.__hesyaLenis : undefined;
+  const lenis = getLenisInstance();
   const reducedMotion = prefersReducedMotion();
 
   if (lenis && !reducedMotion) {
     lenis.scrollTo(top, {
-      duration: 1.1,
+      duration: DURATION.transition,
       force: true,
       onComplete,
     });
@@ -63,7 +45,7 @@ export function scrollToAnchor(id: string, onComplete?: () => void): void {
   });
 
   if (onComplete) {
-    window.setTimeout(onComplete, reducedMotion ? 0 : 1100);
+    window.setTimeout(onComplete, reducedMotion ? 0 : DURATION.transition * 1000);
   }
 }
 
@@ -82,16 +64,22 @@ export function scrollToFeatureBlock(id: string, onComplete?: () => void): void 
   const offset = getScrollAnchorOffset() + navHeight;
 
   const top = element.getBoundingClientRect().top + window.scrollY - offset;
-  const lenis = typeof window !== "undefined" ? window.__hesyaLenis : undefined;
+  const lenis = getLenisInstance();
   const reducedMotion = prefersReducedMotion();
 
   if (lenis && !reducedMotion) {
-    lenis.scrollTo(top, { duration: 1.1, force: true, onComplete });
+    lenis.scrollTo(top, {
+      duration: DURATION.transition,
+      force: true,
+      onComplete,
+    });
     return;
   }
 
   window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
-  if (onComplete) window.setTimeout(onComplete, reducedMotion ? 0 : 1100);
+  if (onComplete) {
+    window.setTimeout(onComplete, reducedMotion ? 0 : DURATION.transition * 1000);
+  }
 }
 
 export function scrollToFeatureAnchor(id: string, onComplete?: () => void): void {

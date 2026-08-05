@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import { getLenisInstance, subscribeLenisInstance } from "@/lib/motion/lenisStore";
 
 function getScrollY(): number {
-  const lenis = window.__hesyaLenis;
+  const lenis = getLenisInstance();
   if (lenis && typeof lenis.scroll === "number") {
     return lenis.scroll;
   }
@@ -18,7 +19,7 @@ export function useHeaderScroll(
     let cancelled = false;
     let frame = 0;
     let lenisHandler: (() => void) | null = null;
-    let retryTimer: number | undefined;
+    let unsubscribeLenis: (() => void) | undefined;
     let cleanupListeners: (() => void) | undefined;
 
     const update = (element: HTMLElement) => {
@@ -34,11 +35,12 @@ export function useHeaderScroll(
       };
 
       const attachLenis = () => {
-        const lenis = window.__hesyaLenis;
+        const lenis = getLenisInstance();
         if (!lenis || lenisHandler) return;
 
         lenis.on("scroll", onScroll);
         lenisHandler = onScroll;
+        update(element);
       };
 
       update(element);
@@ -46,21 +48,17 @@ export function useHeaderScroll(
       window.addEventListener("resize", onScroll);
       attachLenis();
 
-      retryTimer = window.setInterval(() => {
-        attachLenis();
-        if (lenisHandler) {
-          window.clearInterval(retryTimer);
-          update(element);
-        }
-      }, 50);
+      // Lenis mounts async (SmoothScroll's own effect); the store notifies
+      // the moment it's ready instead of polling for it.
+      unsubscribeLenis = subscribeLenisInstance(attachLenis);
 
       cleanupListeners = () => {
         window.cancelAnimationFrame(frame);
-        if (retryTimer) window.clearInterval(retryTimer);
+        unsubscribeLenis?.();
         window.removeEventListener("scroll", onScroll);
         window.removeEventListener("resize", onScroll);
         if (lenisHandler) {
-          window.__hesyaLenis?.off("scroll", lenisHandler);
+          getLenisInstance()?.off("scroll", lenisHandler);
         }
       };
     };

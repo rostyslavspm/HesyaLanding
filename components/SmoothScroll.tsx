@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger, registerGsapPlugins } from "@/lib/motion/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { setLenisInstance } from "@/lib/motion/lenisStore";
 
-gsap.registerPlugin(ScrollTrigger);
+registerGsapPlugins();
 
 /**
  * SmoothScroll — Lenis wrapper providing buttery smooth scroll.
@@ -28,7 +28,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
     });
     lenisRef.current = lenis;
-    window.__hesyaLenis = lenis;
+    setLenisInstance(lenis);
 
     lenis.on("scroll", () => {
       ScrollTrigger.update();
@@ -48,7 +48,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       gsap.ticker.remove(onTick);
       lenis.destroy();
       lenisRef.current = null;
-      delete window.__hesyaLenis;
+      setLenisInstance(null);
     };
   }, [prefersReducedMotion]);
 
