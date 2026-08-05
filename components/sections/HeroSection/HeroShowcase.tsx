@@ -29,8 +29,8 @@ export default function HeroShowcase() {
         </div>
       </div>
 
-      <div className="hero-showcase-mobile relative z-[3] flex flex-col gap-2 px-[var(--gutter)] pb-6 pt-4 md:hidden">
-        {HERO_WIDGETS.slice(0, 2).map((widget) => (
+      <div className="hero-showcase-mobile z-[3] flex flex-col gap-2 md:hidden">
+        {HERO_WIDGETS.slice(0, 1).map((widget) => (
           <div
             key={widget.id}
             className="glass-panel glass-panel-compact"

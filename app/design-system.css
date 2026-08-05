@@ -1105,6 +1105,7 @@
 }
 
 .hero-showcase {
+  position: relative;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -1139,6 +1140,38 @@
   --phone-w: clamp(12rem, 46vw, 18rem);
   width: var(--phone-w);
   max-width: none;
+}
+
+/*
+ * .hero-showcase-mobile used to be a normal flex child stacked below the
+ * phone — and .hero-phone's translateY(18%) shift (which moves it
+ * visually without reserving that space in layout, since transforms
+ * never affect flow) meant it silently overlapped the phone's own
+ * "Set Intent"/"Breathe" buttons by ~60px, un-intentionally.
+ *
+ * Tried compensating with padding-top first. That made it worse: phone
+ * (417px) fits .hero-showcase's own box (453px available) FINE on its
+ * own, but phone + widget-row content together don't (they need ~600px+
+ * combined) — and since .hero-showcase uses justify-content:flex-end,
+ * that deficit doesn't clip the widgets, it pushes the whole group
+ * (phone included) up and OUT of the box, discovered when the phone
+ * ended up overlapping .hero-copy's CTA button instead — a real
+ * "elements occupy the same space completely" case (the phone, opaque,
+ * fully hid the "Get the app" button), worse than the original bug.
+ *
+ * Fix: take it out of the flex flow entirely and float it as an
+ * absolutely-positioned overlay instead, matching how the desktop cards
+ * actually work (positioned within the composition, not stacked below
+ * it demanding their own flex space). The phone now gets its full,
+ * uncontested box and can't be pushed anywhere. This card is free to
+ * overlap the phone's bottom chrome by design — the explicitly-allowed
+ * exception — instead of being shoved into content above it by accident.
+ */
+.hero-showcase-mobile {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 1.5rem;
+  left: var(--gutter);
 }
 
 .hero-phone {

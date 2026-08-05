@@ -8,7 +8,7 @@ export default function DeclareCard() {
       <div className="glass-panel glass-panel-compact">
         <div className="flex flex-col gap-2">
           <PenLine
-            className="h-4 w-4 text-[var(--color-accent)]"
+            className="h-4 w-4 text-[var(--color-on-dark-muted)]"
             aria-hidden
             strokeWidth={1.75}
           />
