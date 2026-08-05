@@ -10,6 +10,7 @@ export default function HeroSection() {
     <section
       id="hero-viewport"
       aria-label="Hero"
+      data-header-theme="dark"
       className="hero-stage section-bleed-x relative -mt-[var(--header-height)] flex h-[100svh] min-h-[100svh] max-h-[100svh] flex-col overflow-hidden bg-[var(--color-hero-bg)] pt-[var(--header-height)] text-[var(--color-on-dark)]"
     >
       <HeroDrift />

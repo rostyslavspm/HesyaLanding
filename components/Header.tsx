@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { useChromeHeight } from "@/hooks/useChromeHeight";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
+import { useHeaderTheme } from "@/hooks/useHeaderTheme";
 import DesktopNav from "./sections/Navbar/DesktopNav";
 import NavbarActions from "./sections/Navbar/NavbarActions";
 import MobileMenu from "./sections/Navbar/MobileMenu";
@@ -18,7 +19,10 @@ export default function Header({ variant = "light" }: HeaderProps) {
   useHeaderScroll(headerRef);
   useChromeHeight(headerRef, "--header-height");
 
-  const isDark = variant === "dark";
+  // Dark chrome only makes sense while a dark section is actually behind
+  // the header — it re-darkens for any later [data-header-theme="dark"]
+  // section and falls back to `variant` everywhere else.
+  const isDark = useHeaderTheme(variant) === "dark";
 
   return (
     <>

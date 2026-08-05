@@ -30,6 +30,7 @@ export default function Footer() {
     <footer
       className={`${SECTIONS.footer} section-bleed-x px-[var(--gutter)] pt-16 md:pt-20`}
       aria-label="Site footer"
+      data-header-theme="dark"
     >
       <div className="container-marketing">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">

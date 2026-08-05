@@ -56,6 +56,7 @@ export default function ManifestoTeaser() {
       ref={container}
       id="philosophy"
       aria-label="On attention, agency, and presence"
+      data-header-theme="dark"
       className="reaching-hand section-bleed-x relative overflow-hidden section-pad"
     >
       <div className="reaching-hand-field" aria-hidden />

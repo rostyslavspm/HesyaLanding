@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import FeatureBlock from "./FeatureBlock";
 import SuiteTabs from "./SuiteTabs";
 import WhisperLine from "@/components/ui/WhisperLine";
@@ -37,7 +38,12 @@ export default function FeatureSuite() {
             rel="noopener noreferrer"
             className={`feature-suite-nav-cta ${BTN.ctaFilled} whitespace-nowrap`}
           >
-            Get the app
+            <span>Get the app</span>
+            <ArrowRight
+              className="feature-suite-nav-cta-icon h-3.5 w-3.5 shrink-0"
+              aria-hidden
+              strokeWidth={2}
+            />
           </a>
         </div>
       </div>

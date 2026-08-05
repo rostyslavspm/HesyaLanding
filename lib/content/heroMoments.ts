@@ -20,12 +20,20 @@ export const REFLECT_PROMPT = {
   moods: ["Focused", "Mixed", "Off"],
 } as const;
 
+/**
+ * The uncropped capture — real iPhone proportions (1260×2736), same as every
+ * feature screenshot. The hero deliberately used a pre-cropped, shorter
+ * variant here that dropped the bottom nav bar; that gave the phone a
+ * non-device aspect ratio and read as cut/deformed. The layout crops it now
+ * (phone emerges from the bottom of the hero, translated down), not the
+ * source image — so the device itself always stays correctly proportioned.
+ */
 export const HERO_PHONE = {
-  src: "/screenshots/screen-today-idle-hero.png",
+  src: "/screenshots/screen-today-idle.png",
   alt: "Hesya Today screen, ready when you are",
   fallbackLabel: "Today",
   width: 1260,
-  height: 2243,
+  height: 2736,
 } as const;
 
 export const HERO_WIDGETS = [

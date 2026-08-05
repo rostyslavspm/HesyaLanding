@@ -736,7 +736,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem;
+  min-height: 2.75rem; /* 44px — touch target floor */
   padding: 0.375rem 1rem;
   border-radius: var(--radius-sm);
   background: var(--color-accent-fill);
@@ -1139,16 +1139,19 @@
   position: relative;
   filter: drop-shadow(var(--shadow-hero));
   line-height: 0;
-  /* ~40% below fold — enough peek without starving area presence */
-  transform: translateY(38%);
+  /* The device is a full, correctly-proportioned capture (§ HERO_PHONE) —
+   * this is what crops it, not the source image. Tuned to end the visible
+   * area in the empty space above "Set Intent," before the nav chrome. */
+  transform: translateY(18%);
 }
 
 /* Grounding halo — the app's own light spilling into the field, so the phone
- * emerges from the horizon rather than floating on the sky. */
+ * emerges from the horizon rather than floating on the sky. Horizontal bleed
+ * stays tight so it never reaches the side cards. */
 .hero-phone::before {
   content: "";
   position: absolute;
-  inset: -18% -22% -8%;
+  inset: -14% -8% -6%;
   z-index: -1;
   background: radial-gradient(
     58% 52% at 50% 42%,
@@ -1163,7 +1166,9 @@
   .hero-composition {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: end;
-    column-gap: clamp(0.5rem, 1.8vw, 1.25rem);
+    /* Real separation from the phone — the cards hover beside it, they
+     * don't crowd its edge. */
+    column-gap: clamp(1.5rem, 5vw, 3.5rem);
   }
 
   /* Two moments per side, stacked — four surfaces orbiting the intention. */
@@ -1464,15 +1469,47 @@
   gap: clamp(0.75rem, 2vw, 1.5rem);
 }
 
+@media (max-width: 899px) {
+  .feature-suite-nav-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
 .feature-suite-nav .tab-bar {
   flex: 1;
   min-width: 0;
   border-block: 0; /* the nav shell carries the rules now */
 }
 
-/* Held back until there's room for it beside four labels. */
-.feature-suite-nav-cta {
-  display: none;
+/**
+ * Below 900px there's no room for a second control beside four tabs — but
+ * each moment runs 1,000px+ tall on a phone, so losing the CTA for the whole
+ * scroll (Superhuman's mobile pattern) isn't restraint, it's a dead end.
+ * Instead: a slim, quiet row under the tabs, not a second loud button.
+ */
+@media (max-width: 899px) {
+  .feature-suite-nav-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4375rem;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0;
+    border-radius: 0;
+    border-top: 1px solid var(--color-stone-border);
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .feature-suite-nav-cta:hover {
+    background: var(--color-stone-50);
+  }
+
+  .feature-suite-nav-cta-icon {
+    color: var(--color-accent);
+  }
 }
 
 @media (min-width: 900px) {
@@ -1480,6 +1517,10 @@
     display: inline-flex;
     align-self: center;
     flex-shrink: 0;
+  }
+
+  .feature-suite-nav-cta-icon {
+    display: none;
   }
 }
 
@@ -1522,6 +1563,16 @@
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border-radius: var(--radius-xl);
   overflow: hidden;
+  /* Stacked on mobile, the screen leads and the words follow — seeing the
+   * moment before reading about it. Reset to source order (copy first) once
+   * the two sit side by side. */
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .feature-block-media {
+    order: 0;
+  }
 }
 
 .feature-phone-stage-bg {
