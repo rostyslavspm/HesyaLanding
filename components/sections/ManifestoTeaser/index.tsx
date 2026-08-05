@@ -5,13 +5,7 @@ import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { MANIFESTO_TEASER } from "@/lib/content/manifesto";
 import { TYPE } from "@/lib/design-system";
-import {
-  gsap,
-  GSAP_DURATION,
-  GSAP_EASE,
-  STAGGER,
-  registerGsapPlugins,
-} from "@/lib/motion/gsap";
+import { gsap, GSAP_DURATION, GSAP_EASE, STAGGER } from "@/lib/motion/gsap";
 import { prefersReducedMotion } from "@/lib/motion/prefersReducedMotion";
 
 export default function ManifestoTeaser() {
@@ -20,15 +14,13 @@ export default function ManifestoTeaser() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
 
-    registerGsapPlugins();
+    const element = container.current;
+    if (!element) return;
+
+    let observer: IntersectionObserver | undefined;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 75%",
-        },
-      });
+      const tl = gsap.timeline({ paused: true });
 
       // The beam arrives before the words it illuminates.
       tl.from(".reaching-hand-field", {
@@ -46,9 +38,27 @@ export default function ManifestoTeaser() {
         },
         "-=0.3"
       );
+
+      // Plays once the section is ~a quarter of the way up the viewport —
+      // roughly the old ScrollTrigger "top 75%" — via IntersectionObserver
+      // instead of ScrollTrigger, which fought with Lenis's own scroll
+      // listener under fast direction-reversal scrolling (see gsap.ts).
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            tl.play();
+            observer?.disconnect();
+          }
+        },
+        { rootMargin: "0px 0px -25% 0px", threshold: 0 }
+      );
+      observer.observe(element);
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      observer?.disconnect();
+      ctx.revert();
+    };
   }, []);
 
   return (

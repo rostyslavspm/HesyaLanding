@@ -3,15 +3,14 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import { gsap, ScrollTrigger, registerGsapPlugins } from "@/lib/motion/gsap";
+import { gsap } from "@/lib/motion/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { setLenisInstance } from "@/lib/motion/lenisStore";
 
-registerGsapPlugins();
-
 /**
  * SmoothScroll — Lenis wrapper providing buttery smooth scroll.
- * Synced with GSAP ScrollTrigger for feature-section animations.
+ * Drives Lenis's rAF loop off GSAP's ticker (so both stay on one clock),
+ * but doesn't touch GSAP ScrollTrigger — see lib/motion/gsap.ts for why.
  * Fully disabled when user prefers reduced motion.
  */
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
@@ -31,7 +30,6 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     setLenisInstance(lenis);
 
     lenis.on("scroll", () => {
-      ScrollTrigger.update();
       window.dispatchEvent(new Event("scroll"));
     });
 

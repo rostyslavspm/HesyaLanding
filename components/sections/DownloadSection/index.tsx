@@ -2,12 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { BTN, SECTIONS, TYPE, URLS } from "@/lib/design-system";
-import {
-  gsap,
-  GSAP_DURATION,
-  GSAP_EASE,
-  registerGsapPlugins,
-} from "@/lib/motion/gsap";
+import { gsap, GSAP_DURATION, GSAP_EASE } from "@/lib/motion/gsap";
 import { prefersReducedMotion } from "@/lib/motion/prefersReducedMotion";
 
 export default function DownloadSection() {
@@ -16,15 +11,13 @@ export default function DownloadSection() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
 
-    registerGsapPlugins();
+    const element = container.current;
+    if (!element) return;
+
+    let observer: IntersectionObserver | undefined;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 85%",
-        },
-      });
+      const tl = gsap.timeline({ paused: true });
 
       tl.from(".download-lockup", {
         scale: 0.98,
@@ -40,9 +33,27 @@ export default function DownloadSection() {
         },
         "-=0.2"
       );
+
+      // Plays once the section is ~15% up the viewport — roughly the old
+      // ScrollTrigger "top 85%" — via IntersectionObserver instead of
+      // ScrollTrigger, which fought with Lenis's own scroll listener under
+      // fast direction-reversal scrolling (see gsap.ts).
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            tl.play();
+            observer?.disconnect();
+          }
+        },
+        { rootMargin: "0px 0px -15% 0px", threshold: 0 }
+      );
+      observer.observe(element);
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      observer?.disconnect();
+      ctx.revert();
+    };
   }, []);
 
   return (
