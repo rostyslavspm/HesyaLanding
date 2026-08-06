@@ -1114,6 +1114,19 @@
   min-height: 0;
   width: 100%;
   padding-bottom: 0;
+  /*
+   * Nothing in this subtree is ever meant to receive pointer events — the
+   * phone and all 4 desktop cards already set pointer-events-none
+   * individually, and the mobile widget card is informational only. Set
+   * it once at the root instead of chasing every wrapper: .hero-composition
+   * needed the same fix (its own comment has the full story — its grid box
+   * is sized to the phone's full layout height, tall enough post-resize to
+   * cover the CTA above it and swallow clicks meant for it), and
+   * .hero-showcase-stage turned out to need it too once that was fixed.
+   * Rather than patch each ancestor individually as the actual intercepting
+   * element kept moving up the tree, cut it off at the top.
+   */
+  pointer-events: none;
 }
 
 .hero-showcase-stage {
@@ -1129,6 +1142,22 @@
   justify-items: center;
   width: min(100%, var(--hero-composition-max));
   margin-inline: auto;
+  /*
+   * BUG — the hero CTA was unclickable. document.elementFromPoint() at the
+   * button's own coordinates returned THIS element, not the link — even
+   * though the phone (pointer-events-none) and all 4 cards
+   * (pointer-events-none) are already correctly non-interactive.
+   * CSS Grid sizes .hero-composition's own box to its tallest item (the
+   * phone), and that's the phone's full LAYOUT height, unaffected by its
+   * translateY crop — after the recent sizing fixes made the phone
+   * substantially taller, that box now extends upward past where the
+   * phone is actually visible, far enough to cover the CTA in .hero-copy
+   * above it. Nothing inside this composition is ever meant to receive
+   * pointer events, so the empty space intercepting clicks was always a
+   * bug, just one that only became reachable once the box grew tall
+   * enough to overlap something real.
+   */
+  pointer-events: none;
 }
 
 .hero-composition-side {
