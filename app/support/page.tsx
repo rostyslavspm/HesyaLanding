@@ -3,11 +3,39 @@ import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import FaqSection from "../../components/FaqAccordion";
 import Footer from "../../components/Footer";
+import JsonLd from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Support & FAQ: Hesya",
-  description: "Get help with Hesya. Frequently asked questions and support contact.",
+  title: "Support & FAQ — Hesya",
+  description:
+    "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+  alternates: {
+    canonical: "/support",
+  },
+  openGraph: {
+    title: "Support & FAQ — Hesya",
+    description:
+      "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+    url: "https://hesya.app/support",
+    siteName: "Hesya",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Support & FAQ — Hesya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support & FAQ — Hesya",
+    description:
+      "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const gettingStarted = [
@@ -108,9 +136,31 @@ const general = [
   },
 ];
 
+const allFaqs = [
+  ...gettingStarted,
+  ...privacy,
+  ...usingHesya,
+  ...troubleshooting,
+  ...general,
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: allFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function SupportPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       <MarketingChrome variant="light" />
       <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
         <div className={LAYOUT_CLASS.prose}>

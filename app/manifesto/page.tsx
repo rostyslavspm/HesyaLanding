@@ -5,9 +5,35 @@ import Footer from "../../components/Footer";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Manifesto: Hesya",
+  title: "Manifesto: On Attention, Agency, and Presence — Hesya",
   description:
-    "On attention, agency, and presence. Why Hesya exists, and what it refuses to become.",
+    "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention without guilt or control.",
+  alternates: {
+    canonical: "/manifesto",
+  },
+  openGraph: {
+    title: "Manifesto: On Attention, Agency, and Presence — Hesya",
+    description:
+      "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention.",
+    url: "https://hesya.app/manifesto",
+    siteName: "Hesya",
+    type: "article",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Manifesto: Hesya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manifesto: On Attention, Agency, and Presence — Hesya",
+    description:
+      "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const SECTIONS = [

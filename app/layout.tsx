@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond, Newsreader } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 import MotionShell from "../components/motion/MotionShell";
+import JsonLd, { websiteJsonLd, appJsonLd } from "../components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,11 +30,19 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "Hesya: Return to what matters",
   description:
-    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
+    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
+  keywords: [
+    "Hesya",
+    "iPhone focus app",
+    "intention tracker",
+    "mindful focus companion",
+    "Screen Time drift cues",
+    "distraction free focus",
+    "mindfulness app without streaks",
+  ],
   authors: [{ name: "Rostyslav Slobodianiuk" }],
   creator: "Rostyslav Slobodianiuk",
   metadataBase: new URL("https://hesya.app"),
-  alternates: { canonical: "/" },
   openGraph: {
     title: "Hesya: Return to what matters",
     description:
@@ -68,6 +77,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#0c0d10",
 };
 
 export default function RootLayout({
@@ -80,6 +90,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}
     >
+      <head>
+        <JsonLd data={[websiteJsonLd, appJsonLd]} />
+      </head>
       <body suppressHydrationWarning className="antialiased noise-overlay overflow-x-hidden">
         <MotionShell />
         <SmoothScroll>

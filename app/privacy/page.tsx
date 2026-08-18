@@ -5,8 +5,35 @@ import Footer from "../../components/Footer";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy: Hesya",
-  description: "Your sessions, intents, and reflections stay on your device. The only thing that ever leaves is a small set of anonymous, identifier-free usage counts.",
+  title: "Privacy Policy — Hesya",
+  description:
+    "Your sessions, intents, and reflections stay on your device. Zero tracking, zero third-party analytics, and no accounts required.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy — Hesya",
+    description:
+      "Your sessions, intents, and reflections stay on your device. Zero tracking, zero third-party analytics, and no accounts required.",
+    url: "https://hesya.app/privacy",
+    siteName: "Hesya",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy — Hesya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy — Hesya",
+    description:
+      "Your sessions, intents, and reflections stay on your device. Zero tracking, zero third-party analytics, and no accounts required.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function PrivacyPage() {
