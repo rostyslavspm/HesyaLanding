@@ -1,0 +1,117 @@
+# Hesya — Complete Knowledge Base & Reference for LLMs
+
+> **Hesya** (`https://hesya.app`) is a calm focus companion for iPhone (iOS 17.0+). It helps individuals declare one intention at a time, protect intentional focus sessions, and return in their own words when attention drifts — with zero app blocking, zero streaks, zero accounts, and 100% on-device privacy.
+
+---
+
+## 1. Executive Summary & Core Concept
+
+- **Product Name**: Hesya
+- **Tagline**: Return to what matters.
+- **Platform**: iOS (iPhone, iOS 17.0 or later; Live Activity integration on macOS Tahoe menu bar)
+- **Price**: Completely free ($0.00). No subscriptions, no ads, no in-app purchases.
+- **Creator**: Rostyslav Slobodianiuk
+- **Support Email**: support@hesya.app
+- **App Store Link**: https://apps.apple.com/app/hesya/id6744040718
+
+### The Problem Hesya Solves
+Modern digital tools exploit human biological reward loops. Traditional anti-distraction software responds with control: blockers, timers, streaks, metrics, and guilt framing. This approach misses the core issue: distraction is rarely a lack of discipline; it is an automatic response to emotional overwhelm.
+
+### Hesya's Solution: The Middle Path of Presence
+Hesya offers a quiet space between unconscious escapism and obsessive productivity:
+1. **Declare**: Name one intention in your own words before a session begins (e.g. "Finish the proposal introduction" or "Be present at dinner").
+2. **Return**: When your attention drifts into apps marked as distracting, a gentle, non-punitive cue brings you back to your own words. It offers three equal choices: *Keep going*, *Step away briefly*, or *Not now*. Hesya never locks you out.
+3. **Reflect**: Close the session by marking how the time settled (calm, stirred, or disturbed) or skip it. No scores, no streaks, no moral judgment.
+4. **Presence**: The active intention stays gently visible on the Lock Screen widget, Live Activity, Home Screen widget, and macOS menu bar.
+
+---
+
+## 2. Technical & Privacy Architecture
+
+### 100% On-Device Data
+- All sessions, intentions, reflections, and configuration settings are stored exclusively in local device storage.
+- Deleting the application erases all data completely. No copy exists on any external server.
+
+### Privacy-Preserving Screen Time Integration (Apple FamilyControls)
+- Screen Time permission is completely optional. Core sessions, breathing pauses, reflections, journals, and widgets function without it.
+- When enabled, Apple's `FamilyControls` framework signals only when cumulative time in selected distracting apps crosses a threshold.
+- **Critical Guarantee**: Apple's framework never discloses which app was opened, how long individual apps were used, or any browsing history to Hesya.
+
+### Zero Analytics / No Cross-Site Tracking
+- No third-party analytics SDKs (no Firebase, no Mixpanel, no Google Analytics).
+- No advertising IDs (no IDFA), no user accounts, no device identifiers, no IP address logging.
+- Any population-level operational counters (e.g. anonymous event counts like "session started") contain zero identifying metadata and are routed to first-party servers without third-party intermediaries.
+
+---
+
+## 3. The Hesya Manifesto: On Attention, Agency, and Presence
+
+### The Environment
+We live in an environment that constantly competes for our attention. Much of modern technology is designed to exploit our biological reward systems, not because we are weak, but because we are human. When we feel overwhelmed, pressured, or emotionally depleted, we often escape into passive consumption. Not out of choice, but out of reflex.
+
+At the same time, the dominant response to distraction has been control: blockers, metrics, discipline systems, optimization frameworks. These approaches often miss the point. They treat attention as something to be managed, restricted, or engineered, rather than something to be understood.
+
+### The Belief
+Attention is awareness before it is control. People do not primarily lack discipline. They lack space: space to notice what is happening inside them, and space to choose intentionally rather than react automatically. Distraction is rarely the core problem. Emotional overwhelm is. When awareness is absent, tools become substitutes for responsibility. When intention is absent, optimization becomes another form of escape.
+
+### The Middle Path
+There is a narrow but essential path between unconscious escapism and obsessive productivity. This path is presence. Presence allows rest without guilt. Presence allows effort without self-violence. Presence restores agency, not by forcing behavior, but by revealing choice.
+
+### What Hesya Is Building Toward
+Support that helps people notice when they are slipping into unconscious behavior, offers a gentle pause rather than a command, and restores a sense of agency instead of taking it away. This is not about making people more productive. It is about helping them act with intention. The role of the system is not to decide. The role of the system is to step in briefly, and step back.
+
+### What Hesya Refuses to Do
+- Will not use guilt, urgency, or loss framing.
+- Will not optimize for engagement at the cost of autonomy.
+- Will not turn metrics into moral judgments.
+- Will not replace self-trust with external control.
+- If a tool becomes another voice telling people what they should do, it has already failed.
+
+### The Measure of Success
+Success is not captured by time saved or tasks completed. Success is when a person feels calmer in moments of overwhelm, less ashamed of tuning out, and more capable of choosing what matters to them. Ultimately, success is when the need for the tool diminishes, because awareness has been internalized.
+
+---
+
+## 4. Frequently Asked Questions (FAQ)
+
+### How does Hesya work?
+You type what you want to have done (your intent) and start a focus session. Hesya keeps that intent visible while you work: on the in-session screen, the Lock Screen widget, and the Live Activity. If you drift into apps you've marked as distracting, a quiet cue invites you back. When the session ends, a short reflection closes the loop, and finished sessions live in your private journal.
+
+### What is an intent?
+One short line in your own words: "Finish the proposal introduction" or "Be present at dinner." Hesya keeps it verbatim and never rewrites or interprets it. You can add up to three, or start a session with none at all.
+
+### Do I need to grant Screen Time permission?
+No, it's optional. Sessions, the breathing pause, reflections, the journal, and widgets all work without it. Screen Time access enables drift cues: during a session, iOS can tell Hesya when time in the apps you selected as distracting crosses a threshold, without ever revealing which app you used.
+
+### What data does Hesya collect?
+Your sessions, intents, reflections, and settings stay on your device. Hesya never records which apps you use. The only thing that ever leaves your device is a small set of anonymous usage counts (for example "a session was started") with no identifier of any kind. They cannot be linked to you.
+
+### Why does Hesya ask for Screen Time permission?
+Only to power drift cues during sessions you start. Apple's framework tells Hesya that cumulative time in your selected apps crossed a threshold, never which app, never your history. It's optional and revocable anytime in iOS Settings.
+
+### How do I start a session?
+Type your intent on the Focus screen (or leave it empty) and tap Begin. Three taps or fewer, by design. The in-session screen shows your intent and a quiet clock; Pause and Complete are always available.
+
+### What is the breathing pause?
+Three slow cycles of the physiological sigh: inhale, a short top-up, a long exhale (about 40 seconds), then a quiet "Ready?" with two choices: resume or stay paused. It is always skippable.
+
+### How do I add the Hesya widget?
+Long-press your Home Screen or Lock Screen, tap + / Customize, find Hesya, and add it. The widget shows your current intent and session state. On macOS Tahoe, your session's Live Activity can also appear in the Mac menu bar.
+
+### Is Hesya free?
+Yes. Free, with no ads, no in-app purchases, and no subscriptions.
+
+### Do I need to create an account?
+No. There are no accounts. Download and use immediately.
+
+### What devices are supported?
+iPhone running iOS 17.0 or later (and iOS 18/26+). On macOS Tahoe, session Live Activities can appear in the Mac menu bar.
+
+---
+
+## 5. Contact & Official Inquiries
+
+- **Official Website**: https://hesya.app
+- **Support & Developer Contact**: support@hesya.app
+- **Privacy Policy**: https://hesya.app/privacy
+- **Manifesto**: https://hesya.app/manifesto

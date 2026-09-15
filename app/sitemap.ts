@@ -20,14 +20,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/support`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy`,
       lastModified,
-      changeFrequency: "yearly",
-      priority: 0.5,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/llms-full.txt`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }

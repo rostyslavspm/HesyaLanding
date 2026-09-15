@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import Footer from "../../components/Footer";
+import JsonLd, { createBreadcrumbs, WEBSITE_ID } from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
@@ -36,9 +37,27 @@ export const metadata: Metadata = {
   },
 };
 
+const privacyPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Privacy Policy — Hesya",
+  url: "https://hesya.app/privacy",
+  description:
+    "Your sessions, intents, and reflections stay on your device. Zero tracking, zero third-party analytics, and no accounts required.",
+  isPartOf: {
+    "@id": WEBSITE_ID,
+  },
+};
+
+const privacyBreadcrumbs = createBreadcrumbs([
+  { name: "Home", path: "/" },
+  { name: "Privacy Policy", path: "/privacy" },
+]);
+
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={[privacyPageJsonLd, privacyBreadcrumbs]} />
       <MarketingChrome variant="light" />
       <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Privacy policy">
         <div className={LAYOUT_CLASS.prose}>

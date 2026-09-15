@@ -3,7 +3,7 @@ import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import FaqSection from "../../components/FaqAccordion";
 import Footer from "../../components/Footer";
-import JsonLd from "../../components/JsonLd";
+import JsonLd, { createFaqJsonLd, createBreadcrumbs } from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
@@ -127,7 +127,7 @@ const general = [
   {
     question: "What devices are supported?",
     answer:
-      "iPhone on iOS 26 or later. On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.",
+      "iPhone on iOS 17.0 or later (and iOS 18/26+). On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.",
   },
   {
     question: "Can I use Hesya on multiple devices?",
@@ -144,23 +144,16 @@ const allFaqs = [
   ...general,
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: allFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqJsonLd = createFaqJsonLd(allFaqs);
+const supportBreadcrumbs = createBreadcrumbs([
+  { name: "Home", path: "/" },
+  { name: "Support & FAQ", path: "/support" },
+]);
 
 export default function SupportPage() {
   return (
     <>
-      <JsonLd data={faqJsonLd} />
+      <JsonLd data={[faqJsonLd, supportBreadcrumbs]} />
       <MarketingChrome variant="light" />
       <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
         <div className={LAYOUT_CLASS.prose}>

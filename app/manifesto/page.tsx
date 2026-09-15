@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import Footer from "../../components/Footer";
+import JsonLd, { createArticleJsonLd, createBreadcrumbs } from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
@@ -35,6 +36,20 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
 };
+
+const manifestoArticleJsonLd = createArticleJsonLd({
+  headline: "Manifesto: On Attention, Agency, and Presence",
+  description:
+    "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention without guilt or control.",
+  url: "https://hesya.app/manifesto",
+  datePublished: "2026-06-16",
+  dateModified: "2026-06-16",
+});
+
+const manifestoBreadcrumbs = createBreadcrumbs([
+  { name: "Home", path: "/" },
+  { name: "Manifesto", path: "/manifesto" },
+]);
 
 const SECTIONS = [
   {
@@ -111,6 +126,7 @@ const SECTIONS = [
 export default function ManifestoPage() {
   return (
     <>
+      <JsonLd data={[manifestoArticleJsonLd, manifestoBreadcrumbs]} />
       <MarketingChrome variant="light" />
       <main id="main" className="bg-[var(--color-mist-white)] pt-8 pb-20 md:pb-32">
         <article className={`${LAYOUT_CLASS.prose} px-6`}>
