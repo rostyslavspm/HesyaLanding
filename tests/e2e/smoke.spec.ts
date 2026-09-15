@@ -8,7 +8,7 @@ import { test, expect } from "@playwright/test";
  */
 
 const ROUTES: { path: string; title: RegExp }[] = [
-  { path: "/", title: /Name one thing/i },
+  { path: "/", title: /Hesya/i },
   { path: "/manifesto", title: /Hesya/i },
   { path: "/support", title: /Hesya/i },
   { path: "/privacy", title: /Hesya/i },

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond, Newsreader } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 import MotionShell from "../components/motion/MotionShell";
@@ -110,6 +111,7 @@ export default function RootLayout({
           </a>
           {children}
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
