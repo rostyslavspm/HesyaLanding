@@ -2,18 +2,25 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Hesya: Choose where your attention goes.";
+export const alt = "Hesya — Name what matters. Stay with it.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const HEADLINE = "Choose where your attention goes.";
-const SUBHEAD =
-  "Reclaim your attention when it drifts — no locked apps, no daily streaks to keep.";
+const HEADLINE_1 = "Name what matters.";
+const HEADLINE_2 = "Stay with it.";
+const TIMER = "15 min";
 
-async function loadGoogleFont(family: string, weight: number, text: string) {
+// Phone geometry mirrors the live hero: the Running Session capture (420×912
+// frame) rising from the bottom edge, timer pill live-set in Jost like the site.
+const PHONE_W = 300;
+const PHONE_H = Math.round((PHONE_W * 2736) / 1260);
+const PHONE_TOP = 262;
+const scale = PHONE_W / 420;
+
+async function loadGoogleFont(axes: string, family: string, text: string) {
   const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(
     family
-  )}:wght@${weight}&text=${encodeURIComponent(text)}`;
+  )}:${axes}&text=${encodeURIComponent(text)}`;
   const css = await (await fetch(url)).text();
   const match = css.match(/src: url\(([^)]+)\) format\('(?:opentype|truetype)'\)/);
   if (match?.[1]) {
@@ -23,26 +30,31 @@ async function loadGoogleFont(family: string, weight: number, text: string) {
   return null;
 }
 
-export default async function Image() {
-  const [phoneBuffer, serifFont, sansFont, sansSemibold] = await Promise.all([
-    readFile(join(process.cwd(), "public/screenshots/screen-today-idle.png")),
-    loadGoogleFont("Cormorant Garamond", 500, HEADLINE),
-    loadGoogleFont("Inter", 400, SUBHEAD),
-    loadGoogleFont("Inter", 600, "Hesya"),
-  ]);
+const toDataUri = (buf: Buffer, mime: string) =>
+  `data:${mime};base64,${buf.toString("base64")}`;
 
-  const phoneSrc = `data:image/png;base64,${phoneBuffer.toString("base64")}`;
+export default async function Image() {
+  const [sky, phone, serifItalic, sansBrand, jost] = await Promise.all([
+    readFile(join(process.cwd(), "public/images/og-sky.jpg")),
+    readFile(join(process.cwd(), "public/screenshots/screen-session-running-v2.png")),
+    loadGoogleFont("ital,wght@1,300", "Cormorant Garamond", HEADLINE_1 + HEADLINE_2),
+    loadGoogleFont("wght@600", "Inter", "HESYA"),
+    loadGoogleFont("wght@300", "Jost", TIMER),
+  ]);
 
   const fonts: {
     name: string;
     data: ArrayBuffer;
-    weight: 400 | 500 | 600;
-    style: "normal";
+    weight: 300 | 600;
+    style: "normal" | "italic";
   }[] = [];
-  if (serifFont)
-    fonts.push({ name: "Cormorant Garamond", data: serifFont, weight: 500, style: "normal" });
-  if (sansFont) fonts.push({ name: "Inter", data: sansFont, weight: 400, style: "normal" });
-  if (sansSemibold) fonts.push({ name: "Inter", data: sansSemibold, weight: 600, style: "normal" });
+  if (serifItalic)
+    fonts.push({ name: "Cormorant Garamond", data: serifItalic, weight: 300, style: "italic" });
+  if (sansBrand) fonts.push({ name: "Inter", data: sansBrand, weight: 600, style: "normal" });
+  if (jost) fonts.push({ name: "Jost", data: jost, weight: 300, style: "normal" });
+
+  // Site palette, as sRGB: --color-abyss #02050d, --color-silver #d7dbe0.
+  const silver = "#d7dbe0";
 
   return new ImageResponse(
     (
@@ -53,106 +65,122 @@ export default async function Image() {
           position: "relative",
           display: "flex",
           overflow: "hidden",
-          background: "linear-gradient(160deg, #1c2530 0%, #202e44 58%, #263349 100%)",
+          background: "#02050d",
         }}
       >
-        {/* echoes the hero's night-sky glow behind the phone */}
+        {/* the hero's night-sky photograph */}
+        <img
+          src={toDataUri(sky, "image/jpeg")}
+          width={1200}
+          height={970}
+          style={{ position: "absolute", left: 0, top: -120, objectFit: "cover" }}
+          alt=""
+        />
+
+        {/* scrim: darker crown for the copy, deep indigo settling at the base */}
         <div
           style={{
             position: "absolute",
-            right: -80,
-            top: -140,
-            width: 640,
-            height: 640,
-            borderRadius: "50%",
+            inset: 0,
             display: "flex",
             background:
-              "radial-gradient(circle, rgba(204,216,232,0.24) 0%, rgba(204,216,232,0) 70%)",
+              "linear-gradient(180deg, rgba(6,10,26,0.62) 0%, rgba(8,12,28,0.25) 40%, rgba(6,9,22,0.45) 78%, rgba(2,5,13,0.85) 100%)",
           }}
         />
 
-        {/* copy */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            width: 660,
-            height: "100%",
-            padding: "0 0 0 76px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 44 }}>
-            <div
-              style={{
-                width: 24,
-                height: 24,
-                borderRadius: "50%",
-                display: "flex",
-                background: "rgba(255,255,255,0.92)",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "Inter",
-                fontWeight: 600,
-                fontSize: 22,
-                letterSpacing: "-0.01em",
-                color: "rgba(255,255,255,0.92)",
-              }}
-            >
-              Hesya
-            </span>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Cormorant Garamond",
-              fontWeight: 500,
-              fontSize: 58,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              color: "rgba(255,255,255,0.95)",
-              marginBottom: 26,
-              maxWidth: 540,
-            }}
-          >
-            {HEADLINE}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Inter",
-              fontWeight: 400,
-              fontSize: 20,
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.7)",
-              maxWidth: 470,
-            }}
-          >
-            {SUBHEAD}
-          </div>
-        </div>
-
-        {/* phone, bleeding off the bottom edge like the live hero */}
+        {/* wordmark, where the site header sits */}
         <div
           style={{
             position: "absolute",
-            right: 96,
-            bottom: -44,
-            width: 300,
-            height: 652,
+            left: 64,
+            top: 40,
             display: "flex",
-            overflow: "hidden",
-            borderRadius: 40,
-            outline: "1px solid rgba(255,255,255,0.14)",
-            boxShadow: "0 40px 120px rgba(0,0,0,0.45)",
+            fontFamily: "Inter",
+            fontWeight: 600,
+            fontSize: 18,
+            letterSpacing: "0.14em",
+            color: silver,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={phoneSrc} width={300} height={652} style={{ objectFit: "cover" }} alt="" />
+          HESYA
+        </div>
+
+        {/* headline — thin italic serif, centred, as in the hero */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 66,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Cormorant Garamond",
+            fontStyle: "italic",
+            fontWeight: 300,
+            fontSize: 76,
+            lineHeight: 1.1,
+            color: silver,
+          }}
+        >
+          <div style={{ display: "flex" }}>{HEADLINE_1}</div>
+          <div style={{ display: "flex" }}>{HEADLINE_2}</div>
+        </div>
+
+        {/* soft glow behind the phone */}
+        <div
+          style={{
+            position: "absolute",
+            left: 600 - 260,
+            top: PHONE_TOP - 40,
+            width: 520,
+            height: 520,
+            display: "flex",
+            borderRadius: 9999,
+            background:
+              "radial-gradient(circle, rgba(170,190,220,0.30) 0%, rgba(170,190,220,0) 68%)",
+          }}
+        />
+
+        {/* the running session, rising from the bottom edge */}
+        <div
+          style={{
+            position: "absolute",
+            left: 600 - PHONE_W / 2,
+            top: PHONE_TOP,
+            width: PHONE_W,
+            height: PHONE_H,
+            display: "flex",
+            overflow: "hidden",
+            borderRadius: Math.round(PHONE_W * 0.1333),
+            boxShadow: "0 32px 120px rgba(0,0,0,0.7)",
+          }}
+        >
+          <img
+            src={toDataUri(phone, "image/png")}
+            width={PHONE_W}
+            height={PHONE_H}
+            alt=""
+          />
+          <div
+            style={{
+              position: "absolute",
+              left: 71 * scale,
+              top: 408 * scale,
+              width: 260 * scale,
+              height: 96 * scale,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "Jost",
+              fontWeight: 300,
+              fontSize: 36 * scale,
+              letterSpacing: "-0.014em",
+              color: "#16191f",
+            }}
+          >
+            {TIMER}
+          </div>
         </div>
       </div>
     ),

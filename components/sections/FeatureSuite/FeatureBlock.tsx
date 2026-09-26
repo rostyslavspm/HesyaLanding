@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { HesyaFeature } from "@/lib/content/features";
 import { TYPE } from "@/lib/design-system";
+import FadeInImage from "@/components/ui/FadeInImage";
 
 type FeatureBlockProps = {
   feature: HesyaFeature;
@@ -63,7 +63,7 @@ export default function FeatureBlock({ feature, index }: FeatureBlockProps) {
 
         <div className="feature-block-media">
           <div aria-hidden className="feature-phone-stage-bg" />
-          <Image
+          <FadeInImage
             src={feature.screenshot}
             alt={feature.screenshotAlt}
             width={1260}

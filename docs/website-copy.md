@@ -12,7 +12,7 @@ All user-visible text on the Hesya landing site, by page and section in scroll o
 
 **Description:** Hesya is a free iPhone app for holding one intention at a time. Name what matters, and when your attention drifts, a quiet cue returns you to your own words — no blocking, no streaks, no scores, no accounts. Free on the App Store.
 
-**OG image:** generated (`app/opengraph-image.tsx`) — "Choose where your attention goes." headline over the hero. *(Out of sync with the current hero headline; update separately.)*
+**OG image:** generated (`app/opengraph-image.tsx`) — mirrors the hero: night-sky photo, "Name what matters. / Stay with it.", and the Running Session phone with "15 min".
 
 ---
 

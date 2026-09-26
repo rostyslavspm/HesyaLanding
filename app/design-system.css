@@ -1384,6 +1384,11 @@
   transition: opacity var(--dur-chrome) var(--ease-hesya);
 }
 
+/* While closing (or if it ever lingers), the invisible overlay takes no taps. */
+.mobile-menu[data-open="false"] {
+  pointer-events: none;
+}
+
 .mobile-menu[data-open="true"] .mobile-menu-backdrop {
   opacity: 1;
 }
@@ -1735,4 +1740,40 @@
   opacity: 0.04;
   user-select: none;
   pointer-events: none;
+}
+
+/* ─── Graceful arrival ───────────────────────────────── */
+
+/* Pages arrive the way the hero's light does: the content brightens out of
+ * the dark, with no movement, on a soft-start curve a half-beat slower than
+ * the rest of the UI. The header lives outside <main>, so the chrome stays
+ * put while the content arrives. Fill-mode backwards leaves nothing behind. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Images brighten in once decoded instead of popping in. */
+.phone-mockup,
+.fade-in-image {
+  transition: opacity var(--dur-arrive) var(--ease-arrive);
+}
+
+.phone-mockup[data-loaded="false"],
+.fade-in-image[data-loaded="false"] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main#main {
+    animation: page-in var(--dur-arrive) var(--ease-arrive) backwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-mockup,
+  .fade-in-image {
+    transition: none;
+  }
 }

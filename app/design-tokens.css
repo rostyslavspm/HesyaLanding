@@ -163,12 +163,15 @@
   /* ─── Motion: A Half-Beat Slower ─────────────────────── */
   --ease-hesya: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-hesya-hover: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Arrival — light rising, not a pop: soft start, long unhurried settle. */
+  --ease-arrive: cubic-bezier(0.37, 0, 0.18, 1);
   --dur-micro: 0.35s;
   --dur-hover: 0.5s;
   --dur-chrome: 0.38s;
   --dur-reveal: 0.9s;
   --dur-reveal-copy: 0.7s;
   --dur-section: 1.6s;
+  --dur-arrive: 1.4s;
   --dur-glow: 6s;
 
   /* ─── Z-index ────────────────────────────────────────── */
