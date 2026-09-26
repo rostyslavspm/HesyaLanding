@@ -15,27 +15,6 @@ type FeatureBlockProps = {
  */
 export default function FeatureBlock({ feature, index }: FeatureBlockProps) {
   const Icon = feature.icon;
-  const isExternal = feature.linkHref.startsWith("http");
-
-  const link = isExternal ? (
-    <a
-      href={feature.linkHref}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-link-accent inline-flex min-h-11 items-center gap-3"
-    >
-      <span>{feature.linkText}</span>
-      <ArrowRight className="h-4 w-4 shrink-0" aria-hidden strokeWidth={2} />
-    </a>
-  ) : (
-    <Link
-      href={feature.linkHref}
-      className="text-link-accent inline-flex min-h-11 items-center gap-3"
-    >
-      <span>{feature.linkText}</span>
-      <ArrowRight className="h-4 w-4 shrink-0" aria-hidden strokeWidth={2} />
-    </Link>
-  );
 
   return (
     <article
@@ -67,17 +46,19 @@ export default function FeatureBlock({ feature, index }: FeatureBlockProps) {
             {feature.heading}
           </h3>
 
-          <p className={`${TYPE.featureBody} mb-6 max-w-[46ch]`}>
+          <p className={`${TYPE.featureBody} max-w-[46ch]`}>
             {feature.description}
           </p>
 
-          <div className="mb-8">{link}</div>
-
-          <ul className="list-feature">
-            {feature.features.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          {feature.linkHref && feature.linkText && (
+            <Link
+              href={feature.linkHref}
+              className="text-link-accent mt-6 inline-flex min-h-11 items-center gap-3"
+            >
+              <span>{feature.linkText}</span>
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden strokeWidth={2} />
+            </Link>
+          )}
         </div>
 
         <div className="feature-block-media">

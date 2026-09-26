@@ -2,13 +2,54 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import Footer from "../../components/Footer";
+import JsonLd, { createArticleJsonLd, createBreadcrumbs } from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Manifesto: Hesya",
+  title: "Manifesto: On Attention, Agency, and Presence — Hesya",
   description:
-    "On attention, agency, and presence. Why Hesya exists, and what it refuses to become.",
+    "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention without guilt or control.",
+  alternates: {
+    canonical: "/manifesto",
+  },
+  openGraph: {
+    title: "Manifesto: On Attention, Agency, and Presence — Hesya",
+    description:
+      "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention.",
+    url: "https://hesya.app/manifesto",
+    siteName: "Hesya",
+    type: "article",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Manifesto: Hesya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manifesto: On Attention, Agency, and Presence — Hesya",
+    description:
+      "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention.",
+    images: ["/opengraph-image"],
+  },
 };
+
+const manifestoArticleJsonLd = createArticleJsonLd({
+  headline: "Manifesto: On Attention, Agency, and Presence",
+  description:
+    "Why Hesya exists and what it refuses to become. An essay on presence, digital agency, and restoring intention without guilt or control.",
+  url: "https://hesya.app/manifesto",
+  datePublished: "2026-06-16",
+  dateModified: "2026-06-16",
+});
+
+const manifestoBreadcrumbs = createBreadcrumbs([
+  { name: "Home", path: "/" },
+  { name: "Manifesto", path: "/manifesto" },
+]);
 
 const SECTIONS = [
   {
@@ -85,16 +126,17 @@ const SECTIONS = [
 export default function ManifestoPage() {
   return (
     <>
-      <MarketingChrome variant="light" />
-      <main id="main" className="bg-[var(--color-mist-white)] pt-8 pb-20 md:pb-32">
+      <JsonLd data={[manifestoArticleJsonLd, manifestoBreadcrumbs]} />
+      <MarketingChrome variant="dark" />
+      <main id="main" className="bg-[var(--color-abyss)] text-[var(--color-silver)] pt-8 pb-20 md:pb-32">
         <article className={`${LAYOUT_CLASS.prose} px-6`}>
           <Link href="/" className={TYPE.pageBack}>
             ← Back to Hesya
           </Link>
 
-          <header className="mt-8 border-b border-black/5 pb-10">
+          <header className="mt-8 border-b border-[var(--border-subtle)] pb-10">
             <p className={TYPE.pageLabel}>Manifesto</p>
-            <h1 className={`${TYPE.editorialItalic} mt-4 text-[var(--color-soft-obsidian)]`}>
+            <h1 className={`${TYPE.editorialItalic} mt-4 text-[var(--color-silver)]`}>
               On Attention, Agency, and Presence
             </h1>
           </header>

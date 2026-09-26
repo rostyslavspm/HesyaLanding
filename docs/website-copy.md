@@ -1,135 +1,80 @@
 # Hesya Landing — Website Copy
 
-All user-visible text extracted from the Hesya landing site, organized by page and section in scroll order. This reflects the v2 product: **declare an intention → protect a focus session → return in your own words when attention drifts → outcome-neutral reflection → private journal.**
+All user-visible text on the Hesya landing site, by page and section in scroll order. Voice: "Quiet Authority" — sparse, a little oracular, short lines; the page speaks less than you expect.
 
-> Last synced: June 16, 2026 (v2 content rewrite).
+> Last synced: September 26, 2026 (Quiet Authority restyle). Source of truth is the code — update this file alongside copy changes.
 
 ---
 
-## Metadata & SEO
+## Metadata & SEO (home)
 
-**Page title:** Hesya — Name what matters. Stay with it.
+**Title:** Hesya — Mindful Focus & Intention Tracker for iPhone
 
-**Meta description:** Hesya is an iPhone focus companion: declare one intention, protect a session, and return in your own words when attention drifts. Then a quiet, outcome-neutral reflection. Free, private, no accounts.
+**Description:** Hesya is a free iPhone app for holding one intention at a time. Name what matters, and when your attention drifts, a quiet cue returns you to your own words — no blocking, no streaks, no scores, no accounts. Free on the App Store.
 
-**OpenGraph title:** Hesya — Name what matters. Stay with it.
-
-**OpenGraph description:** Declare one intention, protect a focus session, and return in your own words when attention drifts. A calm iPhone companion — free, private, no accounts.
-
-**Twitter title:** Hesya — Name what matters. Stay with it.
-
-**Twitter description:** Declare one intention, protect a focus session, and return in your own words when attention drifts. Free, private, no accounts.
-
-**OG image alt:** Hesya — Name what matters. Stay with it.
-
-**OG image display text:** Hesya / Name what matters. Stay with it. / hesya.app
+**OG image:** generated (`app/opengraph-image.tsx`) — "Choose where your attention goes." headline over the hero. *(Out of sync with the current hero headline; update separately.)*
 
 ---
 
 ## Landing Page
 
-The page renders six sections in order: Hero → The Shift → The Pearl → What Hesya Does → The Widget → Final CTA, between a sticky Header and the Footer.
+Sections in order: Hero → Recognition → Features ("The shape of a session") → Manifesto teaser → Download → Footer, under a sticky header.
 
 ### Header
 
 - **Brand:** Hesya
-- **Nav links:** Privacy, Support
-- **CTA (desktop):** Try on TestFlight
-- **CTA (mobile):** TestFlight
-
----
+- **Nav:** Features, Philosophy, Support, Privacy
+- **Contact** (desktop, `mailto:support@hesya.app`)
+- **CTA:** Get the app — hidden while the hero's own CTA is on screen
 
 ### Hero
 
-**Headline:**
-Name what matters.
-Stay with it.
+**Headline:** Name what matters. / Stay with it.
 
-**Subtitle:**
-Declare what you want to have done, start a focus session, and Hesya holds it with you — returning you in your own words when attention drifts.
+**CTA:** Get the app
 
-**CTA button:** Try the beta on TestFlight
+**Phone:** the app's Running Session screen — "In progress" / "Morning orientation and prioritization", with a live timer ("15 min", counting down).
 
-**Micro text:** Built to feel native. Designed to step back.
+### Recognition
 
----
+**Eyebrow:** Awareness
 
-### The Shift
+**Heading:** Drift is not a failing.
 
-**Eyebrow:** YOU KNOW THE FEELING
+### Features — "The shape of a session"
 
-**Headline:** You meant to do one thing.
+Section nav: Declare · Return · Reflect · Presence
 
-**Body 1:**
-You sat down for something specific. A while later you're somewhere else — and you're not sure when you left.
+| Moment | Heading | Line |
+|---|---|---|
+| Declare | Begin by naming one thing | In your own words. Kept exactly as you wrote them. |
+| Return | When you drift, one quiet cue | Your own words return to you. The choosing stays yours. |
+| Reflect | At the end, a moment to notice | One question. No score. Skipping is an answer too. *(link: Read the philosophy)* |
+| Presence | Always in view, never in the way | What you named waits on your Lock Screen. Nothing more. |
 
-**Body 2:**
-Hesya keeps the one thing you named in view, and brings you back to it — in your own words, the moment you drift.
+### Manifesto teaser
 
----
+**Heading:** The light does not choose for you.
 
-### The Pearl
+**Body:** We live inside an environment built to take attention. Hesya does not add to it. It removes what stands between you and the thing you meant to do, then steps back. You choose what matters; Hesya only helps you keep to it.
 
-**Headline:** Three breaths.
+**Link:** Read the full manifesto
 
-**Subtitle:** *A pause between drift and choice.*
+### Download
 
----
+**Heading:** One intention is enough to begin.
 
-### What Hesya Does
+**Line:** Free. Private. No account.
 
-**Eyebrow:** WHAT HESYA DOES
-
-**Description:**
-You name one intention and start a session. Hesya holds it where you can see it, returns you when attention drifts, and closes with a quiet reflection — never a score.
-
-**Card 1 — Declare:**
-Name what you want to have done — in your own words. Hesya keeps it verbatim.
-*(Animated card cycles example intents: "Finish the proposal", "Be present at dinner", "Write the first section".)*
-
-**Card 2 — Return:**
-Drift into something else and a quiet cue brings you back to your intent — never a scold.
-
-**Card 3 — Reflect:**
-When you finish, mark how it felt. A private note, never a score.
-
----
-
-### The Widget
-
-**Eyebrow:** WHERE YOU WORK
-
-**Headline:** Your intent, in view.
-
-**Body:**
-The one thing you named follows you — on the Lock Screen, in the Live Activity, and on your Mac's menu bar while you work.
-
-Quietly present while the session runs. Always there when you glance. Never urgent.
-
----
-
-### Final CTA
-
-**Headline:**
-One intention is
-enough to begin.
-
-**Body:**
-Hesya is in beta on TestFlight. Free, private, and quiet by design — no accounts, nothing that identifies you.
-
-**CTA button:** Try the beta on TestFlight *(App Store badge linking to TestFlight)*
-
----
+**CTA:** Get the app
 
 ### Footer
 
-**Wordmark:** Hesya *(decorative, aria-hidden)*
+**Brand:** Hesya · **Links:** Features, Manifesto, Support, Privacy, Contact · Hesya © {year}
 
-**Tagline:** A calm focus companion for iPhone.
+### 404
 
-**Nav links:** Support, Privacy, Contact (support@hesya.app)
-
-**Copyright:** Hesya (c) [current year]
+**Label:** 404 · **Heading:** This page drifted. · **Line:** The page you're looking for doesn't exist, or has moved. · **Link:** Back to Hesya
 
 ---
 
@@ -263,9 +208,8 @@ We aim to respond within 24-48 hours.
 
 | Image | Alt text |
 |-------|----------|
-| Hero phone | Hesya — today's intent on the home screen |
-| Shift phone (light) | Hesya — today's intent |
-| Shift phone (crossfade) | Hesya — a quiet return when you drift |
-| Widget phone | Hesya widget showing today's intent |
-
-> **Screenshots pending v2 replacement.** The components still reference pre-v2 captures — `/screenshots/screen-home.png`, `/screenshots/screen-lockscreen.png`, `/screenshots/Homescreen-widget.png`. Replace with v2 captures (intent on the Focus screen, the in-session screen, the drift-return cue, the Lock Screen widget showing an intent) once available; the alt text above already describes the intended v2 imagery.
+| Hero phone | Hesya during a focus session: "Morning orientation and prioritization", 15 minutes left |
+| Declare | Declaring an intention in Hesya |
+| Return | Hesya return cue offering keep going, step away, or not now |
+| Reflect | Journal entry after a Hesya session |
+| Presence | Hesya Home Screen widget keeping your intention in view |

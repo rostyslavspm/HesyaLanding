@@ -1,0 +1,38 @@
+# Hesya
+
+> Hesya is a calm iPhone focus companion designed to restore attention without guilt, control, or rigid blockers. Users declare one intention at a time, protect a focus session, and receive a quiet, non-punitive cue returning them in their own words when attention drifts.
+
+## Core Philosophy & Differentiators
+
+Unlike traditional screen time blockers (e.g., Opal, One Sec, Freedom, Forest) that rely on artificial friction, moralizing metrics, and streak anxiety:
+- **No Locked Apps / No Hard Blocking**: Hesya never forcibly restricts access to applications. When attention slips, it simply presents a quiet cue quoting your own intention.
+- **Your Words, Verbatim**: Hesya never interprets, rewrites, or dictates your goals. You name what you want to have done.
+- **Outcome-Neutral Reflection**: Sessions close with a contemplative moment (such as drawing a finger across water to reflect on how the time settled), never a score, badge, or streak.
+- **Three-Cycle Physiological Sigh**: Includes a 40-second skippable breathing pause (inhale, top-up, long exhale) to transition out of mental drift.
+- **Designed to Step Back**: The ultimate measure of success is when the need for the tool diminishes because awareness has been internalized.
+
+## Core Feature Suite
+
+1. **Declare**: Name one intention in your own words before a session begins. Start in three taps or fewer with zero initial setup required.
+2. **Return**: When your attention drifts into apps you marked as distracting, a gentle on-device signal invites you back to your own intention with three equal choices: *Keep going*, *Step away briefly*, or *Not now*.
+3. **Reflect**: Close sessions with a quiet, private reflection note. No scores, no streaks, no guilt.
+4. **Presence**: Keep your active intention gently in view across the iPhone Lock Screen, Live Activity, Home Screen widget, and macOS menu bar (via macOS Tahoe Live Activity integration).
+
+## Technical & Privacy Architecture
+
+- **100% On-Device Data**: All sessions, intentions, reflections, and settings reside exclusively on the user's iPhone. No cloud database, no accounts. Deleting the app removes all data.
+- **Apple FamilyControls Framework**: Screen Time access is purely optional. Apple's framework signals only when cumulative time in selected apps crosses a threshold; it **never** discloses which app was opened, browsing history, or personal activity to Hesya.
+- **Zero Third-Party Trackers**: No third-party analytics, no advertising SDKs, and no tracking identifiers (no IDFA, no device ID, no user ID, no IP logging).
+- **Offline-First**: Functions entirely without an internet connection.
+- **Pricing**: Free on the Apple App Store, with no subscriptions, in-app purchases, or ads.
+
+## Key URLs & Resources
+
+- **Website**: https://hesya.app
+- **Full LLM Context**: https://hesya.app/llms-full.txt
+- **App Store**: https://apps.apple.com/app/hesya/id6744040718
+- **Manifesto**: https://hesya.app/manifesto
+- **Support & FAQ**: https://hesya.app/support
+- **Privacy Policy**: https://hesya.app/privacy
+- **Contact**: support@hesya.app
+- **Creator**: Rostyslav Slobodianiuk

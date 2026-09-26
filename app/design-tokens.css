@@ -1,195 +1,175 @@
 /**
  * Hesya Landing — Design Tokens
- * Palette from Hesya widget atmospheres (Breathe / Pacer / Today / Weekly Pulse).
- * Colors in OKLCH for perceptual uniformity.
+ * Brand Direction: Quiet Authority
+ * Palette: silver, pale gold, white, deep blue-black. Light on darkness.
+ * Materials: cool glass, brushed metal, raw silk.
+ * Motion: slow, backlit, a half-beat slower.
  */
 
 :root {
-  /* ─── Primitives ─────────────────────────────────────── */
-  --color-mist-white: oklch(0.961 0.004 90);
-  --color-soft-obsidian: oklch(0.259 0.005 39.398);
-  --color-pearl-glow: oklch(1 0 0);
-  /* Pacer deep slate — hue locked to cool family (~255°) */
-  --color-deep-midnight: oklch(0.32 0.025 255);
-  /* Today frost highlight */
-  --color-frost: oklch(0.952 0.013 255);
-  /* Weekly Pulse rare accent — glows/atmosphere only (not body text; ~3.8:1 on mist) */
-  --color-pulse-coral: oklch(0.6 0.16 21);
+  /* ─── Primitives: The Quiet Authority Palette ─────────── */
+  /* Deep Blue-Black Void (the infinite, calm canvas) */
+  --color-abyss: oklch(0.118 0.022 258);
+  --color-abyss-elevated: oklch(0.152 0.024 256);
+  --color-abyss-surface: oklch(0.175 0.022 255);
+  --color-abyss-border: oklch(0.88 0.01 250 / 0.1);
 
-  /* Dark surfaces — banner/CTA chrome and footer */
-  --color-hero-bg: oklch(0.26 0.025 255);
-  --color-hero-cta: oklch(0.3 0.035 255);
-  --color-hero-cta-ring: oklch(0.45 0.12 255);
-  --color-footer-bg: oklch(0.258 0.023 18.801);
-  --color-steel: oklch(0.35 0.03 255);
+  /* Brushed Silver & Platinum (cold, precise, immaculate) */
+  --color-silver: oklch(0.89 0.008 250);
+  --color-silver-muted: oklch(0.66 0.012 252);
+  --color-silver-dim: oklch(0.58 0.01 255); /* WCAG AA floor: 4.5:1+ on abyss/footer/glass, matches --color-pale-gold-dim's L */
+  --color-silver-rim: oklch(0.89 0.008 250 / 0.18);
 
-  /* Light / suite surfaces — warm stone + Today frost */
-  --color-stone-50: oklch(0.985 0.002 95);
-  --color-stone-100: oklch(0.97 0.003 100);
-  --color-stone-200: oklch(0.934 0.01 90);
-  --color-stone-border: oklch(0.55 0.01 255 / 0.2);
+  /* Pale Gold (starlight accent: luminous, disciplined, zero red/warmth) */
+  --color-pale-gold: oklch(0.865 0.042 88);
+  --color-pale-gold-dim: oklch(0.58 0.032 88);
+  --color-pale-gold-glow: oklch(0.865 0.042 88 / 0.12);
+  --color-pale-gold-border: oklch(0.865 0.042 88 / 0.28);
+  --color-pale-gold-wash: oklch(0.865 0.042 88 / 0.04);
 
-  /* Accent — Weekly Pulse cobalt (links, tabs, outlines) */
-  --color-accent: oklch(0.45 0.12 255);
-  --color-accent-hover: oklch(0.38 0.11 255);
-  --color-accent-muted: oklch(0.48 0.06 255);
-  --color-accent-fill: oklch(0.9 0.03 255);
-  --color-accent-fill-hover: oklch(0.94 0.02 255);
+  /* Pure White / Celestial Light */
+  --color-pearl-glow: oklch(0.99 0.002 250);
+  --color-frost: oklch(0.92 0.012 255);
+  --color-deep-midnight: var(--color-abyss);
+  --color-steel: oklch(0.38 0.02 255);
 
-  /* CTA icon gradient — steel → cobalt */
-  --color-cta-icon-from: oklch(0.65 0.1 255);
-  --color-cta-icon-mid: oklch(0.48 0.12 255);
-  --color-cta-icon-to: oklch(0.4 0.1 255);
-  --color-cta-icon-glow-teal: color-mix(in oklch, var(--feature-return) 35%, transparent);
-  --color-cta-icon-glow-sky: color-mix(in oklch, var(--color-sky-from) 35%, transparent);
-  --color-cta-icon-glow-lavender: color-mix(in oklch, var(--feature-reflect) 28%, transparent);
+  /* Dark surfaces & Section backdrops */
+  --color-hero-bg: var(--color-abyss);
+  --color-hero-cta: oklch(0.16 0.025 255);
+  --color-hero-cta-ring: var(--color-pale-gold-border);
+  --color-footer-bg: oklch(0.095 0.018 258);
 
-  /* Sky banner — Today frost → warm paper */
-  --color-sky-from: oklch(0.9 0.025 255);
-  --color-sky-to: oklch(0.93 0.018 80);
+  /* Hairline border for editorial/page-chrome dividers */
+  --border-hairline: oklch(0.89 0.008 250 / 0.08);
 
-  /* Hero atmosphere — Today frost beam over cool slate */
-  --color-hero-sky-top: oklch(0.85 0.02 255 / 0.28);
-  --color-hero-sky-mid: oklch(0.55 0.035 255 / 0.22);
+  /* Accent mapping — Pale Gold holds the quiet focus */
+  --color-accent: var(--color-pale-gold);
+  --color-accent-hover: oklch(0.92 0.038 88);
+  --color-accent-muted: var(--color-pale-gold-dim);
+  --color-accent-fill: oklch(0.865 0.042 88 / 0.07);
+  --color-accent-fill-hover: oklch(0.865 0.042 88 / 0.14);
+  --color-pulse-coral: var(--color-pale-gold); /* retired warm coral replaced by pale gold */
 
-  /* ─── The Clearing — luminous cool air ────────────────
-   * Feeling borrowed from Superhuman’s hero atmosphere
-   * (open sky / soft light), not warm paper fog.
-   * Cool frost silver + a soft sky glow pocket. No purple.
-   * Brief §04: inside the air, not before a painted vista. */
-  --mist-glow: oklch(0.94 0.03 245);
-  --mist-deep: oklch(0.72 0.022 252);
+  /* Sky & Clearing aliases mapped to deep blue-black celestial gradient */
+  --color-sky-from: var(--color-abyss);
+  --color-sky-to: var(--color-abyss-elevated);
+  --color-hero-sky-top: oklch(0.89 0.008 250 / 0.06);
+  --color-hero-sky-mid: oklch(0.865 0.042 88 / 0.04);
+  --mist-glow: oklch(0.89 0.008 250 / 0.08);
+  --mist-deep: oklch(0.12 0.022 258);
+  --sky-horizon: oklch(0.16 0.028 260);
+  --sky-warm: oklch(0.865 0.042 88 / 0.06);
 
-  /* Scroll-driven enclosure (brief §04 spatial law: the field
-   * thickens as you go). Set 0→1 by HeroDrift; stays 0 for
-   * reduced motion and before hydration. */
-  --hero-depth: 0;
+  /* The Starlight Beam (Eärendil / Pale Gold) */
+  --beam-field: oklch(0.18 0.025 255);
+  --beam-deep: oklch(0.11 0.018 260);
+  --beam-light: oklch(0.89 0.015 250 / 0.6);
+  --beam-bright: var(--color-pearl-glow);
 
-  /* ─── Night sky (hero) ────────────────────────────────
-   * A generative field, not a photograph: deep indigo at the zenith
-   * warming toward the horizon where the phone sits — Rayleigh at night
-   * (§06.1). Stars are drawn on a 2D canvas; only the gradient lives here. */
-  --sky-horizon: oklch(0.3 0.045 260);
-  --sky-warm: oklch(0.4 0.05 70); /* faint dawn hint at the horizon */
+  /* Text on dark (our primary and only reading mode) */
+  --color-on-dark: var(--color-silver);
+  --color-on-dark-secondary: var(--color-silver-muted);
+  --color-on-dark-muted: var(--color-silver-dim);
 
-  /* ─── The Reaching Hand — Eärendil beam ───────────────
-   * Sampled from the Pacer surface (Figma 2093:1976), the brief's
-   * §12 locked target: the world closes in and a single beam of
-   * starlight descends. Replaces the retired forest metaphor. */
-  --beam-field: oklch(0.472 0.035 245); /* #4d6377 mid slate */
-  --beam-deep: oklch(0.315 0.02 272); /* #333345 closed corners */
-  --beam-light: oklch(0.878 0.026 258); /* #c2cee4 beam body */
-  --beam-bright: oklch(0.958 0.013 237); /* #ecf5fc beam entry */
+  /* ─── Semantic Aliases ───────────────────────────────── */
+  --background: var(--color-abyss);
+  --foreground: var(--color-silver);
+  --foreground-secondary: var(--color-silver-muted);
+  --foreground-muted: var(--color-silver-dim);
+  --foreground-reading: oklch(0.82 0.01 252);
 
-  /* Text on dark */
-  --color-on-dark: oklch(1 0 0 / 0.95);
-  --color-on-dark-secondary: oklch(1 0 0 / 0.8);
-  --color-on-dark-muted: oklch(1 0 0 / 0.62);
+  /* Surfaces: cool glass and monolithic dark planes */
+  --surface: oklch(0.15 0.022 258 / 0.65);
+  --surface-elevated: oklch(0.18 0.025 256 / 0.75);
+  --surface-tinted: oklch(0.865 0.042 88 / 0.04);
+  --surface-dark: oklch(0.13 0.02 258 / 0.85);
+  --surface-dark-elevated: oklch(0.18 0.024 256 / 0.9);
 
-  /* Text on light — solid L (no alpha); AA+ on mist / stone-100 */
-  --color-on-light: var(--color-soft-obsidian);
-  --color-on-light-secondary: oklch(0.42 0.005 39.398); /* ~7.6:1 body */
-  --color-on-light-muted: oklch(0.48 0.005 39.398); /* ~5.9:1 labels */
+  /* Borders: Hairline brushed silver and pale gold */
+  --border: oklch(0.89 0.008 250 / 0.1);
+  --border-strong: oklch(0.89 0.008 250 / 0.22);
+  --border-subtle: oklch(0.89 0.008 250 / 0.06);
+  --border-gold: var(--color-pale-gold-border);
+  --border-dark: oklch(0.89 0.008 250 / 0.1);
+  --border-dark-strong: oklch(0.89 0.008 250 / 0.2);
 
-  /* ─── Semantic aliases ───────────────────────────────── */
-  --background: var(--color-mist-white);
-  --foreground: var(--color-soft-obsidian);
-  --foreground-secondary: var(--color-on-light-secondary);
-  --foreground-muted: var(--color-on-light-muted);
-  --foreground-reading: color-mix(in oklch, var(--foreground) 72%, var(--foreground-secondary));
-
-  --surface: oklch(1 0 0 / 0.72);
-  --surface-elevated: oklch(1 0 0 / 0.88);
-  --surface-tinted: oklch(0.979 0.003 106.448 / 0.58);
-  --surface-dark: oklch(1 0 0 / 0.08);
-  --surface-dark-elevated: oklch(1 0 0 / 0.12);
-
-  --border: oklch(0 0 0 / 0.06);
-  --border-strong: var(--color-soft-obsidian);
-  --border-subtle: var(--color-stone-border);
-  --border-dark: oklch(1 0 0 / 0.12);
-  --border-dark-strong: oklch(1 0 0 / 0.2);
-
-  --focus: color-mix(in oklch, var(--color-accent) 55%, transparent);
+  --focus: oklch(0.865 0.042 88 / 0.45);
 
   /* ─── Layout ─────────────────────────────────────────── */
   --container: 1100px;
   --container-marketing: 1440px;
-  --gutter: clamp(16px, 4vw, 24px);
-  /* SSR fallback — useChromeHeight measures the real value after hydration */
+  --gutter: clamp(20px, 5vw, 32px);
   --header-height: 70px;
-  --scroll-anchor-gap: 16px; /* breathing room below sticky chrome on jump */
-  --hero-bleed: clamp(1rem, 3vh, 2.5rem);
+  --scroll-anchor-gap: 20px;
+  --hero-bleed: clamp(1.5rem, 4vh, 3.5rem);
   --hero-composition-max: 56rem;
 
-  /* Per-feature accents — from widget atmospheres; L tuned for AA on mist */
-  --feature-declare: oklch(0.45 0.12 255); /* Weekly Pulse cobalt */
-  --feature-return: oklch(0.48 0.05 169); /* Breathe sage */
-  --feature-reflect: oklch(0.5 0.09 350); /* Weekly Pulse magenta bridge */
-  --feature-presence: oklch(0.48 0.08 255); /* Pacer slate */
+  /* Feature accents — all tethered to the calm silver / pale gold spectrum */
+  --feature-declare: var(--color-silver);
+  --feature-return: var(--color-pale-gold);
+  --feature-reflect: oklch(0.84 0.02 255);
+  --feature-presence: var(--color-silver-muted);
 
-  --section-py: clamp(72px, 10vw, 128px);
-  --section-py-lg: clamp(92px, 12vw, 168px);
-  --section-py-compact: clamp(48px, 6vw, 80px);
+  --section-py: clamp(88px, 12vw, 156px);
+  --section-py-lg: clamp(112px, 15vw, 200px);
+  --section-py-compact: clamp(56px, 8vw, 96px);
 
   /* ─── Radius ─────────────────────────────────────────── */
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
   --radius-pill: 9999px;
-  /* Device corner radius as a proportion of screen width — one iPhone, so the
-   * hero and feature screenshots must round identically at every size. */
   --phone-radius-ratio: 0.1333;
 
-  /* ─── Compound CTA — exact port of Figma 2557:1914 ────
-   * A translucent sheen laid over the button's own fill: warm amber catching
-   * the trailing edge, falling to deep navy. Both stops sit at 25% alpha, so
-   * this reads as light on a surface, not a painted gradient. The warm end is
-   * the brief's reserved Eärendil accent (§06.4) — the sky and focus star stay
-   * cool, so the one warm point of light lives on the action. */
+  /* ─── Monolithic Sheen & CTA ─────────────────────────── */
   --cta-sheen-angle: 260.704deg;
-  --cta-sheen-warm: rgba(242, 187, 110, 0.25);
-  --cta-sheen-dark: rgba(1, 4, 30, 0.25);
+  --cta-sheen-warm: oklch(0.865 0.042 88 / 0.16);
+  --cta-sheen-dark: oklch(0.12 0.022 258 / 0.4);
   --radius-cta: 20px;
 
-  /* ─── Shadows ────────────────────────────────────────── */
-  --shadow-soft: 0 18px 60px oklch(0 0 0 / 0.12);
-  --shadow-hero: 0 28px 120px oklch(0 0 0 / 0.28);
-  --shadow-cta-dark: oklch(0.191 0.002 106.586 / 0.24) 0 1px 2px, var(--color-hero-cta-ring) 0 0 0 1px;
-  --shadow-cta-icon: oklch(0.191 0.002 106.586 / 0.08) 0 1px 2px;
+  /* ─── Backlit Halos & Shadows ────────────────────────── */
+  --shadow-soft: 0 24px 80px oklch(0 0 0 / 0.5);
+  --shadow-hero: 0 32px 140px oklch(0 0 0 / 0.7);
+  --shadow-cta-dark: 0 0 0 1px var(--border-gold), 0 8px 32px oklch(0 0 0 / 0.4);
+  --glow-halo: 0 0 80px 10px oklch(0.865 0.042 88 / 0.08);
 
-  /* Loaded weights only — Inter 400/500/600, Cormorant 300–600, Newsreader 400/500 */
+  /* Loaded weights — Cormorant 300 (light/thin), Inter 300/400/500 */
+  --font-weight-thin: 300;
   --font-weight-body: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
 
-  /* ─── Font roles ─────────────────────────────────────── */
-  --font-heading-serif: var(--font-serif), "Cormorant Garamond", serif;
+  /* ─── Font Roles & Breathing Typography ───────────────── */
+  --font-heading-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
   --font-body-serif: var(--font-body), "Newsreader", Georgia, serif;
   --font-ui-sans: var(--font-sans), "Inter", -apple-system, sans-serif;
   --font-size-body: 1.125rem;
-  --font-size-ui: 0.8125rem; /* 13px — nav, tabs, buttons */
-  --font-size-label: 0.875rem; /* 14px — eyebrows, page labels */
-  --font-size-ui-caption: 0.75rem; /* 12px — mock UI only */
-  --font-size-ui-micro: 0.5625rem; /* 9px — decorative phone chrome only */
-  --line-height-body: 1.7; /* brand floor — see shared-principles.md */
-  --line-height-display: 1.0; /* large serif display — hero, section headings */
-  --line-height-heading: 1.08; /* smaller headings — feature titles */
-  --line-height-label: 1.2;
+  --font-size-ui: 0.8125rem;
+  --font-size-label: 0.875rem;
+  --font-size-ui-caption: 0.75rem;
+  --font-size-ui-micro: 0.625rem;
+  --line-height-body: 1.8;
+  --line-height-display: 1.12;
+  --line-height-heading: 1.16;
+  --line-height-label: 1.3;
 
-  /* Optical letter-spacing, tightening as the type grows.
-   * Cormorant at display sizes wants noticeably negative tracking. */
-  --tracking-display: -0.028em;
-  --tracking-heading: -0.018em;
+  /* Optical letter-spacing: letters that breathe, never cramped */
+  --tracking-display: -0.005em;
+  --tracking-heading: 0.01em;
+  --tracking-eyebrow: 0.22em;
+  --tracking-label: 0.14em;
 
-  /* ─── Motion (keep in sync with lib/motion/tokens.ts) ── */
-  --ease-hesya: cubic-bezier(0.32, 0.72, 0, 1);
-  --dur-micro: 0.25s;
-  --dur-hover: 0.35s;
-  --dur-chrome: 0.28s;
-  --dur-reveal: 0.45s;
-  --dur-section: 1.2s;
+  /* ─── Motion: A Half-Beat Slower ─────────────────────── */
+  --ease-hesya: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-hesya-hover: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-micro: 0.35s;
+  --dur-hover: 0.5s;
+  --dur-chrome: 0.38s;
+  --dur-reveal: 0.9s;
+  --dur-reveal-copy: 0.7s;
+  --dur-section: 1.6s;
+  --dur-glow: 6s;
 
   /* ─── Z-index ────────────────────────────────────────── */
   --z-header: 200;

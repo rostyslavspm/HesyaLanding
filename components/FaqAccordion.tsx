@@ -17,7 +17,7 @@ function FaqItem({ question, answer }: FaqItem) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-[var(--color-soft-obsidian)]/10">
+    <div className="border-b border-[var(--border-subtle)]">
       <button
         onClick={() => setOpen(!open)}
         className={`${TYPE.proseQuestion} flex w-full items-center justify-between gap-4 py-6 text-start transition-[opacity,transform] duration-200 ease-[var(--ease-hesya)] hover:opacity-70 active:scale-[0.96]`}

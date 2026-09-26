@@ -1,17 +1,24 @@
+"use client";
+
+import type { Ref } from "react";
 import { BTN, URLS } from "@/lib/design-system";
+import { useHeroCtaInView } from "@/hooks/useHeroCtaInView";
 
 type NavbarActionsProps = {
   variant?: "light" | "dark";
   menuOpen?: boolean;
   onOpenMenu?: () => void;
+  triggerRef?: Ref<HTMLButtonElement>;
 };
 
 export default function NavbarActions({
   variant = "dark",
   menuOpen = false,
   onOpenMenu,
+  triggerRef,
 }: NavbarActionsProps) {
   const isDark = variant === "dark";
+  const heroCtaInView = useHeroCtaInView();
   const textLink = isDark ? "nav-link" : "nav-link-light";
 
   // Responsive show/hide lives on plain wrappers: `.nav-link` and
@@ -25,7 +32,10 @@ export default function NavbarActions({
         </a>
       </span>
 
-      <span className="hidden sm:block">
+      <span
+        className="header-cta hidden sm:block"
+        data-concealed={heroCtaInView ? "true" : "false"}
+      >
         <a
           href={URLS.appStore}
           target="_blank"
@@ -37,30 +47,17 @@ export default function NavbarActions({
       </span>
 
       <button
+        ref={triggerRef}
         type="button"
-        className={`inline-flex h-11 w-11 items-center justify-center rounded-lg transition-transform duration-200 ease-[var(--ease-hesya)] active:scale-[0.96] md:hidden ${
-          isDark
-            ? "bg-white/5 shadow-[0_0_0_1px_oklch(1_0_0/0.12)]"
-            : "bg-white/80 shadow-[0_0_0_1px_oklch(0_0_0/0.08)]"
-        }`}
+        className="menu-trigger"
         onClick={onOpenMenu}
         aria-label="Open menu"
         aria-expanded={menuOpen}
         aria-controls="mobile-nav"
       >
-        <span className="flex flex-col gap-1">
-          <span
-            className="block h-0.5 w-5"
-            style={{
-              background: isDark ? "var(--color-on-dark)" : "var(--foreground)",
-            }}
-          />
-          <span
-            className="block h-0.5 w-5"
-            style={{
-              background: isDark ? "var(--color-on-dark)" : "var(--foreground)",
-            }}
-          />
+        <span className="menu-trigger-bars" aria-hidden>
+          <span />
+          <span />
         </span>
       </button>
     </div>

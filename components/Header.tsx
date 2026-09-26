@@ -15,6 +15,7 @@ type HeaderProps = {
 
 export default function Header({ variant = "light" }: HeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   useHeaderScroll(headerRef);
   useChromeHeight(headerRef, "--header-height");
@@ -51,11 +52,16 @@ export default function Header({ variant = "light" }: HeaderProps) {
             variant={isDark ? "dark" : "light"}
             menuOpen={menuOpen}
             onOpenMenu={() => setMenuOpen(true)}
+            triggerRef={menuTriggerRef}
           />
         </div>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        triggerRef={menuTriggerRef}
+      />
     </>
   );
 }

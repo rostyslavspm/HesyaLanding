@@ -3,11 +3,39 @@ import Link from "next/link";
 import MarketingChrome from "../../components/MarketingChrome";
 import FaqSection from "../../components/FaqAccordion";
 import Footer from "../../components/Footer";
+import JsonLd, { createFaqJsonLd, createBreadcrumbs } from "../../components/JsonLd";
 import { LAYOUT_CLASS, TYPE } from "@/lib/design-system";
 
 export const metadata: Metadata = {
-  title: "Support & FAQ: Hesya",
-  description: "Get help with Hesya. Frequently asked questions and support contact.",
+  title: "Support & FAQ — Hesya",
+  description:
+    "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+  alternates: {
+    canonical: "/support",
+  },
+  openGraph: {
+    title: "Support & FAQ — Hesya",
+    description:
+      "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+    url: "https://hesya.app/support",
+    siteName: "Hesya",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Support & FAQ — Hesya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support & FAQ — Hesya",
+    description:
+      "Get help with Hesya. Frequently asked questions about focus sessions, Screen Time drift cues, privacy, widgets, and troubleshooting.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const gettingStarted = [
@@ -99,7 +127,7 @@ const general = [
   {
     question: "What devices are supported?",
     answer:
-      "iPhone on iOS 26 or later. On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.",
+      "iPhone on iOS 17.0 or later (and iOS 18/26+). On macOS Tahoe, your session's Live Activity can appear in the Mac menu bar while you work.",
   },
   {
     question: "Can I use Hesya on multiple devices?",
@@ -108,24 +136,39 @@ const general = [
   },
 ];
 
+const allFaqs = [
+  ...gettingStarted,
+  ...privacy,
+  ...usingHesya,
+  ...troubleshooting,
+  ...general,
+];
+
+const faqJsonLd = createFaqJsonLd(allFaqs);
+const supportBreadcrumbs = createBreadcrumbs([
+  { name: "Home", path: "/" },
+  { name: "Support & FAQ", path: "/support" },
+]);
+
 export default function SupportPage() {
   return (
     <>
-      <MarketingChrome variant="light" />
-      <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
+      <JsonLd data={[faqJsonLd, supportBreadcrumbs]} />
+      <MarketingChrome variant="dark" />
+      <main id="main" className="min-h-[100dvh] bg-[var(--color-abyss)] text-[var(--color-silver)] py-32 px-6" aria-label="Support and FAQ">
         <div className={LAYOUT_CLASS.prose}>
           <Link href="/" className={`${TYPE.pageBack} mb-12`}>
             &larr; Back to Hesya
           </Link>
 
           <div className="mb-16 text-center">
-            <h1 className={`${TYPE.editorialItalic} mb-6 text-[var(--color-soft-obsidian)]`}>
+            <h1 className={`${TYPE.editorialItalic} mb-6 text-[var(--color-silver)]`}>
               Support & FAQ
             </h1>
             <p className={TYPE.proseLead}>Find answers to common questions about Hesya.</p>
           </div>
 
-          <div className="mb-20 space-y-12 text-[var(--color-soft-obsidian)]">
+          <div className="mb-20 space-y-12 text-[var(--color-silver)]">
             <FaqSection title="Getting Started" items={gettingStarted} />
             <FaqSection title="Privacy & Permissions" items={privacy} />
             <FaqSection title="Using Hesya" items={usingHesya} />
@@ -133,7 +176,7 @@ export default function SupportPage() {
             <FaqSection title="General" items={general} />
           </div>
 
-          <div className="mt-16 rounded-[3rem] bg-[var(--color-pearl-glow)] p-12 text-center shadow-[0_8px_30px_oklch(0_0_0/0.04)]">
+          <div className="mt-16 rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--color-abyss-elevated)] p-12 text-center">
             <h2 className={`${TYPE.editorialSection} mb-4`}>
               Still need help?
             </h2>

@@ -33,36 +33,37 @@
   margin-inline: auto;
 }
 
-/* ─── Section shells ─────────────────────────────────── */
+/* ─── Section shells: Light on Darkness ────────────────── */
 
 .section-dark {
-  background-color: var(--color-hero-bg);
-  color: var(--color-on-dark);
+  background-color: var(--color-abyss);
+  color: var(--color-silver);
 }
 
 .section-stone {
-  background-color: var(--color-stone-100);
-  color: var(--color-on-light);
+  background-color: var(--color-abyss);
+  color: var(--color-silver);
 }
 
 .section-mist {
-  background-color: var(--color-mist-white);
-  color: var(--color-on-light);
+  background-color: var(--color-abyss);
+  color: var(--color-silver);
 }
 
 .section-sky {
-  background: linear-gradient(
-    135deg,
-    var(--color-sky-from) 0%,
-    var(--color-sky-to) 100%
+  background: radial-gradient(
+    ellipse 85% 55% at 50% 0%,
+    oklch(0.165 0.026 256) 0%,
+    var(--color-abyss) 100%
   );
-  color: var(--color-on-light);
+  color: var(--color-silver);
 }
 
 .section-footer {
   background-color: var(--color-footer-bg);
-  color: var(--color-on-dark-secondary);
+  color: var(--color-silver-muted);
 }
+
 
 .section-pad {
   padding-block: var(--section-py);
@@ -165,7 +166,7 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: var(--line-height-body);
-  color: var(--color-on-light-secondary);
+  color: var(--color-silver-muted);
   text-wrap: pretty;
 }
 
@@ -363,14 +364,14 @@
   letter-spacing: 0.1em;
   line-height: var(--line-height-label);
   text-transform: uppercase;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 64%, transparent);
+  color: var(--color-silver-dim);
   transition:
     color var(--dur-micro) var(--ease-hesya),
     opacity var(--dur-micro) var(--ease-hesya);
 }
 
 .text-page-back:hover {
-  color: var(--color-soft-obsidian);
+  color: var(--color-silver);
 }
 
 .text-page-label {
@@ -380,7 +381,7 @@
   letter-spacing: 0.1em;
   line-height: var(--line-height-label);
   text-transform: uppercase;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 64%, transparent);
+  color: var(--color-silver-dim);
 }
 
 .text-editorial-section {
@@ -391,7 +392,7 @@
   letter-spacing: -0.01em;
   line-height: var(--line-height-heading);
   text-wrap: balance;
-  color: var(--color-soft-obsidian);
+  color: var(--color-silver);
 }
 
 .text-prose-body {
@@ -400,7 +401,7 @@
   font-weight: 400;
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 80%, transparent);
+  color: var(--color-silver);
 }
 
 .text-prose-lead {
@@ -409,7 +410,7 @@
   font-weight: 400;
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 70%, transparent);
+  color: var(--color-silver-muted);
 }
 
 .text-prose-muted {
@@ -418,7 +419,7 @@
   font-weight: var(--font-weight-body);
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 64%, transparent);
+  color: var(--color-silver-dim);
 }
 
 .text-prose-question {
@@ -427,7 +428,7 @@
   font-weight: 500;
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: var(--color-soft-obsidian);
+  color: var(--color-silver);
 }
 
 .text-prose-answer {
@@ -436,7 +437,7 @@
   font-weight: 400;
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 70%, transparent);
+  color: var(--color-silver-muted);
 }
 
 .text-prose-stack > p,
@@ -447,100 +448,76 @@
   font-weight: 400;
   line-height: var(--line-height-body);
   text-wrap: pretty;
-  color: color-mix(in oklch, var(--color-soft-obsidian) 80%, transparent);
+  color: var(--color-silver);
 }
 
 .text-prose-stack strong {
-  color: var(--color-soft-obsidian);
+  color: var(--color-silver);
   font-weight: 500;
 }
 
-/* ─── Surfaces & glass ───────────────────────────────── */
+/* ─── Surfaces & Cool Materials (Quiet Authority) ────── */
 
 .glass {
   background: var(--surface);
   border: 1px solid var(--border);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(24px) saturate(140%);
 }
 
 .glass-dark {
   background: var(--surface-dark);
   border: 1px solid var(--border-dark);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(24px) saturate(140%);
 }
 
-/**
- * Superhuman-style glass panel with gradient border mask.
- * Use on cards floating over dark sections.
- *
- * Fill opacity matched directly against superhuman.com's own hero cards
- * (inspected live: linear-gradient(rgba(40,22,71,.3) 0%, rgba(40,22,71,.2)
- * 100%) under the same 210deg/18%→transparent sheen). This used to be
- * 55%→35% — nearly double theirs — reading as solid panels rather than
- * glass over the starfield.
- */
-.glass-panel {
-  position: relative;
-  border-radius: var(--radius-lg);
-  padding: 1rem;
-  background:
-    linear-gradient(
-      210deg,
-      oklch(1 0 0 / 0.18) 0%,
-      transparent 30%
-    ),
-    linear-gradient(
-      color-mix(in oklch, var(--color-hero-bg) 30%, transparent) 0%,
-      color-mix(in oklch, var(--color-steel) 20%, transparent) 100%
-    );
-  backdrop-filter: blur(12px);
-  animation: ambientBreath 30s ease-in-out infinite;
+/* Brushed Silver Rim */
+.rim-silver {
+  border: 1px solid color-mix(in oklch, var(--color-silver) 16%, transparent);
+  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.08);
 }
 
-@keyframes ambientBreath {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+/* Pale Gold Rim */
+.rim-gold {
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 24px -4px color-mix(in oklch, var(--color-pale-gold) 14%, transparent);
+}
+
+/* Backlit Halo — subtle, slow, luminous breathing bloom */
+.backlit-halo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(64px);
+  background: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--color-pale-gold) 14%, transparent) 0%,
+    color-mix(in oklch, var(--color-silver) 5%, transparent) 50%,
+    transparent 75%
+  );
+  animation: haloBreath 8s ease-in-out infinite;
+}
+
+@keyframes haloBreath {
+  0%, 100% {
+    opacity: 0.75;
+    transform: scale(0.96);
   }
   50% {
-    transform: translateY(-1px) scale(1.002);
-    opacity: 0.99;
+    opacity: 1;
+    transform: scale(1.04);
   }
 }
 
-.glass-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  padding: 1px;
+/* Raw Silk Sheen — cool anisotropic diagonal highlight */
+.raw-silk-sheen {
   background: linear-gradient(
-    45deg,
-    color-mix(in oklch, var(--color-frost) 22%, transparent),
-    oklch(1 0 0 / 0.4)
+    140deg,
+    color-mix(in oklch, var(--color-silver) 4%, transparent) 0%,
+    transparent 45%,
+    color-mix(in oklch, var(--color-pale-gold) 3%, transparent) 100%
   );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
 }
 
-.glass-panel-sm {
-  border-radius: var(--radius-xl);
-  padding: 0.25rem;
-}
-
-.glass-panel-compact {
-  padding: 0.75rem;
-  border-radius: var(--radius-lg);
-}
 
 /* ─── Borders & grid patterns ────────────────────────── */
 
@@ -556,8 +533,8 @@
 .bg-hatch-diagonal {
   background-image: repeating-linear-gradient(
     45deg,
-    var(--color-stone-border),
-    var(--color-stone-border) 1px,
+    var(--border-hairline),
+    var(--border-hairline) 1px,
     transparent 1px,
     transparent 5px
   );
@@ -566,19 +543,14 @@
 .bg-hatch-row {
   background-image: repeating-linear-gradient(
     90deg,
-    var(--color-stone-border),
-    var(--color-stone-border) 4px,
+    var(--border-hairline),
+    var(--border-hairline) 4px,
     transparent 4px,
     transparent 8px
   );
   background-size: 100% 1.5px;
   background-repeat: no-repeat;
   background-position: 0 100%;
-}
-
-.bg-tab-bar {
-  background-color: oklch(0.97 0.005 95.1);
-  border: 1px solid var(--color-stone-border);
 }
 
 /* ─── Buttons ────────────────────────────────────────── */
@@ -621,89 +593,96 @@
 }
 
 /**
- * Compound CTA surface (Figma 2557:1914) — declared once, shared by both
- * primary CTAs so the sheen can never drift between them.
+ * Compound CTA surface — Quiet Authority
+ * Restrained obsidian glass pill with hairline pale gold sheen.
  */
 .btn-cta-dark,
 .btn-cta-banner {
   border-radius: var(--radius-cta);
   background:
     linear-gradient(
-      var(--cta-sheen-angle),
+      var(--cta-sheen-angle) in oklab,
       var(--cta-sheen-warm) 2.8%,
       var(--cta-sheen-dark) 42.637%
     ),
-    var(--color-hero-cta);
+    oklch(0.145 0.022 258 / 0.9);
 }
 
 .btn-cta-dark {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.375rem 0.375rem 0.375rem 1rem;
-  border: 1px solid var(--border-dark-strong);
-  box-shadow: var(--shadow-cta-dark);
-  color: var(--color-on-dark);
+  padding: 0.375rem 0.375rem 0.375rem 1.125rem;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 24px -4px color-mix(in oklch, var(--color-pale-gold) 14%, transparent), 0 8px 32px oklch(0 0 0 / 0.4);
+  color: var(--color-silver);
   font-size: var(--font-size-ui);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.12em;
   line-height: 1;
   outline-offset: 2px;
   transition:
-    border-color var(--dur-micro) var(--ease-hesya),
-    transform var(--dur-micro) var(--ease-hesya);
+    border-color var(--dur-hover) var(--ease-hesya),
+    box-shadow var(--dur-hover) var(--ease-hesya),
+    transform var(--dur-hover) var(--ease-hesya);
 }
 
 .btn-cta-dark:hover {
-  border-color: oklch(1 0 0 / 0.24);
+  border-color: color-mix(in oklch, var(--color-pale-gold) 55%, transparent);
+  box-shadow: 0 0 32px 0 color-mix(in oklch, var(--color-pale-gold) 22%, transparent), 0 12px 40px oklch(0 0 0 / 0.5);
 }
 
 /**
- * CTA icon button — exact port of Figma 2504:1895 (54×42, radius 14).
- * It nests in the Compound CTA's right edge, so its radius is the pill's
- * 20px minus the 6px inset — the concentric value Figma also specifies.
- *
- * This is the Eärendil light at full strength: warm amber catching the top,
- * falling to burnt orange, with a teal flare and a dark bloom at the base.
- * Layers, back to front: gradient → flares → inset sheen → glyph.
+ * <CtaArrow> — the "Get the app" arrow chip (Figma: Hesya-App, CTA 2504:1895).
+ * A warm ember caught in glass: gradient body, a cool teal flare lower-left, a
+ * burnt shadow lower-right, inner highlights, and a hairline arrow. Values are
+ * the Figma layer values converted to oklch; Figma's GLASS and NOISE effects
+ * have no CSS equivalent (the page's own grain overlay covers the noise).
+ * 14px radius = --radius-cta minus the host CTA's 6px padding (concentric).
  */
-.btn-cta-icon {
+.cta-arrow {
+  --cta-arrow-rim-light: oklch(0.979 0.028 91.6 / 0.5);
+  --cta-arrow-rim-teal: oklch(0.625 0.042 208.5);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
   width: 3.375rem; /* 54px */
   height: 2.625rem; /* 42px */
-  padding: 0.75rem;
   overflow: hidden;
   border-radius: calc(var(--radius-cta) - 0.375rem); /* 14px */
-  border: 1px solid rgba(255, 248, 227, 0.5);
-  background: linear-gradient(
-    180deg,
-    #fff2e6 0%,
-    #fdc873 30.014%,
-    #ad4200 100%
-  );
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        180deg,
+        oklch(0.968 0.021 65.3) 0%,
+        oklch(0.863 0.119 77.9) 30.014%,
+        oklch(0.519 0.153 43.2) 100%
+      )
+      padding-box,
+    linear-gradient(225deg, var(--cta-arrow-rim-light), var(--cta-arrow-rim-teal))
+      border-box;
   box-shadow:
-    0 -2px 4px 0 rgba(255, 245, 216, 0.25),
-    -1px 1px 2px 0 rgba(255, 255, 255, 0.25),
-    1px 0 2px 0 rgba(233, 131, 43, 0.5);
+    1px 0 2px 0 oklch(0.708 0.157 56 / 0.5),
+    -1px 1px 2px 0 oklch(1 0 0 / 0.25),
+    0 -2px 4px 0 oklch(0.97 0.039 91.2 / 0.25);
+  transition: filter var(--dur-hover) var(--ease-hesya);
 }
 
-/* Teal flare, lower left */
-.btn-cta-icon-flare-a {
+/* Cool teal flare, lower left */
+.cta-arrow-flare-a {
   position: absolute;
   left: -1px;
   top: 20px;
   width: 27px;
   height: 21px;
   border-bottom-left-radius: 14px;
-  background: rgba(135, 181, 186, 0.85);
-  filter: blur(2.9px);
+  background: oklch(0.742 0.049 204.5 / 0.85);
+  filter: blur(3px);
 }
 
-/* Dark bloom along the base */
-.btn-cta-icon-flare-b {
+/* Burnt shadow along the base (Figma: linear burn → closest CSS: multiply) */
+.cta-arrow-flare-b {
   position: absolute;
   left: 16px;
   top: 21px;
@@ -711,52 +690,67 @@
   height: 20px;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 14px;
-  background: rgba(0, 0, 0, 0.75);
-  filter: blur(4.55px);
-  box-shadow: 0 -5px 8px 0 rgba(215, 83, 0, 0.25);
+  background: oklch(0 0 0 / 0.75);
+  filter: blur(4.5px);
+  mix-blend-mode: multiply;
+  box-shadow: 0 -5px 8px 0 oklch(0.609 0.181 42.9 / 0.25);
 }
 
-/* Inset sheen — sits above the flares, as in the source */
-.btn-cta-icon-sheen {
+/* Inner highlights — a white edge and a warm top light */
+.cta-arrow-sheen {
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
   box-shadow:
-    inset 6px 1px 7px 0 rgba(255, 255, 255, 0.6),
-    inset 0 15px 5px 0 rgba(255, 234, 183, 0.55);
+    inset 6px 1px 7px 0 oklch(1 0 0 / 0.6),
+    inset 0 15px 5px 0 oklch(0.942 0.069 88.3 / 0.55);
 }
 
-.btn-cta-icon-glyph {
+.cta-arrow-glyph {
   position: relative;
   z-index: 1;
-  color: rgba(255, 248, 227, 0.95);
+  color: oklch(1 0 0);
+  transition: transform var(--dur-hover) var(--ease-hesya);
 }
 
-/* ArrowUpRight is asymmetric — optical nudge inside the icon well */
-.btn-cta-icon > svg {
-  transform: translate(0.5px, -0.5px);
+/* The small delight: on hover the arrow leans a few pixels toward where it's
+ * pointing and the warm light inside brightens — slow, never a bounce. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :is(a, button):hover > .cta-arrow .cta-arrow-glyph {
+    transform: translateX(3px);
+  }
+}
+
+@media (hover: hover) {
+  :is(a, button):hover > .cta-arrow {
+    filter: brightness(1.08);
+  }
 }
 
 .btn-cta-filled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem; /* 44px — touch target floor */
-  padding: 0.375rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent-fill);
-  color: var(--color-soft-obsidian);
+  min-height: 2.75rem; /* 44px */
+  padding: 0.375rem 1.125rem;
+  border-radius: var(--radius-cta);
+  background: color-mix(in oklch, var(--color-pale-gold) 10%, transparent);
+  border: 1px solid var(--border-gold);
+  color: var(--color-silver);
   font-size: var(--font-size-ui);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
   line-height: 1.125;
   transition:
-    background var(--dur-micro) var(--ease-hesya),
-    transform var(--dur-micro) var(--ease-hesya);
+    background var(--dur-hover) var(--ease-hesya),
+    border-color var(--dur-hover) var(--ease-hesya),
+    transform var(--dur-hover) var(--ease-hesya);
 }
 
 .btn-cta-filled:hover {
-  background: var(--color-accent-fill-hover);
+  background: color-mix(in oklch, var(--color-pale-gold) 18%, transparent);
+  border-color: color-mix(in oklch, var(--color-pale-gold) 45%, transparent);
 }
 
 .btn-cta-outline {
@@ -765,22 +759,23 @@
   justify-content: center;
   min-height: 3.25rem;
   padding: 0.375rem 1.25rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-cta);
   background: transparent;
-  box-shadow: inset 0 0 0 1px var(--color-accent);
-  color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-silver-dim);
+  color: var(--color-silver);
   font-size: var(--font-size-ui);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
   line-height: 1;
   transition:
-    box-shadow var(--dur-micro) var(--ease-hesya),
-    transform var(--dur-micro) var(--ease-hesya),
-    color var(--dur-micro) var(--ease-hesya);
+    box-shadow var(--dur-hover) var(--ease-hesya),
+    transform var(--dur-hover) var(--ease-hesya),
+    color var(--dur-hover) var(--ease-hesya);
 }
 
 .btn-cta-outline:hover {
-  box-shadow: inset 0 0 0 2px var(--color-accent-hover);
-  color: var(--color-accent-hover);
+  box-shadow: inset 0 0 0 1px var(--border-gold);
+  color: var(--color-pale-gold);
 }
 
 .btn-cta-banner {
@@ -807,7 +802,7 @@
   justify-content: center;
   min-height: 2.75rem;
   padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-cta);
   border: 1px solid var(--border-dark-strong);
   background: transparent;
   color: var(--color-on-dark);
@@ -829,9 +824,9 @@
   align-items: center;
   justify-content: center;
   padding: 1rem 2.5rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-cta);
   background-color: var(--color-pearl-glow);
-  color: var(--color-soft-obsidian);
+  color: var(--color-abyss);
   font-weight: 500;
   letter-spacing: 0.05em;
   box-shadow:
@@ -851,41 +846,6 @@
   transform: scale(0.96);
 }
 
-/* ─── Feature list bullets ───────────────────────────── */
-
-.list-feature {
-  list-style: none;
-  padding-inline-start: 0;
-}
-
-.list-feature li {
-  position: relative;
-  padding-inline-start: 1.625rem;
-  font-family: var(--font-body-serif);
-  /* Deliberately larger than the description above it: the list is the
-   * scannable payload, the paragraph is context. */
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-body);
-  letter-spacing: 0;
-  line-height: var(--line-height-body);
-}
-
-.list-feature li + li {
-  margin-top: 1.75rem;
-}
-
-.list-feature li::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: 0;
-  top: 50%;
-  width: 0.75rem;
-  height: 0.75rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 50%;
-  transform: translateY(-50%);
-}
-
 /* ─── Tabs (suite subnav) ────────────────────────────── */
 
 .feature-suite-intro {
@@ -895,7 +855,7 @@
 .tab-bar {
   display: flex;
   background: transparent;
-  border-block: 1px solid var(--color-stone-border);
+  border-block: 1px solid var(--border-hairline);
 }
 
 .tab-item {
@@ -907,7 +867,7 @@
   gap: 0.35rem;
   min-height: 4.25rem;
   padding: 0.5rem 0.25rem 0.75rem;
-  border-inline-end: 1px solid var(--color-stone-border);
+  border-inline-end: 1px solid var(--border-hairline);
   background: transparent;
   text-decoration: none;
   font-family: var(--font-ui-sans);
@@ -915,7 +875,7 @@
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-on-light);
+  color: var(--color-silver);
   cursor: pointer;
   transition:
     background var(--dur-micro) var(--ease-hesya),
@@ -923,7 +883,7 @@
 }
 
 .tab-item-icon {
-  transition: transform 180ms var(--ease-hesya);
+  transition: transform var(--dur-micro) var(--ease-hesya);
   transform: translateY(0);
 }
 
@@ -944,20 +904,21 @@
 }
 
 .tab-item:hover:not([data-active="true"]) {
-  background: var(--color-stone-50);
+  background: color-mix(in oklch, var(--color-silver) 4%, transparent);
 }
 
 .tab-item:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--border-gold);
   outline-offset: -2px;
 }
 
 .tab-item[data-active="true"] {
-  color: var(--color-soft-obsidian);
+  color: var(--color-silver);
+  background: color-mix(in oklch, var(--color-pale-gold) 6%, transparent);
 }
 
 .tab-item[data-active="false"] {
-  color: var(--color-on-light-muted);
+  color: var(--color-silver-dim);
 }
 
 /* ─── Header ─────────────────────────────────────────── */
@@ -977,6 +938,23 @@
   animation: header-enter var(--dur-chrome) var(--ease-hesya) both;
 }
 
+/* Held back while the hero's own CTA is on screen — one invitation per view.
+ * visibility (not just opacity) takes it out of the tab order when hidden;
+ * its transition is delayed on hide so the fade can finish first. */
+.header-cta {
+  transition:
+    opacity var(--dur-hover) var(--ease-hesya),
+    visibility 0s linear 0s;
+}
+
+.header-cta[data-concealed="true"] {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-hover) var(--ease-hesya),
+    visibility 0s linear var(--dur-hover);
+}
+
 .header-sticky {
   position: sticky;
   top: 0;
@@ -988,22 +966,16 @@
     border-color var(--dur-hover) var(--ease-hesya);
 }
 
-.header-sticky[data-scrolled] {
-  background: color-mix(in oklch, var(--background) 55%, transparent);
-  backdrop-filter: blur(24px) saturate(160%);
-  border-bottom-color: var(--border-subtle);
+.header-sticky[data-scrolled],
+.header-dark[data-scrolled] {
+  background: oklch(0.12 0.022 258 / 0.82);
+  backdrop-filter: blur(28px) saturate(140%);
+  border-bottom: 1px solid color-mix(in oklch, var(--color-silver) 10%, transparent);
+  box-shadow: 0 12px 32px -8px oklch(0 0 0 / 0.5);
 }
 
 .header-dark {
   background: transparent;
-}
-
-/* Frosted, not solid: enough tint to hold the nav, sheer enough that the
- * blur actually reads as glass over the sky moving beneath it. */
-.header-dark[data-scrolled] {
-  background: color-mix(in oklch, var(--color-hero-bg) 45%, transparent);
-  backdrop-filter: blur(24px) saturate(160%);
-  border-bottom-color: var(--border-dark);
 }
 
 .link-animated {
@@ -1114,18 +1086,9 @@
   min-height: 0;
   width: 100%;
   padding-bottom: 0;
-  /*
-   * Nothing in this subtree is ever meant to receive pointer events — the
-   * phone and all 4 desktop cards already set pointer-events-none
-   * individually, and the mobile widget card is informational only. Set
-   * it once at the root instead of chasing every wrapper: .hero-composition
-   * needed the same fix (its own comment has the full story — its grid box
-   * is sized to the phone's full layout height, tall enough post-resize to
-   * cover the CTA above it and swallow clicks meant for it), and
-   * .hero-showcase-stage turned out to need it too once that was fixed.
-   * Rather than patch each ancestor individually as the actual intercepting
-   * element kept moving up the tree, cut it off at the top.
-   */
+  /* Nothing here takes input. Grid/flex boxes size to the phone's full,
+   * untransformed layout height, which reaches up over the hero CTA — cut
+   * pointer events off at the root so no wrapper can swallow its clicks. */
   pointer-events: none;
 }
 
@@ -1138,84 +1101,38 @@
 
 .hero-composition {
   display: grid;
-  grid-template-columns: 1fr;
   justify-items: center;
   width: min(100%, var(--hero-composition-max));
   margin-inline: auto;
-  /*
-   * BUG — the hero CTA was unclickable. document.elementFromPoint() at the
-   * button's own coordinates returned THIS element, not the link — even
-   * though the phone (pointer-events-none) and all 4 cards
-   * (pointer-events-none) are already correctly non-interactive.
-   * CSS Grid sizes .hero-composition's own box to its tallest item (the
-   * phone), and that's the phone's full LAYOUT height, unaffected by its
-   * translateY crop — after the recent sizing fixes made the phone
-   * substantially taller, that box now extends upward past where the
-   * phone is actually visible, far enough to cover the CTA in .hero-copy
-   * above it. Nothing inside this composition is ever meant to receive
-   * pointer events, so the empty space intercepting clicks was always a
-   * bug, just one that only became reachable once the box grew tall
-   * enough to overlap something real.
-   */
   pointer-events: none;
 }
 
-.hero-composition-side {
-  display: none;
-}
-
 .hero-phone-mockup {
-  /* Mobile: substantial presence without eating the copy */
-  --phone-w: clamp(12rem, 46vw, 18rem);
+  /* Mobile: width-led, but capped by the height left under the copy so the
+   * phone can never cover the CTA on short phones. 16rem = the copy's worst
+   * measured footprint below the header (230px at 320px wide, where it wraps
+   * most) + a ~24px gap; 0.59 = aspect / uncropped 78% (see below).
+   * Re-measure if the hero copy changes. */
+  --phone-w: min(
+    clamp(12rem, 56vw, 20rem),
+    max(0px, calc((100svh - var(--header-height) - 16rem) * 0.59))
+  );
   width: var(--phone-w);
   max-width: none;
-}
-
-/*
- * .hero-showcase-mobile used to be a normal flex child stacked below the
- * phone — and .hero-phone's translateY(18%) shift (which moves it
- * visually without reserving that space in layout, since transforms
- * never affect flow) meant it silently overlapped the phone's own
- * "Set Intent"/"Breathe" buttons by ~60px, un-intentionally.
- *
- * Tried compensating with padding-top first. That made it worse: phone
- * (417px) fits .hero-showcase's own box (453px available) FINE on its
- * own, but phone + widget-row content together don't (they need ~600px+
- * combined) — and since .hero-showcase uses justify-content:flex-end,
- * that deficit doesn't clip the widgets, it pushes the whole group
- * (phone included) up and OUT of the box, discovered when the phone
- * ended up overlapping .hero-copy's CTA button instead — a real
- * "elements occupy the same space completely" case (the phone, opaque,
- * fully hid the "Get the app" button), worse than the original bug.
- *
- * Fix: take it out of the flex flow entirely and float it as an
- * absolutely-positioned overlay instead, matching how the desktop cards
- * actually work (positioned within the composition, not stacked below
- * it demanding their own flex space). The phone now gets its full,
- * uncontested box and can't be pushed anywhere. This card is free to
- * overlap the phone's bottom chrome by design — the explicitly-allowed
- * exception — instead of being shoved into content above it by accident.
- */
-.hero-showcase-mobile {
-  position: absolute;
-  right: var(--gutter);
-  bottom: 1.5rem;
-  left: var(--gutter);
 }
 
 .hero-phone {
   position: relative;
   filter: drop-shadow(var(--shadow-hero));
   line-height: 0;
-  /* The device is a full, correctly-proportioned capture (§ HERO_PHONE) —
-   * this is what crops it, not the source image. Tuned to end the visible
-   * area in the empty space above "Set Intent," before the nav chrome. */
-  transform: translateY(18%);
+  /* The capture is full device proportions; this is what crops it. 22% hides
+   * the Pause / End session buttons (81–96% down the screen) and keeps the
+   * intention card and timer pill (7–55%) in view. */
+  transform: translateY(22%);
 }
 
 /* Grounding halo — the app's own light spilling into the field, so the phone
- * emerges from the horizon rather than floating on the sky. Horizontal bleed
- * stays tight so it never reaches the side cards. */
+ * emerges from the horizon rather than floating on the sky. */
 .hero-phone::before {
   content: "";
   position: absolute;
@@ -1231,149 +1148,100 @@
 }
 
 @media (min-width: 768px) {
-  .hero-composition {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    align-items: end;
-    /* Real separation from the phone — the cards hover beside it, they
-     * don't crowd its edge. */
-    column-gap: clamp(1.5rem, 5vw, 3.5rem);
-  }
-
-  /* Two moments per side, stacked — four surfaces orbiting the intention. */
-  .hero-composition-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: clamp(0.625rem, 1.4vw, 1rem);
-    min-width: 0;
-    /* Lifted so the lower card isn't sliced by the fold; the stack still
-     * runs past it, which is what signals there's more below. */
-    padding-bottom: clamp(1rem, 5%, 2.25rem);
-  }
-
-  .hero-composition-side--left {
-    align-items: flex-end;
-  }
-
-  .hero-composition-side--right {
-    align-items: flex-start;
-  }
-
-  /*
-   * RULE — cards float at irregular heights and distances from the phone,
-   * not mirrored. Reference: superhuman.com's own hero cards, inspected
-   * live — four floating panels at wildly different sizes/heights (45px to
-   * 328px tall) with no left/right symmetry at all. Ours were two evenly
-   * stacked, bottom-aligned columns, mirrored left-to-right — the opposite
-   * of that. Each card gets its own nudge; none of the four repeat another
-   * one's offset.
-   */
-  .hero-card-declare {
-    transform: translateY(-0.875rem);
-  }
-
-  .hero-card-return {
-    transform: translate(-0.625rem, 0.75rem);
-  }
-
-  .hero-card-widgets {
-    transform: translate(1.25rem, 0.5rem);
-  }
-
-  .hero-card-reflect {
-    transform: translateY(-1.5rem);
-  }
-
   /*
    * RULE — the phone must never overlap .hero-copy, at any viewport size.
-   *
-   * --phone-w used to be sized from viewport WIDTH alone (vw-based clamps),
-   * which is exactly what let it happen: at a plain 1920×1080 window — not
-   * an edge case, one of the most common desktop sizes there is — the
-   * uncapped phone rendered ~1181px tall against a hero that only had
-   * ~940px of actual room below the copy, and silently overlapped the
-   * headline (verified via computed getBoundingClientRect; not visible by
-   * eye until you check, since the phone's own top is mostly soft gradient).
-   *
-   * Fix: --phone-w is capped by BOTH viewport width and remaining height.
-   * The height term reserves --header-height plus a fixed budget for
-   * .hero-copy + the flex gap above it (measured 345–468px across real
-   * breakpoints), then converts that leftover height to an equivalent width
-   * via the phone's fixed aspect ratio (1260×2736 ⇒ 0.461) so the two
-   * constraints compare in the same unit. `max(12rem, …)` keeps it from
-   * collapsing to nothing on pathologically short viewports — 12rem is the
-   * same floor the old short-viewport tier already used.
-   *
-   * Keep this reserved budget CLOSE to the measured worst case (31rem is
-   * ~28px above 468px, not a big cushion) — the first version of this fix
-   * used 34rem "to be safe," which was tight enough to stop the overlap but
-   * wasted ~75px of real, available height as an oversized safety margin.
-   * At taller viewports that showed up as visible dead space between the
-   * CTA and the phone, and read as "the phone shrank too much" — it hadn't
-   * shrunk wrong, it just wasn't using space it safely could have.
-   *
-   * Second error, found after that first tightening still looked too small:
-   * the height budget above was being spent as if the phone's full rendered
-   * height had to fit above the fold. It doesn't — .hero-phone's
-   * translateY(18%) pushes 18% of the phone's own height *past* the bottom
-   * edge on purpose (that's the "emerges from the bottom, cut a bit" crop),
-   * so only the remaining 82% needs to clear the copy at all. Sizing as if
-   * 100% needed to fit left ~22% of real, safe height on the table. Given
-   * available vertical room A, the true max height is A / 0.82, not A —
-   * converting straight to width via the aspect ratio (0.461) folds both
-   * steps into one multiplier: 0.461 / 0.82 ≈ 0.562.
-   *
-   * Third error: this used to be `max(12rem, calc(...))` — a floor meant to
-   * keep the phone from looking silly on the shortest viewports. But a
-   * floor applied AFTER a safety cap can undo the safety cap: on a short,
-   * width≥768px window (e.g. 1024×650) the safety-derived value can fall
-   * below 12rem, and `max()` would force it back up past what's actually
-   * safe — the exact overlap this whole rule exists to prevent, just
-   * reintroduced at the opposite end of the height range. There's no floor
-   * value that's simultaneously "looks substantial" and "always safe" here,
-   * since the safe ceiling itself keeps shrinking as height does. Safety
-   * has to win unconditionally, so there's no floor at all below — small is
-   * the honest, correct answer on a viewport this short.
-   *
-   * RULE — never crop far enough to hide "How do you want to remember this
-   * day?" on the phone's screen (~35–45% down the source image, well above
-   * the "Set Intent" button this crop is tuned to hide). Because this rule
-   * shrinks the phone via width (preserving aspect ratio) rather than by
-   * changing .hero-phone's translateY crop ratio, the fraction of the image
-   * that's visible — and therefore that text staying on-screen — is
-   * unaffected by size. Confirmed at every viewport tested below, including
-   * the shortest (single-column, translateY(20%)) tier.
-   *
-   * Recalibrated to 20rem after the headline/subhead copy rewrite (shorter
-   * headline, now one line instead of two; tighter padding and flex-gap
-   * above the showcase) shrank the real reserved footprint from ~468px to
-   * ~295px, measured at the same breakpoints, worst case still 1920px+
-   * (plateaus there and stays flat through at least 2560px — both hero type
-   * sizes are already at their clamp() ceiling by then). 20rem/320px keeps
-   * the same ~25px margin above the new worst case that 31rem kept above
-   * the old one — this constant must be re-measured again if the copy
-   * changes, not left stale.
+   * --phone-w is capped by width AND by the height left after the header and
+   * a reserved budget for .hero-copy (re-measure this constant whenever the
+   * hero copy changes — currently 287px worst case, flat from 1280px up, + a
+   * ~25px gap = 19.5rem). Only the uncropped 78% of the phone has to fit, so
+   * the leftover height converts to width via aspect / 0.78:
+   * 0.4605 / 0.78 ≈ 0.590. No floor: a floor applied after the safety cap
+   * would undo it on short viewports.
    */
   .hero-phone-mockup {
     --phone-w: min(
       30vw,
       34rem,
-      max(0px, calc((100svh - var(--header-height) - 20rem) * 0.562))
+      max(0px, calc((100svh - var(--header-height) - 19.5rem) * 0.59))
     );
   }
 }
 
 @media (max-height: 700px) and (min-width: 768px) {
-  .hero-composition-side {
-    display: none;
-  }
-
-  .hero-composition {
-    grid-template-columns: 1fr;
-  }
-
   .hero-phone {
-    transform: translateY(20%);
+    transform: translateY(24%);
+  }
+}
+
+/*
+ * Live timer over the capture's empty glass pill. Geometry is the Figma frame
+ * (420×912) in percentages; type is the app's "Prompt/Hero 36" (Jost Light
+ * 36/48, -0.5 tracking) scaled off the phone's rendered width, so it tracks
+ * the device at every hero size. Sits under PhoneMockup's sheen (z-10).
+ */
+.hero-timer {
+  position: absolute;
+  z-index: 1;
+  left: calc(71 / 420 * 100%);
+  top: calc(408 / 912 * 100%);
+  width: calc(260 / 420 * 100%);
+  height: calc(96 / 912 * 100%);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  /* In-app ink (Figma palette/inkstrong) — the pill is light glass. */
+  --app-ink: oklch(0.213 0.013 264.3); /* #16191f */
+}
+
+.hero-timer-value {
+  grid-area: 1 / 1;
+  font-family: var(--font-app), "Jost", var(--font-ui-sans);
+  font-weight: 300;
+  font-size: calc(var(--phone-w) * 36 / 420);
+  line-height: calc(48 / 36);
+  letter-spacing: -0.014em;
+  font-variant-numeric: tabular-nums;
+  color: var(--app-ink);
+  white-space: nowrap;
+}
+
+.hero-timer-glow {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: 0 0 calc(var(--phone-w) * 0.12)
+    color-mix(in oklch, var(--color-pearl-glow) 45%, transparent);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-timer-value {
+    animation: hero-timer-tick var(--dur-reveal-copy) var(--ease-hesya) both;
+  }
+
+  .hero-timer-glow {
+    animation: hero-timer-breathe var(--dur-glow) ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hero-timer-tick {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-timer-breathe {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.55;
   }
 }
 
@@ -1456,13 +1324,64 @@
   text-underline-offset: 3px;
 }
 
+/* ─── Mobile menu trigger ─────────────────────────────── */
+
+/* One treatment on every section — the site is dark throughout, so the
+ * header's old light variant (white chip) must never reach this control. */
+.menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem; /* 44px */
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklch, var(--color-silver) 6%, transparent);
+  box-shadow: 0 0 0 1px var(--border-strong);
+  transition: transform var(--dur-micro) var(--ease-hesya);
+}
+
+.menu-trigger:active {
+  transform: scale(0.96);
+}
+
+.menu-trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.menu-trigger-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menu-trigger-bars > span {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-on-dark);
+}
+
+@media (min-width: 768px) {
+  .menu-trigger {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-trigger:active {
+    transform: none;
+  }
+}
+
 /* ─── Mobile menu sheet ──────────────────────────────── */
 
 .mobile-menu-backdrop {
   background: oklch(0 0 0 / 0.5);
   backdrop-filter: blur(4px);
   opacity: 0;
-  transition: opacity 200ms var(--ease-hesya);
+  transition: opacity var(--dur-chrome) var(--ease-hesya);
 }
 
 .mobile-menu[data-open="true"] .mobile-menu-backdrop {
@@ -1473,16 +1392,16 @@
   transform: translateX(100%);
   opacity: 0;
   transition:
-    transform 240ms var(--ease-hesya),
-    opacity 240ms var(--ease-hesya);
+    transform var(--dur-chrome) var(--ease-hesya),
+    opacity var(--dur-chrome) var(--ease-hesya);
 }
 
 .mobile-menu[data-open="true"] .mobile-menu-panel {
   transform: translateX(0);
   opacity: 1;
   transition:
-    transform 300ms var(--ease-hesya),
-    opacity 300ms var(--ease-hesya);
+    transform var(--dur-hover) var(--ease-hesya),
+    opacity var(--dur-hover) var(--ease-hesya);
 }
 
 .mobile-menu[data-reduced="true"] .mobile-menu-backdrop,
@@ -1507,53 +1426,19 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-enter-item {
-    animation: hero-copy-in 0.4s var(--ease-hesya) both;
+    animation: hero-copy-in var(--dur-reveal-copy) var(--ease-hesya) both;
   }
 
   .hero-enter-headline {
     animation-delay: 0.05s;
   }
 
-  .hero-enter-sub {
-    animation-delay: 0.15s;
-  }
-
   .hero-enter-cta {
-    animation-delay: 0.25s;
-  }
-}
-
-/* ─── Recognition quote rotation ─────────────────────── */
-
-.recognition-quote {
-  opacity: 0;
-  transform: translateY(0);
-  filter: blur(0);
-  transition: opacity 160ms var(--ease-hesya);
-  pointer-events: none;
-}
-
-.recognition-quote.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  animation: recognition-quote-in 240ms var(--ease-hesya) both;
-}
-
-@keyframes recognition-quote-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-    filter: blur(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+    animation-delay: 0.2s;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glass-panel,
   .header-enter {
     animation: none;
   }
@@ -1562,17 +1447,9 @@
   .mobile-menu-backdrop,
   .mobile-menu-panel,
   .tab-item-icon,
-  .recognition-quote,
-  .recognition-quote.is-active,
   .hero-enter-item {
     transition: none;
     animation: none;
-  }
-
-  .recognition-quote.is-active {
-    opacity: 1;
-    transform: none;
-    filter: none;
   }
 
   .tab-item[data-active="true"] .tab-item-icon {
@@ -1597,77 +1474,23 @@
   top: var(--header-height);
   z-index: calc(var(--z-header) - 1);
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
-  background: var(--color-stone-100);
-  border-block: 1px solid var(--color-stone-border);
-}
-
-.feature-suite-nav-inner {
-  display: flex;
-  align-items: stretch;
-  gap: clamp(0.75rem, 2vw, 1.5rem);
-}
-
-@media (max-width: 899px) {
-  .feature-suite-nav-inner {
-    flex-direction: column;
-    gap: 0;
-  }
+  background: oklch(0.12 0.022 258 / 0.85);
+  backdrop-filter: blur(28px) saturate(140%);
+  border-block: 1px solid color-mix(in oklch, var(--color-silver) 10%, transparent);
+  box-shadow: 0 16px 36px -12px oklch(0 0 0 / 0.5);
 }
 
 .feature-suite-nav .tab-bar {
-  flex: 1;
   min-width: 0;
-  border-block: 0; /* the nav shell carries the rules now */
-}
-
-/**
- * Below 900px there's no room for a second control beside four tabs — but
- * each moment runs 1,000px+ tall on a phone, so losing the CTA for the whole
- * scroll (Superhuman's mobile pattern) isn't restraint, it's a dead end.
- * Instead: a slim, quiet row under the tabs, not a second loud button.
- */
-@media (max-width: 899px) {
-  .feature-suite-nav-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4375rem;
-    width: 100%;
-    min-height: 2.75rem;
-    padding: 0;
-    border-radius: 0;
-    border-top: 1px solid var(--color-stone-border);
-    background: transparent;
-    color: var(--color-accent);
-  }
-
-  .feature-suite-nav-cta:hover {
-    background: var(--color-stone-50);
-  }
-
-  .feature-suite-nav-cta-icon {
-    color: var(--color-accent);
-  }
-}
-
-@media (min-width: 900px) {
-  .feature-suite-nav-cta {
-    display: inline-flex;
-    align-self: center;
-    flex-shrink: 0;
-  }
-
-  .feature-suite-nav-cta-icon {
-    display: none;
-  }
+  border-block: 0;
 }
 
 /* Separation is whitespace, not rules — a sequence of moments, not a table. */
 .feature-blocks {
   display: flex;
   flex-direction: column;
-  gap: clamp(2rem, 4vw, 3rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+  gap: clamp(3rem, 6vw, 5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
 .feature-block {
@@ -1677,15 +1500,14 @@
 .feature-block-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 4vw, 2.25rem);
+  gap: clamp(2rem, 5vw, 3.5rem);
   align-items: center;
 }
 
 @media (min-width: 768px) {
   .feature-block-grid {
-    /* Equal halves, as in the reference — neither side dominates. */
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 3vw, 2.25rem);
+    gap: clamp(2rem, 4vw, 3.5rem);
   }
 }
 
@@ -1698,12 +1520,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(1.75rem, 4vw, 3.25rem);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  /* Stacked on mobile, the screen leads and the words follow — seeing the
-   * moment before reading about it. Reset to source order (copy first) once
-   * the two sit side by side. */
+  background: oklch(0.14 0.022 258 / 0.65);
+  border: 1px solid color-mix(in oklch, var(--color-silver) 10%, transparent);
+  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.05), 0 24px 60px -16px oklch(0 0 0 / 0.6);
   order: -1;
 }
 
@@ -1716,6 +1538,12 @@
 .feature-phone-stage-bg {
   position: absolute;
   inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    color-mix(in oklch, var(--color-pale-gold) 10%, transparent) 0%,
+    color-mix(in oklch, var(--color-silver) 3%, transparent) 45%,
+    transparent 70%
+  );
 }
 
 .feature-block-image {
@@ -1875,19 +1703,13 @@
   height: 1px;
 }
 
-.whisper-line line {
-  stroke: oklch(0.259 0.005 39.398 / 0.15);
-  stroke-width: 0.5px;
-  vector-effect: non-scaling-stroke;
-}
-
-.whisper-line--light line {
-  stroke: oklch(0.259 0.005 39.398 / 0.12);
-}
-
+.whisper-line line,
+.whisper-line--light line,
 .section-dark .whisper-line line,
 .whisper-line--dark line {
-  stroke: oklch(1 0 0 / 0.15);
+  stroke: color-mix(in oklch, var(--color-silver) 12%, transparent);
+  stroke-width: 0.5px;
+  vector-effect: non-scaling-stroke;
 }
 
 /* ─── Footer watermark ───────────────────────────────── */

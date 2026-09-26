@@ -40,7 +40,11 @@ const REST = 700; // dark beat between stars
 const INTERACT_COOLDOWN = 1400;
 
 // The focus star reads cool, to sit within the night field rather than pop
-// against it — a clear silver-blue light, not a warm hotspot.
+// against it — a clear silver-blue light, not a warm hotspot. Canvas 2D can't
+// consume CSS custom properties, so these are the sRGB equivalents of
+// oklch(0.947 0.018 258), oklch(0.745 0.059 258) and oklch(0.908 0.030 263) —
+// distinct from but adjacent to --color-silver/--color-pearl-glow; update
+// alongside those tokens if the cool end of the palette is retuned.
 const FOCUS_CORE = "230, 238, 250";
 const FOCUS_GLOW = "150, 174, 210";
 const COOL = "214, 225, 245";

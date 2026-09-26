@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Cormorant_Garamond, Newsreader } from "next/font/google";
+import { Inter, Cormorant_Garamond, Newsreader, Jost } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 import MotionShell from "../components/motion/MotionShell";
+import JsonLd, { rootKnowledgeGraph } from "../components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +20,14 @@ const cormorantGaramond = Cormorant_Garamond({
   display: "swap",
 });
 
+// The app's own timer face — used only for live in-phone UI in the hero.
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-app",
+  display: "swap",
+});
+
 const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -29,11 +39,28 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "Hesya: Return to what matters",
   description:
-    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Then a quiet, outcome-neutral reflection. Free, private, no accounts.",
+    "A calm iPhone companion: name one intention, notice when attention drifts, and return without guilt. Free, private, no accounts.",
+  keywords: [
+    "Hesya",
+    "Hesya app",
+    "iPhone focus app",
+    "intention tracker",
+    "mindful focus companion",
+    "Screen Time drift cues",
+    "distraction free focus",
+    "mindfulness app without streaks",
+    "physiological sigh focus app",
+    "private focus app iOS",
+    "calm focus timer",
+    "single intention focus",
+  ],
   authors: [{ name: "Rostyslav Slobodianiuk" }],
   creator: "Rostyslav Slobodianiuk",
+  publisher: "Hesya",
   metadataBase: new URL("https://hesya.app"),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Hesya: Return to what matters",
     description:
@@ -68,6 +95,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#02050d", // --color-abyss (oklch(0.118 0.022 258)) — keep in sync if that token changes
 };
 
 export default function RootLayout({
@@ -78,8 +106,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}
+      className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable} ${jost.variable}`}
     >
+      <head>
+        <JsonLd data={rootKnowledgeGraph} />
+      </head>
       <body suppressHydrationWarning className="antialiased noise-overlay overflow-x-hidden">
         <MotionShell />
         <SmoothScroll>
@@ -88,6 +119,7 @@ export default function RootLayout({
           </a>
           {children}
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
