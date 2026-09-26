@@ -27,6 +27,17 @@ export default function SuiteTabs({ activeId, onSelect }: SuiteTabsProps) {
             data-active={isActive ? "true" : "false"}
             className="tab-item relative"
             onClick={(event) => {
+              // Let a real new-tab gesture behave like one; only hijack a
+              // plain left click into the in-page scroll.
+              if (
+                event.button !== 0 ||
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey
+              ) {
+                return;
+              }
               event.preventDefault();
               onSelect(feature.id);
             }}

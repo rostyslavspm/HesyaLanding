@@ -29,9 +29,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     lenisRef.current = lenis;
     setLenisInstance(lenis);
 
-    lenis.on("scroll", () => {
-      window.dispatchEvent(new Event("scroll"));
-    });
+    // No lenis.on("scroll") → window "scroll" re-dispatch: Lenis scrolls the
+    // window natively, so listeners already get real scroll events, and Lenis
+    // listens to window "scroll" itself — re-dispatching looped until the
+    // call stack overflowed.
 
     const onTick = (time: number) => {
       lenis.raf(time * 1000);

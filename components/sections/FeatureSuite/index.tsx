@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import FeatureBlock from "./FeatureBlock";
 import SuiteTabs from "./SuiteTabs";
 import WhisperLine from "@/components/ui/WhisperLine";
 import { HESYA_FEATURES } from "@/lib/content/features";
-import { BTN, SECTIONS, TYPE, URLS } from "@/lib/design-system";
+import { SECTIONS, TYPE } from "@/lib/design-system";
 import { useFeatureSuite } from "@/hooks/useFeatureSuite";
 
 export default function FeatureSuite() {
@@ -19,32 +18,17 @@ export default function FeatureSuite() {
     >
       <div className="container-marketing">
         <header className="feature-suite-intro">
-          <h2 className={`${TYPE.suiteHeading} max-w-[900px]`}>
+          <h2 className={`${TYPE.suiteHeading} max-w-[900px] text-[var(--color-silver)] font-light`}>
             The shape of a session
           </h2>
           <WhisperLine className="whisper-line--light mt-6 md:mt-8" />
         </header>
       </div>
 
-      {/* Docks under the site header and stays for the whole section, so the
-       * nav and the invitation are always within reach while reading. */}
+      {/* Docks under the site header and stays for the whole section. */}
       <div className="feature-suite-nav">
-        <div className="container-marketing feature-suite-nav-inner">
+        <div className="container-marketing">
           <SuiteTabs activeId={activeId} onSelect={selectFeature} />
-
-          <a
-            href={URLS.appStore}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`feature-suite-nav-cta ${BTN.ctaFilled} whitespace-nowrap`}
-          >
-            <span>Get the app</span>
-            <ArrowRight
-              className="feature-suite-nav-cta-icon h-3.5 w-3.5 shrink-0"
-              aria-hidden
-              strokeWidth={2}
-            />
-          </a>
         </div>
       </div>
 

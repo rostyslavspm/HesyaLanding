@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Cormorant_Garamond, Newsreader } from "next/font/google";
+import { Inter, Cormorant_Garamond, Newsreader, Jost } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
@@ -17,6 +17,14 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+// The app's own timer face — used only for live in-phone UI in the hero.
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-app",
   display: "swap",
 });
 
@@ -87,7 +95,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0c0d10",
+  themeColor: "#02050d", // --color-abyss (oklch(0.118 0.022 258)) — keep in sync if that token changes
 };
 
 export default function RootLayout({
@@ -98,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}
+      className={`${inter.variable} ${cormorantGaramond.variable} ${newsreader.variable} ${jost.variable}`}
     >
       <head>
         <JsonLd data={rootKnowledgeGraph} />

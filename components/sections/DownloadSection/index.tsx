@@ -68,11 +68,12 @@ export default function DownloadSection() {
       <div className="container-marketing relative z-[1]">
         <div className="download-content">
           <div className="download-lockup">
-            <h2 className={`download-headline ${TYPE.marketingDisplay}`}>
-              The way back is never far
+            <h2 className={`download-headline ${TYPE.marketingDisplay} text-[var(--color-silver)] font-light`}>
+              One intention is
+              <br className="hidden sm:inline" /> enough to begin.
             </h2>
-            <p className="mt-4 max-w-[38ch] text-micro text-[var(--foreground-secondary)]">
-              Free on iPhone. No account, no subscription, nothing to cancel.
+            <p className="mt-4 max-w-[42ch] text-micro text-[var(--color-silver-muted)] tracking-[0.03em]">
+              Free. Private. No account.
             </p>
           </div>
           <a

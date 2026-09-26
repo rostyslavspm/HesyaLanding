@@ -58,15 +58,15 @@ export default function PrivacyPage() {
   return (
     <>
       <JsonLd data={[privacyPageJsonLd, privacyBreadcrumbs]} />
-      <MarketingChrome variant="light" />
-      <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Privacy policy">
+      <MarketingChrome variant="dark" />
+      <main id="main" className="min-h-[100dvh] bg-[var(--color-abyss)] text-[var(--color-silver)] py-32 px-6" aria-label="Privacy policy">
         <div className={LAYOUT_CLASS.prose}>
           <Link href="/" className={`${TYPE.pageBack} mb-12`}>
             &larr; Back to Hesya
           </Link>
 
           <div className="mb-16">
-            <h1 className={`${TYPE.editorialItalic} mb-4 text-[var(--color-soft-obsidian)]`}>
+            <h1 className={`${TYPE.editorialItalic} mb-4 text-[var(--color-silver)]`}>
               Privacy Policy
             </h1>
             <p className={TYPE.proseMuted}>Last updated: June 16, 2026</p>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                 to signal when time in apps <em>you selected</em> crosses a threshold,
                 so it can offer a gentle cue back to your intent.
               </p>
-              <div className="rounded-[2rem] bg-[var(--color-pearl-glow)] p-6 shadow-[0_8px_30px_oklch(0_0_0/0.04)]">
+              <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--color-abyss-elevated)] p-6">
                 <p>
                   <strong>Important:</strong> Apple&apos;s framework never tells
                   Hesya <em>which</em> app you used, only that the threshold was crossed.
@@ -169,7 +169,7 @@ export default function PrivacyPage() {
               </ul>
             </section>
 
-            <section className="border-t border-[var(--color-soft-obsidian)]/10 pt-8">
+            <section className="border-t border-[var(--border-subtle)] pt-8">
               <h2 className={`${TYPE.editorialSection} mb-4`}>Contact</h2>
               <p>
                 For questions about privacy practices, please contact:{" "}

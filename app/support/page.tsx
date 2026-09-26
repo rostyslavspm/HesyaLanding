@@ -154,21 +154,21 @@ export default function SupportPage() {
   return (
     <>
       <JsonLd data={[faqJsonLd, supportBreadcrumbs]} />
-      <MarketingChrome variant="light" />
-      <main id="main" className="min-h-[100dvh] bg-[var(--color-mist-white)] py-32 px-6" aria-label="Support and FAQ">
+      <MarketingChrome variant="dark" />
+      <main id="main" className="min-h-[100dvh] bg-[var(--color-abyss)] text-[var(--color-silver)] py-32 px-6" aria-label="Support and FAQ">
         <div className={LAYOUT_CLASS.prose}>
           <Link href="/" className={`${TYPE.pageBack} mb-12`}>
             &larr; Back to Hesya
           </Link>
 
           <div className="mb-16 text-center">
-            <h1 className={`${TYPE.editorialItalic} mb-6 text-[var(--color-soft-obsidian)]`}>
+            <h1 className={`${TYPE.editorialItalic} mb-6 text-[var(--color-silver)]`}>
               Support & FAQ
             </h1>
             <p className={TYPE.proseLead}>Find answers to common questions about Hesya.</p>
           </div>
 
-          <div className="mb-20 space-y-12 text-[var(--color-soft-obsidian)]">
+          <div className="mb-20 space-y-12 text-[var(--color-silver)]">
             <FaqSection title="Getting Started" items={gettingStarted} />
             <FaqSection title="Privacy & Permissions" items={privacy} />
             <FaqSection title="Using Hesya" items={usingHesya} />
@@ -176,7 +176,7 @@ export default function SupportPage() {
             <FaqSection title="General" items={general} />
           </div>
 
-          <div className="mt-16 rounded-[3rem] bg-[var(--color-pearl-glow)] p-12 text-center shadow-[0_8px_30px_oklch(0_0_0/0.04)]">
+          <div className="mt-16 rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--color-abyss-elevated)] p-12 text-center">
             <h2 className={`${TYPE.editorialSection} mb-4`}>
               Still need help?
             </h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Image from "next/image";
 
 interface PhoneMockupProps {
@@ -16,6 +16,8 @@ interface PhoneMockupProps {
   /** Intrinsic pixel size of the asset (defaults to full-device captures) */
   width?: number;
   height?: number;
+  /** Live UI layered over the screen, positioned in % of the device. */
+  children?: ReactNode;
 }
 
 /**
@@ -33,6 +35,7 @@ export default function PhoneMockup({
   className,
   width = 1260,
   height = 2736,
+  children,
 }: PhoneMockupProps) {
   const [imageError, setImageError] = useState(false);
 
@@ -62,6 +65,7 @@ export default function PhoneMockup({
           sizes={sizes}
         />
       )}
+      {!imageError && children}
       {imageError && fallbackLabel && (
         <span
           className="absolute inset-0 z-0 flex items-center justify-center text-micro"

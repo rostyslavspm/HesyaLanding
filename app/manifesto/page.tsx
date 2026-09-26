@@ -127,16 +127,16 @@ export default function ManifestoPage() {
   return (
     <>
       <JsonLd data={[manifestoArticleJsonLd, manifestoBreadcrumbs]} />
-      <MarketingChrome variant="light" />
-      <main id="main" className="bg-[var(--color-mist-white)] pt-8 pb-20 md:pb-32">
+      <MarketingChrome variant="dark" />
+      <main id="main" className="bg-[var(--color-abyss)] text-[var(--color-silver)] pt-8 pb-20 md:pb-32">
         <article className={`${LAYOUT_CLASS.prose} px-6`}>
           <Link href="/" className={TYPE.pageBack}>
             ← Back to Hesya
           </Link>
 
-          <header className="mt-8 border-b border-black/5 pb-10">
+          <header className="mt-8 border-b border-[var(--border-subtle)] pb-10">
             <p className={TYPE.pageLabel}>Manifesto</p>
-            <h1 className={`${TYPE.editorialItalic} mt-4 text-[var(--color-soft-obsidian)]`}>
+            <h1 className={`${TYPE.editorialItalic} mt-4 text-[var(--color-silver)]`}>
               On Attention, Agency, and Presence
             </h1>
           </header>

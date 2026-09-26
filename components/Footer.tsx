@@ -1,28 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { SECTIONS, URLS } from "@/lib/design-system";
+import { SECTIONS } from "@/lib/design-system";
 
-const FOOTER_COLUMNS = [
-  {
-    title: "Product",
-    links: [
-      { href: "/#features", label: "Features" },
-      { href: URLS.appStore, label: "Get the app", external: true },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { href: "/manifesto", label: "Manifesto" },
-      { href: "/support", label: "Support" },
-      { href: "mailto:support@hesya.app", label: "Contact", mailto: true },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [{ href: "/privacy", label: "Privacy" }],
-  },
+const FOOTER_LINKS = [
+  { href: "/#features", label: "Features" },
+  { href: "/manifesto", label: "Manifesto" },
+  { href: "/support", label: "Support" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "mailto:support@hesya.app", label: "Contact", mailto: true },
 ] as const;
 
 export default function Footer() {
@@ -33,7 +19,7 @@ export default function Footer() {
       data-header-theme="dark"
     >
       <div className="container-marketing">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <div className="max-w-[16rem] shrink-0">
             <Link
               href="/"
@@ -42,46 +28,30 @@ export default function Footer() {
             >
               Hesya
             </Link>
-            <p className="mt-4 text-micro text-[var(--color-on-dark-muted)]">
-              A calm companion for your attention. On iPhone.
-            </p>
           </div>
 
-          <nav
-            className="grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-3 sm:gap-x-14 lg:justify-items-start"
-            aria-label="Footer"
-          >
-            {FOOTER_COLUMNS.map((column) => (
-              <div key={column.title}>
-                <p className="text-eyebrow text-[var(--color-on-dark-muted)]">
-                  {column.title}
-                </p>
-                <ul className="mt-4 space-y-0 ps-0">
-                  {column.links.map((link) => (
-                    <li key={link.href} className="list-none">
-                      {"external" in link || "mailto" in link ? (
-                        <a
-                          href={link.href}
-                          className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
-                          {...("external" in link
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                        >
-                          {link.label}
-                        </a>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
-                        >
-                          {link.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap gap-x-8 gap-y-3 ps-0">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.href} className="list-none">
+                  {"mailto" in link ? (
+                    <a
+                      href={link.href}
+                      className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-micro link-animated text-[var(--color-on-dark-secondary)]"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
 

@@ -8,8 +8,9 @@ export default function manifest(): MetadataRoute.Manifest {
       "A calm iPhone focus companion: name one intention, notice when attention drifts, and return without guilt.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0c0d10",
-    theme_color: "#0c0d10",
+    // --color-abyss (oklch(0.118 0.022 258)) — keep in sync if that token changes
+    background_color: "#02050d",
+    theme_color: "#02050d",
     icons: [
       {
         src: "/favicon.png",

@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   useEffect,
+  useRef,
   useState,
   useSyncExternalStore,
+  type RefObject,
   type TransitionEvent,
 } from "react";
 import { BTN, URLS } from "@/lib/design-system";
@@ -16,11 +19,17 @@ import {
 type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
+  /** Trigger button to return focus to when the menu closes. */
+  triggerRef?: RefObject<HTMLButtonElement | null>;
 };
 
-export default function MobileMenu({ open, onClose }: MobileMenuProps) {
+export default function MobileMenu({ open, onClose, triggerRef }: MobileMenuProps) {
   const [mounted, setMounted] = useState(open);
   const [visible, setVisible] = useState(open);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
+  const pathname = usePathname();
   const reduceMotion = useSyncExternalStore(
     subscribeReducedMotion,
     prefersReducedMotion,
@@ -56,11 +65,50 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
     };
   }, [open]);
 
+  // Move focus into the panel once it's actually in the DOM, and hand it
+  // back to the trigger that opened it — otherwise a keyboard user tabbing
+  // through the (visually full-screen) menu lands on whatever the trigger
+  // last focused, or falls out into content hidden behind the overlay.
+  useEffect(() => {
+    if (open && mounted) {
+      closeButtonRef.current?.focus();
+      wasOpenRef.current = true;
+      return;
+    }
+    if (!open && wasOpenRef.current) {
+      wasOpenRef.current = false;
+      triggerRef?.current?.focus();
+    }
+  }, [open, mounted, triggerRef]);
+
   useEffect(() => {
     if (!open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const container = containerRef.current;
+      if (!container) return;
+
+      const focusable = Array.from(
+        container.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -77,6 +125,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
 
   return (
     <div
+      ref={containerRef}
       className="mobile-menu fixed inset-0 z-[300] md:hidden"
       data-open={visible ? "true" : "false"}
       data-reduced={reduceMotion ? "true" : "false"}
@@ -103,6 +152,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             Hesya
           </span>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
             className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-on-dark-secondary)] transition-transform duration-200 ease-[var(--ease-hesya)] active:scale-[0.96]"
@@ -126,6 +176,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
               key={href}
               href={href}
               onClick={onClose}
+              aria-current={pathname === href ? "page" : undefined}
               className="inline-flex min-h-11 items-center text-body text-[var(--color-on-dark-secondary)] transition-transform duration-200 ease-[var(--ease-hesya)] active:scale-[0.96]"
             >
               {label}
