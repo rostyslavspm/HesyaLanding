@@ -38,11 +38,13 @@ export default function PhoneMockup({
   children,
 }: PhoneMockupProps) {
   const [imageError, setImageError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div
       className={`phone-mockup relative w-full ${className ?? ""}`}
       title={fallbackLabel}
+      data-loaded={loaded || imageError ? "true" : "false"}
     >
       <div
         className="pointer-events-none absolute inset-0 z-10"
@@ -60,6 +62,7 @@ export default function PhoneMockup({
           width={width}
           height={height}
           className="phone-mockup-image screenshot-outline"
+          onLoad={() => setLoaded(true)}
           onError={() => setImageError(true)}
           priority={priority}
           sizes={sizes}

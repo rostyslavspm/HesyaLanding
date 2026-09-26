@@ -55,7 +55,13 @@ export default function MobileMenu({ open, onClose, triggerRef }: MobileMenuProp
     setVisible(false);
     if (reduceMotion) {
       setMounted(false);
+      return;
     }
+    // onTransitionEnd normally unmounts; this is the backstop for when the
+    // event never fires (tab hidden mid-animation, interrupted transition),
+    // so an invisible menu can't linger in the DOM.
+    const fallback = setTimeout(() => setMounted(false), 800);
+    return () => clearTimeout(fallback);
   }, [open, reduceMotion]);
 
   useEffect(() => {
@@ -129,6 +135,7 @@ export default function MobileMenu({ open, onClose, triggerRef }: MobileMenuProp
       className="mobile-menu fixed inset-0 z-[300] md:hidden"
       data-open={visible ? "true" : "false"}
       data-reduced={reduceMotion ? "true" : "false"}
+      inert={!open}
     >
       <button
         type="button"

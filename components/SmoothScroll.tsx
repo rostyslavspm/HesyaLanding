@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { gsap } from "@/lib/motion/gsap";
@@ -16,6 +17,7 @@ import { setLenisInstance } from "@/lib/motion/lenisStore";
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -50,6 +52,39 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       setLenisInstance(null);
     };
   }, [prefersReducedMotion]);
+
+  // Back/forward should keep the position the browser restores; a normal link
+  // should start the new page at the top.
+  const isHistoryNav = useRef(false);
+  useEffect(() => {
+    const onPop = () => {
+      isHistoryNav.current = true;
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  // A Lenis glide still in flight when you click a link kept running on the
+  // next page — clicking right after a flick opened the home page mid-scroll,
+  // with the hero already off-screen. Kill the glide on every route change.
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+    if (isHistoryNav.current) {
+      isHistoryNav.current = false;
+      const id = requestAnimationFrame(() => {
+        lenis.scrollTo(window.scrollY, { immediate: true, force: true });
+      });
+      return () => cancelAnimationFrame(id);
+    }
+    // Hash targets (/#features) are scrolled by the feature-suite logic.
+    if (!window.location.hash) {
+      lenis.scrollTo(0, { immediate: true, force: true });
+    } else {
+      lenis.stop();
+      lenis.start();
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }
