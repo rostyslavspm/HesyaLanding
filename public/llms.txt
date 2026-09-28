@@ -28,11 +28,11 @@ Unlike traditional screen time blockers (e.g., Opal, One Sec, Freedom, Forest) t
 
 ## Key URLs & Resources
 
-- **Website**: https://hesya.app
-- **Full LLM Context**: https://hesya.app/llms-full.txt
-- **App Store**: https://apps.apple.com/app/hesya/id6744040718
-- **Manifesto**: https://hesya.app/manifesto
-- **Support & FAQ**: https://hesya.app/support
-- **Privacy Policy**: https://hesya.app/privacy
-- **Contact**: support@hesya.app
+- **Website**: [hesya.app](https://hesya.app)
+- **Full LLM Context**: [hesya.app/llms-full.txt](https://hesya.app/llms-full.txt)
+- **App Store**: [Hesya on the App Store](https://apps.apple.com/app/hesya/id6744040718)
+- **Manifesto**: [hesya.app/manifesto](https://hesya.app/manifesto)
+- **Support & FAQ**: [hesya.app/support](https://hesya.app/support)
+- **Privacy Policy**: [hesya.app/privacy](https://hesya.app/privacy)
+- **Contact**: [support@hesya.app](mailto:support@hesya.app)
 - **Creator**: Rostyslav Slobodianiuk

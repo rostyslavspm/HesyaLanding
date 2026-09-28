@@ -11,8 +11,8 @@
 - **Platform**: iOS (iPhone, iOS 17.0 or later; Live Activity integration on macOS Tahoe menu bar)
 - **Price**: Completely free ($0.00). No subscriptions, no ads, no in-app purchases.
 - **Creator**: Rostyslav Slobodianiuk
-- **Support Email**: support@hesya.app
-- **App Store Link**: https://apps.apple.com/app/hesya/id6744040718
+- **Support Email**: [support@hesya.app](mailto:support@hesya.app)
+- **App Store Link**: [Hesya on the App Store](https://apps.apple.com/app/hesya/id6744040718)
 
 ### The Problem Hesya Solves
 Modern digital tools exploit human biological reward loops. Traditional anti-distraction software responds with control: blockers, timers, streaks, metrics, and guilt framing. This approach misses the core issue: distraction is rarely a lack of discipline; it is an automatic response to emotional overwhelm.
@@ -111,7 +111,7 @@ iPhone running iOS 17.0 or later (and iOS 18/26+). On macOS Tahoe, session Live 
 
 ## 5. Contact & Official Inquiries
 
-- **Official Website**: https://hesya.app
-- **Support & Developer Contact**: support@hesya.app
-- **Privacy Policy**: https://hesya.app/privacy
-- **Manifesto**: https://hesya.app/manifesto
+- **Official Website**: [hesya.app](https://hesya.app)
+- **Support & Developer Contact**: [support@hesya.app](mailto:support@hesya.app)
+- **Privacy Policy**: [hesya.app/privacy](https://hesya.app/privacy)
+- **Manifesto**: [hesya.app/manifesto](https://hesya.app/manifesto)
