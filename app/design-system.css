@@ -823,12 +823,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2.5rem;
+  padding: 1rem clamp(1.5rem, 6vw, 2.5rem);
   border-radius: var(--radius-cta);
   background-color: var(--color-pearl-glow);
   color: var(--color-abyss);
   font-weight: 500;
   letter-spacing: 0.05em;
+  white-space: nowrap;
   box-shadow:
     0 4px 24px oklch(1 0 0 / 0.4),
     0 1px 2px oklch(0 0 0 / 0.05);

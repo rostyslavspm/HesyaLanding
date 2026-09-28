@@ -176,7 +176,7 @@ export default function SupportPage() {
             <FaqSection title="General" items={general} />
           </div>
 
-          <div className="mt-16 rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--color-abyss-elevated)] p-12 text-center">
+          <div className="mt-16 rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--color-abyss-elevated)] p-8 text-center sm:p-12">
             <h2 className={`${TYPE.editorialSection} mb-4`}>
               Still need help?
             </h2>
@@ -185,7 +185,7 @@ export default function SupportPage() {
               href="mailto:support@hesya.app"
               className="btn-pill btn-magnetic text-tracked inline-block"
             >
-              Email support@hesya.app
+              Email support
             </a>
           </div>
         </div>
