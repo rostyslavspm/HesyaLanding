@@ -86,5 +86,24 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     }
   }, [pathname]);
 
+  // The graceful arrival fade is for moving between pages — the first paint
+  // of a freshly loaded URL has nothing to "arrive" from, and Lighthouse
+  // measures Largest Contentful Paint against exactly that first paint.
+  // Animating <main> unconditionally held real content at opacity 0 for the
+  // ~1.4s --dur-arrive curve on every load, adding that much to LCP on every
+  // page. Only replay it on an actual client-side route change.
+  const isFirstPathname = useRef(true);
+  useEffect(() => {
+    if (isFirstPathname.current) {
+      isFirstPathname.current = false;
+      return;
+    }
+    const main = document.querySelector("main#main");
+    if (!main) return;
+    main.classList.remove("route-transition-in");
+    void (main as HTMLElement).offsetWidth; // restart the CSS animation
+    main.classList.add("route-transition-in");
+  }, [pathname]);
+
   return <>{children}</>;
 }

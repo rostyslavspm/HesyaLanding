@@ -45,6 +45,7 @@ export default function PhoneMockup({
       className={`phone-mockup relative w-full ${className ?? ""}`}
       title={fallbackLabel}
       data-loaded={loaded || imageError ? "true" : "false"}
+      data-priority={priority ? "true" : "false"}
     >
       <div
         className="pointer-events-none absolute inset-0 z-10"

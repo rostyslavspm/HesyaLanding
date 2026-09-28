@@ -1745,29 +1745,35 @@
 
 /* ─── Graceful arrival ───────────────────────────────── */
 
-/* Pages arrive the way the hero's light does: the content brightens out of
- * the dark, with no movement, on a soft-start curve a half-beat slower than
- * the rest of the UI. The header lives outside <main>, so the chrome stays
- * put while the content arrives. Fill-mode backwards leaves nothing behind. */
+/* Moving between pages arrives the way the hero's light does: the content
+ * brightens in, with no movement, on a soft-start curve a half-beat slower
+ * than the rest of the UI. The header lives outside <main>, so the chrome
+ * stays put while the content arrives. Fill-mode backwards leaves nothing
+ * behind. Triggered only by SmoothScroll on a route change (see there for
+ * why) — never on the page's own first paint, which is what Largest
+ * Contentful Paint measures against; animating that unconditionally held
+ * real content at opacity 0 for the whole curve on every load. */
 @keyframes page-in {
   from {
     opacity: 0;
   }
 }
 
-/* Images brighten in once decoded instead of popping in. */
+/* Images brighten in once decoded instead of popping in — except priority
+ * (typically above-the-fold / LCP) images, which should render the moment
+ * they're ready, not spend --dur-arrive fading in on top of that. */
 .phone-mockup,
 .fade-in-image {
   transition: opacity var(--dur-arrive) var(--ease-arrive);
 }
 
-.phone-mockup[data-loaded="false"],
-.fade-in-image[data-loaded="false"] {
+.phone-mockup[data-loaded="false"]:not([data-priority="true"]),
+.fade-in-image[data-loaded="false"]:not([data-priority="true"]) {
   opacity: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  main#main {
+  .route-transition-in {
     animation: page-in var(--dur-arrive) var(--ease-arrive) backwards;
   }
 }

@@ -12,6 +12,7 @@ export default function FadeInImage({ alt, className, onLoad, ...props }: ImageP
       alt={alt}
       className={`fade-in-image ${className ?? ""}`}
       data-loaded={loaded ? "true" : "false"}
+      data-priority={props.priority ? "true" : "false"}
       onLoad={(event) => {
         setLoaded(true);
         onLoad?.(event);

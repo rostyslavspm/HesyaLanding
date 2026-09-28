@@ -21,6 +21,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    // AVIF isn't in Next's default format list (it's slower to encode), but
+    // for the hero photo and phone screenshots the smaller output is worth
+    // it — Vercel caches each optimized size/format once, not per-request.
+    formats: ["image/avif", "image/webp"],
+  },
   turbopack: {
     root: path.resolve(__dirname),
   },
