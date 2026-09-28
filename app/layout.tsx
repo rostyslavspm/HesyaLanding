@@ -21,10 +21,11 @@ const cormorantGaramond = Cormorant_Garamond({
   display: "swap",
 });
 
-// The app's own timer face — used only for live in-phone UI in the hero.
+// The app's own face — Light for the live in-phone hero timer, Regular for
+// CTA buttons styled after the app's real `figmaPrimaryButton`.
 const jost = Jost({
   subsets: ["latin"],
-  weight: ["300"],
+  weight: ["300", "400"],
   variable: "--font-app",
   display: "swap",
 });

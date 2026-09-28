@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import CtaArrow from "@/components/ui/CtaArrow";
+import { ArrowRight } from "lucide-react";
 import { BTN, TYPE, URLS } from "@/lib/design-system";
 
 export default function HeroContent() {
@@ -21,7 +21,11 @@ export default function HeroContent() {
           className={`btn-magnetic ${BTN.ctaDark}`}
         >
           <span>Get the app</span>
-          <CtaArrow />
+          <ArrowRight
+            className="cta-go-glyph h-4 w-4 shrink-0"
+            aria-hidden
+            strokeWidth={2}
+          />
         </Link>
       </div>
     </div>

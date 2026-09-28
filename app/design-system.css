@@ -585,187 +585,99 @@
 .btn-cta-banner,
 .btn-cta-ghost,
 .btn-pill {
-  font-family: var(--font-ui-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: var(--font-weight-medium);
+  font-family: var(--font-app), "Jost", var(--font-ui-sans);
+  font-weight: 400;
+  letter-spacing: -0.01em;
   user-select: none;
 }
 
 /**
- * Compound CTA surface — Quiet Authority
- * Restrained obsidian glass pill with hairline pale gold sheen.
+ * Ceramic primary — Hesya's own in-app primary button, ported 1:1 (Figma
+ * `Button / Style=Primary`, 2188:1768; V2/DesignSystem/HesyaFigmaButton.swift
+ * `HesyaFigmaPrimaryButtonStyle`): a flat translucent ceramic fill with a
+ * hairline rim and a cool inset glow. Not Liquid Glass, so — unlike the
+ * app's Ghost button — it ports to CSS without an approximated blur.
  */
 .btn-cta-dark,
-.btn-cta-banner {
-  border-radius: var(--radius-cta);
-  background:
-    linear-gradient(
-      var(--cta-sheen-angle) in oklab,
-      var(--cta-sheen-warm) 2.8%,
-      var(--cta-sheen-dark) 42.637%
-    ),
-    oklch(0.145 0.022 258 / 0.9);
-}
-
-.btn-cta-dark {
+.btn-cta-filled,
+.btn-cta-banner,
+.btn-pill {
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.375rem 0.375rem 0.375rem 1.125rem;
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 24px -4px color-mix(in oklch, var(--color-pale-gold) 14%, transparent), 0 8px 32px oklch(0 0 0 / 0.4);
-  color: var(--color-silver);
-  font-size: var(--font-size-ui);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.12em;
-  line-height: 1;
-  outline-offset: 2px;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: oklch(1 0 0 / 0.85);
+  border: 1px solid oklch(1 0 0 / 0.3);
+  box-shadow: inset 0 0 6px oklch(0.93 0.03 228 / 0.8);
+  color: var(--color-ink);
+  text-shadow: 0 2px 1px oklch(0 0 0 / 0.35);
   transition:
+    background var(--dur-hover) var(--ease-hesya),
     border-color var(--dur-hover) var(--ease-hesya),
     box-shadow var(--dur-hover) var(--ease-hesya),
     transform var(--dur-hover) var(--ease-hesya);
 }
 
-.btn-cta-dark:hover {
-  border-color: color-mix(in oklch, var(--color-pale-gold) 55%, transparent);
-  box-shadow: 0 0 32px 0 color-mix(in oklch, var(--color-pale-gold) 22%, transparent), 0 12px 40px oklch(0 0 0 / 0.5);
+.btn-cta-dark:hover,
+.btn-cta-filled:hover,
+.btn-cta-banner:hover,
+.btn-pill:hover {
+  background: oklch(1 0 0 / 0.95);
+  border-color: oklch(1 0 0 / 0.45);
 }
 
-/**
- * <CtaArrow> — the "Get the app" arrow chip (Figma: Hesya-App, CTA 2504:1895).
- * A warm ember caught in glass: gradient body, a cool teal flare lower-left, a
- * burnt shadow lower-right, inner highlights, and a hairline arrow. Values are
- * the Figma layer values converted to oklch; Figma's GLASS and NOISE effects
- * have no CSS equivalent (the page's own grain overlay covers the noise).
- * 14px radius = --radius-cta minus the host CTA's 6px padding (concentric).
- */
-.cta-arrow {
-  --cta-arrow-rim-light: oklch(0.979 0.028 91.6 / 0.5);
-  --cta-arrow-rim-teal: oklch(0.625 0.042 208.5);
-  position: relative;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 3.375rem; /* 54px */
-  height: 2.625rem; /* 42px */
-  overflow: hidden;
-  border-radius: calc(var(--radius-cta) - 0.375rem); /* 14px */
-  border: 1px solid transparent;
-  background:
-    linear-gradient(
-        180deg,
-        oklch(0.968 0.021 65.3) 0%,
-        oklch(0.863 0.119 77.9) 30.014%,
-        oklch(0.519 0.153 43.2) 100%
-      )
-      padding-box,
-    linear-gradient(225deg, var(--cta-arrow-rim-light), var(--cta-arrow-rim-teal))
-      border-box;
-  box-shadow:
-    1px 0 2px 0 oklch(0.708 0.157 56 / 0.5),
-    -1px 1px 2px 0 oklch(1 0 0 / 0.25),
-    0 -2px 4px 0 oklch(0.97 0.039 91.2 / 0.25);
-  transition: filter var(--dur-hover) var(--ease-hesya);
+.btn-cta-dark {
+  gap: 0.625rem;
+  min-height: 3.25rem; /* 52px — the app's compact figma-button height */
+  padding-inline: 1.75rem;
+  font-size: 1.0625rem; /* 17px — the app's own "UI/Action 17" button type */
+  line-height: 1.294; /* 22/17 */
 }
 
-/* Cool teal flare, lower left */
-.cta-arrow-flare-a {
-  position: absolute;
-  left: -1px;
-  top: 20px;
-  width: 27px;
-  height: 21px;
-  border-bottom-left-radius: 14px;
-  background: oklch(0.742 0.049 204.5 / 0.85);
-  filter: blur(3px);
-}
-
-/* Burnt shadow along the base (Figma: linear burn → closest CSS: multiply) */
-.cta-arrow-flare-b {
-  position: absolute;
-  left: 16px;
-  top: 21px;
-  width: 36px;
-  height: 20px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 14px;
-  background: oklch(0 0 0 / 0.75);
-  filter: blur(4.5px);
-  mix-blend-mode: multiply;
-  box-shadow: 0 -5px 8px 0 oklch(0.609 0.181 42.9 / 0.25);
-}
-
-/* Inner highlights — a white edge and a warm top light */
-.cta-arrow-sheen {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    inset 6px 1px 7px 0 oklch(1 0 0 / 0.6),
-    inset 0 15px 5px 0 oklch(0.942 0.069 88.3 / 0.55);
-}
-
-.cta-arrow-glyph {
-  position: relative;
-  z-index: 1;
-  color: oklch(1 0 0);
+/* The small delight the app doesn't have to spare on a static screen: on the
+ * web the arrow leans a few pixels toward where it's pointing on hover. */
+.cta-go-glyph {
   transition: transform var(--dur-hover) var(--ease-hesya);
 }
 
-/* The small delight: on hover the arrow leans a few pixels toward where it's
- * pointing and the warm light inside brightens — slow, never a bounce. */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  :is(a, button):hover > .cta-arrow .cta-arrow-glyph {
+  .btn-cta-dark:hover .cta-go-glyph {
     transform: translateX(3px);
   }
 }
 
-@media (hover: hover) {
-  :is(a, button):hover > .cta-arrow {
-    filter: brightness(1.08);
-  }
-}
-
 .btn-cta-filled {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-height: 2.75rem; /* 44px */
-  padding: 0.375rem 1.125rem;
-  border-radius: var(--radius-cta);
-  background: color-mix(in oklch, var(--color-pale-gold) 10%, transparent);
-  border: 1px solid var(--border-gold);
-  color: var(--color-silver);
+  padding-inline: 1.25rem;
   font-size: var(--font-size-ui);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.1em;
   line-height: 1.125;
-  transition:
-    background var(--dur-hover) var(--ease-hesya),
-    border-color var(--dur-hover) var(--ease-hesya),
-    transform var(--dur-hover) var(--ease-hesya);
 }
 
-.btn-cta-filled:hover {
-  background: color-mix(in oklch, var(--color-pale-gold) 18%, transparent);
-  border-color: color-mix(in oklch, var(--color-pale-gold) 45%, transparent);
+.btn-cta-banner {
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  font-size: var(--font-size-ui);
 }
 
+/**
+ * Ghost — the app's secondary action (Figma "Breathe Button";
+ * `HesyaFigmaGhostButtonStyle`): real Liquid Glass with a cool glow ring.
+ * `backdrop-filter` is the closest static approximation of that refraction.
+ */
 .btn-cta-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 3.25rem;
-  padding: 0.375rem 1.25rem;
-  border-radius: var(--radius-cta);
+  padding-inline: 1.25rem;
+  border-radius: var(--radius-pill);
   background: transparent;
-  box-shadow: inset 0 0 0 1px var(--color-silver-dim);
-  color: var(--color-silver);
+  backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    inset 0 0 0 1.25px oklch(0.93 0.03 228 / 0.35),
+    inset 0 0 0 0.5px oklch(0.97 0.01 250 / 0.5);
+  color: var(--color-on-dark);
   font-size: var(--font-size-ui);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.1em;
   line-height: 1;
   transition:
     box-shadow var(--dur-hover) var(--ease-hesya),
@@ -774,26 +686,10 @@
 }
 
 .btn-cta-outline:hover {
-  box-shadow: inset 0 0 0 1px var(--border-gold);
-  color: var(--color-pale-gold);
-}
-
-.btn-cta-banner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.375rem 1.25rem;
-  border: 1px solid var(--border-dark-strong);
-  color: var(--color-on-dark);
-  font-size: var(--font-size-ui);
-  font-weight: var(--font-weight-medium);
-  box-shadow: var(--shadow-cta-dark);
-  transition: transform var(--dur-micro) var(--ease-hesya);
-}
-
-.btn-cta-banner:hover {
-  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1.25px oklch(0.93 0.03 228 / 0.55),
+    inset 0 0 0 0.5px oklch(0.97 0.01 250 / 0.75);
+  color: var(--color-pearl-glow);
 }
 
 .btn-cta-ghost {
@@ -820,20 +716,8 @@
 }
 
 .btn-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem clamp(1.5rem, 6vw, 2.5rem);
-  border-radius: var(--radius-cta);
-  background-color: var(--color-pearl-glow);
-  color: var(--color-abyss);
-  font-weight: 500;
-  letter-spacing: 0.05em;
   white-space: nowrap;
-  box-shadow:
-    0 4px 24px oklch(1 0 0 / 0.4),
-    0 1px 2px oklch(0 0 0 / 0.05);
-  transition: transform var(--dur-micro) var(--ease-hesya);
 }
 
 .btn-magnetic:active,

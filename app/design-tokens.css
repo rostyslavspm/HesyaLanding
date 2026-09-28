@@ -33,6 +33,14 @@
   --color-deep-midnight: var(--color-abyss);
   --color-steel: oklch(0.38 0.02 255);
 
+  /* The app's own ceramic-button ink (Shared/HesyaPalette.swift `ink`,
+     #16191F) — ported so marketing CTAs match the real in-app primary
+     button's text color instead of inventing their own. Its cool rim glow
+     (`glow`, #E0F0FF → oklch(0.93 0.03 228)) is used as a literal in the CTA
+     box-shadows below, since it's only ever composited at one specific
+     alpha per use site. */
+  --color-ink: oklch(0.213 0.013 264.3);
+
   /* Dark surfaces & Section backdrops */
   --color-hero-bg: var(--color-abyss);
   --color-hero-cta: oklch(0.16 0.025 255);
