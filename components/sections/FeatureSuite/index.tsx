@@ -34,8 +34,8 @@ export default function FeatureSuite() {
 
       <div className="container-marketing">
         <div className="feature-blocks">
-          {HESYA_FEATURES.map((feature, index) => (
-            <FeatureBlock key={feature.id} feature={feature} index={index} />
+          {HESYA_FEATURES.map((feature) => (
+            <FeatureBlock key={feature.id} feature={feature} />
           ))}
         </div>
       </div>

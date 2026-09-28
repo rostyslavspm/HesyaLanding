@@ -2,18 +2,17 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { HesyaFeature } from "@/lib/content/features";
 import { TYPE } from "@/lib/design-system";
-import FadeInImage from "@/components/ui/FadeInImage";
+import FeatureVideo from "./FeatureVideo";
 
 type FeatureBlockProps = {
   feature: HesyaFeature;
-  index: number;
 };
 
 /**
  * One moment of a session, given a full block of the page rather than a
  * panel in a swapping deck — copy on one side, the real screen on the other.
  */
-export default function FeatureBlock({ feature, index }: FeatureBlockProps) {
+export default function FeatureBlock({ feature }: FeatureBlockProps) {
   const Icon = feature.icon;
 
   return (
@@ -63,15 +62,7 @@ export default function FeatureBlock({ feature, index }: FeatureBlockProps) {
 
         <div className="feature-block-media">
           <div aria-hidden className="feature-phone-stage-bg" />
-          <FadeInImage
-            src={feature.screenshot}
-            alt={feature.screenshotAlt}
-            width={1260}
-            height={2736}
-            className="feature-block-image screenshot-outline"
-            sizes="(max-width: 768px) 70vw, (min-width: 1280px) 380px, 30vw"
-            priority={index === 0}
-          />
+          <FeatureVideo id={feature.id} alt={feature.screenshotAlt} />
         </div>
       </div>
     </article>
