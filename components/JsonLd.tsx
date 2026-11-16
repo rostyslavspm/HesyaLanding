@@ -100,7 +100,7 @@ export const rootKnowledgeGraph = {
         "Physiological sigh three-breath transition pause",
         "Outcome-neutral reflection journal without streaks or moralizing scores",
         "Lock Screen widget, Home Screen widget, and macOS menu bar Live Activity",
-        "100% on-device private data with zero external tracking identifiers",
+        "Your words and history stay on your devices: no accounts, no advertising, no tracking",
       ],
       screenshot: [
         "https://hesya.app/screenshots/screen-declare.png",

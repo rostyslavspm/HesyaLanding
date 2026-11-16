@@ -20,7 +20,7 @@ Unlike traditional screen time blockers (e.g., Opal, One Sec, Freedom, Forest) t
 
 ## Technical & Privacy Architecture
 
-- **100% On-Device Data**: All sessions, intentions, reflections, and settings reside exclusively on the user's iPhone. No cloud database, no accounts. Deleting the app removes all data.
+- **Your Data Stays on Your Devices**: All sessions, intentions, reflections, and settings are stored on the user's own devices (and, if they are signed in to iCloud, in their own private, end-to-end encrypted iCloud database, which the developer never accesses). No accounts, and no server that stores them. Anonymous usage counts with no identifier are sent only if the user turns on *Share anonymous usage*.
 - **Apple FamilyControls Framework**: Screen Time access is purely optional. Apple's framework signals only when cumulative time in selected apps crosses a threshold; it **never** discloses which app was opened, browsing history, or personal activity to Hesya.
 - **Zero Third-Party Trackers**: No third-party analytics, no advertising SDKs, and no tracking identifiers (no IDFA, no device ID, no user ID, no IP logging).
 - **Offline-First**: Functions entirely without an internet connection.

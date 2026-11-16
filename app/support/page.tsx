@@ -60,7 +60,7 @@ const privacy = [
   {
     question: "What data does Hesya collect?",
     answer:
-      "Your sessions, intents, reflections, and settings stay on your device. Hesya never records which apps you use. The only thing that ever leaves your device is a small set of anonymous usage counts (for example “a session was started”) with no identifier of any kind. They cannot be linked to you. See the Privacy Policy for detail.",
+      "Your sessions, intents, reflections, and settings stay on your devices, and Hesya never learns which apps you use. If you’re signed in to iCloud, they’re also kept in your own private, end-to-end encrypted iCloud, which we never access. Anonymous usage counts (for example “a session began”), with no identifier of any kind, are sent only if you turn on Share anonymous usage. When you start a session on your Mac, its words reach your iPhone’s Live Activity encrypted so only your devices can read them. See the Privacy Policy for detail.",
   },
   {
     question: "Why does Hesya ask for Screen Time permission?",
@@ -111,7 +111,7 @@ const troubleshooting = [
   {
     question: "Does Hesya work offline?",
     answer:
-      "Yes. Everything core works without a connection. The only network traffic is anonymous, identifier-free usage counts, which simply wait until you're back online.",
+      "Yes. Everything core works without a connection. The only network traffic is your private iCloud copy (if iCloud is on), the Live Activity push when you start a session on your Mac, and anonymous usage counts if you turned them on, which simply wait until you're back online.",
   },
 ];
 
@@ -132,7 +132,7 @@ const general = [
   {
     question: "Can I use Hesya on multiple devices?",
     answer:
-      "Your sessions and journal are stored on each device. There's no cloud sync yet. A native Mac companion is planned.",
+      "Yes. Your sessions and journal are stored on each device. Paired with the Hesya Mac app, your iPhone and Mac exchange them directly over your local network, and if you're signed in to iCloud they also travel through your own private iCloud.",
   },
 ];
 
